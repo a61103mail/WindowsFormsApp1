@@ -46,17 +46,17 @@ namespace WindowsFormsApp1
             this.orderTableAdapter = new WindowsFormsApp1.FOODDataSetTableAdapters.OrderTableAdapter();
             this.tableAdapterManager = new WindowsFormsApp1.FOODDataSetTableAdapters.TableAdapterManager();
             this.orderBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
+            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
+            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
-            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.orderBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.orderIDTextBox = new System.Windows.Forms.TextBox();
             this.userIDComboBox = new System.Windows.Forms.ComboBox();
@@ -151,6 +151,31 @@ namespace WindowsFormsApp1
             this.orderBindingNavigator.TabIndex = 0;
             this.orderBindingNavigator.Text = "bindingNavigator1";
             // 
+            // bindingNavigatorAddNewItem
+            // 
+            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
+            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
+            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorAddNewItem.Text = "加入新的";
+            // 
+            // bindingNavigatorCountItem
+            // 
+            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(27, 22);
+            this.bindingNavigatorCountItem.Text = "/{0}";
+            this.bindingNavigatorCountItem.ToolTipText = "項目總數";
+            // 
+            // bindingNavigatorDeleteItem
+            // 
+            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
+            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
+            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorDeleteItem.Text = "刪除";
+            // 
             // bindingNavigatorMoveFirstItem
             // 
             this.bindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -178,22 +203,16 @@ namespace WindowsFormsApp1
             // 
             this.bindingNavigatorPositionItem.AccessibleName = "位置";
             this.bindingNavigatorPositionItem.AutoSize = false;
+            this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Microsoft JhengHei UI", 9F);
             this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
             this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
             this.bindingNavigatorPositionItem.Text = "0";
             this.bindingNavigatorPositionItem.ToolTipText = "目前的位置";
             // 
-            // bindingNavigatorCountItem
-            // 
-            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(27, 15);
-            this.bindingNavigatorCountItem.Text = "/{0}";
-            this.bindingNavigatorCountItem.ToolTipText = "項目總數";
-            // 
             // bindingNavigatorSeparator1
             // 
-            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator";
-            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 6);
+            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
+            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // bindingNavigatorMoveNextItem
             // 
@@ -201,7 +220,7 @@ namespace WindowsFormsApp1
             this.bindingNavigatorMoveNextItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem.Image")));
             this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
             this.bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(23, 20);
+            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(23, 22);
             this.bindingNavigatorMoveNextItem.Text = "移到下一個";
             // 
             // bindingNavigatorMoveLastItem
@@ -210,45 +229,27 @@ namespace WindowsFormsApp1
             this.bindingNavigatorMoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem.Image")));
             this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
             this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 20);
+            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 22);
             this.bindingNavigatorMoveLastItem.Text = "移到最後面";
             // 
             // bindingNavigatorSeparator2
             // 
-            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator";
-            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 6);
-            // 
-            // bindingNavigatorAddNewItem
-            // 
-            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
-            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
-            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorAddNewItem.Text = "加入新的";
-            // 
-            // bindingNavigatorDeleteItem
-            // 
-            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
-            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
-            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 20);
-            this.bindingNavigatorDeleteItem.Text = "刪除";
+            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
+            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
             // orderBindingNavigatorSaveItem
             // 
             this.orderBindingNavigatorSaveItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.orderBindingNavigatorSaveItem.Image = ((System.Drawing.Image)(resources.GetObject("orderBindingNavigatorSaveItem.Image")));
             this.orderBindingNavigatorSaveItem.Name = "orderBindingNavigatorSaveItem";
-            this.orderBindingNavigatorSaveItem.Size = new System.Drawing.Size(23, 23);
+            this.orderBindingNavigatorSaveItem.Size = new System.Drawing.Size(23, 22);
             this.orderBindingNavigatorSaveItem.Text = "儲存資料";
             this.orderBindingNavigatorSaveItem.Click += new System.EventHandler(this.orderBindingNavigatorSaveItem_Click_1);
             // 
             // orderIDLabel
             // 
             orderIDLabel.AutoSize = true;
-            orderIDLabel.Location = new System.Drawing.Point(61, 69);
+            orderIDLabel.Location = new System.Drawing.Point(53, 66);
             orderIDLabel.Name = "orderIDLabel";
             orderIDLabel.Size = new System.Drawing.Size(50, 12);
             orderIDLabel.TabIndex = 1;
@@ -257,7 +258,7 @@ namespace WindowsFormsApp1
             // orderIDTextBox
             // 
             this.orderIDTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.orderBindingSource, "OrderID", true));
-            this.orderIDTextBox.Location = new System.Drawing.Point(142, 66);
+            this.orderIDTextBox.Location = new System.Drawing.Point(134, 63);
             this.orderIDTextBox.Name = "orderIDTextBox";
             this.orderIDTextBox.Size = new System.Drawing.Size(200, 22);
             this.orderIDTextBox.TabIndex = 2;
@@ -265,7 +266,7 @@ namespace WindowsFormsApp1
             // userIDLabel
             // 
             userIDLabel.AutoSize = true;
-            userIDLabel.Location = new System.Drawing.Point(61, 97);
+            userIDLabel.Location = new System.Drawing.Point(53, 94);
             userIDLabel.Name = "userIDLabel";
             userIDLabel.Size = new System.Drawing.Size(44, 12);
             userIDLabel.TabIndex = 3;
@@ -275,7 +276,7 @@ namespace WindowsFormsApp1
             // 
             this.userIDComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.orderBindingSource, "UserID", true));
             this.userIDComboBox.FormattingEnabled = true;
-            this.userIDComboBox.Location = new System.Drawing.Point(142, 94);
+            this.userIDComboBox.Location = new System.Drawing.Point(134, 91);
             this.userIDComboBox.Name = "userIDComboBox";
             this.userIDComboBox.Size = new System.Drawing.Size(200, 20);
             this.userIDComboBox.TabIndex = 4;
@@ -283,7 +284,7 @@ namespace WindowsFormsApp1
             // orderDateLabel
             // 
             orderDateLabel.AutoSize = true;
-            orderDateLabel.Location = new System.Drawing.Point(61, 124);
+            orderDateLabel.Location = new System.Drawing.Point(53, 121);
             orderDateLabel.Name = "orderDateLabel";
             orderDateLabel.Size = new System.Drawing.Size(59, 12);
             orderDateLabel.TabIndex = 5;
@@ -292,7 +293,7 @@ namespace WindowsFormsApp1
             // orderDateDateTimePicker
             // 
             this.orderDateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.orderBindingSource, "OrderDate", true));
-            this.orderDateDateTimePicker.Location = new System.Drawing.Point(142, 120);
+            this.orderDateDateTimePicker.Location = new System.Drawing.Point(134, 117);
             this.orderDateDateTimePicker.Name = "orderDateDateTimePicker";
             this.orderDateDateTimePicker.Size = new System.Drawing.Size(200, 22);
             this.orderDateDateTimePicker.TabIndex = 6;
@@ -300,7 +301,7 @@ namespace WindowsFormsApp1
             // modifiedDateLabel
             // 
             modifiedDateLabel.AutoSize = true;
-            modifiedDateLabel.Location = new System.Drawing.Point(61, 152);
+            modifiedDateLabel.Location = new System.Drawing.Point(53, 149);
             modifiedDateLabel.Name = "modifiedDateLabel";
             modifiedDateLabel.Size = new System.Drawing.Size(75, 12);
             modifiedDateLabel.TabIndex = 7;
@@ -309,7 +310,7 @@ namespace WindowsFormsApp1
             // modifiedDateDateTimePicker
             // 
             this.modifiedDateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.orderBindingSource, "ModifiedDate", true));
-            this.modifiedDateDateTimePicker.Location = new System.Drawing.Point(142, 148);
+            this.modifiedDateDateTimePicker.Location = new System.Drawing.Point(134, 145);
             this.modifiedDateDateTimePicker.Name = "modifiedDateDateTimePicker";
             this.modifiedDateDateTimePicker.Size = new System.Drawing.Size(200, 22);
             this.modifiedDateDateTimePicker.TabIndex = 8;
@@ -317,7 +318,7 @@ namespace WindowsFormsApp1
             // customerIDLabel
             // 
             customerIDLabel.AutoSize = true;
-            customerIDLabel.Location = new System.Drawing.Point(61, 179);
+            customerIDLabel.Location = new System.Drawing.Point(53, 176);
             customerIDLabel.Name = "customerIDLabel";
             customerIDLabel.Size = new System.Drawing.Size(68, 12);
             customerIDLabel.TabIndex = 9;
@@ -327,7 +328,7 @@ namespace WindowsFormsApp1
             // 
             this.customerIDComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.orderBindingSource, "CustomerID", true));
             this.customerIDComboBox.FormattingEnabled = true;
-            this.customerIDComboBox.Location = new System.Drawing.Point(142, 176);
+            this.customerIDComboBox.Location = new System.Drawing.Point(134, 173);
             this.customerIDComboBox.Name = "customerIDComboBox";
             this.customerIDComboBox.Size = new System.Drawing.Size(200, 20);
             this.customerIDComboBox.TabIndex = 10;
@@ -335,7 +336,7 @@ namespace WindowsFormsApp1
             // employeeIDLabel
             // 
             employeeIDLabel.AutoSize = true;
-            employeeIDLabel.Location = new System.Drawing.Point(61, 205);
+            employeeIDLabel.Location = new System.Drawing.Point(53, 202);
             employeeIDLabel.Name = "employeeIDLabel";
             employeeIDLabel.Size = new System.Drawing.Size(70, 12);
             employeeIDLabel.TabIndex = 11;
@@ -345,7 +346,7 @@ namespace WindowsFormsApp1
             // 
             this.employeeIDComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.orderBindingSource, "EmployeeID", true));
             this.employeeIDComboBox.FormattingEnabled = true;
-            this.employeeIDComboBox.Location = new System.Drawing.Point(142, 202);
+            this.employeeIDComboBox.Location = new System.Drawing.Point(134, 199);
             this.employeeIDComboBox.Name = "employeeIDComboBox";
             this.employeeIDComboBox.Size = new System.Drawing.Size(200, 20);
             this.employeeIDComboBox.TabIndex = 12;
@@ -353,7 +354,7 @@ namespace WindowsFormsApp1
             // requiredDateLabel
             // 
             requiredDateLabel.AutoSize = true;
-            requiredDateLabel.Location = new System.Drawing.Point(61, 232);
+            requiredDateLabel.Location = new System.Drawing.Point(53, 229);
             requiredDateLabel.Name = "requiredDateLabel";
             requiredDateLabel.Size = new System.Drawing.Size(75, 12);
             requiredDateLabel.TabIndex = 13;
@@ -362,7 +363,7 @@ namespace WindowsFormsApp1
             // requiredDateDateTimePicker
             // 
             this.requiredDateDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.orderBindingSource, "RequiredDate", true));
-            this.requiredDateDateTimePicker.Location = new System.Drawing.Point(142, 228);
+            this.requiredDateDateTimePicker.Location = new System.Drawing.Point(134, 225);
             this.requiredDateDateTimePicker.Name = "requiredDateDateTimePicker";
             this.requiredDateDateTimePicker.Size = new System.Drawing.Size(200, 22);
             this.requiredDateDateTimePicker.TabIndex = 14;
@@ -370,7 +371,7 @@ namespace WindowsFormsApp1
             // commentLabel
             // 
             commentLabel.AutoSize = true;
-            commentLabel.Location = new System.Drawing.Point(61, 259);
+            commentLabel.Location = new System.Drawing.Point(53, 256);
             commentLabel.Name = "commentLabel";
             commentLabel.Size = new System.Drawing.Size(54, 12);
             commentLabel.TabIndex = 15;
@@ -379,7 +380,7 @@ namespace WindowsFormsApp1
             // commentTextBox
             // 
             this.commentTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.orderBindingSource, "Comment", true));
-            this.commentTextBox.Location = new System.Drawing.Point(142, 256);
+            this.commentTextBox.Location = new System.Drawing.Point(134, 253);
             this.commentTextBox.Name = "commentTextBox";
             this.commentTextBox.Size = new System.Drawing.Size(200, 22);
             this.commentTextBox.TabIndex = 16;
@@ -387,7 +388,7 @@ namespace WindowsFormsApp1
             // statusLabel
             // 
             statusLabel.AutoSize = true;
-            statusLabel.Location = new System.Drawing.Point(61, 287);
+            statusLabel.Location = new System.Drawing.Point(53, 284);
             statusLabel.Name = "statusLabel";
             statusLabel.Size = new System.Drawing.Size(33, 12);
             statusLabel.TabIndex = 17;
@@ -396,7 +397,7 @@ namespace WindowsFormsApp1
             // statusTextBox
             // 
             this.statusTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.orderBindingSource, "status", true));
-            this.statusTextBox.Location = new System.Drawing.Point(142, 284);
+            this.statusTextBox.Location = new System.Drawing.Point(134, 281);
             this.statusTextBox.Name = "statusTextBox";
             this.statusTextBox.Size = new System.Drawing.Size(200, 22);
             this.statusTextBox.TabIndex = 18;
@@ -404,7 +405,7 @@ namespace WindowsFormsApp1
             // addressLabel
             // 
             addressLabel.AutoSize = true;
-            addressLabel.Location = new System.Drawing.Point(61, 315);
+            addressLabel.Location = new System.Drawing.Point(53, 312);
             addressLabel.Name = "addressLabel";
             addressLabel.Size = new System.Drawing.Size(45, 12);
             addressLabel.TabIndex = 19;
@@ -413,7 +414,7 @@ namespace WindowsFormsApp1
             // addressTextBox
             // 
             this.addressTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.orderBindingSource, "Address", true));
-            this.addressTextBox.Location = new System.Drawing.Point(142, 312);
+            this.addressTextBox.Location = new System.Drawing.Point(134, 309);
             this.addressTextBox.Name = "addressTextBox";
             this.addressTextBox.Size = new System.Drawing.Size(200, 22);
             this.addressTextBox.TabIndex = 20;
