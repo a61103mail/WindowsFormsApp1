@@ -16,5 +16,34 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
         }
+
+        private void orderBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        {
+            this.Validate();
+            this.orderBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.fOODDataSet);
+
+        }
+
+        private void 廷哥表單_Load(object sender, EventArgs e)
+        {
+            // TODO: 這行程式碼會將資料載入 'fOODDataSet.Employee' 資料表。您可以視需要進行移動或移除。
+            this.employeeTableAdapter.Fill(this.fOODDataSet.Employee);
+            // TODO: 這行程式碼會將資料載入 'fOODDataSet.Order' 資料表。您可以視需要進行移動或移除。
+            this.orderTableAdapter.Fill(this.fOODDataSet.Order);
+            // TODO: 這行程式碼會將資料載入 'fOODDataSet.Employee' 資料表。您可以視需要進行移動或移除。
+            this.employeeTableAdapter.Fill(this.fOODDataSet.Employee);
+            // TODO: 這行程式碼會將資料載入 'fOODDataSet.Order' 資料表。您可以視需要進行移動或移除。
+            this.orderTableAdapter.Fill(this.fOODDataSet.Order);
+
+        }
+
+        private void orderBindingNavigatorSaveItem_Click_1(object sender, EventArgs e)
+        {
+            this.Validate();
+            this.orderBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.fOODDataSet);
+
+        }
     }
 }

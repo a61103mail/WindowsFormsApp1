@@ -170,6 +170,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="廷哥表單.resx">
+      <DependentUpon>廷哥表單.cs</DependentUpon>
+    </EmbeddedResource>
     <EntityDeploy Include="Properties\fooddb.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>fooddb.Designer.cs</LastGenOutput>
