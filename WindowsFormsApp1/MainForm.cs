@@ -16,5 +16,31 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            panel1.Controls.Clear();
+            Employee系統 empFrm = new Employee系統()
+            {
+                Dock = DockStyle.Fill, TopLevel = false, TopMost = true
+            };
+            empFrm.FormBorderStyle = FormBorderStyle.None;
+            this.panel1.Controls.Add(empFrm);
+            empFrm.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            panel1.Controls.Clear();
+           Client ClientFrm = new Client()
+            {
+                Dock = DockStyle.Fill,
+                TopLevel = false,
+                TopMost = true
+            };
+            ClientFrm.FormBorderStyle = FormBorderStyle.None;
+            this.panel1.Controls.Add(ClientFrm);
+            ClientFrm.Show();
+        }
     }
 }

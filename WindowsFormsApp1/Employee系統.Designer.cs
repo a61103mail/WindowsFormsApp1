@@ -1,7 +1,7 @@
 ﻿
 namespace WindowsFormsApp1
 {
-    partial class Employee
+    partial class Employee系統
     {
         /// <summary>
         /// Required designer variable.
@@ -29,6 +29,7 @@ namespace WindowsFormsApp1
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Employee系統));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -63,7 +64,6 @@ namespace WindowsFormsApp1
             this.AddTextBox_Employee = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.EmailTextBox_Employee = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -84,7 +84,6 @@ namespace WindowsFormsApp1
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.button2);
             this.splitContainer1.Panel1.Controls.Add(this.label17);
             this.splitContainer1.Panel1.Controls.Add(this.PictureBox_Employee);
             this.splitContainer1.Panel1.Controls.Add(this.EmailTextBox_Employee);
@@ -122,8 +121,8 @@ namespace WindowsFormsApp1
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tabControl1);
-            this.splitContainer1.Size = new System.Drawing.Size(1241, 602);
-            this.splitContainer1.SplitterDistance = 255;
+            this.splitContainer1.Size = new System.Drawing.Size(1092, 602);
+            this.splitContainer1.SplitterDistance = 240;
             this.splitContainer1.TabIndex = 2;
             // 
             // label1
@@ -355,18 +354,22 @@ namespace WindowsFormsApp1
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.button1.Location = new System.Drawing.Point(877, 12);
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.Location = new System.Drawing.Point(980, 197);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(70, 25);
             this.button1.TabIndex = 26;
             this.button1.Text = "修改";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button1.UseVisualStyleBackColor = true;
             // 
             // PictureBox_Employee
             // 
+            this.PictureBox_Employee.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PictureBox_Employee.Location = new System.Drawing.Point(30, 50);
             this.PictureBox_Employee.Name = "PictureBox_Employee";
-            this.PictureBox_Employee.Size = new System.Drawing.Size(120, 135);
+            this.PictureBox_Employee.Size = new System.Drawing.Size(142, 172);
             this.PictureBox_Employee.TabIndex = 27;
             this.PictureBox_Employee.TabStop = false;
             // 
@@ -424,16 +427,6 @@ namespace WindowsFormsApp1
             this.EmailTextBox_Employee.Size = new System.Drawing.Size(197, 27);
             this.EmailTextBox_Employee.TabIndex = 32;
             // 
-            // button2
-            // 
-            this.button2.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.button2.Location = new System.Drawing.Point(975, 12);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 28;
-            this.button2.Text = "返回";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
@@ -442,7 +435,7 @@ namespace WindowsFormsApp1
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1241, 343);
+            this.tabControl1.Size = new System.Drawing.Size(1092, 358);
             this.tabControl1.TabIndex = 34;
             // 
             // tabPage1
@@ -451,7 +444,7 @@ namespace WindowsFormsApp1
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1233, 317);
+            this.tabPage1.Size = new System.Drawing.Size(1084, 332);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = " 訂單業務";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -471,7 +464,7 @@ namespace WindowsFormsApp1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1241, 602);
+            this.ClientSize = new System.Drawing.Size(1092, 602);
             this.Controls.Add(this.splitContainer1);
             this.Name = "Employee";
             this.Text = "Employee";
@@ -521,7 +514,6 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.TextBox AddTextBox_Employee;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox departmentTextBox_Employee;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;

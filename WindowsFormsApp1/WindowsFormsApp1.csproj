@@ -49,17 +49,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="client.cs">
+    <Compile Include="Client.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="client.Designer.cs">
-      <DependentUpon>client.cs</DependentUpon>
+    <Compile Include="Client.Designer.cs">
+      <DependentUpon>Client.cs</DependentUpon>
     </Compile>
-    <Compile Include="Employee.cs">
+    <Compile Include="Employee系統.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Employee.Designer.cs">
-      <DependentUpon>Employee.cs</DependentUpon>
+    <Compile Include="Employee系統.Designer.cs">
+      <DependentUpon>Employee系統.cs</DependentUpon>
     </Compile>
     <Compile Include="ForgotPW.cs">
       <SubType>Form</SubType>
@@ -87,11 +87,11 @@
     <Compile Include="registered.Designer.cs">
       <DependentUpon>registered.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="client.resx">
-      <DependentUpon>client.cs</DependentUpon>
+    <EmbeddedResource Include="Client.resx">
+      <DependentUpon>Client.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Employee.resx">
-      <DependentUpon>Employee.cs</DependentUpon>
+    <EmbeddedResource Include="Employee系統.resx">
+      <DependentUpon>Employee系統.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ForgotPW.resx">
       <DependentUpon>ForgotPW.cs</DependentUpon>
