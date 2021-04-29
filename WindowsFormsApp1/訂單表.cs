@@ -162,7 +162,7 @@ namespace WindowsFormsApp1.Properties
                 if (e.ColumnIndex == 0) {
                 DataGridViewComboBoxCell cb = dataGridView1[0, e.RowIndex] as DataGridViewComboBoxCell;
                 
-                    
+                    MessageBox.Show(cb.Value.ToString());
                 }
 
             }
