@@ -63,7 +63,7 @@ namespace WindowsFormsApp1.Properties
             this.label18 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.productid = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.productname = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.productname = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unitprice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -380,7 +380,6 @@ namespace WindowsFormsApp1.Properties
             this.productname.HeaderText = "品名";
             this.productname.Name = "productname";
             this.productname.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.productname.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.productname.Width = 150;
             // 
             // unitprice
@@ -496,7 +495,7 @@ namespace WindowsFormsApp1.Properties
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewComboBoxColumn productid;
-        private System.Windows.Forms.DataGridViewComboBoxColumn productname;
+        private System.Windows.Forms.DataGridViewTextBoxColumn productname;
         private System.Windows.Forms.DataGridViewTextBoxColumn unitprice;
         private System.Windows.Forms.DataGridViewTextBoxColumn qty;
         private System.Windows.Forms.DataGridViewTextBoxColumn unit;

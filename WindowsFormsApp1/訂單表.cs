@@ -49,6 +49,8 @@ namespace WindowsFormsApp1.Properties
                 Address = this.textBox4.Text,
                 Comment = this.richTextBox1.Text
             };
+
+             
             DialogResult p = MessageBox.Show("確定新增?","", MessageBoxButtons.OKCancel,MessageBoxIcon.Exclamation);
             if (p == DialogResult.OK) {
                 this.db.Orders.Add(order);
@@ -87,16 +89,14 @@ namespace WindowsFormsApp1.Properties
             //this.productEntryTableAdapter1.Fill(this.foodDataSet1.ProductEntry);
             //this.dataGridView1.DataSource = this.foodDataSet1.ProductEntry;
 
-            var q3 = this.db.Products.Select(n => new { pdid = n.ProductID, pdna = n.Name  });
+            var q3 = this.db.Products.Select(n => new { pdid = n.ProductID, pdna = n.ProductID +"  "+ n.Name    });
 
             
             this.productid.DataSource = q3.ToList();
-            this.productid.DisplayMember = "pdid";
+            this.productid.DisplayMember = "pdna" ;
             this.productid.ValueMember = "pdid";
 
-            this.productname.DataSource = q3.ToList();
-            this.productname.DisplayMember = "pdna";
-            this.productname.ValueMember = "pdid";
+           
 
   
 
@@ -132,9 +132,9 @@ namespace WindowsFormsApp1.Properties
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            var p = this.db.Products.AsEnumerable().Where(n => n.ProductID == int.Parse($"{this.productid.Items}")).Select(n => n.Name);
+            
            
-            this.productname.DataSource = p.ToList();
+          
         }
 
        
@@ -146,7 +146,26 @@ namespace WindowsFormsApp1.Properties
 
         private void dataGridView1_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
+            
+            TextBox autoText = e.Control as TextBox;
+            if (autoText != null)
+            {
+                autoText.AutoCompleteMode = AutoCompleteMode.Suggest;
+                autoText.AutoCompleteSource = AutoCompleteSource.CustomSource;
+                AutoCompleteStringCollection DataCollection = new AutoCompleteStringCollection();
+                addItems(DataCollection);
+                autoText.AutoCompleteCustomSource = DataCollection;
+            }
+        }
 
+        private void addItems(AutoCompleteStringCollection col)
+        {
+            var q = from p in db.Products
+                    select p.Name;
+            foreach(var p in q)
+            {
+                col.Add(p.ToString());
+            }
         }
 
         private void dataGridView1_CurrentCellDirtyStateChanged(object sender, EventArgs e)
@@ -162,15 +181,37 @@ namespace WindowsFormsApp1.Properties
             {
                 if (e.ColumnIndex == 0) {
                 DataGridViewComboBoxCell cb = dataGridView1[0, e.RowIndex] as DataGridViewComboBoxCell;
-                
-                    MessageBox.Show(cb.Value.ToString());
+
+                    int id = int.Parse(cb.Value.ToString());
+                    var q = from p in this.db.Products
+                            where p.ProductID == id
+                            select p.Name;
+                   
+                    this.dataGridView1[1, e.RowIndex].Value = q.ToList()[0].ToString();
+                }
+                if (e.ColumnIndex == 1)
+                {
+                    var q = from p in db.Products
+                            where p.Name == this.dataGridView1.CurrentCell.Value.ToString()
+                            select p.ProductID;
+
+                    DataGridViewComboBoxCell cb = dataGridView1[0, e.RowIndex] as DataGridViewComboBoxCell;
+                    cb.Value = q.ToList()[0];
+
+
+
                 }
 
             }
-            catch
+            catch(Exception ex)
             {
-
+                //MessageBox.Show(ex.Message);
             }
+
+        }
+
+        private void dataGridView1_KeyDown(object sender, KeyEventArgs e)
+        {
 
         }
     }
