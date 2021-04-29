@@ -48,7 +48,6 @@ namespace WindowsFormsApp1.Properties
             this.label9 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label11 = new System.Windows.Forms.Label();
-            this.listView1 = new System.Windows.Forms.ListView();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -62,8 +61,17 @@ namespace WindowsFormsApp1.Properties
             this.label15 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.textBox6 = new System.Windows.Forms.TextBox();
-            this.button3 = new System.Windows.Forms.Button();
+            this.foodDataSet1 = new WindowsFormsApp1.FOODDataSet();
+            this.categoryTableAdapter1 = new WindowsFormsApp1.FOODDataSetTableAdapters.CategoryTableAdapter();
+            this.customerTableAdapter1 = new WindowsFormsApp1.FOODDataSetTableAdapters.CustomerTableAdapter();
+            this.orderDetailTableAdapter1 = new WindowsFormsApp1.FOODDataSetTableAdapters.OrderDetailTableAdapter();
+            this.employeeTableAdapter1 = new WindowsFormsApp1.FOODDataSetTableAdapters.EmployeeTableAdapter();
+            this.productTableAdapter1 = new WindowsFormsApp1.FOODDataSetTableAdapters.ProductTableAdapter();
+            this.orderTableAdapter1 = new WindowsFormsApp1.FOODDataSetTableAdapters.OrderTableAdapter();
+            this.tableAdapterManager1 = new WindowsFormsApp1.FOODDataSetTableAdapters.TableAdapterManager();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.foodDataSet1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -225,15 +233,6 @@ namespace WindowsFormsApp1.Properties
             this.label11.TabIndex = 25;
             this.label11.Text = "備註:";
             // 
-            // listView1
-            // 
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(638, 144);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(427, 151);
-            this.listView1.TabIndex = 26;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -251,6 +250,7 @@ namespace WindowsFormsApp1.Properties
             this.button1.TabIndex = 28;
             this.button1.Text = "新增訂單";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -260,6 +260,7 @@ namespace WindowsFormsApp1.Properties
             this.button2.TabIndex = 29;
             this.button2.Text = "儲存訂單";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label10
             // 
@@ -342,21 +343,60 @@ namespace WindowsFormsApp1.Properties
             this.textBox6.Size = new System.Drawing.Size(121, 22);
             this.textBox6.TabIndex = 40;
             // 
-            // button3
+            // foodDataSet1
             // 
-            this.button3.Location = new System.Drawing.Point(237, 12);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 41;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
+            this.foodDataSet1.DataSetName = "FOODDataSet";
+            this.foodDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // categoryTableAdapter1
+            // 
+            this.categoryTableAdapter1.ClearBeforeFill = true;
+            // 
+            // customerTableAdapter1
+            // 
+            this.customerTableAdapter1.ClearBeforeFill = true;
+            // 
+            // orderDetailTableAdapter1
+            // 
+            this.orderDetailTableAdapter1.ClearBeforeFill = true;
+            // 
+            // employeeTableAdapter1
+            // 
+            this.employeeTableAdapter1.ClearBeforeFill = true;
+            // 
+            // productTableAdapter1
+            // 
+            this.productTableAdapter1.ClearBeforeFill = true;
+            // 
+            // orderTableAdapter1
+            // 
+            this.orderTableAdapter1.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager1
+            // 
+            this.tableAdapterManager1.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager1.CategoryTableAdapter = this.categoryTableAdapter1;
+            this.tableAdapterManager1.CustomerTableAdapter = this.customerTableAdapter1;
+            this.tableAdapterManager1.EmployeeTableAdapter = this.employeeTableAdapter1;
+            this.tableAdapterManager1.OrderDetailTableAdapter = this.orderDetailTableAdapter1;
+            this.tableAdapterManager1.OrderTableAdapter = this.orderTableAdapter1;
+            this.tableAdapterManager1.ProductTableAdapter = this.productTableAdapter1;
+            this.tableAdapterManager1.UpdateOrder = WindowsFormsApp1.FOODDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(648, 151);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(400, 141);
+            this.richTextBox1.TabIndex = 41;
+            this.richTextBox1.Text = "";
             // 
             // 訂單表
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1138, 694);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.textBox6);
             this.Controls.Add(this.textBox5);
             this.Controls.Add(this.label15);
@@ -370,7 +410,6 @@ namespace WindowsFormsApp1.Properties
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.listView1);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label9);
@@ -392,7 +431,9 @@ namespace WindowsFormsApp1.Properties
             this.Controls.Add(this.label1);
             this.Name = "訂單表";
             this.Text = "訂單表";
+            this.Load += new System.EventHandler(this.訂單表_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.foodDataSet1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -419,7 +460,6 @@ namespace WindowsFormsApp1.Properties
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
@@ -433,6 +473,14 @@ namespace WindowsFormsApp1.Properties
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.Button button3;
+        private FOODDataSet foodDataSet1;
+        private FOODDataSetTableAdapters.CategoryTableAdapter categoryTableAdapter1;
+        private FOODDataSetTableAdapters.CustomerTableAdapter customerTableAdapter1;
+        private FOODDataSetTableAdapters.OrderDetailTableAdapter orderDetailTableAdapter1;
+        private FOODDataSetTableAdapters.EmployeeTableAdapter employeeTableAdapter1;
+        private FOODDataSetTableAdapters.ProductTableAdapter productTableAdapter1;
+        private FOODDataSetTableAdapters.OrderTableAdapter orderTableAdapter1;
+        private FOODDataSetTableAdapters.TableAdapterManager tableAdapterManager1;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }
