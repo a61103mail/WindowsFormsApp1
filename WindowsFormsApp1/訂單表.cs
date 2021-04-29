@@ -28,8 +28,8 @@ namespace WindowsFormsApp1.Properties
             {
                 OrderDate = this.dateTimePicker2.Value,
                 RequiredDate =this.dateTimePicker1.Value,
-                //CustomerID = Int32.Parse($"{this.comboBox1}")/*,*/
-                //EmployeeID = int.Parse($"{this.comboBox4}"),
+                CustomerID =int.Parse( $"{this.comboBox1}"),
+                //EmployeeID = this.comboBox4,
                 Address =this.textBox4.Text,
                 Comment = this.richTextBox1.Text
             };
@@ -41,6 +41,10 @@ namespace WindowsFormsApp1.Properties
 
         private void 訂單表_Load(object sender, EventArgs e)
         {
+            var q = this.db.Customers.Select(n=>new { ctname=n.Name , ctid=n.CustomerID });
+            this.comboBox1.DataSource = q.ToList();
+            this.comboBox1.DisplayMember = "ctname";
+            this.comboBox1.ValueMember = "ctid";
 
         }
 
@@ -52,5 +56,12 @@ namespace WindowsFormsApp1.Properties
             if (order == null) return;
             this.db.SaveChanges();
         }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.label16.Text = this.comboBox1.SelectedValue.ToString();
+        }
+
+       
     }
 }

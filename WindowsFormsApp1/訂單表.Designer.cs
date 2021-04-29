@@ -39,7 +39,6 @@ namespace WindowsFormsApp1.Properties
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.comboBox5 = new System.Windows.Forms.ComboBox();
@@ -70,6 +69,7 @@ namespace WindowsFormsApp1.Properties
             this.orderTableAdapter1 = new WindowsFormsApp1.FOODDataSetTableAdapters.OrderTableAdapter();
             this.tableAdapterManager1 = new WindowsFormsApp1.FOODDataSetTableAdapters.TableAdapterManager();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.label16 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.foodDataSet1)).BeginInit();
             this.SuspendLayout();
@@ -93,7 +93,7 @@ namespace WindowsFormsApp1.Properties
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(50, 99);
+            this.label2.Location = new System.Drawing.Point(236, 99);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(56, 12);
             this.label2.TabIndex = 2;
@@ -102,7 +102,7 @@ namespace WindowsFormsApp1.Properties
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(239, 99);
+            this.label3.Location = new System.Drawing.Point(50, 99);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(56, 12);
             this.label3.TabIndex = 4;
@@ -158,14 +158,7 @@ namespace WindowsFormsApp1.Properties
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 20);
             this.comboBox1.TabIndex = 14;
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(298, 96);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 20);
-            this.comboBox2.TabIndex = 15;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // comboBox3
             // 
@@ -391,11 +384,21 @@ namespace WindowsFormsApp1.Properties
             this.richTextBox1.TabIndex = 41;
             this.richTextBox1.Text = "";
             // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(299, 98);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(39, 12);
+            this.label16.TabIndex = 42;
+            this.label16.Text = "label16";
+            // 
             // 訂單表
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1138, 694);
+            this.Controls.Add(this.label16);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.textBox6);
             this.Controls.Add(this.textBox5);
@@ -418,7 +421,6 @@ namespace WindowsFormsApp1.Properties
             this.Controls.Add(this.comboBox5);
             this.Controls.Add(this.comboBox4);
             this.Controls.Add(this.comboBox3);
-            this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -451,7 +453,6 @@ namespace WindowsFormsApp1.Properties
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.ComboBox comboBox4;
         private System.Windows.Forms.ComboBox comboBox5;
@@ -482,5 +483,6 @@ namespace WindowsFormsApp1.Properties
         private FOODDataSetTableAdapters.OrderTableAdapter orderTableAdapter1;
         private FOODDataSetTableAdapters.TableAdapterManager tableAdapterManager1;
         private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Label label16;
     }
 }
