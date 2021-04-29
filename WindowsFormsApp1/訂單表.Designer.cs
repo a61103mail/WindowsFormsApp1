@@ -69,10 +69,7 @@ namespace WindowsFormsApp1.Properties
             this.unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Comment = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.foodDataSet1 = new WindowsFormsApp1.FOODDataSet();
-            this.productEntryTableAdapter1 = new WindowsFormsApp1.FOODDataSetTableAdapters.ProductEntryTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.foodDataSet1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -416,15 +413,6 @@ namespace WindowsFormsApp1.Properties
             this.Comment.Name = "Comment";
             this.Comment.Width = 200;
             // 
-            // foodDataSet1
-            // 
-            this.foodDataSet1.DataSetName = "FOODDataSet";
-            this.foodDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // productEntryTableAdapter1
-            // 
-            this.productEntryTableAdapter1.ClearBeforeFill = true;
-            // 
             // 訂單表
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -467,7 +455,6 @@ namespace WindowsFormsApp1.Properties
             this.Text = "訂單表";
             this.Load += new System.EventHandler(this.訂單表_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.foodDataSet1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -508,8 +495,6 @@ namespace WindowsFormsApp1.Properties
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private FOODDataSet foodDataSet1;
-        private FOODDataSetTableAdapters.ProductEntryTableAdapter productEntryTableAdapter1;
         private System.Windows.Forms.DataGridViewComboBoxColumn productid;
         private System.Windows.Forms.DataGridViewComboBoxColumn productname;
         private System.Windows.Forms.DataGridViewTextBoxColumn unitprice;

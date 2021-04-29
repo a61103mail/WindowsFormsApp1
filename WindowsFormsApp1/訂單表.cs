@@ -43,17 +43,18 @@ namespace WindowsFormsApp1.Properties
             Order order = new Order
             {
                 OrderDate = this.dateTimePicker2.Value,
-                RequiredDate =this.dateTimePicker1.Value,
-                //CustomerID =int.Parse( $"{this.comboBox1}"),
-                //EmployeeID =int.Parse($" {this.comboBox4}"),
-                Address =this.textBox4.Text,
+                RequiredDate = this.dateTimePicker1.Value,
+                CustomerID = int.Parse( this.label16.Text),
+                EmployeeID =int.Parse(this.comboBox4.Text),
+                Address = this.textBox4.Text,
                 Comment = this.richTextBox1.Text
             };
-            
-            this.db.Orders.Add(order);
-            this.db.SaveChanges();
-            MessageBox.Show("新增成功","",MessageBoxButtons.OK);
-
+            DialogResult p = MessageBox.Show("確定新增?","", MessageBoxButtons.OKCancel,MessageBoxIcon.Exclamation);
+            if (p == DialogResult.OK) {
+                this.db.Orders.Add(order);
+                this.db.SaveChanges();
+                MessageBox.Show("新增成功","",MessageBoxButtons.OK);
+            }
 
         }
 
