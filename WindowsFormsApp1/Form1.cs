@@ -17,11 +17,6 @@ namespace WindowsFormsApp1
             InitializeComponent();
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void button4_Click(object sender, EventArgs e)
         {
             this.Dispose();
@@ -29,7 +24,8 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+            var registered = new registered();
+            registered.Show();
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
