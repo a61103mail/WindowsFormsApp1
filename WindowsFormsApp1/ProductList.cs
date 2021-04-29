@@ -27,5 +27,17 @@ namespace WindowsFormsApp1
             this.dataGridView1.DataSource = q.ToList();
                     
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            新增產品 f = new 新增產品();
+            f.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var currentRowIndex = this.dataGridView1.SelectedCells[0].RowIndex;
+           
+        }
     }
 }

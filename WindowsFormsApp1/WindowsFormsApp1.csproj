@@ -102,6 +102,12 @@
     <Compile Include="PurchaseConfirmedDetail.cs">
       <DependentUpon>ProductModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="新增產品.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="新增產品.Designer.cs">
+      <DependentUpon>新增產品.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -117,6 +123,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="新增產品.resx">
+      <DependentUpon>新增產品.cs</DependentUpon>
+    </EmbeddedResource>
     <EntityDeploy Include="ProductModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ProductModel.Designer.cs</LastGenOutput>
