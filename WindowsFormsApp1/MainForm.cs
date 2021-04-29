@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.Properties;
 
 namespace WindowsFormsApp1
 {
@@ -41,6 +42,20 @@ namespace WindowsFormsApp1
             ClientFrm.FormBorderStyle = FormBorderStyle.None;
             this.panel1.Controls.Add(ClientFrm);
             ClientFrm.Show();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            panel1.Controls.Clear();
+            訂單表 訂單表 = new 訂單表()
+            {
+                Dock = DockStyle.Fill,
+                TopLevel = false,
+                TopMost = true
+            };
+            訂單表.FormBorderStyle = FormBorderStyle.None;
+            this.panel1.Controls.Add(訂單表);
+            訂單表.Show();
         }
     }
 }
