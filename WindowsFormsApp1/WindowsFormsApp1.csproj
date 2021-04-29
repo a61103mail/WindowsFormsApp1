@@ -58,10 +58,56 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Category.cs">
+      <DependentUpon>Food.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Customer.cs">
+      <DependentUpon>Food.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerRole.cs">
+      <DependentUpon>Food.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DailyPrice.cs">
+      <DependentUpon>Food.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Employee.cs">
+      <DependentUpon>Food.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeRole.cs">
+      <DependentUpon>Food.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmpRole.cs">
+      <DependentUpon>Food.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Food.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Food.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Food.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Food.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Food.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Food.edmx</DependentUpon>
+    </Compile>
     <Compile Include="FOODDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>FOODDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="FOODDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FOODDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="FOODDataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FOODDataSet2.xsd</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -74,6 +120,21 @@
     </Compile>
     <Compile Include="Form2.Designer.cs">
       <DependentUpon>Form2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory.cs">
+      <DependentUpon>Food.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Order.cs">
+      <DependentUpon>Food.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OrderDetail.cs">
+      <DependentUpon>Food.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Picture.cs">
+      <DependentUpon>Food.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Product.cs">
+      <DependentUpon>Food.tt</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -133,6 +194,24 @@
     <Compile Include="Properties\sysdiagram.cs">
       <DependentUpon>fooddb.tt</DependentUpon>
     </Compile>
+    <Compile Include="Purchase.cs">
+      <DependentUpon>Food.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseConfirmedDetail.cs">
+      <DependentUpon>Food.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseDetail.cs">
+      <DependentUpon>Food.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Role.cs">
+      <DependentUpon>Food.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDetail.cs">
+      <DependentUpon>Food.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>Food.tt</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -162,16 +241,45 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>fooddb.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <EntityDeploy Include="Food.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Food.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Food.edmx.diagram">
+      <DependentUpon>Food.edmx</DependentUpon>
+    </None>
     <None Include="FOODDataSet.xsc">
       <DependentUpon>FOODDataSet.xsd</DependentUpon>
     </None>
     <None Include="FOODDataSet.xsd">
+      <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>FOODDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
     </None>
     <None Include="FOODDataSet.xss">
       <DependentUpon>FOODDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="FOODDataSet1.xsc">
+      <DependentUpon>FOODDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="FOODDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>FOODDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="FOODDataSet1.xss">
+      <DependentUpon>FOODDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="FOODDataSet2.xsc">
+      <DependentUpon>FOODDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="FOODDataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>FOODDataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="FOODDataSet2.xss">
+      <DependentUpon>FOODDataSet2.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\fooddb.edmx.diagram">
@@ -191,6 +299,16 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Food.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Food.edmx</DependentUpon>
+      <LastGenOutput>Food.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Food.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Food.edmx</DependentUpon>
+      <LastGenOutput>Food.cs</LastGenOutput>
+    </Content>
     <Content Include="Properties\fooddb.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>fooddb.Context.cs</LastGenOutput>
