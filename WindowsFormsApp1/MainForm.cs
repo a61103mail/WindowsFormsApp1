@@ -42,5 +42,20 @@ namespace WindowsFormsApp1
             this.panel1.Controls.Add(ClientFrm);
             ClientFrm.Show();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+            
+
+
+         
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            var label = new Form1();
+            label.Show();
+        }
     }
 }

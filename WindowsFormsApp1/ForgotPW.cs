@@ -21,5 +21,22 @@ namespace WindowsFormsApp1
         {
             this.Dispose();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //帳密資料庫的建置
+            if(this.textBox1.Text=="" && this.textBox2.Text == "")
+            {
+                MessageBox.Show("你的密碼為XXXXX");
+                this.Dispose();
+                //var login = new Form1();
+                //login.Show();
+
+            }
+            else
+            {
+                MessageBox.Show("輸入不符，請重新確認！");
+            }
+        }
     }
 }

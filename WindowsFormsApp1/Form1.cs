@@ -32,5 +32,26 @@ namespace WindowsFormsApp1
         {
 
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            var forgotPW = new ForgotPW();
+            forgotPW.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (this.textBox1.Text=="" && this.textBox2.Text == "")
+            {
+                
+                var main = new MainForm();
+                main.Show();                
+            }
+            else
+            {
+                MessageBox.Show("帳號密碼錯誤！");
+            }
+            this.Visible = false;
+        }
     }
 }

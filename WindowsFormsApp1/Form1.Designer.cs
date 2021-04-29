@@ -124,6 +124,7 @@ namespace WindowsFormsApp1
             this.button2.TabIndex = 7;
             this.button2.Text = "登入";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
@@ -136,6 +137,7 @@ namespace WindowsFormsApp1
             this.button3.TabIndex = 8;
             this.button3.Text = "忘記密碼";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
             // 
@@ -146,7 +148,7 @@ namespace WindowsFormsApp1
             this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
-            this.button4.Location = new System.Drawing.Point(893, 0);
+            this.button4.Location = new System.Drawing.Point(865, 0);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(51, 51);
             this.button4.TabIndex = 9;
@@ -182,7 +184,7 @@ namespace WindowsFormsApp1
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(949, 384);
+            this.ClientSize = new System.Drawing.Size(923, 384);
             this.Controls.Add(this.radioButton2);
             this.Controls.Add(this.radioButton1);
             this.Controls.Add(this.button4);

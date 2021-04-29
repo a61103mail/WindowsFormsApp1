@@ -54,24 +54,24 @@ namespace WindowsFormsApp1
             this.label10 = new System.Windows.Forms.Label();
             this.CompanyRadioButton_register = new System.Windows.Forms.RadioButton();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.CompanyIDTextBox_register = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.FaxTextBox_register = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.label13 = new System.Windows.Forms.Label();
-            this.NameTextBox_register = new System.Windows.Forms.TextBox();
-            this.CompanyNameTextBox_register = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.ContactNameTextBox_register = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.ContactTELTextBox_register = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.CompanyAddTextBox_register = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.ContactTELTextBox_register = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.ContactNameTextBox_register = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.CompanyNameTextBox_register = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.FaxTextBox_register = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.CompanyIDTextBox_register = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.label19 = new System.Windows.Forms.Label();
             this.AddTextBox_register = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.NameTextBox_register = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -271,6 +271,7 @@ namespace WindowsFormsApp1
             this.BackButton.TabIndex = 20;
             this.BackButton.Text = "返回登入頁";
             this.BackButton.UseVisualStyleBackColor = true;
+            this.BackButton.Click += new System.EventHandler(this.BackButton_Click);
             // 
             // dateTimePicker1
             // 
@@ -291,6 +292,7 @@ namespace WindowsFormsApp1
             this.PersonRadioButton_register.TabStop = true;
             this.PersonRadioButton_register.Text = "個人";
             this.PersonRadioButton_register.UseVisualStyleBackColor = true;
+            this.PersonRadioButton_register.CheckedChanged += new System.EventHandler(this.PersonRadioButton_register_CheckedChanged);
             // 
             // label10
             // 
@@ -313,6 +315,7 @@ namespace WindowsFormsApp1
             this.CompanyRadioButton_register.TabStop = true;
             this.CompanyRadioButton_register.Text = "企業";
             this.CompanyRadioButton_register.UseVisualStyleBackColor = true;
+            this.CompanyRadioButton_register.CheckedChanged += new System.EventHandler(this.CompanyRadioButton_register_CheckedChanged);
             // 
             // panel1
             // 
@@ -334,121 +337,23 @@ namespace WindowsFormsApp1
             this.panel1.Size = new System.Drawing.Size(299, 283);
             this.panel1.TabIndex = 26;
             // 
-            // CompanyIDTextBox_register
+            // label18
             // 
-            this.CompanyIDTextBox_register.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.CompanyIDTextBox_register.Location = new System.Drawing.Point(111, 61);
-            this.CompanyIDTextBox_register.Name = "CompanyIDTextBox_register";
-            this.CompanyIDTextBox_register.Size = new System.Drawing.Size(156, 27);
-            this.CompanyIDTextBox_register.TabIndex = 4;
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label18.Location = new System.Drawing.Point(15, 247);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(72, 16);
+            this.label18.TabIndex = 22;
+            this.label18.Text = "公司地址";
             // 
-            // label11
+            // CompanyAddTextBox_register
             // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label11.Location = new System.Drawing.Point(15, 64);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(72, 16);
-            this.label11.TabIndex = 3;
-            this.label11.Text = "統一編號";
-            // 
-            // FaxTextBox_register
-            // 
-            this.FaxTextBox_register.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.FaxTextBox_register.Location = new System.Drawing.Point(111, 106);
-            this.FaxTextBox_register.Name = "FaxTextBox_register";
-            this.FaxTextBox_register.Size = new System.Drawing.Size(156, 27);
-            this.FaxTextBox_register.TabIndex = 6;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label12.Location = new System.Drawing.Point(15, 109);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(72, 16);
-            this.label12.TabIndex = 5;
-            this.label12.Text = "傳真電話";
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.label19);
-            this.panel2.Controls.Add(this.AddTextBox_register);
-            this.panel2.Controls.Add(this.label13);
-            this.panel2.Controls.Add(this.NameTextBox_register);
-            this.panel2.Controls.Add(this.label5);
-            this.panel2.Controls.Add(this.label6);
-            this.panel2.Controls.Add(this.MaleradioButton_register);
-            this.panel2.Controls.Add(this.FemaleradioButton_register);
-            this.panel2.Controls.Add(this.ElseradioButton_register);
-            this.panel2.Controls.Add(this.dateTimePicker1);
-            this.panel2.Location = new System.Drawing.Point(26, 330);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(267, 188);
-            this.panel2.TabIndex = 27;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label13.Location = new System.Drawing.Point(3, 23);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(40, 16);
-            this.label13.TabIndex = 23;
-            this.label13.Text = "姓名";
-            // 
-            // NameTextBox_register
-            // 
-            this.NameTextBox_register.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.NameTextBox_register.Location = new System.Drawing.Point(99, 20);
-            this.NameTextBox_register.Name = "NameTextBox_register";
-            this.NameTextBox_register.Size = new System.Drawing.Size(156, 27);
-            this.NameTextBox_register.TabIndex = 22;
-            // 
-            // CompanyNameTextBox_register
-            // 
-            this.CompanyNameTextBox_register.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.CompanyNameTextBox_register.Location = new System.Drawing.Point(111, 16);
-            this.CompanyNameTextBox_register.Name = "CompanyNameTextBox_register";
-            this.CompanyNameTextBox_register.Size = new System.Drawing.Size(156, 27);
-            this.CompanyNameTextBox_register.TabIndex = 8;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label14.Location = new System.Drawing.Point(15, 19);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(72, 16);
-            this.label14.TabIndex = 7;
-            this.label14.Text = "公司名稱";
-            // 
-            // ContactNameTextBox_register
-            // 
-            this.ContactNameTextBox_register.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.ContactNameTextBox_register.Location = new System.Drawing.Point(111, 152);
-            this.ContactNameTextBox_register.Name = "ContactNameTextBox_register";
-            this.ContactNameTextBox_register.Size = new System.Drawing.Size(156, 27);
-            this.ContactNameTextBox_register.TabIndex = 10;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label15.Location = new System.Drawing.Point(15, 155);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(0, 16);
-            this.label15.TabIndex = 9;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label16.Location = new System.Drawing.Point(15, 155);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(88, 16);
-            this.label16.TabIndex = 18;
-            this.label16.Text = "聯絡人姓名";
+            this.CompanyAddTextBox_register.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.CompanyAddTextBox_register.Location = new System.Drawing.Point(111, 244);
+            this.CompanyAddTextBox_register.Name = "CompanyAddTextBox_register";
+            this.CompanyAddTextBox_register.Size = new System.Drawing.Size(156, 27);
+            this.CompanyAddTextBox_register.TabIndex = 21;
             // 
             // label17
             // 
@@ -468,23 +373,103 @@ namespace WindowsFormsApp1
             this.ContactTELTextBox_register.Size = new System.Drawing.Size(156, 27);
             this.ContactTELTextBox_register.TabIndex = 19;
             // 
-            // label18
+            // label16
             // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label18.Location = new System.Drawing.Point(15, 247);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(72, 16);
-            this.label18.TabIndex = 22;
-            this.label18.Text = "公司地址";
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label16.Location = new System.Drawing.Point(15, 155);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(88, 16);
+            this.label16.TabIndex = 18;
+            this.label16.Text = "聯絡人姓名";
             // 
-            // CompanyAddTextBox_register
+            // ContactNameTextBox_register
             // 
-            this.CompanyAddTextBox_register.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.CompanyAddTextBox_register.Location = new System.Drawing.Point(111, 244);
-            this.CompanyAddTextBox_register.Name = "CompanyAddTextBox_register";
-            this.CompanyAddTextBox_register.Size = new System.Drawing.Size(156, 27);
-            this.CompanyAddTextBox_register.TabIndex = 21;
+            this.ContactNameTextBox_register.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.ContactNameTextBox_register.Location = new System.Drawing.Point(111, 152);
+            this.ContactNameTextBox_register.Name = "ContactNameTextBox_register";
+            this.ContactNameTextBox_register.Size = new System.Drawing.Size(156, 27);
+            this.ContactNameTextBox_register.TabIndex = 10;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label15.Location = new System.Drawing.Point(15, 155);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(0, 16);
+            this.label15.TabIndex = 9;
+            // 
+            // CompanyNameTextBox_register
+            // 
+            this.CompanyNameTextBox_register.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.CompanyNameTextBox_register.Location = new System.Drawing.Point(111, 16);
+            this.CompanyNameTextBox_register.Name = "CompanyNameTextBox_register";
+            this.CompanyNameTextBox_register.Size = new System.Drawing.Size(156, 27);
+            this.CompanyNameTextBox_register.TabIndex = 8;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label14.Location = new System.Drawing.Point(15, 19);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(72, 16);
+            this.label14.TabIndex = 7;
+            this.label14.Text = "公司名稱";
+            // 
+            // FaxTextBox_register
+            // 
+            this.FaxTextBox_register.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.FaxTextBox_register.Location = new System.Drawing.Point(111, 106);
+            this.FaxTextBox_register.Name = "FaxTextBox_register";
+            this.FaxTextBox_register.Size = new System.Drawing.Size(156, 27);
+            this.FaxTextBox_register.TabIndex = 6;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label12.Location = new System.Drawing.Point(15, 109);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(72, 16);
+            this.label12.TabIndex = 5;
+            this.label12.Text = "傳真電話";
+            // 
+            // CompanyIDTextBox_register
+            // 
+            this.CompanyIDTextBox_register.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.CompanyIDTextBox_register.Location = new System.Drawing.Point(111, 61);
+            this.CompanyIDTextBox_register.Name = "CompanyIDTextBox_register";
+            this.CompanyIDTextBox_register.Size = new System.Drawing.Size(156, 27);
+            this.CompanyIDTextBox_register.TabIndex = 4;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label11.Location = new System.Drawing.Point(15, 64);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(72, 16);
+            this.label11.TabIndex = 3;
+            this.label11.Text = "統一編號";
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.label19);
+            this.panel2.Controls.Add(this.AddTextBox_register);
+            this.panel2.Controls.Add(this.label13);
+            this.panel2.Controls.Add(this.NameTextBox_register);
+            this.panel2.Controls.Add(this.label5);
+            this.panel2.Controls.Add(this.label6);
+            this.panel2.Controls.Add(this.MaleradioButton_register);
+            this.panel2.Controls.Add(this.FemaleradioButton_register);
+            this.panel2.Controls.Add(this.ElseradioButton_register);
+            this.panel2.Controls.Add(this.dateTimePicker1);
+            this.panel2.Location = new System.Drawing.Point(26, 330);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(267, 188);
+            this.panel2.TabIndex = 27;
             // 
             // label19
             // 
@@ -503,6 +488,24 @@ namespace WindowsFormsApp1
             this.AddTextBox_register.Name = "AddTextBox_register";
             this.AddTextBox_register.Size = new System.Drawing.Size(156, 27);
             this.AddTextBox_register.TabIndex = 24;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label13.Location = new System.Drawing.Point(3, 23);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(40, 16);
+            this.label13.TabIndex = 23;
+            this.label13.Text = "姓名";
+            // 
+            // NameTextBox_register
+            // 
+            this.NameTextBox_register.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.NameTextBox_register.Location = new System.Drawing.Point(99, 20);
+            this.NameTextBox_register.Name = "NameTextBox_register";
+            this.NameTextBox_register.Size = new System.Drawing.Size(156, 27);
+            this.NameTextBox_register.TabIndex = 22;
             // 
             // registered
             // 
@@ -531,6 +534,7 @@ namespace WindowsFormsApp1
             this.Controls.Add(this.label1);
             this.Name = "registered";
             this.Text = "sign";
+            this.Load += new System.EventHandler(this.registered_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
