@@ -59,6 +59,8 @@ namespace WindowsFormsApp1.Properties
 
         private void 訂單表_Load(object sender, EventArgs e)
         {
+            // TODO: 這行程式碼會將資料載入 'fOODDataSet.OrderDetail' 資料表。您可以視需要進行移動或移除。
+            
 
             var q = this.db.Customers.Select(n=>new { ctname=n.Name , ctid=n.CustomerID });                    
 
@@ -81,7 +83,21 @@ namespace WindowsFormsApp1.Properties
             this.comboBox5.SelectedIndex = 1;
             this.comboBox5.SelectedIndex = 0;
 
-           
+            //this.productEntryTableAdapter1.Fill(this.foodDataSet1.ProductEntry);
+            //this.dataGridView1.DataSource = this.foodDataSet1.ProductEntry;
+
+            var q3 = this.db.Products.Select(n => new { pdid = n.ProductID, pdna = n.Name  });
+
+            
+            this.productid.DataSource = q3.ToList();
+            this.productid.DisplayMember = "pdid";
+            this.productid.ValueMember = "pdid";
+
+            this.productname.DataSource = q3.ToList();
+            this.productname.DisplayMember = "pdna";
+            this.productname.ValueMember = "pdid";
+
+  
 
 
 
@@ -110,6 +126,50 @@ namespace WindowsFormsApp1.Properties
 
         private void textBox6_TextChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var p = this.db.Products.AsEnumerable().Where(n => n.ProductID == int.Parse($"{this.productid.Items}")).Select(n => n.Name);
+           
+            this.productname.DataSource = p.ToList();
+        }
+
+       
+
+        private void dataGridView1_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            
+        }
+
+        private void dataGridView1_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        {
+            if (dataGridView1.IsCurrentCellDirty)
+            {
+                dataGridView1.CommitEdit(DataGridViewDataErrorContexts.Commit);
+            }
+        }
+        private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (e.ColumnIndex == 0) {
+                DataGridViewComboBoxCell cb = dataGridView1[0, e.RowIndex] as DataGridViewComboBoxCell;
+                
+                    
+                }
+
+            }
+            catch
+            {
+
+            }
 
         }
     }

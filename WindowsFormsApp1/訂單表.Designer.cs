@@ -45,7 +45,6 @@ namespace WindowsFormsApp1.Properties
             this.label9 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label11 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
@@ -62,7 +61,18 @@ namespace WindowsFormsApp1.Properties
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.productid = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.productname = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.unitprice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Comment = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.foodDataSet1 = new WindowsFormsApp1.FOODDataSet();
+            this.productEntryTableAdapter1 = new WindowsFormsApp1.FOODDataSetTableAdapters.ProductEntryTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.foodDataSet1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -204,15 +214,6 @@ namespace WindowsFormsApp1.Properties
             this.label11.TabIndex = 25;
             this.label11.Text = "備註:";
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 301);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1090, 381);
-            this.dataGridView1.TabIndex = 27;
-            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(41, 13);
@@ -350,6 +351,80 @@ namespace WindowsFormsApp1.Properties
             this.label18.TabIndex = 44;
             this.label18.Text = "                   ";
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.productid,
+            this.productname,
+            this.unitprice,
+            this.qty,
+            this.unit,
+            this.subtotal,
+            this.Comment});
+            this.dataGridView1.Location = new System.Drawing.Point(12, 301);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.Size = new System.Drawing.Size(1090, 381);
+            this.dataGridView1.TabIndex = 27;
+            this.dataGridView1.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEnter);
+            this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
+            this.dataGridView1.CurrentCellDirtyStateChanged += new System.EventHandler(this.dataGridView1_CurrentCellDirtyStateChanged);
+            this.dataGridView1.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dataGridView1_EditingControlShowing);
+            // 
+            // productid
+            // 
+            this.productid.HeaderText = "料號";
+            this.productid.Name = "productid";
+            this.productid.Width = 150;
+            // 
+            // productname
+            // 
+            this.productname.HeaderText = "品名";
+            this.productname.Name = "productname";
+            this.productname.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.productname.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.productname.Width = 150;
+            // 
+            // unitprice
+            // 
+            this.unitprice.HeaderText = "價格";
+            this.unitprice.Name = "unitprice";
+            this.unitprice.Width = 150;
+            // 
+            // qty
+            // 
+            this.qty.HeaderText = "數量";
+            this.qty.Name = "qty";
+            this.qty.Width = 150;
+            // 
+            // unit
+            // 
+            this.unit.HeaderText = "單位";
+            this.unit.Name = "unit";
+            this.unit.Width = 150;
+            // 
+            // subtotal
+            // 
+            this.subtotal.HeaderText = "小計";
+            this.subtotal.Name = "subtotal";
+            this.subtotal.Width = 150;
+            // 
+            // Comment
+            // 
+            this.Comment.HeaderText = "備註";
+            this.Comment.Name = "Comment";
+            this.Comment.Width = 200;
+            // 
+            // foodDataSet1
+            // 
+            this.foodDataSet1.DataSetName = "FOODDataSet";
+            this.foodDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // productEntryTableAdapter1
+            // 
+            this.productEntryTableAdapter1.ClearBeforeFill = true;
+            // 
             // 訂單表
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -392,6 +467,7 @@ namespace WindowsFormsApp1.Properties
             this.Text = "訂單表";
             this.Load += new System.EventHandler(this.訂單表_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.foodDataSet1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -415,7 +491,6 @@ namespace WindowsFormsApp1.Properties
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label10;
@@ -432,5 +507,15 @@ namespace WindowsFormsApp1.Properties
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private FOODDataSet foodDataSet1;
+        private FOODDataSetTableAdapters.ProductEntryTableAdapter productEntryTableAdapter1;
+        private System.Windows.Forms.DataGridViewComboBoxColumn productid;
+        private System.Windows.Forms.DataGridViewComboBoxColumn productname;
+        private System.Windows.Forms.DataGridViewTextBoxColumn unitprice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn qty;
+        private System.Windows.Forms.DataGridViewTextBoxColumn unit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn subtotal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Comment;
     }
 }
