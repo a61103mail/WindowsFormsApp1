@@ -44,16 +44,26 @@ namespace WindowsFormsApp1.Properties
             {
                 OrderDate = this.dateTimePicker2.Value,
                 RequiredDate = this.dateTimePicker1.Value,
-                CustomerID = int.Parse( this.label16.Text),
-                EmployeeID =int.Parse(this.comboBox4.Text),
+                CustomerID = int.Parse(this.label16.Text),
+                EmployeeID = int.Parse(this.comboBox4.Text),
                 Address = this.textBox4.Text,
                 Comment = this.richTextBox1.Text
             };
+            OrderDetail od = new OrderDetail
+            {
+                ProductID = int.Parse(this.productid.ValueMember),
+                //ProductName= this.productname.HeaderText,
+                //UnitPrice=$"{this.unitprice:c2}",
+                //Qty = this.qty,
+                Unit=this.unit.Name,
+                Commert=this.Comment.DataPropertyName,
 
-             
-            DialogResult p = MessageBox.Show("確定新增?","", MessageBoxButtons.OKCancel,MessageBoxIcon.Exclamation);
+            };
+
+        DialogResult p = MessageBox.Show("確定新增?","", MessageBoxButtons.OKCancel,MessageBoxIcon.Exclamation);
             if (p == DialogResult.OK) {
                 this.db.Orders.Add(order);
+                this.db.OrderDetails.Add(od);
                 this.db.SaveChanges();
                 MessageBox.Show("新增成功","",MessageBoxButtons.OK);
             }
@@ -110,7 +120,14 @@ namespace WindowsFormsApp1.Properties
                          where p.Comment.Contains("test")
                          select p).FirstOrDefault();
             if (order == null) return;
-            this.db.SaveChanges();
+            var orderdetailld = (this.db.OrderDetails.Where(n => n.Commert.Contains("test")).Select(n => n)).FirstOrDefault();
+            if (orderdetailld == null) return;
+            DialogResult p = MessageBox.Show("確定新增?", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
+            if (p == DialogResult.OK)
+            {
+                this.db.SaveChanges();
+            }
+
         }
 
         private void comboBox5_SelectedIndexChanged(object sender, EventArgs e)
