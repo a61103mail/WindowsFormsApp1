@@ -51,21 +51,21 @@ namespace WindowsFormsApp1.Properties
             };
             OrderDetail od = new OrderDetail
             {
-                ProductID = int.Parse(this.productid.ValueMember),
-                //ProductName= this.productname.HeaderText,
-                //UnitPrice=$"{this.unitprice:c2}",
-                //Qty = this.qty,
-                Unit=this.unit.Name,
-                Commert=this.Comment.DataPropertyName,
+                ////ProductID = int.Parse(this.productid.ValueMember),
+                ////ProductName= this.productname.HeaderText,
+                ////UnitPrice=$"{this.unitprice:c2}",
+                ////Qty = this.qty,
+                //Unit=this.unit.Name,
+                //Commert=this.Comment.DataPropertyName,
 
             };
 
-        DialogResult p = MessageBox.Show("確定新增?","", MessageBoxButtons.OKCancel,MessageBoxIcon.Exclamation);
+        DialogResult p = MessageBox.Show("確定新增?","提醒", MessageBoxButtons.OKCancel,MessageBoxIcon.Exclamation);
             if (p == DialogResult.OK) {
                 this.db.Orders.Add(order);
-                this.db.OrderDetails.Add(od);
+                //this.db.OrderDetails.Add(od);
                 this.db.SaveChanges();
-                MessageBox.Show("新增成功","",MessageBoxButtons.OK);
+                MessageBox.Show("新增成功", "提醒", MessageBoxButtons.OK);
             }
 
         }
@@ -119,12 +119,13 @@ namespace WindowsFormsApp1.Properties
             var order = (from p in this.db.Orders
                          where p.Comment.Contains("test")
                          select p).FirstOrDefault();
-            if (order == null) return;
-            var orderdetailld = (this.db.OrderDetails.Where(n => n.Commert.Contains("test")).Select(n => n)).FirstOrDefault();
-            if (orderdetailld == null) return;
-            DialogResult p1 = MessageBox.Show("確定新增?", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
+           
+            DialogResult p1 = MessageBox.Show("確定新增?", "提醒", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
             if (p1 == DialogResult.OK)
             {
+                if (order == null) return;
+                var orderdetailld = (this.db.OrderDetails.Where(n => n.Commert.Contains("test")).Select(n => n)).FirstOrDefault();
+                if (orderdetailld == null) return;
                 this.db.SaveChanges();
             }
 
