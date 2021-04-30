@@ -39,5 +39,10 @@ namespace WindowsFormsApp1
             var currentRowIndex = this.dataGridView1.SelectedCells[0].RowIndex;
            
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
