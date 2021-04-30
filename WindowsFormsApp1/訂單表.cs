@@ -45,7 +45,7 @@ namespace WindowsFormsApp1.Properties
                 OrderDate = this.dateTimePicker2.Value,
                 RequiredDate = this.dateTimePicker1.Value,
                 CustomerID = int.Parse(this.label16.Text),
-                EmployeeID = int.Parse(this.comboBox4.Text),
+                //EmployeeID = int.Parse(this.comboBox4.Text),
                 Address = this.textBox4.Text,
                 Comment = this.richTextBox1.Text
             };
@@ -122,8 +122,8 @@ namespace WindowsFormsApp1.Properties
             if (order == null) return;
             var orderdetailld = (this.db.OrderDetails.Where(n => n.Commert.Contains("test")).Select(n => n)).FirstOrDefault();
             if (orderdetailld == null) return;
-            DialogResult p = MessageBox.Show("確定新增?", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
-            if (p == DialogResult.OK)
+            DialogResult p1 = MessageBox.Show("確定新增?", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
+            if (p1 == DialogResult.OK)
             {
                 this.db.SaveChanges();
             }
