@@ -81,6 +81,21 @@
     <Compile Include="Product.cs">
       <DependentUpon>ProductModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Product1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Product1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Product1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Product1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Product1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Product1.edmx</DependentUpon>
+    </Compile>
     <Compile Include="ProductList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -165,6 +180,13 @@
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <EntityDeploy Include="Product1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Product1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Product1.edmx.diagram">
+      <DependentUpon>Product1.edmx</DependentUpon>
+    </None>
     <None Include="ProductModel.edmx.diagram">
       <DependentUpon>ProductModel.edmx</DependentUpon>
     </None>
@@ -182,6 +204,16 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Product1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Product1.edmx</DependentUpon>
+      <LastGenOutput>Product1.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Product1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Product1.edmx</DependentUpon>
+      <LastGenOutput>Product1.cs</LastGenOutput>
+    </Content>
     <Content Include="ProductModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ProductModel.Context.cs</LastGenOutput>

@@ -23,7 +23,7 @@ namespace WindowsFormsApp1
         private void ProductList_Load(object sender, EventArgs e)
         {
             var q = from p in this.FOODEntities.Products
-                    select new {p.ProductID, p.Name, Category=p.Category.Name, p.Unit  };
+                    select new {p.ProductID, p.Name, Category = p.Category.Name, p.Unit  };
             this.dataGridView1.DataSource = q.ToList();
                     
         }
@@ -41,6 +41,18 @@ namespace WindowsFormsApp1
         }
 
         private void button4_Click(object sender, EventArgs e)
+        {
+            詳細 f = new 詳細();
+            f.Show();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            盤點 f = new 盤點();
+            f.Show();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

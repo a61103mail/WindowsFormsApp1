@@ -15,20 +15,19 @@ namespace WindowsFormsApp1
         public 盤點()
         {
             InitializeComponent();
-            this.productTableAdapter1.Fill(this.dataSet11.Product);
         }
-
+        private FOODEntities FOODEntities = new FOODEntities();
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            var q = from i in this.DataSet11.Product
+            var q = from i in this.FOODEntities.Products
                     where i.ProductID.ToString().Contains(textBox1.Text)
-                    select i;
+                    select new { i.ProductID,i.Name,i.Pictures,i.CropCode};
             this.dataGridView1.DataSource = q.ToList();
         }
 
         private void 盤點_Load(object sender, EventArgs e)
         {
-
+            this.dataGridView1.DataSource = FOODEntities;
         }
     }
 }

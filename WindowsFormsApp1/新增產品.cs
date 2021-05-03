@@ -32,5 +32,15 @@ namespace WindowsFormsApp1
 
 
         }
+        private FOODEntities FOODEntities = new FOODEntities();
+        private void 新增產品_Load(object sender, EventArgs e)
+        {
+            var q = (from o in this.FOODEntities.Categories
+                     select o.CategoryID).Distinct();
+            foreach (int s in q)
+            {
+                comboBox1.Items.Add(s);
+            }
+        }
     }
 }

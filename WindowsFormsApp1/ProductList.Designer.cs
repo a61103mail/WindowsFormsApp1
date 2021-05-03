@@ -161,8 +161,9 @@
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(50, 31);
             this.button5.TabIndex = 1;
-            this.button5.Text = "button5";
+            this.button5.Text = "盤點";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button6
             // 
@@ -205,6 +206,7 @@
             this.dataGridView1.RowTemplate.Height = 31;
             this.dataGridView1.Size = new System.Drawing.Size(698, 325);
             this.dataGridView1.TabIndex = 2;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // ProductList
             // 

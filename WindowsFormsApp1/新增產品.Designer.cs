@@ -93,12 +93,6 @@ namespace WindowsFormsApp1
             // 
             this.comboBox1.Font = new System.Drawing.Font("標楷體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5"});
             this.comboBox1.Location = new System.Drawing.Point(157, 181);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(219, 29);
@@ -184,6 +178,7 @@ namespace WindowsFormsApp1
             this.DoubleBuffered = true;
             this.Name = "新增產品";
             this.Text = "新增產品";
+            this.Load += new System.EventHandler(this.新增產品_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
