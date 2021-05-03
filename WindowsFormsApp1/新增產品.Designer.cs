@@ -47,11 +47,11 @@ namespace WindowsFormsApp1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("標楷體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label1.Location = new System.Drawing.Point(37, 61);
+            this.label1.Location = new System.Drawing.Point(25, 61);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(114, 21);
+            this.label1.Size = new System.Drawing.Size(126, 21);
             this.label1.TabIndex = 0;
-            this.label1.Text = "產品名稱:";
+            this.label1.Text = "*產品名稱:";
             // 
             // textBox1
             // 
@@ -69,7 +69,7 @@ namespace WindowsFormsApp1
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(114, 21);
             this.label2.TabIndex = 2;
-            this.label2.Text = "數量單位:";
+            this.label2.Text = "計量單位:";
             // 
             // textBox2
             // 
@@ -78,16 +78,17 @@ namespace WindowsFormsApp1
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(219, 33);
             this.textBox2.TabIndex = 3;
+            this.textBox2.Text = "KG";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("標楷體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label3.Location = new System.Drawing.Point(37, 184);
+            this.label3.Location = new System.Drawing.Point(25, 184);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(114, 21);
+            this.label3.Size = new System.Drawing.Size(126, 21);
             this.label3.TabIndex = 4;
-            this.label3.Text = "產品類別:";
+            this.label3.Text = "*產品類別:";
             // 
             // comboBox1
             // 
@@ -102,11 +103,11 @@ namespace WindowsFormsApp1
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("標楷體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label4.Location = new System.Drawing.Point(37, 248);
+            this.label4.Location = new System.Drawing.Point(25, 248);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(114, 21);
+            this.label4.Size = new System.Drawing.Size(126, 21);
             this.label4.TabIndex = 6;
-            this.label4.Text = "作物代號:";
+            this.label4.Text = "*作物代號:";
             // 
             // textBox3
             // 
