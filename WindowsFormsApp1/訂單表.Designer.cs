@@ -46,7 +46,6 @@ namespace WindowsFormsApp1.Properties
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label11 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.label12 = new System.Windows.Forms.Label();
@@ -62,7 +61,7 @@ namespace WindowsFormsApp1.Properties
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.productid = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.CropCode = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.productname = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unitprice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -221,16 +220,6 @@ namespace WindowsFormsApp1.Properties
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(122, 12);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 29;
-            this.button2.Text = "儲存訂單";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -324,7 +313,7 @@ namespace WindowsFormsApp1.Properties
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(299, 98);
+            this.label16.Location = new System.Drawing.Point(298, 96);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(39, 12);
             this.label16.TabIndex = 42;
@@ -352,7 +341,7 @@ namespace WindowsFormsApp1.Properties
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.productid,
+            this.CropCode,
             this.productname,
             this.unitprice,
             this.qty,
@@ -369,11 +358,11 @@ namespace WindowsFormsApp1.Properties
             this.dataGridView1.CurrentCellDirtyStateChanged += new System.EventHandler(this.dataGridView1_CurrentCellDirtyStateChanged);
             this.dataGridView1.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dataGridView1_EditingControlShowing);
             // 
-            // productid
+            // CropCode
             // 
-            this.productid.HeaderText = "料號";
-            this.productid.Name = "productid";
-            this.productid.Width = 150;
+            this.CropCode.HeaderText = "料號";
+            this.CropCode.Name = "CropCode";
+            this.CropCode.Width = 150;
             // 
             // productname
             // 
@@ -431,7 +420,6 @@ namespace WindowsFormsApp1.Properties
             this.Controls.Add(this.label12);
             this.Controls.Add(this.dateTimePicker2);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label11);
@@ -478,7 +466,6 @@ namespace WindowsFormsApp1.Properties
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.Label label12;
@@ -494,7 +481,7 @@ namespace WindowsFormsApp1.Properties
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewComboBoxColumn productid;
+        private System.Windows.Forms.DataGridViewComboBoxColumn CropCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn productname;
         private System.Windows.Forms.DataGridViewTextBoxColumn unitprice;
         private System.Windows.Forms.DataGridViewTextBoxColumn qty;

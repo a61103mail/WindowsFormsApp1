@@ -55,7 +55,7 @@ namespace WindowsFormsApp1.Properties
                 ////ProductName= this.productname.HeaderText,
                 ////UnitPrice=$"{this.unitprice:c2}",
                 ////Qty = this.qty,
-                //Unit=this.unit.Name,
+                //Unit=this.unit
                 //Commert=this.Comment.DataPropertyName,
 
             };
@@ -75,13 +75,18 @@ namespace WindowsFormsApp1.Properties
             // TODO: 這行程式碼會將資料載入 'fOODDataSet.OrderDetail' 資料表。您可以視需要進行移動或移除。
             
 
-            var q = this.db.Customers.Select(n=>new { ctname=n.Name , ctid=n.CustomerID });                    
+            var q = this.db.Customers.Select(n=>new { ctname=n.Name , ctid=n.CustomerID });
+            //foreach (var p in q) {
+            //    this.comboBox1.Items.Add(q.ToList());
+
+            //}
+
 
             this.comboBox1.DataSource = q.ToList();
             this.comboBox1.DisplayMember = "ctname";
             this.comboBox1.ValueMember = "ctid";
-            
-            
+
+
             var q1 = this.db.Employees.Select(n => new { empname = n.Name, empid = n.EmployeeID });
                  
             this.comboBox5.DataSource = q1.ToList();
@@ -102,9 +107,9 @@ namespace WindowsFormsApp1.Properties
             var q3 = this.db.Products.Select(n => new { pdid = n.ProductID, pdna = n.ProductID +"  "+ n.Name    });
 
             
-            this.productid.DataSource = q3.ToList();
-            this.productid.DisplayMember = "pdna" ;
-            this.productid.ValueMember = "pdid";
+            //this.productid.DataSource = q3.ToList();
+            //this.productid.DisplayMember = "pdna" ;
+            //this.productid.ValueMember = "pdid";
 
            
 
