@@ -4,17 +4,17 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="d8c51c7c52c841c4b9c818451bc1f703" Name="Diagram1">
+      <Diagram DiagramId="fde8e3e4468942888785008cdaabecb2" Name="Diagram1">
         <EntityTypeShape EntityType="FOODModel.Category" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
         <EntityTypeShape EntityType="FOODModel.Inventory" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="FOODModel.Product" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
         <EntityTypeShape EntityType="FOODModel.Picture" Width="1.5" PointX="5.25" PointY="3.875" IsExpanded="true" />
         <EntityTypeShape EntityType="FOODModel.PurchaseConfirmedDetail" Width="1.5" PointX="5.25" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FOODModel.LatestPrice" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="FOODModel.FK_Product_Category" ManuallyRouted="false" />
         <AssociationConnector Association="FOODModel.FK_Inventory_Product" ManuallyRouted="false" />
         <AssociationConnector Association="FOODModel.FK_Picture_Product" ManuallyRouted="false" />
         <AssociationConnector Association="FOODModel.FK_PurchaseConfirmedDetail_Product" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="FOODModel.LatestPrice" Width="1.5" PointX="0.75" PointY="1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -13,10 +13,10 @@ namespace WindowsFormsApp1
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class FOODEntities1 : DbContext
+    public partial class FOODEntities : DbContext
     {
-        public FOODEntities1()
-            : base("name=FOODEntities1")
+        public FOODEntities()
+            : base("name=FOODEntities")
         {
         }
     
@@ -25,7 +25,11 @@ namespace WindowsFormsApp1
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Inventory> Inventory { get; set; }
-        public virtual DbSet<Product> Product { get; set; }
+        public virtual DbSet<Category> Categories { get; set; }
+        public virtual DbSet<Inventory> Inventories { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<Picture> Pictures { get; set; }
+        public virtual DbSet<PurchaseConfirmedDetail> PurchaseConfirmedDetails { get; set; }
+        public virtual DbSet<LatestPrice> LatestPrices { get; set; }
     }
 }
