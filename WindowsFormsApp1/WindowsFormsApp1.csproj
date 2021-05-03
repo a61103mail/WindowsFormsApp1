@@ -58,9 +58,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Category.cs">
-      <DependentUpon>ProductModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataSet11.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -71,15 +68,6 @@
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Inventory.cs">
-      <DependentUpon>ProductModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Picture.cs">
-      <DependentUpon>ProductModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Product.cs">
-      <DependentUpon>ProductModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Product1.Context.cs">
       <AutoGen>True</AutoGen>
@@ -119,9 +107,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PurchaseConfirmedDetail.cs">
-      <DependentUpon>ProductModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="新增產品.cs">
       <SubType>Form</SubType>
     </Compile>

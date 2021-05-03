@@ -14,6 +14,7 @@
         <AssociationConnector Association="FOODModel.FK_Inventory_Product" ManuallyRouted="false" />
         <AssociationConnector Association="FOODModel.FK_Picture_Product" ManuallyRouted="false" />
         <AssociationConnector Association="FOODModel.FK_PurchaseConfirmedDetail_Product" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="FOODModel.LatestPrice" Width="1.5" PointX="0.75" PointY="1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

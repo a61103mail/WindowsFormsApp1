@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="FOODModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="FOODModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Category">
           <Key>
             <PropertyRef Name="CategoryID" />
@@ -39,9 +39,9 @@
           </Key>
           <Property Name="ProductID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CropCode" Type="nvarchar" MaxLength="10" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Unit" Type="nvarchar" MaxLength="10" />
-          <Property Name="CategoryID" Type="int" />
+          <Property Name="CategoryID" Type="int" Nullable="false" />
           <Property Name="CustomerID" Type="int" />
           <Property Name="SubCategoryID" Type="int" />
         </EntityType>
@@ -62,6 +62,24 @@
           <Property Name="UnitPrice" Type="money" Nullable="false" />
           <Property Name="Unit" Type="nvarchar" MaxLength="10" />
           <Property Name="Comment" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'FOOD.dbo.LatestPrice' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+        <EntityType Name="LatestPrice">
+          <Key>
+            <PropertyRef Name="RecordID" />
+            <PropertyRef Name="TransDate" />
+            <PropertyRef Name="CropCode" />
+          </Key>
+          <Property Name="RecordID" Type="int" Nullable="false" />
+          <Property Name="TransDate" Type="date" Nullable="false" />
+          <Property Name="CropCode" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="MarketCode" Type="nvarchar" MaxLength="10" />
+          <Property Name="Upper_Price" Type="money" />
+          <Property Name="Middle_Price" Type="money" />
+          <Property Name="Lower_Price" Type="money" />
+          <Property Name="Avg_Price" Type="money" />
+          <Property Name="Trans_Quantity" Type="decimal" Precision="18" Scale="0" />
         </EntityType>
         <Association Name="FK_Inventory_Product">
           <End Role="Product" Type="Self.Product" Multiplicity="1" />
@@ -88,7 +106,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Product_Category">
-          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
           <End Role="Product" Type="Self.Product" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Category">
@@ -133,6 +151,19 @@
     [PurchaseConfirmedDetail].[Comment] AS [Comment]
     FROM [dbo].[PurchaseConfirmedDetail] AS [PurchaseConfirmedDetail]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="LatestPrice" EntityType="Self.LatestPrice" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [LatestPrice].[RecordID] AS [RecordID], 
+    [LatestPrice].[TransDate] AS [TransDate], 
+    [LatestPrice].[CropCode] AS [CropCode], 
+    [LatestPrice].[MarketCode] AS [MarketCode], 
+    [LatestPrice].[Upper_Price] AS [Upper_Price], 
+    [LatestPrice].[Middle_Price] AS [Middle_Price], 
+    [LatestPrice].[Lower_Price] AS [Lower_Price], 
+    [LatestPrice].[Avg_Price] AS [Avg_Price], 
+    [LatestPrice].[Trans_Quantity] AS [Trans_Quantity]
+    FROM [dbo].[LatestPrice] AS [LatestPrice]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_Inventory_Product" Association="Self.FK_Inventory_Product">
             <End Role="Product" EntitySet="Product" />
             <End Role="Inventory" EntitySet="Inventory" />
@@ -150,8 +181,7 @@
             <End Role="PurchaseConfirmedDetail" EntitySet="PurchaseConfirmedDetail" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="FOODModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -179,9 +209,9 @@
           </Key>
           <Property Name="ProductID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CropCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Unit" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="CategoryID" Type="Int32" />
+          <Property Name="CategoryID" Type="Int32" Nullable="false" />
           <Property Name="CustomerID" Type="Int32" />
           <Property Name="SubCategoryID" Type="Int32" />
           <NavigationProperty Name="Category" Relationship="Self.FK_Product_Category" FromRole="Product" ToRole="Category" />
@@ -287,7 +317,24 @@
             <End Role="Product" EntitySet="Products" />
             <End Role="PurchaseConfirmedDetail" EntitySet="PurchaseConfirmedDetails" />
           </AssociationSet>
+          <EntitySet Name="LatestPrices" EntityType="FOODModel.LatestPrice" />
         </EntityContainer>
+        <EntityType Name="LatestPrice">
+          <Key>
+            <PropertyRef Name="RecordID" />
+            <PropertyRef Name="TransDate" />
+            <PropertyRef Name="CropCode" />
+          </Key>
+          <Property Name="RecordID" Type="Int32" Nullable="false" />
+          <Property Name="TransDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CropCode" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="MarketCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Upper_Price" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Middle_Price" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Lower_Price" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Avg_Price" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Trans_Quantity" Type="Decimal" Precision="18" Scale="0" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -344,6 +391,21 @@
                 <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
                 <ScalarProperty Name="Unit" ColumnName="Unit" />
                 <ScalarProperty Name="Comment" ColumnName="Comment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LatestPrices">
+            <EntityTypeMapping TypeName="FOODModel.LatestPrice">
+              <MappingFragment StoreEntitySet="LatestPrice">
+                <ScalarProperty Name="Trans_Quantity" ColumnName="Trans_Quantity" />
+                <ScalarProperty Name="Avg_Price" ColumnName="Avg_Price" />
+                <ScalarProperty Name="Lower_Price" ColumnName="Lower_Price" />
+                <ScalarProperty Name="Middle_Price" ColumnName="Middle_Price" />
+                <ScalarProperty Name="Upper_Price" ColumnName="Upper_Price" />
+                <ScalarProperty Name="MarketCode" ColumnName="MarketCode" />
+                <ScalarProperty Name="CropCode" ColumnName="CropCode" />
+                <ScalarProperty Name="TransDate" ColumnName="TransDate" />
+                <ScalarProperty Name="RecordID" ColumnName="RecordID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
