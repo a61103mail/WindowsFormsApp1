@@ -481,6 +481,7 @@ namespace WindowsFormsApp1
             this.Controls.Add(this.textBox1);
             this.Name = "採購表單";
             this.Text = "採購表單";
+            this.Load += new System.EventHandler(this.採購表單_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

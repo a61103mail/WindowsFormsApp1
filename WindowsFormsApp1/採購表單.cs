@@ -191,5 +191,10 @@ namespace WindowsFormsApp1
         {
                 this.dataGridView1.Rows[e.RowIndex].Cells[0].Value = (e.RowIndex + 1).ToString();
         }
+
+        private void 採購表單_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -15,7 +15,7 @@ namespace WindowsFormsApp1
     public partial class Picture
     {
         public int PictureID { get; set; }
-        public int ProductID { get; set; }
+        public string ProductCode { get; set; }
         public byte[] IMG { get; set; }
     
         public virtual Product Product { get; set; }

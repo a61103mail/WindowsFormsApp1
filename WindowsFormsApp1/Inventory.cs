@@ -15,7 +15,7 @@ namespace WindowsFormsApp1
     public partial class Inventory
     {
         public int InventoryID { get; set; }
-        public int ProductID { get; set; }
+        public string ProductCode { get; set; }
         public Nullable<decimal> Qty { get; set; }
         public Nullable<System.DateTime> Date { get; set; }
     

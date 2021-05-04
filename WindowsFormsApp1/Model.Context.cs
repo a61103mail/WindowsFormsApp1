@@ -36,13 +36,13 @@ namespace WindowsFormsApp1
         public virtual DbSet<Market> Markets { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<OrderDetail> OrderDetails { get; set; }
+        public virtual DbSet<Picture> Pictures { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<Purchase> Purchases { get; set; }
         public virtual DbSet<PurchaseDetail> PurchaseDetails { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<DailyPrice> DailyPrices { get; set; }
-        public virtual DbSet<Picture> Pictures { get; set; }
         public virtual DbSet<PurchaseConfirmedDetail> PurchaseConfirmedDetails { get; set; }
         public virtual DbSet<SalesDetail> SalesDetails { get; set; }
     }

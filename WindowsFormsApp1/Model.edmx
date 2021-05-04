@@ -105,7 +105,7 @@
             <PropertyRef Name="InventoryID" />
           </Key>
           <Property Name="InventoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="ProductCode" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="Qty" Type="decimal" Precision="18" Scale="0" />
           <Property Name="Date" Type="date" />
         </EntityType>
@@ -136,30 +136,26 @@
           </Key>
           <Property Name="OrderDetailID" Type="int" Nullable="false" />
           <Property Name="OrderID" Type="int" Nullable="false" />
-          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="ProductCode" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="Qty" Type="decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="UnitPrice" Type="money" Nullable="false" />
           <Property Name="Commert" Type="nvarchar" MaxLength="50" />
           <Property Name="Unit" Type="nvarchar" MaxLength="10" />
         </EntityType>
-        <!--產生期間發現錯誤:
-警告 6002: 資料表/檢視 'FOOD.dbo.Picture' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
         <EntityType Name="Picture">
           <Key>
             <PropertyRef Name="PictureID" />
-            <PropertyRef Name="ProductID" />
-            <PropertyRef Name="IMG" />
           </Key>
           <Property Name="PictureID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="ProductCode" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="IMG" Type="binary" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
-            <PropertyRef Name="ProductID" />
+            <PropertyRef Name="ProductCode" />
           </Key>
           <Property Name="ProductID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ProductCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="ProductCode" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="CropCode" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Unit" Type="nvarchar" MaxLength="10" />
@@ -187,13 +183,13 @@
           <Key>
             <PropertyRef Name="PurchaseComfirmedDetailID" />
             <PropertyRef Name="PurchaseID" />
-            <PropertyRef Name="ProductID" />
+            <PropertyRef Name="ProductCode" />
             <PropertyRef Name="Qty" />
             <PropertyRef Name="UnitPrice" />
           </Key>
           <Property Name="PurchaseComfirmedDetailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PurchaseID" Type="int" Nullable="false" />
-          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="ProductCode" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="PurchaseDetailID" Type="int" />
           <Property Name="Qty" Type="decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="UnitPrice" Type="money" Nullable="false" />
@@ -206,7 +202,7 @@
           </Key>
           <Property Name="PurchaseDetailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PurchaseID" Type="int" Nullable="false" />
-          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="ProductCode" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="Qty" Type="decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="UnitPrice" Type="money" Nullable="false" />
           <Property Name="Unit" Type="nvarchar" MaxLength="10" />
@@ -225,14 +221,14 @@
           <Key>
             <PropertyRef Name="SalesDetailID" />
             <PropertyRef Name="OrderID" />
-            <PropertyRef Name="ProductID" />
+            <PropertyRef Name="ProductCode" />
             <PropertyRef Name="UnitPrice" />
             <PropertyRef Name="Qty" />
           </Key>
           <Property Name="SalesDetailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="OrderID" Type="int" Nullable="false" />
           <Property Name="OrderDetailID" Type="int" />
-          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="ProductCode" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="UnitPrice" Type="money" Nullable="false" />
           <Property Name="Qty" Type="decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="unit" Type="nvarchar" MaxLength="10" />
@@ -301,10 +297,10 @@
           <End Role="Inventory" Type="Self.Inventory" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Product">
-              <PropertyRef Name="ProductID" />
+              <PropertyRef Name="ProductCode" />
             </Principal>
             <Dependent Role="Inventory">
-              <PropertyRef Name="ProductID" />
+              <PropertyRef Name="ProductCode" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -349,10 +345,10 @@
           <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Product">
-              <PropertyRef Name="ProductID" />
+              <PropertyRef Name="ProductCode" />
             </Principal>
             <Dependent Role="OrderDetail">
-              <PropertyRef Name="ProductID" />
+              <PropertyRef Name="ProductCode" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -361,10 +357,10 @@
           <End Role="Picture" Type="Self.Picture" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Product">
-              <PropertyRef Name="ProductID" />
+              <PropertyRef Name="ProductCode" />
             </Principal>
             <Dependent Role="Picture">
-              <PropertyRef Name="ProductID" />
+              <PropertyRef Name="ProductCode" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -397,10 +393,10 @@
           <End Role="PurchaseConfirmedDetail" Type="Self.PurchaseConfirmedDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Product">
-              <PropertyRef Name="ProductID" />
+              <PropertyRef Name="ProductCode" />
             </Principal>
             <Dependent Role="PurchaseConfirmedDetail">
-              <PropertyRef Name="ProductID" />
+              <PropertyRef Name="ProductCode" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -433,10 +429,10 @@
           <End Role="PurchaseDetail" Type="Self.PurchaseDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Product">
-              <PropertyRef Name="ProductID" />
+              <PropertyRef Name="ProductCode" />
             </Principal>
             <Dependent Role="PurchaseDetail">
-              <PropertyRef Name="ProductID" />
+              <PropertyRef Name="ProductCode" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -481,10 +477,10 @@
           <End Role="SalesDetail" Type="Self.SalesDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Product">
-              <PropertyRef Name="ProductID" />
+              <PropertyRef Name="ProductCode" />
             </Principal>
             <Dependent Role="SalesDetail">
-              <PropertyRef Name="ProductID" />
+              <PropertyRef Name="ProductCode" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -500,6 +496,7 @@
           <EntitySet Name="Market" EntityType="Self.Market" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrderDetail" EntityType="Self.OrderDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Picture" EntityType="Self.Picture" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Purchase" EntityType="Self.Purchase" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PurchaseDetail" EntityType="Self.PurchaseDetail" Schema="dbo" store:Type="Tables" />
@@ -518,18 +515,11 @@
     [DailyPrice].[Trans_Quantity] AS [Trans_Quantity]
     FROM [dbo].[DailyPrice] AS [DailyPrice]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="Picture" EntityType="Self.Picture" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Picture].[PictureID] AS [PictureID], 
-    [Picture].[ProductID] AS [ProductID], 
-    [Picture].[IMG] AS [IMG]
-    FROM [dbo].[Picture] AS [Picture]</DefiningQuery>
-          </EntitySet>
           <EntitySet Name="PurchaseConfirmedDetail" EntityType="Self.PurchaseConfirmedDetail" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [PurchaseConfirmedDetail].[PurchaseComfirmedDetailID] AS [PurchaseComfirmedDetailID], 
     [PurchaseConfirmedDetail].[PurchaseID] AS [PurchaseID], 
-    [PurchaseConfirmedDetail].[ProductID] AS [ProductID], 
+    [PurchaseConfirmedDetail].[ProductCode] AS [ProductCode], 
     [PurchaseConfirmedDetail].[PurchaseDetailID] AS [PurchaseDetailID], 
     [PurchaseConfirmedDetail].[Qty] AS [Qty], 
     [PurchaseConfirmedDetail].[UnitPrice] AS [UnitPrice], 
@@ -542,7 +532,7 @@
     [SalesDetail].[SalesDetailID] AS [SalesDetailID], 
     [SalesDetail].[OrderID] AS [OrderID], 
     [SalesDetail].[OrderDetailID] AS [OrderDetailID], 
-    [SalesDetail].[ProductID] AS [ProductID], 
+    [SalesDetail].[ProductCode] AS [ProductCode], 
     [SalesDetail].[UnitPrice] AS [UnitPrice], 
     [SalesDetail].[Qty] AS [Qty], 
     [SalesDetail].[unit] AS [unit], 
@@ -728,7 +718,7 @@
             <PropertyRef Name="InventoryID" />
           </Key>
           <Property Name="InventoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="ProductCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Qty" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="Date" Type="DateTime" Precision="0" />
           <NavigationProperty Name="Product" Relationship="Self.FK_Inventory_Product" FromRole="Inventory" ToRole="Product" />
@@ -764,7 +754,7 @@
           </Key>
           <Property Name="OrderDetailID" Type="Int32" Nullable="false" />
           <Property Name="OrderID" Type="Int32" Nullable="false" />
-          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="ProductCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Qty" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="UnitPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <Property Name="Commert" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -773,12 +763,21 @@
           <NavigationProperty Name="Product" Relationship="Self.FK_OrderDetail_Product" FromRole="OrderDetail" ToRole="Product" />
           <NavigationProperty Name="SalesDetails" Relationship="Self.FK_SalesDetail_OrderDetail" FromRole="OrderDetail" ToRole="SalesDetail" />
         </EntityType>
+        <EntityType Name="Picture">
+          <Key>
+            <PropertyRef Name="PictureID" />
+          </Key>
+          <Property Name="PictureID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IMG" Type="Binary" MaxLength="50" FixedLength="true" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_Picture_Product" FromRole="Picture" ToRole="Product" />
+        </EntityType>
         <EntityType Name="Product">
           <Key>
-            <PropertyRef Name="ProductID" />
+            <PropertyRef Name="ProductCode" />
           </Key>
           <Property Name="ProductID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ProductCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ProductCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="CropCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Unit" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
@@ -816,7 +815,7 @@
           </Key>
           <Property Name="PurchaseDetailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PurchaseID" Type="Int32" Nullable="false" />
-          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="ProductCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Qty" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="UnitPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <Property Name="Unit" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
@@ -859,28 +858,17 @@
           <Property Name="Avg_Price" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="Trans_Quantity" Type="Decimal" Precision="18" Scale="0" />
         </EntityType>
-        <EntityType Name="Picture">
-          <Key>
-            <PropertyRef Name="PictureID" />
-            <PropertyRef Name="ProductID" />
-            <PropertyRef Name="IMG" />
-          </Key>
-          <Property Name="PictureID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ProductID" Type="Int32" Nullable="false" />
-          <Property Name="IMG" Type="Binary" MaxLength="50" FixedLength="true" Nullable="false" />
-          <NavigationProperty Name="Product" Relationship="Self.FK_Picture_Product" FromRole="Picture" ToRole="Product" />
-        </EntityType>
         <EntityType Name="PurchaseConfirmedDetail">
           <Key>
             <PropertyRef Name="PurchaseComfirmedDetailID" />
             <PropertyRef Name="PurchaseID" />
-            <PropertyRef Name="ProductID" />
+            <PropertyRef Name="ProductCode" />
             <PropertyRef Name="Qty" />
             <PropertyRef Name="UnitPrice" />
           </Key>
           <Property Name="PurchaseComfirmedDetailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PurchaseID" Type="Int32" Nullable="false" />
-          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="ProductCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="PurchaseDetailID" Type="Int32" />
           <Property Name="Qty" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="UnitPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
@@ -894,14 +882,14 @@
           <Key>
             <PropertyRef Name="SalesDetailID" />
             <PropertyRef Name="OrderID" />
-            <PropertyRef Name="ProductID" />
+            <PropertyRef Name="ProductCode" />
             <PropertyRef Name="UnitPrice" />
             <PropertyRef Name="Qty" />
           </Key>
           <Property Name="SalesDetailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="OrderID" Type="Int32" Nullable="false" />
           <Property Name="OrderDetailID" Type="Int32" />
-          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="ProductCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="UnitPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <Property Name="Qty" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="unit" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
@@ -1011,10 +999,10 @@
           <End Role="Inventory" Type="Self.Inventory" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Product">
-              <PropertyRef Name="ProductID" />
+              <PropertyRef Name="ProductCode" />
             </Principal>
             <Dependent Role="Inventory">
-              <PropertyRef Name="ProductID" />
+              <PropertyRef Name="ProductCode" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1047,10 +1035,10 @@
           <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Product">
-              <PropertyRef Name="ProductID" />
+              <PropertyRef Name="ProductCode" />
             </Principal>
             <Dependent Role="OrderDetail">
-              <PropertyRef Name="ProductID" />
+              <PropertyRef Name="ProductCode" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1071,10 +1059,10 @@
           <End Role="Picture" Type="Self.Picture" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Product">
-              <PropertyRef Name="ProductID" />
+              <PropertyRef Name="ProductCode" />
             </Principal>
             <Dependent Role="Picture">
-              <PropertyRef Name="ProductID" />
+              <PropertyRef Name="ProductCode" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1083,10 +1071,10 @@
           <End Role="PurchaseConfirmedDetail" Type="Self.PurchaseConfirmedDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Product">
-              <PropertyRef Name="ProductID" />
+              <PropertyRef Name="ProductCode" />
             </Principal>
             <Dependent Role="PurchaseConfirmedDetail">
-              <PropertyRef Name="ProductID" />
+              <PropertyRef Name="ProductCode" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1095,10 +1083,10 @@
           <End Role="PurchaseDetail" Type="Self.PurchaseDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Product">
-              <PropertyRef Name="ProductID" />
+              <PropertyRef Name="ProductCode" />
             </Principal>
             <Dependent Role="PurchaseDetail">
-              <PropertyRef Name="ProductID" />
+              <PropertyRef Name="ProductCode" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1107,10 +1095,10 @@
           <End Role="SalesDetail" Type="Self.SalesDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Product">
-              <PropertyRef Name="ProductID" />
+              <PropertyRef Name="ProductCode" />
             </Principal>
             <Dependent Role="SalesDetail">
-              <PropertyRef Name="ProductID" />
+              <PropertyRef Name="ProductCode" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1162,13 +1150,13 @@
           <EntitySet Name="Markets" EntityType="Self.Market" />
           <EntitySet Name="Orders" EntityType="Self.Order" />
           <EntitySet Name="OrderDetails" EntityType="Self.OrderDetail" />
+          <EntitySet Name="Pictures" EntityType="Self.Picture" />
           <EntitySet Name="Products" EntityType="Self.Product" />
           <EntitySet Name="Purchases" EntityType="Self.Purchase" />
           <EntitySet Name="PurchaseDetails" EntityType="Self.PurchaseDetail" />
           <EntitySet Name="Roles" EntityType="Self.Role" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="DailyPrices" EntityType="Self.DailyPrice" />
-          <EntitySet Name="Pictures" EntityType="Self.Picture" />
           <EntitySet Name="PurchaseConfirmedDetails" EntityType="Self.PurchaseConfirmedDetail" />
           <EntitySet Name="SalesDetails" EntityType="Self.SalesDetail" />
           <AssociationSet Name="FK_Product_Category" Association="Self.FK_Product_Category">
@@ -1346,7 +1334,7 @@
             <EntityTypeMapping TypeName="FOODModel.Inventory">
               <MappingFragment StoreEntitySet="Inventory">
                 <ScalarProperty Name="InventoryID" ColumnName="InventoryID" />
-                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
                 <ScalarProperty Name="Qty" ColumnName="Qty" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
               </MappingFragment>
@@ -1380,11 +1368,20 @@
               <MappingFragment StoreEntitySet="OrderDetail">
                 <ScalarProperty Name="OrderDetailID" ColumnName="OrderDetailID" />
                 <ScalarProperty Name="OrderID" ColumnName="OrderID" />
-                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
                 <ScalarProperty Name="Qty" ColumnName="Qty" />
                 <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
                 <ScalarProperty Name="Commert" ColumnName="Commert" />
                 <ScalarProperty Name="Unit" ColumnName="Unit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pictures">
+            <EntityTypeMapping TypeName="FOODModel.Picture">
+              <MappingFragment StoreEntitySet="Picture">
+                <ScalarProperty Name="PictureID" ColumnName="PictureID" />
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+                <ScalarProperty Name="IMG" ColumnName="IMG" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1422,7 +1419,7 @@
               <MappingFragment StoreEntitySet="PurchaseDetail">
                 <ScalarProperty Name="PurchaseDetailID" ColumnName="PurchaseDetailID" />
                 <ScalarProperty Name="PurchaseID" ColumnName="PurchaseID" />
-                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
                 <ScalarProperty Name="Qty" ColumnName="Qty" />
                 <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
                 <ScalarProperty Name="Unit" ColumnName="Unit" />
@@ -1464,21 +1461,12 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Pictures">
-            <EntityTypeMapping TypeName="FOODModel.Picture">
-              <MappingFragment StoreEntitySet="Picture">
-                <ScalarProperty Name="PictureID" ColumnName="PictureID" />
-                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
-                <ScalarProperty Name="IMG" ColumnName="IMG" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="PurchaseConfirmedDetails">
             <EntityTypeMapping TypeName="FOODModel.PurchaseConfirmedDetail">
               <MappingFragment StoreEntitySet="PurchaseConfirmedDetail">
                 <ScalarProperty Name="PurchaseComfirmedDetailID" ColumnName="PurchaseComfirmedDetailID" />
                 <ScalarProperty Name="PurchaseID" ColumnName="PurchaseID" />
-                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
                 <ScalarProperty Name="PurchaseDetailID" ColumnName="PurchaseDetailID" />
                 <ScalarProperty Name="Qty" ColumnName="Qty" />
                 <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
@@ -1493,7 +1481,7 @@
                 <ScalarProperty Name="SalesDetailID" ColumnName="SalesDetailID" />
                 <ScalarProperty Name="OrderID" ColumnName="OrderID" />
                 <ScalarProperty Name="OrderDetailID" ColumnName="OrderDetailID" />
-                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
                 <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
                 <ScalarProperty Name="Qty" ColumnName="Qty" />
                 <ScalarProperty Name="unit" ColumnName="unit" />

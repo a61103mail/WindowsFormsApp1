@@ -16,7 +16,7 @@ namespace WindowsFormsApp1
     {
         public int PurchaseComfirmedDetailID { get; set; }
         public int PurchaseID { get; set; }
-        public int ProductID { get; set; }
+        public string ProductCode { get; set; }
         public Nullable<int> PurchaseDetailID { get; set; }
         public decimal Qty { get; set; }
         public decimal UnitPrice { get; set; }
