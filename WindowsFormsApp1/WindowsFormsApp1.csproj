@@ -58,11 +58,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Client.cs">
+    <Compile Include="Customer系統.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Client.Designer.cs">
-      <DependentUpon>Client.cs</DependentUpon>
+    <Compile Include="Customer系統.Designer.cs">
+      <DependentUpon>Customer系統.cs</DependentUpon>
     </Compile>
     <Compile Include="Employee系統.cs">
       <SubType>Form</SubType>
@@ -140,8 +140,8 @@
     <Compile Include="registered.Designer.cs">
       <DependentUpon>registered.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Client.resx">
-      <DependentUpon>Client.cs</DependentUpon>
+    <EmbeddedResource Include="Customer系統.resx">
+      <DependentUpon>Customer系統.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Employee系統.resx">
       <DependentUpon>Employee系統.cs</DependentUpon>

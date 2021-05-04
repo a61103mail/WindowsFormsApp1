@@ -16,9 +16,35 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
             AddData();
-            
+            Addtextboxsource();
         }
         FOODEntities db = new FOODEntities();
+        internal void Addtextboxsource() {
+            var source_NAME = new AutoCompleteStringCollection();
+            var source_Unicode = new AutoCompleteStringCollection();
+            var EMPNAME = db.Employees.Select(n=>new { n.Name}).ToList();
+            var EMPUNICODE = db.Employees.Select(n=>new { n.Unicode}).ToList();
+            foreach (var item in EMPNAME)
+            {
+                source_NAME.Add(item.Name);
+            }
+            foreach (var item in EMPUNICODE)
+            {
+                source_Unicode.Add(item.Unicode);
+            }
+
+            this.nameTextBox_Employee.AutoCompleteCustomSource = source_NAME;
+            this.nameTextBox_Employee.AutoCompleteMode =
+                                  AutoCompleteMode.SuggestAppend;
+            this.nameTextBox_Employee.AutoCompleteSource =
+                                  AutoCompleteSource.CustomSource;
+            //========================
+            this.PersonIDTextBox_Employee.AutoCompleteCustomSource = source_Unicode;
+            this.PersonIDTextBox_Employee.AutoCompleteMode =
+                                  AutoCompleteMode.SuggestAppend;
+            this.PersonIDTextBox_Employee.AutoCompleteSource =
+                                  AutoCompleteSource.CustomSource;
+        }
         internal void AddData() 
         { 
         var EMPID = this.db.Employees.Select(n => new { empname = n.Name, empid = n.EmployeeID });
@@ -106,9 +132,6 @@ namespace WindowsFormsApp1
             }
             
         }
-
-        
-
         private void dataGridView_order_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             var ID = this.dataGridView_order.CurrentRow.Cells["ODID"].Value.ToString();
@@ -116,6 +139,18 @@ namespace WindowsFormsApp1
             this.tabControl1.SelectedTab = XXX;
         }
 
-        
+        private void nameTextBox_Employee_TextChanged(object sender, EventArgs e)
+        {
+            var ID = db.Employees.Where(n => n.Name == nameTextBox_Employee.Text).Select(n => new { n.EmployeeID }).ToList();
+            foreach (var item in ID)
+            {
+                SelectEMP(item.EmployeeID);
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

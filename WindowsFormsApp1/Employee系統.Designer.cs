@@ -70,9 +70,8 @@ namespace WindowsFormsApp1
             this.XXX = new System.Windows.Forms.TabPage();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.dataGridView_ODD = new System.Windows.Forms.DataGridView();
-            this.foodDataSet1 = new WindowsFormsApp1.FOODDataSet();
-            this.employeeTableAdapter1 = new WindowsFormsApp1.FOODDataSetTableAdapters.EmployeeTableAdapter();
             this.tableLayoutPanel_Customer = new System.Windows.Forms.TableLayoutPanel();
+            this.c11 = new System.Windows.Forms.Label();
             this.c1 = new System.Windows.Forms.Label();
             this.c2 = new System.Windows.Forms.Label();
             this.c3 = new System.Windows.Forms.Label();
@@ -81,14 +80,15 @@ namespace WindowsFormsApp1
             this.c6 = new System.Windows.Forms.Label();
             this.c7 = new System.Windows.Forms.Label();
             this.c8 = new System.Windows.Forms.Label();
-            this.c21 = new System.Windows.Forms.Label();
-            this.c31 = new System.Windows.Forms.Label();
-            this.c41 = new System.Windows.Forms.Label();
-            this.c51 = new System.Windows.Forms.Label();
-            this.c61 = new System.Windows.Forms.Label();
             this.c71 = new System.Windows.Forms.Label();
+            this.c61 = new System.Windows.Forms.Label();
+            this.c51 = new System.Windows.Forms.Label();
+            this.c41 = new System.Windows.Forms.Label();
+            this.c31 = new System.Windows.Forms.Label();
+            this.c21 = new System.Windows.Forms.Label();
             this.c81 = new System.Windows.Forms.Label();
-            this.c11 = new System.Windows.Forms.Label();
+            this.foodDataSet1 = new WindowsFormsApp1.FOODDataSet();
+            this.employeeTableAdapter1 = new WindowsFormsApp1.FOODDataSetTableAdapters.EmployeeTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -103,8 +103,8 @@ namespace WindowsFormsApp1
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_ODD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.foodDataSet1)).BeginInit();
             this.tableLayoutPanel_Customer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.foodDataSet1)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -160,9 +160,9 @@ namespace WindowsFormsApp1
             // IDcomboBox_Employee
             // 
             this.IDcomboBox_Employee.FormattingEnabled = true;
-            this.IDcomboBox_Employee.Location = new System.Drawing.Point(265, 59);
+            this.IDcomboBox_Employee.Location = new System.Drawing.Point(281, 56);
             this.IDcomboBox_Employee.Name = "IDcomboBox_Employee";
-            this.IDcomboBox_Employee.Size = new System.Drawing.Size(121, 20);
+            this.IDcomboBox_Employee.Size = new System.Drawing.Size(100, 20);
             this.IDcomboBox_Employee.TabIndex = 34;
             this.IDcomboBox_Employee.SelectedIndexChanged += new System.EventHandler(this.IDcomboBox_Employee_SelectedIndexChanged);
             // 
@@ -297,6 +297,8 @@ namespace WindowsFormsApp1
             // 
             // PersonIDTextBox_Employee
             // 
+            this.PersonIDTextBox_Employee.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.PersonIDTextBox_Employee.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.PersonIDTextBox_Employee.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.PersonIDTextBox_Employee.Location = new System.Drawing.Point(281, 89);
             this.PersonIDTextBox_Employee.Name = "PersonIDTextBox_Employee";
@@ -341,6 +343,7 @@ namespace WindowsFormsApp1
             this.button1.Text = "修改";
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // BirthTextBox_Employee
             // 
@@ -436,11 +439,20 @@ namespace WindowsFormsApp1
             // 
             // nameTextBox_Employee
             // 
+            this.nameTextBox_Employee.AutoCompleteCustomSource.AddRange(new string[] {
+            "erin",
+            "tin",
+            "eeer",
+            "eal"});
+            this.nameTextBox_Employee.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.nameTextBox_Employee.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.nameTextBox_Employee.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.nameTextBox_Employee.Location = new System.Drawing.Point(502, 56);
+            this.nameTextBox_Employee.ImeMode = System.Windows.Forms.ImeMode.Alpha;
+            this.nameTextBox_Employee.Location = new System.Drawing.Point(502, 53);
             this.nameTextBox_Employee.Name = "nameTextBox_Employee";
             this.nameTextBox_Employee.Size = new System.Drawing.Size(100, 27);
             this.nameTextBox_Employee.TabIndex = 11;
+            this.nameTextBox_Employee.TextChanged += new System.EventHandler(this.nameTextBox_Employee_TextChanged);
             // 
             // SexTextBox_Employee
             // 
@@ -539,15 +551,6 @@ namespace WindowsFormsApp1
             this.dataGridView_ODD.Size = new System.Drawing.Size(533, 326);
             this.dataGridView_ODD.TabIndex = 0;
             // 
-            // foodDataSet1
-            // 
-            this.foodDataSet1.DataSetName = "FOODDataSet";
-            this.foodDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // employeeTableAdapter1
-            // 
-            this.employeeTableAdapter1.ClearBeforeFill = true;
-            // 
             // tableLayoutPanel_Customer
             // 
             this.tableLayoutPanel_Customer.ColumnCount = 2;
@@ -583,6 +586,16 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel_Customer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.tableLayoutPanel_Customer.Size = new System.Drawing.Size(541, 326);
             this.tableLayoutPanel_Customer.TabIndex = 3;
+            // 
+            // c11
+            // 
+            this.c11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.c11.Location = new System.Drawing.Point(97, 0);
+            this.c11.Name = "c11";
+            this.c11.Size = new System.Drawing.Size(441, 40);
+            this.c11.TabIndex = 15;
+            this.c11.Text = "NAME";
+            this.c11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // c1
             // 
@@ -664,45 +677,15 @@ namespace WindowsFormsApp1
             this.c8.Text = "EMAIL";
             this.c8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // c21
+            // c71
             // 
-            this.c21.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.c21.Location = new System.Drawing.Point(97, 40);
-            this.c21.Name = "c21";
-            this.c21.Size = new System.Drawing.Size(441, 40);
-            this.c21.TabIndex = 8;
-            this.c21.Text = "ADDRESS";
-            this.c21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // c31
-            // 
-            this.c31.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.c31.Location = new System.Drawing.Point(97, 80);
-            this.c31.Name = "c31";
-            this.c31.Size = new System.Drawing.Size(441, 40);
-            this.c31.TabIndex = 9;
-            this.c31.Text = "UNICODE";
-            this.c31.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // c41
-            // 
-            this.c41.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.c41.Location = new System.Drawing.Point(97, 120);
-            this.c41.Name = "c41";
-            this.c41.Size = new System.Drawing.Size(441, 40);
-            this.c41.TabIndex = 10;
-            this.c41.Text = "TEL";
-            this.c41.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // c51
-            // 
-            this.c51.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.c51.Location = new System.Drawing.Point(97, 160);
-            this.c51.Name = "c51";
-            this.c51.Size = new System.Drawing.Size(441, 40);
-            this.c51.TabIndex = 11;
-            this.c51.Text = "FAX";
-            this.c51.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.c71.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.c71.Location = new System.Drawing.Point(97, 240);
+            this.c71.Name = "c71";
+            this.c71.Size = new System.Drawing.Size(441, 40);
+            this.c71.TabIndex = 13;
+            this.c71.Text = "CELLPHONE";
+            this.c71.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // c61
             // 
@@ -714,15 +697,45 @@ namespace WindowsFormsApp1
             this.c61.Text = "CONTACT";
             this.c61.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // c71
+            // c51
             // 
-            this.c71.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.c71.Location = new System.Drawing.Point(97, 240);
-            this.c71.Name = "c71";
-            this.c71.Size = new System.Drawing.Size(441, 40);
-            this.c71.TabIndex = 13;
-            this.c71.Text = "CELLPHONE";
-            this.c71.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.c51.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.c51.Location = new System.Drawing.Point(97, 160);
+            this.c51.Name = "c51";
+            this.c51.Size = new System.Drawing.Size(441, 40);
+            this.c51.TabIndex = 11;
+            this.c51.Text = "FAX";
+            this.c51.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // c41
+            // 
+            this.c41.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.c41.Location = new System.Drawing.Point(97, 120);
+            this.c41.Name = "c41";
+            this.c41.Size = new System.Drawing.Size(441, 40);
+            this.c41.TabIndex = 10;
+            this.c41.Text = "TEL";
+            this.c41.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // c31
+            // 
+            this.c31.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.c31.Location = new System.Drawing.Point(97, 80);
+            this.c31.Name = "c31";
+            this.c31.Size = new System.Drawing.Size(441, 40);
+            this.c31.TabIndex = 9;
+            this.c31.Text = "UNICODE";
+            this.c31.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // c21
+            // 
+            this.c21.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.c21.Location = new System.Drawing.Point(97, 40);
+            this.c21.Name = "c21";
+            this.c21.Size = new System.Drawing.Size(441, 40);
+            this.c21.TabIndex = 8;
+            this.c21.Text = "ADDRESS";
+            this.c21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // c81
             // 
@@ -734,15 +747,14 @@ namespace WindowsFormsApp1
             this.c81.Text = "MAIL";
             this.c81.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // c11
+            // foodDataSet1
             // 
-            this.c11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.c11.Location = new System.Drawing.Point(97, 0);
-            this.c11.Name = "c11";
-            this.c11.Size = new System.Drawing.Size(441, 40);
-            this.c11.TabIndex = 15;
-            this.c11.Text = "NAME";
-            this.c11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.foodDataSet1.DataSetName = "FOODDataSet";
+            this.foodDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // employeeTableAdapter1
+            // 
+            this.employeeTableAdapter1.ClearBeforeFill = true;
             // 
             // Employee系統
             // 
@@ -767,8 +779,8 @@ namespace WindowsFormsApp1
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_ODD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.foodDataSet1)).EndInit();
             this.tableLayoutPanel_Customer.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.foodDataSet1)).EndInit();
             this.ResumeLayout(false);
 
         }

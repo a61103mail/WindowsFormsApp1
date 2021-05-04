@@ -82,9 +82,9 @@ namespace WindowsFormsApp1
             this.label1.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label1.Location = new System.Drawing.Point(29, 102);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(40, 16);
+            this.label1.Size = new System.Drawing.Size(64, 16);
             this.label1.TabIndex = 0;
-            this.label1.Text = "帳號";
+            this.label1.Text = "Unicode";
             // 
             // label2
             // 

@@ -10,11 +10,13 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class Client : Form
+    public partial class Customer系統 : Form
     {
-        public Client()
+        FOODEntities db = new FOODEntities();
+        public Customer系統()
         {
             InitializeComponent();
         }
+
     }
 }

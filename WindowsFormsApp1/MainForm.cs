@@ -33,7 +33,7 @@ namespace WindowsFormsApp1
         private void button2_Click(object sender, EventArgs e)
         {
             panel1.Controls.Clear();
-           Client ClientFrm = new Client()
+           Customer系統 ClientFrm = new Customer系統()
             {
                 Dock = DockStyle.Fill,
                 TopLevel = false,
