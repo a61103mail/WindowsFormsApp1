@@ -261,6 +261,7 @@ namespace WindowsFormsApp1
             this.CorrectButton.TabIndex = 19;
             this.CorrectButton.Text = "確認註冊資料";
             this.CorrectButton.UseVisualStyleBackColor = true;
+            this.CorrectButton.Click += new System.EventHandler(this.CorrectButton_Click);
             // 
             // BackButton
             // 

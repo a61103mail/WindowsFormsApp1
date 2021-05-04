@@ -7,11 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Encoder.Security;
 
 namespace WindowsFormsApp1
 {
     public partial class registered : Form
     {
+        FOODEntities db = new FOODEntities();
+        global::Encoder.Security.Encoder encode = new global::Encoder.Security.Encoder();
         public registered()
         {
             InitializeComponent();
@@ -64,6 +67,12 @@ namespace WindowsFormsApp1
         private void BackButton_Click(object sender, EventArgs e)
         {
             this.Dispose();
+        }
+
+        private void CorrectButton_Click(object sender, EventArgs e)
+        {
+            EncoderType type = EncoderType.SHA256;
+            //Customer的 PWD屬性 = encode.Encrypt(type, this.PWTextBox_register.Text);
         }
 
         //要將輸入的資訊加到資料庫
