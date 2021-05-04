@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5416310a6ac045deaff3537334cd7e94" Name="Diagram1">
+        <EntityTypeShape EntityType="FOODModel.Customer" Width="1.5" PointX="0.75" PointY="2.125" />
+        <EntityTypeShape EntityType="FOODModel.CustomerRole" Width="1.5" PointX="3" PointY="7" />
+        <EntityTypeShape EntityType="FOODModel.Employee" Width="1.5" PointX="0.75" PointY="7.375" />
+        <EntityTypeShape EntityType="FOODModel.EmployeeRole" Width="1.5" PointX="6" PointY="8" />
+        <EntityTypeShape EntityType="FOODModel.EmpRole" Width="1.5" PointX="3.75" PointY="13.125" />
+        <EntityTypeShape EntityType="FOODModel.Order" Width="1.5" PointX="3" PointY="2.375" />
+        <EntityTypeShape EntityType="FOODModel.OrderDetail" Width="1.5" PointX="5.25" PointY="2.625" />
+        <EntityTypeShape EntityType="FOODModel.Product" Width="1.5" PointX="3" PointY="9.625" />
+        <EntityTypeShape EntityType="FOODModel.Product_LatestPrice" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="FOODModel.database_firewall_rules" Width="1.5" PointX="7.75" PointY="4.75" />
+        <AssociationConnector Association="FOODModel.FK_CustomerRole_Customer" />
+        <AssociationConnector Association="FOODModel.FK_Order_Customer" />
+        <AssociationConnector Association="FOODModel.FK_EmployeeRole_Employee" />
+        <AssociationConnector Association="FOODModel.FK_Order_Employee" />
+        <AssociationConnector Association="FOODModel.FK_EmployeeRole_EmpRole" />
+        <AssociationConnector Association="FOODModel.FK_OrderDetail_Order" />
+        <AssociationConnector Association="FOODModel.FK_OrderDetail_Product" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

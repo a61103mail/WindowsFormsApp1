@@ -10,19 +10,9 @@
 namespace WindowsFormsApp1
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class OrderDetail
+    public partial class ComplexType1
     {
-        public int OrderDetailID { get; set; }
-        public int OrderID { get; set; }
-        public string ProductCode { get; set; }
-        public decimal Qty { get; set; }
-        public decimal UnitPrice { get; set; }
-        public string Commert { get; set; }
-        public string Unit { get; set; }
-    
-        public virtual Order Order { get; set; }
-        public virtual Product Product { get; set; }
+        public string Email { get; set; }
     }
 }

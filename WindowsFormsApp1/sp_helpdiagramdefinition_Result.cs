@@ -10,19 +10,10 @@
 namespace WindowsFormsApp1
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class OrderDetail
+    public partial class sp_helpdiagramdefinition_Result
     {
-        public int OrderDetailID { get; set; }
-        public int OrderID { get; set; }
-        public string ProductCode { get; set; }
-        public decimal Qty { get; set; }
-        public decimal UnitPrice { get; set; }
-        public string Commert { get; set; }
-        public string Unit { get; set; }
-    
-        public virtual Order Order { get; set; }
-        public virtual Product Product { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

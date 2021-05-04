@@ -85,7 +85,7 @@ namespace WindowsFormsApp1
             var EMPOD = from OD in db.Orders
                         from ODD in OD.OrderDetails
                         from PD in db.Products
-                        where OD.OrderID == ID && PD.ProductID == ODD.ProductID
+                        where OD.OrderID == ID && PD.ProductCode== ODD.ProductCode
                         select new
                         {
                             ODID = OD.OrderID,

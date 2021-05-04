@@ -17,6 +17,7 @@ namespace WindowsFormsApp1
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Employee()
         {
+            this.EmployeeRoles = new HashSet<EmployeeRole>();
             this.Orders = new HashSet<Order>();
         }
     
@@ -29,7 +30,10 @@ namespace WindowsFormsApp1
         public System.DateTime DOE { get; set; }
         public string Unicode { get; set; }
         public string Password { get; set; }
+        public string Email { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EmployeeRole> EmployeeRoles { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Orders { get; set; }
     }
