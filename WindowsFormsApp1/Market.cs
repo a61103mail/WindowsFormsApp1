@@ -12,13 +12,9 @@ namespace WindowsFormsApp1
     using System;
     using System.Collections.Generic;
     
-    public partial class Inventory
+    public partial class Market
     {
-        public int InventoryID { get; set; }
-        public string ProductCode { get; set; }
-        public Nullable<decimal> Qty { get; set; }
-        public Nullable<System.DateTime> Date { get; set; }
-    
-        public virtual Product Product { get; set; }
+        public string MarketCode { get; set; }
+        public string MarketName { get; set; }
     }
 }

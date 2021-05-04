@@ -33,7 +33,7 @@ namespace WindowsFormsApp1
             //insert
             try
             {
-                string connString = Settings.Default
+                
             }
             catch (Exception ex)
             {

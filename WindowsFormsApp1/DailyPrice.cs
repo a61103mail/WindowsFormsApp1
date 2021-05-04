@@ -12,13 +12,16 @@ namespace WindowsFormsApp1
     using System;
     using System.Collections.Generic;
     
-    public partial class Inventory
+    public partial class DailyPrice
     {
-        public int InventoryID { get; set; }
-        public string ProductCode { get; set; }
-        public Nullable<decimal> Qty { get; set; }
-        public Nullable<System.DateTime> Date { get; set; }
-    
-        public virtual Product Product { get; set; }
+        public int RecordID { get; set; }
+        public System.DateTime TransDate { get; set; }
+        public string CropCode { get; set; }
+        public string MarketCode { get; set; }
+        public Nullable<decimal> Upper_Price { get; set; }
+        public Nullable<decimal> Middle_Price { get; set; }
+        public Nullable<decimal> Lower_Price { get; set; }
+        public Nullable<decimal> Avg_Price { get; set; }
+        public Nullable<decimal> Trans_Quantity { get; set; }
     }
 }

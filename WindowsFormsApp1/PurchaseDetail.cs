@@ -12,12 +12,17 @@ namespace WindowsFormsApp1
     using System;
     using System.Collections.Generic;
     
-    public partial class PurchaseConfirmedDetail
+    public partial class PurchaseDetail
     {
-        public int PurchaseComfirmedDetailID { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public PurchaseDetail()
+        {
+            this.PurchaseConfirmedDetails = new HashSet<PurchaseConfirmedDetail>();
+        }
+    
+        public int PurchaseDetailID { get; set; }
         public int PurchaseID { get; set; }
         public string ProductCode { get; set; }
-        public Nullable<int> PurchaseDetailID { get; set; }
         public decimal Qty { get; set; }
         public decimal UnitPrice { get; set; }
         public string Unit { get; set; }
@@ -25,6 +30,7 @@ namespace WindowsFormsApp1
     
         public virtual Product Product { get; set; }
         public virtual Purchase Purchase { get; set; }
-        public virtual PurchaseDetail PurchaseDetail { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PurchaseConfirmedDetail> PurchaseConfirmedDetails { get; set; }
     }
 }
