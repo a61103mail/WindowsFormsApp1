@@ -26,25 +26,6 @@ namespace WindowsFormsApp1
             var q = from p in this.FOODEntities.Products
                     select new {p.ProductID, p.Name, Category = p.Category.Name, p.Unit  };
             this.dataGridView1.DataSource = q.ToList();
-
-            SqlConnection conn = new SqlConnection("Data Source=fooddb.database.windows.net;Initial Catalog=FOOD;Persist Security Info=True;User ID=msit130;Password=xxxyyy1!");
-            try
-            {
-                using (conn)
-                {
-                    var command = conn.CreateCommand();
-                    command.CommandText = "Select * from LatestPrice";
-                    conn.Open();
-                    SqlDataAdapter adapter = new SqlDataAdapter(command);
-                    DataSet ds = new DataSet();
-                    Console.WriteLine(adapter.Fill(ds));
-
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
                     
         }
 

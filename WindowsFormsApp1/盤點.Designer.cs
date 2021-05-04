@@ -51,7 +51,7 @@ namespace WindowsFormsApp1
             this.dataGridView1.Location = new System.Drawing.Point(55, 78);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(645, 331);
+            this.dataGridView1.Size = new System.Drawing.Size(462, 331);
             this.dataGridView1.TabIndex = 6;
             // 
             // textBox1

@@ -27,7 +27,7 @@ namespace WindowsFormsApp1
 
         private void 盤點_Load(object sender, EventArgs e)
         {
-            this.dataGridView1.DataSource = FOODEntities;
+            this.dataGridView1.DataSource = FOODEntities.Products.ToList();
         }
     }
 }
