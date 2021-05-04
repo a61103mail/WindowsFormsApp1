@@ -61,7 +61,7 @@ namespace WindowsFormsApp1.Properties
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.CropCode = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.ProductCode = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.productname = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unitprice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -150,6 +150,7 @@ namespace WindowsFormsApp1.Properties
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 20);
             this.comboBox1.TabIndex = 14;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged_1);
             // 
             // comboBox3
             // 
@@ -228,7 +229,6 @@ namespace WindowsFormsApp1.Properties
             this.label10.Size = new System.Drawing.Size(56, 12);
             this.label10.TabIndex = 30;
             this.label10.Text = "訂單日期:";
-            this.label10.Click += new System.EventHandler(this.label10_Click);
             // 
             // dateTimePicker2
             // 
@@ -341,7 +341,7 @@ namespace WindowsFormsApp1.Properties
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.CropCode,
+            this.ProductCode,
             this.productname,
             this.unitprice,
             this.qty,
@@ -353,16 +353,17 @@ namespace WindowsFormsApp1.Properties
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(1090, 381);
             this.dataGridView1.TabIndex = 27;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
             this.dataGridView1.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEnter);
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
             this.dataGridView1.CurrentCellDirtyStateChanged += new System.EventHandler(this.dataGridView1_CurrentCellDirtyStateChanged);
             this.dataGridView1.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dataGridView1_EditingControlShowing);
             // 
-            // CropCode
+            // ProductCode
             // 
-            this.CropCode.HeaderText = "料號";
-            this.CropCode.Name = "CropCode";
-            this.CropCode.Width = 150;
+            this.ProductCode.HeaderText = "料號";
+            this.ProductCode.Name = "ProductCode";
+            this.ProductCode.Width = 150;
             // 
             // productname
             // 
@@ -481,7 +482,7 @@ namespace WindowsFormsApp1.Properties
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewComboBoxColumn CropCode;
+        private System.Windows.Forms.DataGridViewComboBoxColumn ProductCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn productname;
         private System.Windows.Forms.DataGridViewTextBoxColumn unitprice;
         private System.Windows.Forms.DataGridViewTextBoxColumn qty;

@@ -17,7 +17,9 @@ namespace WindowsFormsApp1
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Customer()
         {
+            this.CustomerRoles = new HashSet<CustomerRole>();
             this.Orders = new HashSet<Order>();
+            this.Purchases = new HashSet<Purchase>();
         }
     
         public int CustomerID { get; set; }
@@ -32,8 +34,13 @@ namespace WindowsFormsApp1
         public string ContactCellPhone { get; set; }
         public string Email { get; set; }
         public Nullable<System.DateTime> DoB { get; set; }
+        public string Password { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CustomerRole> CustomerRoles { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Orders { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Purchase> Purchases { get; set; }
     }
 }

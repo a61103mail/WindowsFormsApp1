@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace WindowsFormsApp1.Properties
 {
     public partial class 訂單表 : Form
@@ -33,10 +34,7 @@ namespace WindowsFormsApp1.Properties
         }
 
         FOODEntities db = new FOODEntities();
-        private void label10_Click(object sender, EventArgs e)
-        {
-
-        }
+      
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -49,38 +47,52 @@ namespace WindowsFormsApp1.Properties
                 Address = this.textBox4.Text,
                 Comment = this.richTextBox1.Text
             };
-            OrderDetail od = new OrderDetail
-            {
-                ////ProductID = int.Parse(this.productid.ValueMember),
-                ////ProductName= this.productname.HeaderText,
-                ////UnitPrice=$"{this.unitprice:c2}",
-                ////Qty = this.qty,
-                //Unit=this.unit
-                //Commert=this.Comment.DataPropertyName,
-
-            };
+           
 
         DialogResult p = MessageBox.Show("確定新增?","提醒", MessageBoxButtons.OKCancel,MessageBoxIcon.Exclamation);
             if (p == DialogResult.OK) {
                 this.db.Orders.Add(order);
-                //this.db.OrderDetails.Add(od);
+                //this.db.OrderDetails.Add(od);               
+                this.db.SaveChanges();
+                this.label18.Text = order.OrderID.ToString();//顯示出新增的流水號
+                foreach (DataGridViewRow dr in this.dataGridView1.Rows)
+                {
+                    //if (dr.Cells[0].Value.ToString()!="")
+                   
+                        //MessageBox.Show(dr.Cells[0].Value.ToString());
+                        OrderDetail od = new OrderDetail();
+
+                        if (dr.Cells[0].Value != null)
+                    { 
+                        od.ProductCode = dr.Cells[0].Value.ToString();
+                        od.OrderID = order.OrderID;
+                        od.Qty = decimal.Parse(dr.Cells[3].Value.ToString());
+                        od.UnitPrice = decimal.Parse(dr.Cells[2].Value.ToString());
+                        od.Unit = dr.Cells[4].Value.ToString();
+                        if (dr.Cells[6].Value != null)
+                        {
+                            od.Commert = dr.Cells[6].Value.ToString();
+                        }
+
+                    
+                        this.db.OrderDetails.Add(od);
+                      
+                    }
+                }
                 this.db.SaveChanges();
                 MessageBox.Show("新增成功", "提醒", MessageBoxButtons.OK);
-            }
 
+            }
+            
         }
 
         private void 訂單表_Load(object sender, EventArgs e)
         {
-            // TODO: 這行程式碼會將資料載入 'fOODDataSet.OrderDetail' 資料表。您可以視需要進行移動或移除。
+            
             
 
             var q = this.db.Customers.Select(n=>new { ctname=n.Name , ctid=n.CustomerID });
-            //foreach (var p in q) {
-            //    this.comboBox1.Items.Add(q.ToList());
-
-            //}
-
+            
 
             this.comboBox1.DataSource = q.ToList();
             this.comboBox1.DisplayMember = "ctname";
@@ -104,16 +116,16 @@ namespace WindowsFormsApp1.Properties
             //this.productEntryTableAdapter1.Fill(this.foodDataSet1.ProductEntry);
             //this.dataGridView1.DataSource = this.foodDataSet1.ProductEntry;
 
-            var q3 = this.db.Products.Select(n => new { pdid = n.ProductID, pdna = n.ProductID +"  "+ n.Name    });
+            var q3 = this.db.Products.Select(n => new { pdid = n.ProductCode, pdna = n.ProductCode +"  "+ n.Name    });
 
-            
-            //this.productid.DataSource = q3.ToList();
-            //this.productid.DisplayMember = "pdna" ;
-            //this.productid.ValueMember = "pdid";
 
-           
+            this.ProductCode.DataSource = q3.ToList();
+            this.ProductCode.DisplayMember = "pdna";
+            this.ProductCode.ValueMember = "pdid";
 
-  
+
+
+
 
 
 
@@ -205,28 +217,38 @@ namespace WindowsFormsApp1.Properties
                 if (e.ColumnIndex == 0) {
                 DataGridViewComboBoxCell cb = dataGridView1[0, e.RowIndex] as DataGridViewComboBoxCell;
 
-                    int id = int.Parse(cb.Value.ToString());
+                    string id = cb.Value.ToString();
                     var q = from p in this.db.Products
-                            where p.ProductID == id
-                            select p.Name;
-                   
-                    this.dataGridView1[1, e.RowIndex].Value = q.ToList()[0].ToString();
+                            where p.ProductCode == id
+                            select new {name= p.Name ,unit= p.Unit};
+                    var q1 = this.db.Product_LatestPrice.Where(n => n.ProductCode == id).Select(n => n.LatestUpperPrice);
+                    
+                    foreach (var p in q)
+                    {
+                        this.dataGridView1[1, e.RowIndex].Value =p.name;
+                        this.dataGridView1[4, e.RowIndex].Value = p.unit;
+                        this.dataGridView1[2, e.RowIndex].Value = q1.ToList()[0].ToString();
+                    }
+
                 }
                 if (e.ColumnIndex == 1)
                 {
+                    
                     var q = from p in db.Products
                             where p.Name == this.dataGridView1.CurrentCell.Value.ToString()
-                            select p.ProductID;
+                            select p.ProductCode;
 
                     DataGridViewComboBoxCell cb = dataGridView1[0, e.RowIndex] as DataGridViewComboBoxCell;
                     cb.Value = q.ToList()[0];
-
-
-
+                                    }
+                if (e.ColumnIndex == 3)
+                {
+                    this.dataGridView1[5, e.RowIndex].Value = decimal.Parse(this.dataGridView1[2, e.RowIndex].Value.ToString()) * decimal.Parse(this.dataGridView1[3, e.RowIndex].Value.ToString());
+                 
                 }
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 //MessageBox.Show(ex.Message);
             }
@@ -234,6 +256,16 @@ namespace WindowsFormsApp1.Properties
         }
 
         private void dataGridView1_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
 
         }

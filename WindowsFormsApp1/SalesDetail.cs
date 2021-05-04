@@ -12,25 +12,19 @@ namespace WindowsFormsApp1
     using System;
     using System.Collections.Generic;
     
-    public partial class OrderDetail
+    public partial class SalesDetail
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public OrderDetail()
-        {
-            this.SalesDetails = new HashSet<SalesDetail>();
-        }
-    
-        public int OrderDetailID { get; set; }
+        public int SalesDetailID { get; set; }
         public int OrderID { get; set; }
+        public Nullable<int> OrderDetailID { get; set; }
         public string ProductCode { get; set; }
-        public decimal Qty { get; set; }
         public decimal UnitPrice { get; set; }
-        public string Commert { get; set; }
-        public string Unit { get; set; }
+        public decimal Qty { get; set; }
+        public string unit { get; set; }
+        public string Comment { get; set; }
     
         public virtual Order Order { get; set; }
+        public virtual OrderDetail OrderDetail { get; set; }
         public virtual Product Product { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SalesDetail> SalesDetails { get; set; }
     }
 }
