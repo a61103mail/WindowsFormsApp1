@@ -12,29 +12,18 @@ namespace WindowsFormsApp1
     using System;
     using System.Collections.Generic;
     
-    public partial class Employee
+    public partial class EmpRole
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Employee()
+        public EmpRole()
         {
             this.EmployeeRoles = new HashSet<EmployeeRole>();
-            this.Orders = new HashSet<Order>();
         }
     
-        public int EmployeeID { get; set; }
         public string Name { get; set; }
-        public System.DateTime DOB { get; set; }
-        public string Address { get; set; }
-        public string Phone { get; set; }
-        public string Cellphone { get; set; }
-        public System.DateTime DOE { get; set; }
-        public string Unicode { get; set; }
-        public string Password { get; set; }
-        public string Email { get; set; }
+        public int RoleID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EmployeeRole> EmployeeRoles { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order> Orders { get; set; }
     }
 }

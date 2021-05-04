@@ -58,11 +58,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Category.cs">
+      <DependentUpon>FoodModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Customer.cs">
+      <DependentUpon>FoodModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerRole.cs">
+      <DependentUpon>FoodModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Customer系統.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Customer系統.Designer.cs">
       <DependentUpon>Customer系統.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DailyPrice.cs">
+      <DependentUpon>FoodModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DailyPriceTemp.cs">
+      <DependentUpon>FoodModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="database_firewall_rules.cs">
+      <DependentUpon>FoodModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Employee.cs">
+      <DependentUpon>FoodModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeRole.cs">
+      <DependentUpon>FoodModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Employee系統.cs">
       <SubType>Form</SubType>
@@ -70,20 +94,29 @@
     <Compile Include="Employee系統.Designer.cs">
       <DependentUpon>Employee系統.cs</DependentUpon>
     </Compile>
+    <Compile Include="EmpRole.cs">
+      <DependentUpon>FoodModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FoodModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FoodModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FoodModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FoodModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FoodModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FoodModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="ForgotPW.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ForgotPW.Designer.cs">
       <DependentUpon>ForgotPW.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Category.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Customer.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Employee.cs">
-      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="FOODDataSet1.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -96,29 +129,8 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Order.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="OrderDetail.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Product.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+    <Compile Include="Inventory.cs">
+      <DependentUpon>FoodModel.tt</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -126,9 +138,51 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Market.cs">
+      <DependentUpon>FoodModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Order.cs">
+      <DependentUpon>FoodModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OrderDetail.cs">
+      <DependentUpon>FoodModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Picture.cs">
+      <DependentUpon>FoodModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Product.cs">
+      <DependentUpon>FoodModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Product_LatestPrice.cs">
+      <DependentUpon>FoodModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Purchase.cs">
+      <DependentUpon>FoodModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseConfirmedDetail.cs">
+      <DependentUpon>FoodModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PurchaseDetail.cs">
+      <DependentUpon>FoodModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="PWD\Encoder.cs" />
+    <Compile Include="Role.cs">
+      <DependentUpon>FoodModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDetail.cs">
+      <DependentUpon>FoodModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>FoodModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagrams_Result.cs">
+      <DependentUpon>FoodModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>FoodModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="訂單表.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -182,12 +236,12 @@
     <None Include="FOODDataSet1.xss">
       <DependentUpon>FOODDataSet1.xsd</DependentUpon>
     </None>
-    <EntityDeploy Include="Model.edmx">
+    <EntityDeploy Include="FoodModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model.Designer.cs</LastGenOutput>
+      <LastGenOutput>FoodModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Model.edmx.diagram">
-      <DependentUpon>Model.edmx</DependentUpon>
+    <None Include="FoodModel.edmx.diagram">
+      <DependentUpon>FoodModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -204,22 +258,20 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="FoodModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FoodModel.edmx</DependentUpon>
+      <LastGenOutput>FoodModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="FoodModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FoodModel.edmx</DependentUpon>
+      <LastGenOutput>FoodModel.cs</LastGenOutput>
+    </Content>
     <Content Include="image\correct.png" />
     <Content Include="image\edit.png" />
     <Content Include="image\power.png" />
     <Content Include="image\wrong.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Model.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Model.Context.cs</LastGenOutput>
-      <DependentUpon>Model.edmx</DependentUpon>
-    </Content>
-    <Content Include="Model.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model.edmx</DependentUpon>
-      <LastGenOutput>Model.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

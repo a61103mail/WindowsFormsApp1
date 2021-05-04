@@ -68,6 +68,7 @@ namespace WindowsFormsApp1
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -94,6 +95,7 @@ namespace WindowsFormsApp1
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.button2);
             this.splitContainer1.Panel1.Controls.Add(this.button1);
             this.splitContainer1.Panel1.Controls.Add(this.PWTextBox_Client);
             this.splitContainer1.Panel1.Controls.Add(this.label17);
@@ -142,7 +144,7 @@ namespace WindowsFormsApp1
             this.button1.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.Location = new System.Drawing.Point(988, 179);
+            this.button1.Location = new System.Drawing.Point(912, 179);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(70, 25);
             this.button1.TabIndex = 2;
@@ -373,6 +375,7 @@ namespace WindowsFormsApp1
             this.TELTextBox_Client.Name = "TELTextBox_Client";
             this.TELTextBox_Client.Size = new System.Drawing.Size(100, 27);
             this.TELTextBox_Client.TabIndex = 8;
+            this.TELTextBox_Client.TextChanged += new System.EventHandler(this.TELTextBox_Client_TextChanged);
             // 
             // label5
             // 
@@ -391,6 +394,7 @@ namespace WindowsFormsApp1
             this.CompanyIDTextBox__Client.Name = "CompanyIDTextBox__Client";
             this.CompanyIDTextBox__Client.Size = new System.Drawing.Size(100, 27);
             this.CompanyIDTextBox__Client.TabIndex = 6;
+            this.CompanyIDTextBox__Client.TextChanged += new System.EventHandler(this.CompanyIDTextBox__Client_TextChanged);
             // 
             // label4
             // 
@@ -409,6 +413,7 @@ namespace WindowsFormsApp1
             this.NameTextBox_Client.Name = "NameTextBox_Client";
             this.NameTextBox_Client.Size = new System.Drawing.Size(100, 27);
             this.NameTextBox_Client.TabIndex = 4;
+            this.NameTextBox_Client.TextChanged += new System.EventHandler(this.NameTextBox_Client_TextChanged);
             // 
             // label3
             // 
@@ -427,6 +432,7 @@ namespace WindowsFormsApp1
             this.IDTextBox_Client.Name = "IDTextBox_Client";
             this.IDTextBox_Client.Size = new System.Drawing.Size(100, 27);
             this.IDTextBox_Client.TabIndex = 2;
+            this.IDTextBox_Client.TextChanged += new System.EventHandler(this.IDTextBox_Client_TextChanged);
             // 
             // label2
             // 
@@ -469,13 +475,27 @@ namespace WindowsFormsApp1
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // Client
+            // button2
+            // 
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button2.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button2.Location = new System.Drawing.Point(988, 179);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(70, 25);
+            this.button2.TabIndex = 33;
+            this.button2.Text = "儲存";
+            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // Customer系統
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1102, 643);
             this.Controls.Add(this.splitContainer1);
-            this.Name = "Client";
+            this.Name = "Customer系統";
             this.Text = "client";
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
@@ -527,5 +547,6 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.TextBox AccountTextBox_Client;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }

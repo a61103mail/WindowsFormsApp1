@@ -22,16 +22,13 @@ namespace WindowsFormsApp1
         internal void Addtextboxsource() {
             var source_NAME = new AutoCompleteStringCollection();
             var source_Unicode = new AutoCompleteStringCollection();
-            var EMPNAME = db.Employees.Select(n=>new { n.Name}).ToList();
-            var EMPUNICODE = db.Employees.Select(n=>new { n.Unicode}).ToList();
-            foreach (var item in EMPNAME)
+            var EMP = db.Employees.Select(n=>new { n.Name , n.Unicode }).ToList();
+            foreach (var item in EMP)
             {
                 source_NAME.Add(item.Name);
-            }
-            foreach (var item in EMPUNICODE)
-            {
                 source_Unicode.Add(item.Unicode);
             }
+            
 
             this.nameTextBox_Employee.AutoCompleteCustomSource = source_NAME;
             this.nameTextBox_Employee.AutoCompleteMode =
@@ -85,7 +82,7 @@ namespace WindowsFormsApp1
             var EMPOD = from OD in db.Orders
                         from ODD in OD.OrderDetails
                         from PD in db.Products
-                        where OD.OrderID == ID && PD.ProductID == ODD.ProductID
+                        where OD.OrderID == ID && PD.ProductCode == ODD.ProductCode
                         select new
                         {
                             ODID = OD.OrderID,
