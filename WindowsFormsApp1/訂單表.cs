@@ -20,10 +20,8 @@ namespace WindowsFormsApp1.Properties
         }
 
         private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
+        {           
             
-            
-         
                 this.label16.Text = this.comboBox1.SelectedValue.ToString();
           
           
@@ -38,31 +36,29 @@ namespace WindowsFormsApp1.Properties
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Order order = new Order
-            {
-                OrderDate = this.dateTimePicker2.Value,
-                RequiredDate = this.dateTimePicker1.Value,
-                CustomerID = int.Parse(this.label16.Text),
-                //EmployeeID = int.Parse(this.comboBox4.Text),
-                Address = this.textBox4.Text,
-                Comment = this.richTextBox1.Text
-            };
-           
+            Order order = new Order(); //新增Order欄位
+
+            order.OrderDate = this.dateTimePicker2.Value;
+            order.RequiredDate = this.dateTimePicker1.Value;
+            order.CustomerID = int.Parse(this.label16.Text);
+            order.EmployeeID = int.Parse(this.label19.Text);
+            order.Address = this.textBox4.Text;
+            order.Comment = this.richTextBox1.Text;
+
+
+
 
         DialogResult p = MessageBox.Show("確定新增?","提醒", MessageBoxButtons.OKCancel,MessageBoxIcon.Exclamation);
             if (p == DialogResult.OK) {
-                this.db.Orders.Add(order);
-                //this.db.OrderDetails.Add(od);               
-                this.db.SaveChanges();
+                this.db.Orders.Add(order);                       
+                this.db.SaveChanges();//新增Order回DB
                 this.label18.Text = order.OrderID.ToString();//顯示出新增的流水號
                 foreach (DataGridViewRow dr in this.dataGridView1.Rows)
                 {
-                    //if (dr.Cells[0].Value.ToString()!="")
-                   
-                        //MessageBox.Show(dr.Cells[0].Value.ToString());
-                        OrderDetail od = new OrderDetail();
+                    
+                        OrderDetail od = new OrderDetail();//新增OD欄位
 
-                        if (dr.Cells[0].Value != null)
+                    if (dr.Cells[0].Value != null)
                     { 
                         od.ProductCode = dr.Cells[0].Value.ToString();
                         od.OrderID = order.OrderID;
@@ -76,10 +72,10 @@ namespace WindowsFormsApp1.Properties
 
                     
                         this.db.OrderDetails.Add(od);
-                      
+
                     }
                 }
-                this.db.SaveChanges();
+                this.db.SaveChanges();//新增OD回DB
                 MessageBox.Show("新增成功", "提醒", MessageBoxButtons.OK);
 
             }
@@ -91,7 +87,7 @@ namespace WindowsFormsApp1.Properties
             
             
 
-            var q = this.db.Customers.Select(n=>new { ctname=n.Name , ctid=n.CustomerID });
+            var q = this.db.Customers.Select(n=>new { ctname=n.Name , ctid=n.CustomerID });//匯入客戶
             
 
             this.comboBox1.DataSource = q.ToList();
@@ -99,7 +95,7 @@ namespace WindowsFormsApp1.Properties
             this.comboBox1.ValueMember = "ctid";
 
 
-            var q1 = this.db.Employees.Select(n => new { empname = n.Name, empid = n.EmployeeID });
+            var q1 = this.db.Employees.Select(n => new { empname = n.Name, empid = n.EmployeeID }); //匯入理貨人員，客服人員
                  
             this.comboBox5.DataSource = q1.ToList();
             this.comboBox5.DisplayMember = "empname";
@@ -112,45 +108,30 @@ namespace WindowsFormsApp1.Properties
             this.comboBox5.SelectedIndexChanged += comboBox5_SelectedIndexChanged;
             this.comboBox5.SelectedIndex = 1;
             this.comboBox5.SelectedIndex = 0;
+           
+            foreach (var p in q1)
+            {
+                this.comboBox3.Items.Add(p.empname);
 
-            //this.productEntryTableAdapter1.Fill(this.foodDataSet1.ProductEntry);
-            //this.dataGridView1.DataSource = this.foodDataSet1.ProductEntry;
+            }
+            
 
             var q3 = this.db.Products.Select(n => new { pdid = n.ProductCode, pdna = n.ProductCode +"  "+ n.Name    });
+            //datagrirview匯入資料
 
 
             this.ProductCode.DataSource = q3.ToList();
             this.ProductCode.DisplayMember = "pdna";
             this.ProductCode.ValueMember = "pdid";
 
-
-
-
-
-
-
+          
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            var order = (from p in this.db.Orders
-                         where p.Comment.Contains("test")
-                         select p).FirstOrDefault();
-           
-            DialogResult p1 = MessageBox.Show("確定新增?", "提醒", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
-            if (p1 == DialogResult.OK)
-            {
-                if (order == null) return;
-                var orderdetailld = (this.db.OrderDetails.Where(n => n.Commert.Contains("test")).Select(n => n)).FirstOrDefault();
-                if (orderdetailld == null) return;
-                this.db.SaveChanges();
-            }
-
-        }
+      
 
         private void comboBox5_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (this.comboBox5.SelectedValue.GetType().ToString() != "System.Int32")
+            if (this.comboBox5.SelectedValue.GetType().ToString() != "System.Int32")//柏翰寫的(如果用foreach就不用寫這邊)
             {
                 this.label17.Text = "無編號";
             }
@@ -160,29 +141,11 @@ namespace WindowsFormsApp1.Properties
             }
         }
 
-        private void textBox6_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            
-           
-          
-        }
-
-       
-
-        private void dataGridView1_CellEnter(object sender, DataGridViewCellEventArgs e)
-        {
-            
-        }
-
+      
         private void dataGridView1_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
             
-            TextBox autoText = e.Control as TextBox;
+            TextBox autoText = e.Control as TextBox; //建立dataGridView1與model的關聯
             if (autoText != null)
             {
                 autoText.AutoCompleteMode = AutoCompleteMode.Suggest;
@@ -193,7 +156,7 @@ namespace WindowsFormsApp1.Properties
             }
         }
 
-        private void addItems(AutoCompleteStringCollection col)
+        private void addItems(AutoCompleteStringCollection col) //提取資料給dataGridView1
         {
             var q = from p in db.Products
                     select p.Name;
@@ -205,7 +168,7 @@ namespace WindowsFormsApp1.Properties
 
         private void dataGridView1_CurrentCellDirtyStateChanged(object sender, EventArgs e)
         {
-            if (dataGridView1.IsCurrentCellDirty)
+            if (dataGridView1.IsCurrentCellDirty) //大家都不知道只有柏翰哥清楚
             {
                 dataGridView1.CommitEdit(DataGridViewDataErrorContexts.Commit);
             }
@@ -222,16 +185,20 @@ namespace WindowsFormsApp1.Properties
                             where p.ProductCode == id
                             select new {name= p.Name ,unit= p.Unit};
                     var q1 = this.db.Product_LatestPrice.Where(n => n.ProductCode == id).Select(n => n.LatestUpperPrice);
-                    
-                    foreach (var p in q)
-                    {
-                        this.dataGridView1[1, e.RowIndex].Value =p.name;
-                        this.dataGridView1[4, e.RowIndex].Value = p.unit;
-                        this.dataGridView1[2, e.RowIndex].Value = q1.ToList()[0].ToString();
-                    }
 
+                    foreach (var p in q) //抓取後面搜尋的資料
+                    {
+                        this.dataGridView1[1, e.RowIndex].Value = p.name;
+                        this.dataGridView1[4, e.RowIndex].Value = p.unit;
+                        var s = q1.ToList();
+                        if (s.Count != 0)
+                        {
+                            this.dataGridView1[2, e.RowIndex].Value = s[0].ToString();
+
+                        }
+                    }
                 }
-                if (e.ColumnIndex == 1)
+                if (e.ColumnIndex == 1)//搜尋關鍵字
                 {
                     
                     var q = from p in db.Products
@@ -241,10 +208,13 @@ namespace WindowsFormsApp1.Properties
                     DataGridViewComboBoxCell cb = dataGridView1[0, e.RowIndex] as DataGridViewComboBoxCell;
                     cb.Value = q.ToList()[0];
                                     }
-                if (e.ColumnIndex == 3)
+                if (e.ColumnIndex == 3 || e.ColumnIndex==2)
                 {
+                    if (this.dataGridView1[3, e.RowIndex].Value == null)
+                        this.dataGridView1[5, e.RowIndex].Value = "";
+                    else {
                     this.dataGridView1[5, e.RowIndex].Value = decimal.Parse(this.dataGridView1[2, e.RowIndex].Value.ToString()) * decimal.Parse(this.dataGridView1[3, e.RowIndex].Value.ToString());
-                 
+                    }
                 }
 
             }
@@ -255,19 +225,13 @@ namespace WindowsFormsApp1.Properties
 
         }
 
-        private void dataGridView1_KeyDown(object sender, KeyEventArgs e)
+        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-        }
-
-        private void comboBox1_SelectedIndexChanged_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-
+            var q = this.db.Employees.AsEnumerable().Where(n => n.Name == $"{this.comboBox3.Text}").Select(n => n.EmployeeID);
+            foreach (var p in q)
+            {
+                this.label19.Text = p.ToString();
+            }
         }
     }
 }
