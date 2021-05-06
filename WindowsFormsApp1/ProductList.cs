@@ -15,18 +15,18 @@ namespace WindowsFormsApp1
     public partial class ProductList : Form
     {
         private FOODEntities FOODEntities = new FOODEntities();
+        public List<Product_LatestPrice> product_Latests = new List<Product_LatestPrice>();
         public ProductList()
         {
             InitializeComponent();
             this.dataGridView1.AutoSize = true;
+            this.product_Latests = (from p in this.FOODEntities.Product_LatestPrice
+                                    select p).ToList();
         }
         
         private void ProductList_Load(object sender, EventArgs e)
         {
-            var q = from p in this.FOODEntities.Product_LatestPrice
-                    select p;
-            this.dataGridView1.DataSource = q.ToList();
-                    
+            this.dataGridView1.DataSource = this.product_Latests;                    
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -48,7 +48,8 @@ namespace WindowsFormsApp1
 
         private void button4_Click(object sender, EventArgs e)
         {
-            var selectedIndex = int.Parse(this.dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
+            var selectedItem = this.dataGridView1.SelectedRows[0].DataBoundItem as Product_LatestPrice;
+            var selectedIndex = this.product_Latests.IndexOf(selectedItem);
             詳細 f = new 詳細(selectedIndex);
             f.ShowDialog(this);
         }

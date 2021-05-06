@@ -15,15 +15,14 @@ namespace WindowsFormsApp1
     public partial class 詳細 : Form
     {
         private FOODEntities FOODEntities = new FOODEntities();
-        private int productID;
-        private int productIndex = 0;
-        private List<Product_LatestPrice> products;
         private List<Label> labels = new List<Label>();
-        public 詳細(int selectedID)
+        private int selectedIndex = 0;
+        private BindingSource bindingSource = new BindingSource();
+        private List<Product_LatestPrice> product_Latests;
+        public 詳細(int selectedIndex)
         {
             InitializeComponent();
-            this.productID = selectedID;
-            this.products = FOODEntities.Product_LatestPrice.ToList();
+            this.selectedIndex = selectedIndex;
             for (int i = 0; i < 10; i++)
             {
                 var lbl = new Label();
@@ -36,88 +35,67 @@ namespace WindowsFormsApp1
 
         private void 詳細_Load(object sender, EventArgs e)
         {
-            var q = from p in products
-                    where p.ProductID == this.productID
-                    select new
-                    {
-                        image = getImage(p.ProductCode),
-                        p.Name,
-                        ProductID = getProductID(p.ProductID),
-                        p.ProductCode,
-                        p.CropCode,
-                        p.Unit,
-                        p.Category,
-                        p.SupplierID,
-                        p.LatestUpperPrice,
-                        p.DailyTrend,
-                        p.LatestMarket,
-                        LatestTransDate = p.TransDate.GetValueOrDefault().ToShortDateString()
-                    };
-            var selectedProduct = q.ToList()[0];
-            byte[] bytes = selectedProduct.image;
-            label1.Text = selectedProduct.Name;
-            if (bytes != null)
+            this.product_Latests = (this.Owner as ProductList).product_Latests;
+            this.reload();
+            PropertyInfo[] props = this.bindingSource.DataSource.GetType().GetProperties();
+            for (int i = 2; i < props.Length; i++)
             {
-                MemoryStream ms = new MemoryStream(bytes);
-                this.pictureBox1.Image = Image.FromStream(ms);
+                this.labels[i - 2].DataBindings.Add("Text", this.bindingSource, props[i].Name);
             }
-            else
-            {
-                this.pictureBox1.Image = null;
-            }
+            this.label1.DataBindings.Add("Text", this.bindingSource, "Name");
+            this.pictureBox1.DataBindings.Add("Image", this.bindingSource, "image");
+        }
 
-            PropertyInfo[] props = selectedProduct.GetType().GetProperties();
-            for (int i = 2; i < props.Length; i++) 
+        private void reload()
+        {
+            var selectedProduct = this.product_Latests[this.selectedIndex];
+            var selectedDetail = new
             {
-                if (props[i].GetValue(selectedProduct) != null) 
-                {
-                    labels[i-2].Text = props[i].GetValue(selectedProduct).ToString();
-                    if (i == 9)
-                    {
-                        if (decimal.Parse(props[i].GetValue(selectedProduct).ToString()) >= 2.0M) labels[i-2].BackColor = Color.Red;
-                        else labels[i - 2].BackColor = Control.DefaultBackColor;
-                    }
-                }
-            }
+                image = getImage(selectedProduct.ProductCode),
+                Name = selectedProduct.Name,
+                ProductID = selectedProduct.ProductID,
+                ProductCode = selectedProduct.ProductCode,
+                CropCode = selectedProduct.CropCode,
+                Unit = selectedProduct.Unit,
+                Category = selectedProduct.Category,
+                SupplierID = selectedProduct.SupplierID,
+                LatestUpperPrice = selectedProduct.LatestUpperPrice,
+                DailyTrend = selectedProduct.DailyTrend,
+                LatestMarket = selectedProduct.LatestMarket,
+                LatestTransDate = selectedProduct.TransDate.GetValueOrDefault().ToShortDateString()
+            };
+            this.bindingSource.DataSource = selectedDetail;
 
         }
 
-        private int getProductID(int productID)
+        private Image getImage(string productCode)
         {
-            for (int i = 0; i < this.products.Count; i++)
-            {
-                if (this.products[i].ProductID == productID)
-                {
-                    this.productIndex = i;
-                    this.productID = this.products[i].ProductID;
-                }
-            }
-            return productID;
-        }
-
-        private byte[] getImage(string productCode)
-        {
+            Image img = null;
             var pics = (from pic in FOODEntities.Pictures
-                           where pic.ProductCode == productCode
-                           select pic.IMG).ToList();
-            if (pics.Count == 0) return null;
-            else return pics[0];
+                        where pic.ProductCode == productCode
+                        select pic.IMG).ToList();
+            if (pics.Count != 0)
+            {
+                MemoryStream ms = new MemoryStream(pics[0]);
+                img = Image.FromStream(ms);
+            }
+            return img;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (this.productIndex <= 0) return;
-            else this.productIndex -= 1;
-            this.productID = this.products[this.productIndex].ProductID;
-            this.詳細_Load(this, EventArgs.Empty);
+            if (this.selectedIndex <= 0) return;
+            else this.selectedIndex -= 1;
+            reload();
+            this.bindingSource.ResetBindings(false);
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (this.productIndex >= this.products.Count -1 ) return;
-            else this.productIndex += 1;
-            this.productID = this.products[this.productIndex].ProductID;
-            this.詳細_Load(this, EventArgs.Empty);
+            if (this.selectedIndex >= this.product_Latests.Count - 1) return;
+            else this.selectedIndex += 1;
+            reload();
+            this.bindingSource.ResetBindings(false);
         }
     }
 }
