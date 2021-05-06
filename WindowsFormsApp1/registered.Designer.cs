@@ -315,12 +315,11 @@ namespace WindowsFormsApp1
             // ContactTELTextBox_register
             // 
             this.ContactTELTextBox_register.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.ContactTELTextBox_register.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.ContactTELTextBox_register.ForeColor = System.Drawing.Color.Black;
             this.ContactTELTextBox_register.Location = new System.Drawing.Point(111, 152);
             this.ContactTELTextBox_register.Name = "ContactTELTextBox_register";
             this.ContactTELTextBox_register.Size = new System.Drawing.Size(156, 27);
             this.ContactTELTextBox_register.TabIndex = 19;
-            this.ContactTELTextBox_register.Text = "未輸入";
             // 
             // label16
             // 
@@ -335,12 +334,11 @@ namespace WindowsFormsApp1
             // ContactNameTextBox_register
             // 
             this.ContactNameTextBox_register.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.ContactNameTextBox_register.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.ContactNameTextBox_register.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ContactNameTextBox_register.Location = new System.Drawing.Point(111, 104);
             this.ContactNameTextBox_register.Name = "ContactNameTextBox_register";
             this.ContactNameTextBox_register.Size = new System.Drawing.Size(156, 27);
             this.ContactNameTextBox_register.TabIndex = 10;
-            this.ContactNameTextBox_register.Text = "未輸入";
             // 
             // label15
             // 
@@ -372,12 +370,11 @@ namespace WindowsFormsApp1
             // FaxTextBox_register
             // 
             this.FaxTextBox_register.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.FaxTextBox_register.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.FaxTextBox_register.ForeColor = System.Drawing.Color.Black;
             this.FaxTextBox_register.Location = new System.Drawing.Point(111, 61);
             this.FaxTextBox_register.Name = "FaxTextBox_register";
             this.FaxTextBox_register.Size = new System.Drawing.Size(156, 27);
             this.FaxTextBox_register.TabIndex = 6;
-            this.FaxTextBox_register.Text = "未輸入";
             // 
             // label12
             // 

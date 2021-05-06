@@ -40,8 +40,8 @@ namespace WindowsFormsApp1
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.CustomerRadioButton = new System.Windows.Forms.RadioButton();
+            this.EMPRadioButton = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -155,29 +155,29 @@ namespace WindowsFormsApp1
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
-            // radioButton1
+            // CustomerRadioButton
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Font = new System.Drawing.Font("標楷體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.radioButton1.Location = new System.Drawing.Point(611, 91);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(72, 25);
-            this.radioButton1.TabIndex = 10;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "客戶";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.CustomerRadioButton.AutoSize = true;
+            this.CustomerRadioButton.Font = new System.Drawing.Font("標楷體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.CustomerRadioButton.Location = new System.Drawing.Point(611, 91);
+            this.CustomerRadioButton.Name = "CustomerRadioButton";
+            this.CustomerRadioButton.Size = new System.Drawing.Size(72, 25);
+            this.CustomerRadioButton.TabIndex = 10;
+            this.CustomerRadioButton.TabStop = true;
+            this.CustomerRadioButton.Text = "客戶";
+            this.CustomerRadioButton.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // EMPRadioButton
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Font = new System.Drawing.Font("標楷體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.radioButton2.Location = new System.Drawing.Point(701, 91);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(72, 25);
-            this.radioButton2.TabIndex = 11;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "員工";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.EMPRadioButton.AutoSize = true;
+            this.EMPRadioButton.Font = new System.Drawing.Font("標楷體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.EMPRadioButton.Location = new System.Drawing.Point(701, 91);
+            this.EMPRadioButton.Name = "EMPRadioButton";
+            this.EMPRadioButton.Size = new System.Drawing.Size(72, 25);
+            this.EMPRadioButton.TabIndex = 11;
+            this.EMPRadioButton.TabStop = true;
+            this.EMPRadioButton.Text = "員工";
+            this.EMPRadioButton.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -185,8 +185,8 @@ namespace WindowsFormsApp1
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(923, 384);
-            this.Controls.Add(this.radioButton2);
-            this.Controls.Add(this.radioButton1);
+            this.Controls.Add(this.EMPRadioButton);
+            this.Controls.Add(this.CustomerRadioButton);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
@@ -217,8 +217,8 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton CustomerRadioButton;
+        private System.Windows.Forms.RadioButton EMPRadioButton;
     }
 }
 
