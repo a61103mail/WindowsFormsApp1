@@ -10,7 +10,9 @@ namespace WindowsFormsApp1
     public static class ENT
     {
        internal static FOODEntities db = new FOODEntities();
-       
+        
+        
+
         
         
     }

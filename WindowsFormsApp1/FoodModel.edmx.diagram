@@ -4,12 +4,12 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e123c1ea2e9d4f13af9d3c99a0fcc0b5" Name="Diagram1">
+      <Diagram DiagramId="e123c1ea2e9d4f13af9d3c99a0fcc0b5" Name="Diagram1" ZoomLevel="63">
         <EntityTypeShape EntityType="FOODModel.Category" Width="1.5" PointX="0.75" PointY="9.625" IsExpanded="true" />
         <EntityTypeShape EntityType="FOODModel.Customer" Width="1.5" PointX="3.75" PointY="3.5" IsExpanded="true" />
         <EntityTypeShape EntityType="FOODModel.CustomerRole" Width="1.5" PointX="9" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="FOODModel.DailyPriceTemp" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="FOODModel.Employee" Width="1.5" PointX="3.75" PointY="17.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FOODModel.Employee" Width="1.5" PointX="2.75" PointY="17.125" IsExpanded="true" />
         <EntityTypeShape EntityType="FOODModel.EmployeeRole" Width="1.5" PointX="9" PointY="18.5" IsExpanded="true" />
         <EntityTypeShape EntityType="FOODModel.EmpRole" Width="1.5" PointX="6.75" PointY="22.625" IsExpanded="true" />
         <EntityTypeShape EntityType="FOODModel.Inventory" Width="1.5" PointX="5.25" PointY="8.25" IsExpanded="true" />

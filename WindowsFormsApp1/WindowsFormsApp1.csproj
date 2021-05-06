@@ -159,6 +159,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Purchase.cs">
       <DependentUpon>FoodModel.tt</DependentUpon>
     </Compile>
@@ -219,13 +224,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="registered.resx">
       <DependentUpon>registered.cs</DependentUpon>
     </EmbeddedResource>
@@ -278,10 +279,13 @@
       <DependentUpon>FoodModel.edmx</DependentUpon>
       <LastGenOutput>FoodModel.cs</LastGenOutput>
     </Content>
-    <Content Include="image\correct.png" />
-    <Content Include="image\edit.png" />
-    <Content Include="image\power.png" />
-    <Content Include="image\wrong.png" />
+    <Content Include="Resources\correct.png" />
+    <Content Include="Resources\edit.png" />
+    <Content Include="Resources\power.png" />
+    <Content Include="Resources\wrong.png" />
+    <None Include="Resources\search.png" />
+    <None Include="Resources\plus.png" />
+    <None Include="Resources\minus.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

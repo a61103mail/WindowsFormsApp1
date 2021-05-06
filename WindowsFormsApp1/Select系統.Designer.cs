@@ -41,7 +41,7 @@ namespace WindowsFormsApp1
             this.label1 = new System.Windows.Forms.Label();
             this.IDTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.Panel查詢 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.listView = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -49,7 +49,7 @@ namespace WindowsFormsApp1
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.Panel查詢.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -175,14 +175,14 @@ namespace WindowsFormsApp1
             this.label2.TabIndex = 3;
             this.label2.Text = "編號";
             // 
-            // panel2
+            // Panel查詢
             // 
-            this.panel2.Controls.Add(this.CTMRbtn);
-            this.panel2.Controls.Add(this.EMPbtn);
-            this.panel2.Location = new System.Drawing.Point(186, 12);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(180, 21);
-            this.panel2.TabIndex = 3;
+            this.Panel查詢.Controls.Add(this.CTMRbtn);
+            this.Panel查詢.Controls.Add(this.EMPbtn);
+            this.Panel查詢.Location = new System.Drawing.Point(186, 12);
+            this.Panel查詢.Name = "Panel查詢";
+            this.Panel查詢.Size = new System.Drawing.Size(180, 21);
+            this.Panel查詢.TabIndex = 3;
             // 
             // panel3
             // 
@@ -240,15 +240,15 @@ namespace WindowsFormsApp1
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(574, 656);
             this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.Panel查詢);
             this.Controls.Add(this.panel1);
             this.Name = "Select系統";
             this.Text = "Select系統";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Select系統_KeyDown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.Panel查詢.ResumeLayout(false);
+            this.Panel查詢.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -268,7 +268,7 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox IDTextBox;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Panel panel2;
+        internal System.Windows.Forms.Panel Panel查詢;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.ListView listView;
         private System.Windows.Forms.ColumnHeader columnHeader1;

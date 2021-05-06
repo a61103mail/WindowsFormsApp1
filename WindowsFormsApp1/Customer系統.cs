@@ -43,28 +43,28 @@ namespace WindowsFormsApp1
             this.NameTextBox_Client.AutoCompleteSource =
                                   AutoCompleteSource.CustomSource;
             //-
-            this.CompanyIDTextBox__Client.AutoCompleteCustomSource = source_Unicode;
-            this.CompanyIDTextBox__Client.AutoCompleteMode =
+            this.UnicodeTextBox__Client.AutoCompleteCustomSource = source_Unicode;
+            this.UnicodeTextBox__Client.AutoCompleteMode =
                                   AutoCompleteMode.Suggest;
-            this.CompanyIDTextBox__Client.AutoCompleteSource =
+            this.UnicodeTextBox__Client.AutoCompleteSource =
                                   AutoCompleteSource.CustomSource;
             //-
-            this.TELTextBox_Client.AutoCompleteCustomSource = source_Phone;
-            this.TELTextBox_Client.AutoCompleteMode =
+            this.PhoneTextBox_Client.AutoCompleteCustomSource = source_Phone;
+            this.PhoneTextBox_Client.AutoCompleteMode =
                                   AutoCompleteMode.Suggest;
-            this.TELTextBox_Client.AutoCompleteSource =
+            this.PhoneTextBox_Client.AutoCompleteSource =
                                   AutoCompleteSource.CustomSource;
             //-
-            this.ContactNameTextBox__Client.AutoCompleteCustomSource = source_ContactPerson;
-            this.ContactNameTextBox__Client.AutoCompleteMode =
+            this.ContactPersonTextBox__Client.AutoCompleteCustomSource = source_ContactPerson;
+            this.ContactPersonTextBox__Client.AutoCompleteMode =
                                   AutoCompleteMode.Suggest;
-            this.ContactNameTextBox__Client.AutoCompleteSource =
+            this.ContactPersonTextBox__Client.AutoCompleteSource =
                                   AutoCompleteSource.CustomSource;
             //-
-            this.ContactTELTextBox__Client.AutoCompleteCustomSource = source_ContactCellPhone;
-            this.ContactTELTextBox__Client.AutoCompleteMode =
+            this.ContactCellPhoneTextBox__Client.AutoCompleteCustomSource = source_ContactCellPhone;
+            this.ContactCellPhoneTextBox__Client.AutoCompleteMode =
                                   AutoCompleteMode.Suggest;
-            this.ContactTELTextBox__Client.AutoCompleteSource =
+            this.ContactCellPhoneTextBox__Client.AutoCompleteSource =
                                   AutoCompleteSource.CustomSource;
             //-
             this.FaxTextBox__Client.AutoCompleteCustomSource = source_FAX;
@@ -75,20 +75,27 @@ namespace WindowsFormsApp1
         }
         internal void SelectCTMR(int ID)
         {
-            var CTMR = this.db.Customers.Where(n => n.CustomerID == ID).Select(n => new { n.CustomerID, n.Unicode, n.Name, n.FAX, n.Address, n.Phone, n.Email, n.DoB ,n.ContactPerson,n.ContactCellPhone });
+            var CTMR = from c in db.Customers
+                       from e in db.Employees
+                       where c.CustomerID == ID
+                       select new { c.CustomerID,c.CustomerRoleID,c.Name,c.Unicode,c.Address,c.SalesID,c.Phone,c.FAX,c.ContactPerson,c.ContactCellPhone,c.Email,c.DoB,EMPName=e.Name,e.Cellphone} ;
+            //var CTMR = this.db.Customers.Where(n => n.CustomerID == ID).Select(n => n);
             foreach (var item in CTMR)
             {
+                DoBTimePicker.Value = item.DoB.Value;
                 IDTextBox_Client.Text = item.CustomerID.ToString();
-                NameTextBox_Client.Text = item.Name;
-                TELTextBox_Client.Text = item.Phone;
-                CompanyIDTextBox__Client.Text = item.Unicode;
-                ContactNameTextBox__Client.Text = item.ContactPerson;
-                ContactTELTextBox__Client.Text = item.ContactCellPhone;
                 FaxTextBox__Client.Text = item.FAX;
-                birthTextBox__Client.Text = item.DoB.Value.ToShortDateString();
+                NameTextBox_Client.Text = item.Name;
+                PhoneTextBox_Client.Text = item.Phone;
                 EmailTextBox__Client.Text = item.Email;
-                AddTextBox__Client.Text = item.Address;
-
+                UnicodeTextBox__Client.Text = item.Unicode;
+                AddressTextBox__Client.Text = item.Address;
+                SalesIDTextBox__Client.Text = item.SalesID.ToString();
+                ContactPersonTextBox__Client.Text = item.ContactPerson;
+                ContactCellPhoneTextBox__Client.Text = item.ContactCellPhone;
+                CustomerRoleTextBox_Client.Text = item.CustomerRoleID.ToString();
+                EmployeeTextBox__Client.Text = item.EMPName;
+                EmployeeTELTextBox__Client.Text = item.Cellphone;
             }
         }
         
@@ -100,64 +107,33 @@ namespace WindowsFormsApp1
                 SelectCTMR(item.CustomerID);
             }
         }
-
-        private void NameTextBox_Client_TextChanged(object sender, EventArgs e)
-        {
-            var ID = db.Customers.Where(n => n.Name == NameTextBox_Client.Text).Select(n => new { n.CustomerID });
-            if (ID.Count()>1)
-            {
-                MessageBox.Show("有多筆資料!請用ID或Unicode查詢!");
-            }
-            else
-            {
-                foreach (var item in ID)
-                {
-                    SelectCTMR(item.CustomerID);
-                }
-            }
-            
-        }
-            
-
-        private void TELTextBox_Client_TextChanged(object sender, EventArgs e)
-        {
-            var ID = db.Customers.Where(n => n.Phone == TELTextBox_Client.Text).Select(n => new { n.CustomerID });
-            if (ID.Count() > 1)
-            {
-                MessageBox.Show("有多筆資料!請用ID或Unicode查詢!");
-            }
-            else
-            {
-                foreach (var item in ID)
-                {
-                    SelectCTMR(item.CustomerID);
-                }
-            }
-            
-        }
-
-        private void CompanyIDTextBox__Client_TextChanged(object sender, EventArgs e)
-        {
-            var ID = db.Customers.Where(n => n.Unicode == CompanyIDTextBox__Client.Text).Select(n => new { n.CustomerID });
-            if (ID.Count() > 1)
-            {
-                MessageBox.Show("有多筆資料!請用ID或Unicode查詢!");
-            }
-            else
-            {
-                foreach (var item in ID)
-                {
-                    SelectCTMR(item.CustomerID);
-                }
-            }
-        }
-
         private void button3_Click(object sender, EventArgs e)
         {
             Select系統 s = new Select系統();
             s.CTMRbtn.Checked = true;
+            s.Panel查詢.Enabled = false;
             s.Owner = this;//重要的一步，主要是使Form2的Owner指針指向Form1  
             s.ShowDialog();
+        }
+
+        private void btn_modify_Click(object sender, EventArgs e)
+        {
+            var ctmr = (from i in db.Customers
+                        where i.CustomerID.ToString() == this.IDTextBox_Client.Text
+                        select i).FirstOrDefault();
+            ctmr.CustomerRoleID =int.Parse(this.CustomerRoleTextBox_Client.Text);
+            ctmr.Name = this.NameTextBox_Client.Text;
+            ctmr.Unicode = this.UnicodeTextBox__Client.Text;
+            ctmr.Address = this.AddressTextBox__Client.Text;
+            ctmr.SalesID = int.Parse(this.SalesIDTextBox__Client.Text);
+            ctmr.Phone = this.PhoneTextBox_Client.Text;
+            ctmr.FAX = this.FaxTextBox__Client.Text;
+            ctmr.ContactPerson = this.ContactPersonTextBox__Client.Text;
+            ctmr.ContactCellPhone = this.ContactCellPhoneTextBox__Client.Text;
+            ctmr.Email = this.EmailTextBox__Client.Text;
+            ctmr.DoB = this.DoBTimePicker.Value;
+            ctmr.Password = ctmr.Password;
+            db.SaveChanges();
         }
     }
 }

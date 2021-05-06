@@ -29,39 +29,31 @@ namespace WindowsFormsApp1
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Customer系統));
             this.label1 = new System.Windows.Forms.Label();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.PWTextBox_Client = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.AccountTextBox_Client = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
+            this.btn_modify = new System.Windows.Forms.Button();
             this.EmployeeTELTextBox__Client = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
-            this.EmployeeIDTextBox__Client = new System.Windows.Forms.TextBox();
+            this.SalesIDTextBox__Client = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.EmployeeTextBox__Client = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.AddTextBox__Client = new System.Windows.Forms.TextBox();
+            this.AddressTextBox__Client = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.EmailTextBox__Client = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.birthTextBox__Client = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.FaxTextBox__Client = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.ContactTELTextBox__Client = new System.Windows.Forms.TextBox();
+            this.ContactCellPhoneTextBox__Client = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.ContactNameTextBox__Client = new System.Windows.Forms.TextBox();
+            this.ContactPersonTextBox__Client = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.CategoryTextBox_Client = new System.Windows.Forms.TextBox();
+            this.CustomerRoleTextBox_Client = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.TELTextBox_Client = new System.Windows.Forms.TextBox();
+            this.PhoneTextBox_Client = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.CompanyIDTextBox__Client = new System.Windows.Forms.TextBox();
+            this.UnicodeTextBox__Client = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.NameTextBox_Client = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -70,6 +62,10 @@ namespace WindowsFormsApp1
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btn_creat = new System.Windows.Forms.Button();
+            this.btn_search = new System.Windows.Forms.Button();
+            this.btn_delete = new System.Windows.Forms.Button();
+            this.DoBTimePicker = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -96,36 +92,33 @@ namespace WindowsFormsApp1
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.button3);
-            this.splitContainer1.Panel1.Controls.Add(this.button2);
-            this.splitContainer1.Panel1.Controls.Add(this.button1);
-            this.splitContainer1.Panel1.Controls.Add(this.PWTextBox_Client);
-            this.splitContainer1.Panel1.Controls.Add(this.label17);
-            this.splitContainer1.Panel1.Controls.Add(this.AccountTextBox_Client);
-            this.splitContainer1.Panel1.Controls.Add(this.label16);
+            this.splitContainer1.Panel1.Controls.Add(this.DoBTimePicker);
+            this.splitContainer1.Panel1.Controls.Add(this.btn_creat);
+            this.splitContainer1.Panel1.Controls.Add(this.btn_search);
+            this.splitContainer1.Panel1.Controls.Add(this.btn_delete);
+            this.splitContainer1.Panel1.Controls.Add(this.btn_modify);
             this.splitContainer1.Panel1.Controls.Add(this.EmployeeTELTextBox__Client);
             this.splitContainer1.Panel1.Controls.Add(this.label15);
-            this.splitContainer1.Panel1.Controls.Add(this.EmployeeIDTextBox__Client);
+            this.splitContainer1.Panel1.Controls.Add(this.SalesIDTextBox__Client);
             this.splitContainer1.Panel1.Controls.Add(this.label14);
             this.splitContainer1.Panel1.Controls.Add(this.EmployeeTextBox__Client);
             this.splitContainer1.Panel1.Controls.Add(this.label13);
-            this.splitContainer1.Panel1.Controls.Add(this.AddTextBox__Client);
+            this.splitContainer1.Panel1.Controls.Add(this.AddressTextBox__Client);
             this.splitContainer1.Panel1.Controls.Add(this.label12);
             this.splitContainer1.Panel1.Controls.Add(this.EmailTextBox__Client);
             this.splitContainer1.Panel1.Controls.Add(this.label11);
-            this.splitContainer1.Panel1.Controls.Add(this.birthTextBox__Client);
             this.splitContainer1.Panel1.Controls.Add(this.label10);
             this.splitContainer1.Panel1.Controls.Add(this.FaxTextBox__Client);
             this.splitContainer1.Panel1.Controls.Add(this.label9);
-            this.splitContainer1.Panel1.Controls.Add(this.ContactTELTextBox__Client);
+            this.splitContainer1.Panel1.Controls.Add(this.ContactCellPhoneTextBox__Client);
             this.splitContainer1.Panel1.Controls.Add(this.label8);
-            this.splitContainer1.Panel1.Controls.Add(this.ContactNameTextBox__Client);
+            this.splitContainer1.Panel1.Controls.Add(this.ContactPersonTextBox__Client);
             this.splitContainer1.Panel1.Controls.Add(this.label7);
-            this.splitContainer1.Panel1.Controls.Add(this.CategoryTextBox_Client);
+            this.splitContainer1.Panel1.Controls.Add(this.CustomerRoleTextBox_Client);
             this.splitContainer1.Panel1.Controls.Add(this.label6);
-            this.splitContainer1.Panel1.Controls.Add(this.TELTextBox_Client);
+            this.splitContainer1.Panel1.Controls.Add(this.PhoneTextBox_Client);
             this.splitContainer1.Panel1.Controls.Add(this.label5);
-            this.splitContainer1.Panel1.Controls.Add(this.CompanyIDTextBox__Client);
+            this.splitContainer1.Panel1.Controls.Add(this.UnicodeTextBox__Client);
             this.splitContainer1.Panel1.Controls.Add(this.label4);
             this.splitContainer1.Panel1.Controls.Add(this.NameTextBox_Client);
             this.splitContainer1.Panel1.Controls.Add(this.label3);
@@ -140,89 +133,25 @@ namespace WindowsFormsApp1
             this.splitContainer1.SplitterDistance = 231;
             this.splitContainer1.TabIndex = 1;
             // 
-            // button3
+            // btn_modify
             // 
-            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button3.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button3.Location = new System.Drawing.Point(836, 179);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(70, 25);
-            this.button3.TabIndex = 34;
-            this.button3.Text = "查詢";
-            this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // button2
-            // 
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button2.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button2.Location = new System.Drawing.Point(988, 179);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(70, 25);
-            this.button2.TabIndex = 33;
-            this.button2.Text = "儲存";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.Location = new System.Drawing.Point(912, 179);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(70, 25);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "修改";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // PWTextBox_Client
-            // 
-            this.PWTextBox_Client.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.PWTextBox_Client.Location = new System.Drawing.Point(958, 50);
-            this.PWTextBox_Client.Name = "PWTextBox_Client";
-            this.PWTextBox_Client.Size = new System.Drawing.Size(100, 27);
-            this.PWTextBox_Client.TabIndex = 32;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label17.Location = new System.Drawing.Point(872, 53);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(72, 16);
-            this.label17.TabIndex = 31;
-            this.label17.Text = "客戶密碼";
-            // 
-            // AccountTextBox_Client
-            // 
-            this.AccountTextBox_Client.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.AccountTextBox_Client.Location = new System.Drawing.Point(758, 50);
-            this.AccountTextBox_Client.Name = "AccountTextBox_Client";
-            this.AccountTextBox_Client.Size = new System.Drawing.Size(93, 27);
-            this.AccountTextBox_Client.TabIndex = 30;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label16.Location = new System.Drawing.Point(665, 53);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(72, 16);
-            this.label16.TabIndex = 29;
-            this.label16.Text = "客戶帳號";
+            this.btn_modify.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_modify.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_modify.Image = global::WindowsFormsApp1.Properties.Resources.edit;
+            this.btn_modify.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_modify.Location = new System.Drawing.Point(892, 50);
+            this.btn_modify.Name = "btn_modify";
+            this.btn_modify.Size = new System.Drawing.Size(80, 42);
+            this.btn_modify.TabIndex = 2;
+            this.btn_modify.Text = "修改";
+            this.btn_modify.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_modify.UseVisualStyleBackColor = true;
+            this.btn_modify.Click += new System.EventHandler(this.btn_modify_Click);
             // 
             // EmployeeTELTextBox__Client
             // 
             this.EmployeeTELTextBox__Client.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.EmployeeTELTextBox__Client.Location = new System.Drawing.Point(543, 176);
+            this.EmployeeTELTextBox__Client.Location = new System.Drawing.Point(542, 173);
             this.EmployeeTELTextBox__Client.Name = "EmployeeTELTextBox__Client";
             this.EmployeeTELTextBox__Client.Size = new System.Drawing.Size(100, 27);
             this.EmployeeTELTextBox__Client.TabIndex = 28;
@@ -231,25 +160,25 @@ namespace WindowsFormsApp1
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label15.Location = new System.Drawing.Point(457, 179);
+            this.label15.Location = new System.Drawing.Point(448, 176);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(88, 16);
             this.label15.TabIndex = 27;
             this.label15.Text = "負責人電話";
             // 
-            // EmployeeIDTextBox__Client
+            // SalesIDTextBox__Client
             // 
-            this.EmployeeIDTextBox__Client.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.EmployeeIDTextBox__Client.Location = new System.Drawing.Point(328, 176);
-            this.EmployeeIDTextBox__Client.Name = "EmployeeIDTextBox__Client";
-            this.EmployeeIDTextBox__Client.Size = new System.Drawing.Size(100, 27);
-            this.EmployeeIDTextBox__Client.TabIndex = 26;
+            this.SalesIDTextBox__Client.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.SalesIDTextBox__Client.Location = new System.Drawing.Point(120, 173);
+            this.SalesIDTextBox__Client.Name = "SalesIDTextBox__Client";
+            this.SalesIDTextBox__Client.Size = new System.Drawing.Size(100, 27);
+            this.SalesIDTextBox__Client.TabIndex = 26;
             // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label14.Location = new System.Drawing.Point(242, 179);
+            this.label14.Location = new System.Drawing.Point(29, 179);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(88, 16);
             this.label14.TabIndex = 25;
@@ -258,7 +187,7 @@ namespace WindowsFormsApp1
             // EmployeeTextBox__Client
             // 
             this.EmployeeTextBox__Client.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.EmployeeTextBox__Client.Location = new System.Drawing.Point(120, 176);
+            this.EmployeeTextBox__Client.Location = new System.Drawing.Point(329, 173);
             this.EmployeeTextBox__Client.Name = "EmployeeTextBox__Client";
             this.EmployeeTextBox__Client.Size = new System.Drawing.Size(100, 27);
             this.EmployeeTextBox__Client.TabIndex = 24;
@@ -267,25 +196,25 @@ namespace WindowsFormsApp1
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label13.Location = new System.Drawing.Point(34, 179);
+            this.label13.Location = new System.Drawing.Point(243, 176);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(56, 16);
             this.label13.TabIndex = 23;
             this.label13.Text = "負責人";
             // 
-            // AddTextBox__Client
+            // AddressTextBox__Client
             // 
-            this.AddTextBox__Client.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.AddTextBox__Client.Location = new System.Drawing.Point(758, 134);
-            this.AddTextBox__Client.Name = "AddTextBox__Client";
-            this.AddTextBox__Client.Size = new System.Drawing.Size(300, 27);
-            this.AddTextBox__Client.TabIndex = 22;
+            this.AddressTextBox__Client.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.AddressTextBox__Client.Location = new System.Drawing.Point(329, 134);
+            this.AddressTextBox__Client.Name = "AddressTextBox__Client";
+            this.AddressTextBox__Client.Size = new System.Drawing.Size(313, 27);
+            this.AddressTextBox__Client.TabIndex = 22;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label12.Location = new System.Drawing.Point(666, 137);
+            this.label12.Location = new System.Drawing.Point(243, 137);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(72, 16);
             this.label12.TabIndex = 21;
@@ -294,34 +223,26 @@ namespace WindowsFormsApp1
             // EmailTextBox__Client
             // 
             this.EmailTextBox__Client.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.EmailTextBox__Client.Location = new System.Drawing.Point(330, 134);
+            this.EmailTextBox__Client.Location = new System.Drawing.Point(758, 131);
             this.EmailTextBox__Client.Name = "EmailTextBox__Client";
-            this.EmailTextBox__Client.Size = new System.Drawing.Size(312, 27);
+            this.EmailTextBox__Client.Size = new System.Drawing.Size(300, 27);
             this.EmailTextBox__Client.TabIndex = 20;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label11.Location = new System.Drawing.Point(244, 137);
+            this.label11.Location = new System.Drawing.Point(666, 134);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(72, 16);
             this.label11.TabIndex = 19;
             this.label11.Text = "電子郵件";
             // 
-            // birthTextBox__Client
-            // 
-            this.birthTextBox__Client.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.birthTextBox__Client.Location = new System.Drawing.Point(120, 134);
-            this.birthTextBox__Client.Name = "birthTextBox__Client";
-            this.birthTextBox__Client.Size = new System.Drawing.Size(100, 27);
-            this.birthTextBox__Client.TabIndex = 18;
-            // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label10.Location = new System.Drawing.Point(35, 136);
+            this.label10.Location = new System.Drawing.Point(30, 136);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(40, 16);
             this.label10.TabIndex = 17;
@@ -330,7 +251,7 @@ namespace WindowsFormsApp1
             // FaxTextBox__Client
             // 
             this.FaxTextBox__Client.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.FaxTextBox__Client.Location = new System.Drawing.Point(958, 92);
+            this.FaxTextBox__Client.Location = new System.Drawing.Point(542, 92);
             this.FaxTextBox__Client.Name = "FaxTextBox__Client";
             this.FaxTextBox__Client.Size = new System.Drawing.Size(100, 27);
             this.FaxTextBox__Client.TabIndex = 16;
@@ -339,91 +260,91 @@ namespace WindowsFormsApp1
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label9.Location = new System.Drawing.Point(872, 95);
+            this.label9.Location = new System.Drawing.Point(447, 95);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(72, 16);
             this.label9.TabIndex = 15;
             this.label9.Text = "傳真電話";
             // 
-            // ContactTELTextBox__Client
+            // ContactCellPhoneTextBox__Client
             // 
-            this.ContactTELTextBox__Client.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.ContactTELTextBox__Client.Location = new System.Drawing.Point(758, 92);
-            this.ContactTELTextBox__Client.Name = "ContactTELTextBox__Client";
-            this.ContactTELTextBox__Client.Size = new System.Drawing.Size(93, 27);
-            this.ContactTELTextBox__Client.TabIndex = 14;
+            this.ContactCellPhoneTextBox__Client.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.ContactCellPhoneTextBox__Client.Location = new System.Drawing.Point(965, 173);
+            this.ContactCellPhoneTextBox__Client.Name = "ContactCellPhoneTextBox__Client";
+            this.ContactCellPhoneTextBox__Client.Size = new System.Drawing.Size(93, 27);
+            this.ContactCellPhoneTextBox__Client.TabIndex = 14;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label8.Location = new System.Drawing.Point(665, 95);
+            this.label8.Location = new System.Drawing.Point(871, 176);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(88, 16);
             this.label8.TabIndex = 13;
             this.label8.Text = "聯絡人手機";
             // 
-            // ContactNameTextBox__Client
+            // ContactPersonTextBox__Client
             // 
-            this.ContactNameTextBox__Client.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.ContactNameTextBox__Client.Location = new System.Drawing.Point(542, 92);
-            this.ContactNameTextBox__Client.Name = "ContactNameTextBox__Client";
-            this.ContactNameTextBox__Client.Size = new System.Drawing.Size(100, 27);
-            this.ContactNameTextBox__Client.TabIndex = 12;
+            this.ContactPersonTextBox__Client.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.ContactPersonTextBox__Client.Location = new System.Drawing.Point(758, 173);
+            this.ContactPersonTextBox__Client.Name = "ContactPersonTextBox__Client";
+            this.ContactPersonTextBox__Client.Size = new System.Drawing.Size(100, 27);
+            this.ContactPersonTextBox__Client.TabIndex = 12;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label7.Location = new System.Drawing.Point(457, 95);
+            this.label7.Location = new System.Drawing.Point(666, 179);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(56, 16);
             this.label7.TabIndex = 11;
             this.label7.Text = "聯絡人";
             // 
-            // CategoryTextBox_Client
+            // CustomerRoleTextBox_Client
             // 
-            this.CategoryTextBox_Client.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.CategoryTextBox_Client.Location = new System.Drawing.Point(542, 50);
-            this.CategoryTextBox_Client.Name = "CategoryTextBox_Client";
-            this.CategoryTextBox_Client.Size = new System.Drawing.Size(100, 27);
-            this.CategoryTextBox_Client.TabIndex = 10;
+            this.CustomerRoleTextBox_Client.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.CustomerRoleTextBox_Client.Location = new System.Drawing.Point(542, 50);
+            this.CustomerRoleTextBox_Client.Name = "CustomerRoleTextBox_Client";
+            this.CustomerRoleTextBox_Client.Size = new System.Drawing.Size(100, 27);
+            this.CustomerRoleTextBox_Client.TabIndex = 10;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label6.Location = new System.Drawing.Point(456, 53);
+            this.label6.Location = new System.Drawing.Point(447, 53);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(72, 16);
             this.label6.TabIndex = 9;
             this.label6.Text = "客戶類別";
             // 
-            // TELTextBox_Client
+            // PhoneTextBox_Client
             // 
-            this.TELTextBox_Client.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.TELTextBox_Client.Location = new System.Drawing.Point(120, 92);
-            this.TELTextBox_Client.Name = "TELTextBox_Client";
-            this.TELTextBox_Client.Size = new System.Drawing.Size(100, 27);
-            this.TELTextBox_Client.TabIndex = 8;
+            this.PhoneTextBox_Client.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.PhoneTextBox_Client.Location = new System.Drawing.Point(120, 92);
+            this.PhoneTextBox_Client.Name = "PhoneTextBox_Client";
+            this.PhoneTextBox_Client.Size = new System.Drawing.Size(100, 27);
+            this.PhoneTextBox_Client.TabIndex = 8;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label5.Location = new System.Drawing.Point(34, 95);
+            this.label5.Location = new System.Drawing.Point(29, 95);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(40, 16);
             this.label5.TabIndex = 7;
             this.label5.Text = "電話";
             // 
-            // CompanyIDTextBox__Client
+            // UnicodeTextBox__Client
             // 
-            this.CompanyIDTextBox__Client.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.CompanyIDTextBox__Client.Location = new System.Drawing.Point(329, 92);
-            this.CompanyIDTextBox__Client.Name = "CompanyIDTextBox__Client";
-            this.CompanyIDTextBox__Client.Size = new System.Drawing.Size(100, 27);
-            this.CompanyIDTextBox__Client.TabIndex = 6;
+            this.UnicodeTextBox__Client.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.UnicodeTextBox__Client.Location = new System.Drawing.Point(329, 92);
+            this.UnicodeTextBox__Client.Name = "UnicodeTextBox__Client";
+            this.UnicodeTextBox__Client.Size = new System.Drawing.Size(100, 27);
+            this.UnicodeTextBox__Client.TabIndex = 6;
             // 
             // label4
             // 
@@ -467,7 +388,7 @@ namespace WindowsFormsApp1
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label2.Location = new System.Drawing.Point(34, 53);
+            this.label2.Location = new System.Drawing.Point(29, 53);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(72, 16);
             this.label2.TabIndex = 1;
@@ -504,6 +425,58 @@ namespace WindowsFormsApp1
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // btn_creat
+            // 
+            this.btn_creat.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_creat.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_creat.Image = global::WindowsFormsApp1.Properties.Resources.plus;
+            this.btn_creat.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_creat.Location = new System.Drawing.Point(806, 50);
+            this.btn_creat.Name = "btn_creat";
+            this.btn_creat.Size = new System.Drawing.Size(80, 42);
+            this.btn_creat.TabIndex = 35;
+            this.btn_creat.Text = "新增";
+            this.btn_creat.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_creat.UseVisualStyleBackColor = true;
+            // 
+            // btn_search
+            // 
+            this.btn_search.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_search.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_search.Image = global::WindowsFormsApp1.Properties.Resources.search;
+            this.btn_search.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_search.Location = new System.Drawing.Point(720, 50);
+            this.btn_search.Name = "btn_search";
+            this.btn_search.Size = new System.Drawing.Size(80, 42);
+            this.btn_search.TabIndex = 34;
+            this.btn_search.Text = "查詢";
+            this.btn_search.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_search.UseVisualStyleBackColor = true;
+            this.btn_search.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // btn_delete
+            // 
+            this.btn_delete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_delete.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_delete.Image = global::WindowsFormsApp1.Properties.Resources.minus;
+            this.btn_delete.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_delete.Location = new System.Drawing.Point(978, 50);
+            this.btn_delete.Name = "btn_delete";
+            this.btn_delete.Size = new System.Drawing.Size(80, 42);
+            this.btn_delete.TabIndex = 33;
+            this.btn_delete.Text = "刪除";
+            this.btn_delete.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_delete.UseVisualStyleBackColor = true;
+            // 
+            // DoBTimePicker
+            // 
+            this.DoBTimePicker.CalendarFont = new System.Drawing.Font("新細明體", 9F);
+            this.DoBTimePicker.Font = new System.Drawing.Font("新細明體", 7F);
+            this.DoBTimePicker.Location = new System.Drawing.Point(120, 139);
+            this.DoBTimePicker.Name = "DoBTimePicker";
+            this.DoBTimePicker.Size = new System.Drawing.Size(100, 19);
+            this.DoBTimePicker.TabIndex = 36;
+            // 
             // Customer系統
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -533,36 +506,33 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.TabPage tabPage2;
         internal System.Windows.Forms.TextBox EmployeeTELTextBox__Client;
         private System.Windows.Forms.Label label15;
-        internal System.Windows.Forms.TextBox EmployeeIDTextBox__Client;
+        internal System.Windows.Forms.TextBox SalesIDTextBox__Client;
         private System.Windows.Forms.Label label14;
         internal System.Windows.Forms.TextBox EmployeeTextBox__Client;
         private System.Windows.Forms.Label label13;
-        internal System.Windows.Forms.TextBox AddTextBox__Client;
+        internal System.Windows.Forms.TextBox AddressTextBox__Client;
         private System.Windows.Forms.Label label12;
         internal System.Windows.Forms.TextBox EmailTextBox__Client;
         private System.Windows.Forms.Label label11;
-        internal System.Windows.Forms.TextBox birthTextBox__Client;
         private System.Windows.Forms.Label label10;
         internal System.Windows.Forms.TextBox FaxTextBox__Client;
         private System.Windows.Forms.Label label9;
-        internal System.Windows.Forms.TextBox ContactTELTextBox__Client;
+        internal System.Windows.Forms.TextBox ContactCellPhoneTextBox__Client;
         private System.Windows.Forms.Label label8;
-        internal System.Windows.Forms.TextBox ContactNameTextBox__Client;
+        internal System.Windows.Forms.TextBox ContactPersonTextBox__Client;
         private System.Windows.Forms.Label label7;
-        internal System.Windows.Forms.TextBox CategoryTextBox_Client;
+        internal System.Windows.Forms.TextBox CustomerRoleTextBox_Client;
         private System.Windows.Forms.Label label6;
-        internal System.Windows.Forms.TextBox TELTextBox_Client;
+        internal System.Windows.Forms.TextBox PhoneTextBox_Client;
         private System.Windows.Forms.Label label5;
-        internal System.Windows.Forms.TextBox CompanyIDTextBox__Client;
+        internal System.Windows.Forms.TextBox UnicodeTextBox__Client;
         private System.Windows.Forms.Label label4;
         internal System.Windows.Forms.TextBox NameTextBox_Client;
         private System.Windows.Forms.Label label3;
-        internal System.Windows.Forms.TextBox PWTextBox_Client;
-        private System.Windows.Forms.Label label17;
-        internal System.Windows.Forms.TextBox AccountTextBox_Client;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btn_modify;
+        private System.Windows.Forms.Button btn_delete;
+        private System.Windows.Forms.Button btn_search;
+        private System.Windows.Forms.Button btn_creat;
+        private System.Windows.Forms.DateTimePicker DoBTimePicker;
     }
 }
