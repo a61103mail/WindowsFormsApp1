@@ -115,6 +115,7 @@ namespace WindowsFormsApp1
                             select pd).Sum((pdd) => {
                                 return pdd.UnitPrice * pdd.Qty;
                             })
+
                     };
             this.dataGridView1.DataSource = q.Distinct().ToList();
         }
