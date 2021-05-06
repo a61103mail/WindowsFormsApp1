@@ -18,11 +18,20 @@ namespace WindowsFormsApp1
         private int productID;
         private int productIndex = 0;
         private List<Product_LatestPrice> products;
-        public 詳細(int selectIndex)
+        private List<Label> labels = new List<Label>();
+        public 詳細(int selectedID)
         {
             InitializeComponent();
-            this.productID = selectIndex;
+            this.productID = selectedID;
             this.products = FOODEntities.Product_LatestPrice.ToList();
+            for (int i = 0; i < 10; i++)
+            {
+                var lbl = new Label();
+                labels.Add(lbl);
+                lbl.Dock = DockStyle.Fill;
+                lbl.Font = new Font("標楷體", 14, FontStyle.Bold);
+                this.tableLayoutPanel1.Controls.Add(lbl,1,i);
+            }
         }
 
         private void 詳細_Load(object sender, EventArgs e)
@@ -60,16 +69,13 @@ namespace WindowsFormsApp1
             PropertyInfo[] props = selectedProduct.GetType().GetProperties();
             for (int i = 2; i < props.Length; i++) 
             {
-                var label = new Label();
-                label.Dock = DockStyle.Fill;
-                label.Font = new Font("標楷體", 14, FontStyle.Bold);
                 if (props[i].GetValue(selectedProduct) != null) 
                 {
-                    label.Text = props[i].GetValue(selectedProduct).ToString();
-                    this.tableLayoutPanel1.Controls.Add(label, 1, i - 2);
+                    labels[i-2].Text = props[i].GetValue(selectedProduct).ToString();
                     if (i == 9)
                     {
-                        if (decimal.Parse(props[i].GetValue(selectedProduct).ToString()) >= 2.0M) label.BackColor = Color.Red;
+                        if (decimal.Parse(props[i].GetValue(selectedProduct).ToString()) >= 2.0M) labels[i-2].BackColor = Color.Red;
+                        else labels[i - 2].BackColor = Control.DefaultBackColor;
                     }
                 }
             }
@@ -83,9 +89,9 @@ namespace WindowsFormsApp1
                 if (this.products[i].ProductID == productID)
                 {
                     this.productIndex = i;
+                    this.productID = this.products[i].ProductID;
                 }
             }
-            Console.WriteLine(this.productIndex);
             return productID;
         }
 
@@ -100,7 +106,18 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (this.productIndex <= 0) return;
+            else this.productIndex -= 1;
+            this.productID = this.products[this.productIndex].ProductID;
+            this.詳細_Load(this, EventArgs.Empty);
+        }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (this.productIndex >= this.products.Count -1 ) return;
+            else this.productIndex += 1;
+            this.productID = this.products[this.productIndex].ProductID;
+            this.詳細_Load(this, EventArgs.Empty);
         }
     }
 }
