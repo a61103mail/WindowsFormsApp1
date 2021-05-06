@@ -26,19 +26,14 @@ namespace WindowsFormsApp1
         private void button1_Click(object sender, EventArgs e)
         {
             string Name = textBox1.Text;
+            string productcode = textBox2.Text;
             string Unit = comboBox2.SelectedItem.ToString();
             int CategoryId = comboBox1.SelectedIndex+1;
             string CropCode = textBox3.Text;
             string CustomerID = textBox4.Text;
             //insert
-            try
-            {
-                
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Failed " + ex.Message);
-            }
+
+  
 
         }
         private FOODEntities FOODEntities = new FOODEntities();
