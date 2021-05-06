@@ -43,8 +43,9 @@ namespace WindowsFormsApp1
 
         private void button4_Click(object sender, EventArgs e)
         {
-            詳細 f = new 詳細();
-            f.Show();
+            var selectedIndex = int.Parse(this.dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
+            詳細 f = new 詳細(selectedIndex);
+            f.Show(this);
         }
 
         private void button5_Click(object sender, EventArgs e)
