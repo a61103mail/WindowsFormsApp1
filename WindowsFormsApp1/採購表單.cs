@@ -21,6 +21,8 @@ namespace WindowsFormsApp1
             
         }
         FOODEntities db = new FOODEntities();
+        string suppliername;
+        string sup;
         private void addnews()
         {
             var q = from e in this.db.Employees
@@ -50,7 +52,7 @@ namespace WindowsFormsApp1
             this.textBox1.AutoCompleteCustomSource = DataCollection;
         }
 
-        string suppliername;
+        
         private void button1_Click(object sender, EventArgs e)
         {
             採購搜尋頁面 f = new 採購搜尋頁面();
@@ -234,6 +236,19 @@ namespace WindowsFormsApp1
         private void 採購表單_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            採購單查詢頁面 f = new 採購單查詢頁面();
+            DialogResult res = f.ShowDialog();
+            if (res == DialogResult.OK)
+            {
+                sup = f.thesupplerid;
+            }
+            this.label4.Text = sup;
+            //var q = from s in this.db.Purchases
+            //        where s.SupplierID = this.label4.Text
         }
     }
 }
