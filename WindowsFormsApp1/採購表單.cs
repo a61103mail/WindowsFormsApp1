@@ -22,15 +22,22 @@ namespace WindowsFormsApp1
         }
         FOODEntities db = new FOODEntities();
         string suppliername;
-        int sup;
         private void addnews()
         {
             var q = from e in this.db.Employees
                     select new { empna = e.Name, empid = e.EmployeeID };
-            foreach (var n in q)
-            {
-                this.comboBox2.Items.Add(n.empna);
-            }
+
+            this.comboBox2.DataSource = q.ToList();
+            this.comboBox2.DisplayMember = "empna";
+            this.comboBox2.ValueMember = "empid";
+
+            //foreach (var n in q)
+            //{
+            //    this.comboBox2.Items.Add(n.empna);
+            //}
+
+
+
             var q2 = from p in this.db.Products
                      select new { pcd = p.ProductCode};
             this.productid.DataSource = q2.ToList();
@@ -226,16 +233,10 @@ namespace WindowsFormsApp1
             {
 
             }
-            
         }
         private void dataGridView1_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
                 this.dataGridView1.Rows[e.RowIndex].Cells[0].Value = (e.RowIndex + 1).ToString();
-        }
-
-        private void 採購表單_Load(object sender, EventArgs e)
-        {
-
         }
         
         int indexTracker = 0;
@@ -260,7 +261,7 @@ namespace WindowsFormsApp1
         {
             var q = from p in db.Purchases.AsEnumerable()
                     where p.PurchaseID == purchaseID[tracker]
-                    select new { pid =p.PurchaseID,spid = p.SupplierID,spname =p.Customer.Name, spcp = p.Customer.ContactPerson, spph = p.Customer.Phone, spun = p.Customer.Unicode, spads = p.Customer.Address ,purchaseDate = p.PurchaseDate, RequiredDate = p.RequiredDate, DeliveryAddress = p.Deliveryaddress };
+                    select new { pid =p.PurchaseID,spid = p.SupplierID,spname =p.Customer.Name, spcp = p.Customer.ContactPerson, spph = p.Customer.Phone, spun = p.Customer.Unicode, spads = p.Customer.Address ,purchaseDate = p.PurchaseDate, RequiredDate = p.RequiredDate, DeliveryAddress = p.Deliveryaddress,TallyID = p.TallyEmpID };
             q = q.ToList();
             textBox1.Text = q.FirstOrDefault().spname;
             textBox2.Text = q.FirstOrDefault().spun;
@@ -272,6 +273,8 @@ namespace WindowsFormsApp1
             dateTimePicker1.Value = q.FirstOrDefault().purchaseDate.Value;
             dateTimePicker2.Value = q.FirstOrDefault().RequiredDate.Value;
             textBox6.Text = q.FirstOrDefault().DeliveryAddress;
+            label19.Text = q.FirstOrDefault().TallyID.ToString();
+            comboBox2.SelectedValue = q.FirstOrDefault().TallyID;
 
             DisplayOrderDetails(q.FirstOrDefault().pid);
 
@@ -310,13 +313,6 @@ namespace WindowsFormsApp1
                 this.dataGridView1[5, i].Value = q.ToList()[i].unit;
                 this.dataGridView1[6, i].Value = q.ToList()[i].Total;
                 this.dataGridView1[7, i].Value = q.ToList()[i].comment;
-
-
-
-
-
-
-
             }
 
         }
@@ -326,15 +322,12 @@ namespace WindowsFormsApp1
             indexTracker += 1;
             if (indexTracker < pL.Count)
             {
-                
                 DisplayOrderFields(pL, indexTracker);
-
             }
             else
             {
                 indexTracker = pL.Count-1;
             }
-
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -349,7 +342,6 @@ namespace WindowsFormsApp1
                 indexTracker = 0;
             }
         }
-
         private void button7_Click(object sender, EventArgs e)
         {
             indexTracker = pL.Count - 1;
@@ -360,6 +352,19 @@ namespace WindowsFormsApp1
         {
             indexTracker = 0;
             DisplayOrderFields(pL, indexTracker);
+        }
+
+        private void 採購表單_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label19_TextChanged(object sender, EventArgs e)
+        {
+            //var q = from emp in this.db.Employees
+            //        where emp.EmployeeID == int.Parse(this.label19.Text)
+            //        select new { empID = emp.Unicode };
+            //this.comboBox2.Text = q.ToList().ToString();
         }
     }
 }
