@@ -16,25 +16,24 @@ namespace WindowsFormsApp1
     {
         private FOODEntities FOODEntities = new FOODEntities();
         private int productID;
+        private int productIndex = 0;
+        private List<Product_LatestPrice> products;
         public 詳細(int selectIndex)
         {
             InitializeComponent();
             this.productID = selectIndex;
+            this.products = FOODEntities.Product_LatestPrice.ToList();
         }
 
         private void 詳細_Load(object sender, EventArgs e)
         {
-            var q = from p in FOODEntities.Product_LatestPrice.AsEnumerable()
+            var q = from p in products
                     where p.ProductID == this.productID
                     select new
                     {
-                        image = (
-                            from pic in FOODEntities.Pictures
-                            where pic.ProductCode == p.ProductCode
-                            select pic.IMG
-                        ).ToList()[0],
+                        image = getImage(p.ProductCode),
                         p.Name,
-                        p.ProductID,
+                        ProductID = getProductID(p.ProductID),
                         p.ProductCode,
                         p.CropCode,
                         p.Unit,
@@ -43,38 +42,65 @@ namespace WindowsFormsApp1
                         p.LatestUpperPrice,
                         p.DailyTrend,
                         p.LatestMarket,
-                        p.TransDate
+                        LatestTransDate = p.TransDate.GetValueOrDefault().ToShortDateString()
                     };
             var selectedProduct = q.ToList()[0];
             byte[] bytes = selectedProduct.image;
             label1.Text = selectedProduct.Name;
-            MemoryStream ms = new MemoryStream(bytes);
-            this.pictureBox1.Image = Image.FromStream(ms);
+            if (bytes != null)
+            {
+                MemoryStream ms = new MemoryStream(bytes);
+                this.pictureBox1.Image = Image.FromStream(ms);
+            }
+            else
+            {
+                this.pictureBox1.Image = null;
+            }
+
             PropertyInfo[] props = selectedProduct.GetType().GetProperties();
             for (int i = 2; i < props.Length; i++) 
             {
                 var label = new Label();
+                label.Dock = DockStyle.Fill;
                 label.Font = new Font("標楷體", 14, FontStyle.Bold);
                 if (props[i].GetValue(selectedProduct) != null) 
                 {
-
-                    if (i == props.Length - 1)
-                    {
-                        var trand = selectedProduct.TransDate;
-                        label.Text = $"000000009";
-                    }
-                    else
-                    {
-                        label.Text = props[i].GetValue(selectedProduct).ToString();
-                    }                    
+                    label.Text = props[i].GetValue(selectedProduct).ToString();
                     this.tableLayoutPanel1.Controls.Add(label, 1, i - 2);
-                    
-                    
+                    if (i == 9)
+                    {
+                        if (decimal.Parse(props[i].GetValue(selectedProduct).ToString()) >= 2.0M) label.BackColor = Color.Red;
+                    }
                 }
             }
 
         }
 
+        private int getProductID(int productID)
+        {
+            for (int i = 0; i < this.products.Count; i++)
+            {
+                if (this.products[i].ProductID == productID)
+                {
+                    this.productIndex = i;
+                }
+            }
+            Console.WriteLine(this.productIndex);
+            return productID;
+        }
 
+        private byte[] getImage(string productCode)
+        {
+            var pics = (from pic in FOODEntities.Pictures
+                           where pic.ProductCode == productCode
+                           select pic.IMG).ToList();
+            if (pics.Count == 0) return null;
+            else return pics[0];
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

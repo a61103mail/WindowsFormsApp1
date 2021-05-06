@@ -32,7 +32,12 @@ namespace WindowsFormsApp1
         private void button1_Click(object sender, EventArgs e)
         {
             新增產品 f = new 新增產品();
-            f.Show();
+            var res = f.ShowDialog(this);
+            if (res == DialogResult.OK)
+            {
+                this.button6_Click(this, EventArgs.Empty);
+            }
+            f.Dispose();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -45,7 +50,7 @@ namespace WindowsFormsApp1
         {
             var selectedIndex = int.Parse(this.dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
             詳細 f = new 詳細(selectedIndex);
-            f.Show(this);
+            f.ShowDialog(this);
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -54,10 +59,7 @@ namespace WindowsFormsApp1
             f.Show();
         }
 
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
 
-        }
 
         private void button6_Click(object sender, EventArgs e)
         {

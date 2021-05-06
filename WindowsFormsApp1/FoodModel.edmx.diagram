@@ -25,7 +25,6 @@
         <EntityTypeShape EntityType="FOODModel.sysdiagram" Width="1.5" PointX="7.75" PointY="12.875" IsExpanded="true" />
         <EntityTypeShape EntityType="FOODModel.PurchaseConfirmedDetail" Width="1.5" PointX="10.5" PointY="7.125" IsExpanded="true" />
         <EntityTypeShape EntityType="FOODModel.SalesDetail" Width="1.5" PointX="10.5" PointY="10.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="FOODModel.Product_LatestPrice" Width="1.5" PointX="0.75" PointY="13.875" IsExpanded="true" />
         <EntityTypeShape EntityType="FOODModel.database_firewall_rules" Width="1.5" PointX="12.75" PointY="5.875" IsExpanded="true" />
         <AssociationConnector Association="FOODModel.FK_Product_Category" ManuallyRouted="false" />
         <AssociationConnector Association="FOODModel.FK_CustomerRole_Customer" ManuallyRouted="false" />
@@ -47,6 +46,7 @@
         <AssociationConnector Association="FOODModel.FK_PurchaseConfirmedDetail_Purchase" ManuallyRouted="false" />
         <AssociationConnector Association="FOODModel.FK_PurchaseDetail_Purchase" ManuallyRouted="false" />
         <AssociationConnector Association="FOODModel.FK_PurchaseConfirmedDetail_PurchaseDetail" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="FOODModel.Product_LatestPrice" Width="1.5" PointX="0.75" PointY="13.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

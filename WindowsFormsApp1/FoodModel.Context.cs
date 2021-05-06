@@ -45,7 +45,7 @@ namespace WindowsFormsApp1
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<PurchaseConfirmedDetail> PurchaseConfirmedDetails { get; set; }
         public virtual DbSet<SalesDetail> SalesDetails { get; set; }
-        public virtual DbSet<Product_LatestPrice> Product_LatestPrice { get; set; }
         public virtual DbSet<database_firewall_rules> database_firewall_rules { get; set; }
+        public virtual DbSet<Product_LatestPrice> Product_LatestPrice { get; set; }
     }
 }
