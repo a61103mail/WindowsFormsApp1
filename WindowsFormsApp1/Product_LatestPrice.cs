@@ -12,16 +12,17 @@ namespace WindowsFormsApp1
     using System;
     using System.Collections.Generic;
     
-    public partial class DailyPriceTemp
+    public partial class Product_LatestPrice
     {
-        public int RecordID { get; set; }
-        public Nullable<System.DateTime> TransDate { get; set; }
+        public int ProductID { get; set; }
+        public string ProductCode { get; set; }
         public string CropCode { get; set; }
-        public string MarketCode { get; set; }
-        public Nullable<decimal> Upper_Price { get; set; }
-        public Nullable<decimal> Middle_Price { get; set; }
-        public Nullable<decimal> Lower_Price { get; set; }
-        public Nullable<decimal> Avg_Price { get; set; }
-        public Nullable<decimal> Trans_Quantity { get; set; }
+        public string Name { get; set; }
+        public string Unit { get; set; }
+        public int CategoryID { get; set; }
+        public Nullable<int> SupplierID { get; set; }
+        public Nullable<decimal> LatestUpperPrice { get; set; }
+        public string LatestMarket { get; set; }
+        public Nullable<System.DateTime> TransDate { get; set; }
     }
 }

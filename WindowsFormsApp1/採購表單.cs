@@ -105,13 +105,29 @@ namespace WindowsFormsApp1
                 this.db.Purchases.Add(pchs);
                 this.db.SaveChanges();
                 this.label4.Text = pchs.PurchaseID.ToString();
-                MessageBox.Show("新增成功", "", MessageBoxButtons.OK);
+                
             }
-            PurchaseDetail pchsdtl = new PurchaseDetail
+            
+            foreach (DataGridViewRow dr in this.dataGridView1.Rows)
             {
-                //PurchaseID = int.Parse(this.label4.Text),
-                //ProductID = 
-            };
+                PurchaseDetail pchsdtl = new PurchaseDetail();
+
+                if (dr.Cells[1].Value != null)
+                {
+                    pchsdtl.ProductCode = dr.Cells[1].Value.ToString();
+                    pchsdtl.PurchaseID = pchs.PurchaseID;
+                    pchsdtl.Qty = decimal.Parse(dr.Cells[4].Value.ToString());
+                    pchsdtl.UnitPrice = decimal.Parse(dr.Cells[3].Value.ToString());
+                    pchsdtl.Unit = dr.Cells[5].Value.ToString();
+                    if (dr.Cells[7].Value != null)
+                    {
+                        pchsdtl.Comment = dr.Cells[7].Value.ToString();
+                    }
+                    this.db.PurchaseDetails.Add(pchsdtl);
+                }
+            }
+            this.db.SaveChanges();
+            MessageBox.Show("新增成功", "", MessageBoxButtons.OK);
         }
 
         private void dataGridView1_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
@@ -158,18 +174,28 @@ namespace WindowsFormsApp1
                     var q = from p in this.db.Products
                             where p.ProductCode == id
                             select new { pna = p.Name, punit = p.Unit };
+                    var q1 = from p1 in this.db.Product_LatestPrice
+                             where p1.ProductCode == id
+                             select new { price = p1.LatestUpperPrice };
                     foreach (var n in q)
                     {
                         this.dataGridView1[2, e.RowIndex].Value = n.pna;
                         this.dataGridView1[5, e.RowIndex].Value = n.punit;
                     }
-                    
+                    foreach (var n in q1)
+                    {
+                        this.dataGridView1[3, e.RowIndex].Value = n.price.ToString();
+                    }
+
                 }
                 if (e.ColumnIndex.Equals(2))
                 {
                     var q = from p in db.Products
                             where p.Name == this.dataGridView1.CurrentCell.Value.ToString()
                             select new {pcd = p.ProductCode, punit = p.Unit };
+                    var q1 = from p1 in this.db.Product_LatestPrice
+                             where p1.Name == this.dataGridView1.CurrentCell.Value.ToString()
+                             select new { price = p1.LatestUpperPrice };
 
                     //DataGridViewComboBoxCell cb = dataGridView1[0, e.RowIndex] as DataGridViewComboBoxCell;
                     DataGridViewComboBoxCell cb = (DataGridViewComboBoxCell)dataGridView1.Rows[e.RowIndex].Cells[1];
@@ -178,6 +204,19 @@ namespace WindowsFormsApp1
                     {
                         cb.Value = n.pcd;
                         this.dataGridView1[5, e.RowIndex].Value = n.punit;
+                    }
+                    foreach (var n in q1)
+                    {
+                        this.dataGridView1[3, e.RowIndex].Value = n.price.ToString();
+                    } 
+                }
+                if (e.ColumnIndex == 4 || e.ColumnIndex == 3)
+                {
+                    if (this.dataGridView1[4, e.RowIndex].Value == null)
+                        this.dataGridView1[6, e.RowIndex].Value = "";
+                    else
+                    {
+                        this.dataGridView1[6, e.RowIndex].Value = decimal.Parse(this.dataGridView1[3, e.RowIndex].Value.ToString()) * decimal.Parse(this.dataGridView1[4, e.RowIndex].Value.ToString());
                     }
                 }
             }

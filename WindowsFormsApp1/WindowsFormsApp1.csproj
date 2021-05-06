@@ -115,6 +115,9 @@
     <Compile Include="Product.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Product_LatestPrice.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Purchase.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>

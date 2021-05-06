@@ -28,7 +28,7 @@
           <Property Name="ContactCellPhone" Type="nvarchar" MaxLength="15" Nullable="false" />
           <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="DoB" Type="smalldatetime" />
-          <Property Name="Password" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="CustomerRole">
           <Key>
@@ -38,13 +38,9 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CustomerID" Type="int" Nullable="false" />
         </EntityType>
-        <!--產生期間發現錯誤:
-警告 6002: 資料表/檢視 'FOOD.dbo.DailyPrice' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
         <EntityType Name="DailyPrice">
           <Key>
             <PropertyRef Name="RecordID" />
-            <PropertyRef Name="TransDate" />
-            <PropertyRef Name="CropCode" />
           </Key>
           <Property Name="RecordID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TransDate" Type="date" Nullable="false" />
@@ -61,7 +57,7 @@
             <PropertyRef Name="RecordID" />
           </Key>
           <Property Name="RecordID" Type="int" Nullable="false" />
-          <Property Name="TransDate" Type="date" Nullable="false" />
+          <Property Name="TransDate" Type="date" />
           <Property Name="CropCode" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="MarketCode" Type="nvarchar" MaxLength="10" />
           <Property Name="Upper_Price" Type="money" />
@@ -134,11 +130,11 @@
           <Key>
             <PropertyRef Name="OrderDetailID" />
           </Key>
-          <Property Name="OrderDetailID" Type="int" Nullable="false" />
-          <Property Name="OrderID" Type="int" Nullable="false" />
-          <Property Name="ProductCode" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="Qty" Type="decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="UnitPrice" Type="money" Nullable="false" />
+          <Property Name="OrderDetailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderID" Type="int" />
+          <Property Name="ProductCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="Qty" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="UnitPrice" Type="money" />
           <Property Name="Commert" Type="nvarchar" MaxLength="50" />
           <Property Name="Unit" Type="nvarchar" MaxLength="10" />
         </EntityType>
@@ -244,6 +240,28 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
+        <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'FOOD.dbo.Product_LatestPrice' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+        <EntityType Name="Product_LatestPrice">
+          <Key>
+            <PropertyRef Name="ProductID" />
+            <PropertyRef Name="ProductCode" />
+            <PropertyRef Name="CropCode" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="CategoryID" />
+            <PropertyRef Name="LatestMarket" />
+          </Key>
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="ProductCode" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="CropCode" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Unit" Type="nvarchar" MaxLength="10" />
+          <Property Name="CategoryID" Type="int" Nullable="false" />
+          <Property Name="SupplierID" Type="int" />
+          <Property Name="LatestUpperPrice" Type="money" />
+          <Property Name="LatestMarket" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="TransDate" Type="date" />
+        </EntityType>
         <Association Name="FK_CustomerRole_Customer">
           <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
           <End Role="CustomerRole" Type="Self.CustomerRole" Multiplicity="*" />
@@ -329,7 +347,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_OrderDetail_Order">
-          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="0..1" />
           <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Order">
@@ -341,7 +359,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_OrderDetail_Product">
-          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
           <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Product">
@@ -488,6 +506,7 @@
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CustomerRole" EntityType="Self.CustomerRole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DailyPrice" EntityType="Self.DailyPrice" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DailyPriceTemp" EntityType="Self.DailyPriceTemp" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EmployeeRole" EntityType="Self.EmployeeRole" Schema="dbo" store:Type="Tables" />
@@ -502,19 +521,6 @@
           <EntitySet Name="PurchaseDetail" EntityType="Self.PurchaseDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="DailyPrice" EntityType="Self.DailyPrice" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [DailyPrice].[RecordID] AS [RecordID], 
-    [DailyPrice].[TransDate] AS [TransDate], 
-    [DailyPrice].[CropCode] AS [CropCode], 
-    [DailyPrice].[MarketCode] AS [MarketCode], 
-    [DailyPrice].[Upper_Price] AS [Upper_Price], 
-    [DailyPrice].[Middle_Price] AS [Middle_Price], 
-    [DailyPrice].[Lower_Price] AS [Lower_Price], 
-    [DailyPrice].[Avg_Price] AS [Avg_Price], 
-    [DailyPrice].[Trans_Quantity] AS [Trans_Quantity]
-    FROM [dbo].[DailyPrice] AS [DailyPrice]</DefiningQuery>
-          </EntitySet>
           <EntitySet Name="PurchaseConfirmedDetail" EntityType="Self.PurchaseConfirmedDetail" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [PurchaseConfirmedDetail].[PurchaseComfirmedDetailID] AS [PurchaseComfirmedDetailID], 
@@ -538,6 +544,20 @@
     [SalesDetail].[unit] AS [unit], 
     [SalesDetail].[Comment] AS [Comment]
     FROM [dbo].[SalesDetail] AS [SalesDetail]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Product_LatestPrice" EntityType="Self.Product_LatestPrice" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Product_LatestPrice].[ProductID] AS [ProductID], 
+    [Product_LatestPrice].[ProductCode] AS [ProductCode], 
+    [Product_LatestPrice].[CropCode] AS [CropCode], 
+    [Product_LatestPrice].[Name] AS [Name], 
+    [Product_LatestPrice].[Unit] AS [Unit], 
+    [Product_LatestPrice].[CategoryID] AS [CategoryID], 
+    [Product_LatestPrice].[SupplierID] AS [SupplierID], 
+    [Product_LatestPrice].[LatestUpperPrice] AS [LatestUpperPrice], 
+    [Product_LatestPrice].[LatestMarket] AS [LatestMarket], 
+    [Product_LatestPrice].[TransDate] AS [TransDate]
+    FROM [dbo].[Product_LatestPrice] AS [Product_LatestPrice]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_CustomerRole_Customer" Association="Self.FK_CustomerRole_Customer">
             <End Role="Customer" EntitySet="Customer" />
@@ -649,7 +669,7 @@
           <Property Name="ContactCellPhone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="DoB" Type="DateTime" Precision="0" />
-          <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="CustomerRoles" Relationship="Self.FK_CustomerRole_Customer" FromRole="Customer" ToRole="CustomerRole" />
           <NavigationProperty Name="Orders" Relationship="Self.FK_Order_Customer" FromRole="Customer" ToRole="Order" />
           <NavigationProperty Name="Purchases" Relationship="Self.FK_Purchase_Customer" FromRole="Customer" ToRole="Purchase" />
@@ -664,12 +684,26 @@
           <NavigationProperty Name="Customer" Relationship="Self.FK_CustomerRole_Customer" FromRole="CustomerRole" ToRole="Customer" />
           <NavigationProperty Name="Role" Relationship="Self.FK_CustomerRole_Role" FromRole="CustomerRole" ToRole="Role" />
         </EntityType>
+        <EntityType Name="DailyPrice">
+          <Key>
+            <PropertyRef Name="RecordID" />
+          </Key>
+          <Property Name="RecordID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TransDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CropCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MarketCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Upper_Price" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Middle_Price" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Lower_Price" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Avg_Price" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Trans_Quantity" Type="Decimal" Precision="18" Scale="0" />
+        </EntityType>
         <EntityType Name="DailyPriceTemp">
           <Key>
             <PropertyRef Name="RecordID" />
           </Key>
           <Property Name="RecordID" Type="Int32" Nullable="false" />
-          <Property Name="TransDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="TransDate" Type="DateTime" Precision="0" />
           <Property Name="CropCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="MarketCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="Upper_Price" Type="Decimal" Precision="19" Scale="4" />
@@ -752,11 +786,11 @@
           <Key>
             <PropertyRef Name="OrderDetailID" />
           </Key>
-          <Property Name="OrderDetailID" Type="Int32" Nullable="false" />
-          <Property Name="OrderID" Type="Int32" Nullable="false" />
-          <Property Name="ProductCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Qty" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="UnitPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="OrderDetailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderID" Type="Int32" />
+          <Property Name="ProductCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Qty" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="UnitPrice" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="Commert" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Unit" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Order" Relationship="Self.FK_OrderDetail_Order" FromRole="OrderDetail" ToRole="Order" />
@@ -842,22 +876,6 @@
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
-        <EntityType Name="DailyPrice">
-          <Key>
-            <PropertyRef Name="RecordID" />
-            <PropertyRef Name="TransDate" />
-            <PropertyRef Name="CropCode" />
-          </Key>
-          <Property Name="RecordID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TransDate" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="CropCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="MarketCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="Upper_Price" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="Middle_Price" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="Lower_Price" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="Avg_Price" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="Trans_Quantity" Type="Decimal" Precision="18" Scale="0" />
-        </EntityType>
         <EntityType Name="PurchaseConfirmedDetail">
           <Key>
             <PropertyRef Name="PurchaseComfirmedDetailID" />
@@ -897,6 +915,26 @@
           <NavigationProperty Name="Order" Relationship="Self.FK_SalesDetail_Order" FromRole="SalesDetail" ToRole="Order" />
           <NavigationProperty Name="OrderDetail" Relationship="Self.FK_SalesDetail_OrderDetail" FromRole="SalesDetail" ToRole="OrderDetail" />
           <NavigationProperty Name="Product" Relationship="Self.FK_SalesDetail_Product" FromRole="SalesDetail" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Product_LatestPrice">
+          <Key>
+            <PropertyRef Name="ProductID" />
+            <PropertyRef Name="ProductCode" />
+            <PropertyRef Name="CropCode" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="CategoryID" />
+            <PropertyRef Name="LatestMarket" />
+          </Key>
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="ProductCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CropCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Unit" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryID" Type="Int32" Nullable="false" />
+          <Property Name="SupplierID" Type="Int32" />
+          <Property Name="LatestUpperPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="LatestMarket" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TransDate" Type="DateTime" Precision="0" />
         </EntityType>
         <Association Name="FK_Product_Category">
           <End Role="Category" Type="Self.Category" Multiplicity="1" />
@@ -1007,7 +1045,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_OrderDetail_Order">
-          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="0..1" />
           <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Order">
@@ -1031,7 +1069,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_OrderDetail_Product">
-          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
           <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Product">
@@ -1142,6 +1180,7 @@
           <EntitySet Name="Categories" EntityType="Self.Category" />
           <EntitySet Name="Customers" EntityType="Self.Customer" />
           <EntitySet Name="CustomerRoles" EntityType="Self.CustomerRole" />
+          <EntitySet Name="DailyPrices" EntityType="Self.DailyPrice" />
           <EntitySet Name="DailyPriceTemps" EntityType="Self.DailyPriceTemp" />
           <EntitySet Name="Employees" EntityType="Self.Employee" />
           <EntitySet Name="EmployeeRoles" EntityType="Self.EmployeeRole" />
@@ -1156,9 +1195,9 @@
           <EntitySet Name="PurchaseDetails" EntityType="Self.PurchaseDetail" />
           <EntitySet Name="Roles" EntityType="Self.Role" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
-          <EntitySet Name="DailyPrices" EntityType="Self.DailyPrice" />
           <EntitySet Name="PurchaseConfirmedDetails" EntityType="Self.PurchaseConfirmedDetail" />
           <EntitySet Name="SalesDetails" EntityType="Self.SalesDetail" />
+          <EntitySet Name="Product_LatestPrice" EntityType="Self.Product_LatestPrice" />
           <AssociationSet Name="FK_Product_Category" Association="Self.FK_Product_Category">
             <End Role="Category" EntitySet="Categories" />
             <End Role="Product" EntitySet="Products" />
@@ -1279,6 +1318,21 @@
                 <ScalarProperty Name="RoleID" ColumnName="RoleID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DailyPrices">
+            <EntityTypeMapping TypeName="FOODModel.DailyPrice">
+              <MappingFragment StoreEntitySet="DailyPrice">
+                <ScalarProperty Name="RecordID" ColumnName="RecordID" />
+                <ScalarProperty Name="TransDate" ColumnName="TransDate" />
+                <ScalarProperty Name="CropCode" ColumnName="CropCode" />
+                <ScalarProperty Name="MarketCode" ColumnName="MarketCode" />
+                <ScalarProperty Name="Upper_Price" ColumnName="Upper_Price" />
+                <ScalarProperty Name="Middle_Price" ColumnName="Middle_Price" />
+                <ScalarProperty Name="Lower_Price" ColumnName="Lower_Price" />
+                <ScalarProperty Name="Avg_Price" ColumnName="Avg_Price" />
+                <ScalarProperty Name="Trans_Quantity" ColumnName="Trans_Quantity" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1446,21 +1500,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="DailyPrices">
-            <EntityTypeMapping TypeName="FOODModel.DailyPrice">
-              <MappingFragment StoreEntitySet="DailyPrice">
-                <ScalarProperty Name="RecordID" ColumnName="RecordID" />
-                <ScalarProperty Name="TransDate" ColumnName="TransDate" />
-                <ScalarProperty Name="CropCode" ColumnName="CropCode" />
-                <ScalarProperty Name="MarketCode" ColumnName="MarketCode" />
-                <ScalarProperty Name="Upper_Price" ColumnName="Upper_Price" />
-                <ScalarProperty Name="Middle_Price" ColumnName="Middle_Price" />
-                <ScalarProperty Name="Lower_Price" ColumnName="Lower_Price" />
-                <ScalarProperty Name="Avg_Price" ColumnName="Avg_Price" />
-                <ScalarProperty Name="Trans_Quantity" ColumnName="Trans_Quantity" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="PurchaseConfirmedDetails">
             <EntityTypeMapping TypeName="FOODModel.PurchaseConfirmedDetail">
               <MappingFragment StoreEntitySet="PurchaseConfirmedDetail">
@@ -1486,6 +1525,22 @@
                 <ScalarProperty Name="Qty" ColumnName="Qty" />
                 <ScalarProperty Name="unit" ColumnName="unit" />
                 <ScalarProperty Name="Comment" ColumnName="Comment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Product_LatestPrice">
+            <EntityTypeMapping TypeName="FOODModel.Product_LatestPrice">
+              <MappingFragment StoreEntitySet="Product_LatestPrice">
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+                <ScalarProperty Name="CropCode" ColumnName="CropCode" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
+                <ScalarProperty Name="LatestUpperPrice" ColumnName="LatestUpperPrice" />
+                <ScalarProperty Name="LatestMarket" ColumnName="LatestMarket" />
+                <ScalarProperty Name="TransDate" ColumnName="TransDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
