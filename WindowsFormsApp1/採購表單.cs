@@ -22,7 +22,7 @@ namespace WindowsFormsApp1
         }
         FOODEntities db = new FOODEntities();
         string suppliername;
-        string sup;
+        int sup;
         private void addnews()
         {
             var q = from e in this.db.Employees
@@ -240,15 +240,17 @@ namespace WindowsFormsApp1
 
         private void button3_Click(object sender, EventArgs e)
         {
-            採購單查詢頁面 f = new 採購單查詢頁面();
-            DialogResult res = f.ShowDialog();
+            採購單查詢頁面 fk = new 採購單查詢頁面();
+            DialogResult res = fk.ShowDialog();
             if (res == DialogResult.OK)
             {
-                sup = f.thesupplerid;
+                sup = fk.thesupplerid;
             }
-            this.label4.Text = sup;
-            //var q = from s in this.db.Purchases
-            //        where s.SupplierID = this.label4.Text
+            this.label4.Text = sup.ToString();
+            
+            var q = from s in this.db.Purchases
+                    where s.SupplierID == sup
+                    select s;
         }
     }
 }

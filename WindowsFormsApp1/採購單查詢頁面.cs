@@ -13,7 +13,7 @@ namespace WindowsFormsApp1
     public partial class 採購單查詢頁面 : Form
     {
         FOODEntities db = new FOODEntities();
-        public string thesupplerid;
+        public int thesupplerid;
         List<Purchase> purchaseList = new List<Purchase>(); 
         public 採購單查詢頁面()
         {
@@ -27,26 +27,11 @@ namespace WindowsFormsApp1
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
             DateTime begTime = Convert.ToDateTime(this.dateTimePicker1.Value.ToShortDateString());
-            //MessageBox.Show(this.dateTimePicker1.Value.ToString()); 
-            //var q = from p in db.PurchaseDetails
-
-            //        where (p.Purchase.PurchaseDate >= begTime && p.Purchase.PurchaseDate <= this.dateTimePicker2.Value)
-            //        //group p by p.PurchaseID into g
-            //        select new
-            //        {
-            //            PurchaseID = p.Purchase.PurchaseID,
-            //            Date = p.Purchase.PurchaseDate,
-            //            SupplerID = p.Purchase.SupplierID,
-            //            Suppler = p.Purchase.Customer.Name,
-            //            Total = p.UnitPrice*p.Qty,
-            //        }; /*Sum(n => n.price * n.QTY)*/
-            //var R = q.GroupBy(n => n.PurchaseID).Select(n=>new { n.Key,S=n.Sum(w => w.price * w.QTY) });
-            //var T = from t in q
-            //        from r in R
-            //        select new { t.PurchaseID, t.Date, t.SupplerID, t.Suppler, r.S };
+         
 
             var q = from p in db.Purchases.AsEnumerable()
                     where (p.PurchaseDate >= begTime && p.PurchaseDate <= this.dateTimePicker2.Value)
+                    
                     select new {
                        訂單編號= p.PurchaseID,
                        訂單日期= p.PurchaseDate,
@@ -79,7 +64,7 @@ namespace WindowsFormsApp1
                 Boolean b = Convert.ToBoolean(ifcheck.Value);
                 if (b)
                 {
-                    thesupplerid = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
+                    thesupplerid = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString());
                 }
             }
         }
@@ -92,6 +77,57 @@ namespace WindowsFormsApp1
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            var q = from p in db.Purchases.AsEnumerable()
+                    where (p.Customer.Name.Contains(this.textBox1.Text))
+
+                    select new
+                    {
+                        訂單編號 = p.PurchaseID,
+                        訂單日期 = p.PurchaseDate,
+                        供應商編號 = p.SupplierID,
+                        供應商 = p.Customer.Name,
+                        Total = (
+                            from pd in p.PurchaseDetails
+                            where pd.PurchaseID == p.PurchaseID
+                            select pd).Sum((pdd) => {
+                                return pdd.UnitPrice * pdd.Qty;
+                            })
+                    };
+            this.dataGridView1.DataSource = q.ToList();
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            //var q1 = from pd in db.PurchaseDetails.AsEnumerable()
+            //         where pd.ProductCode.Contains(
+            //             (from p in db.PurchaseDetails.AsEnumerable()
+            //              where p.Product.Name.Contains(textBox2.Text)
+            //              select new { pid = p.ProductCode })
+            //                );
+           
+
+            var q = from p in db.Purchases.AsEnumerable()
+                    from i in p.PurchaseDetails.AsEnumerable()
+                    where i.Product.Name.Contains(textBox2.Text)
+
+                    select new
+                    {
+                        訂單編號 = p.PurchaseID,
+                        訂單日期 = p.PurchaseDate,
+                        供應商編號 = p.SupplierID,
+                        供應商 = p.Customer.Name,
+                        Total = (
+                            from pd in p.PurchaseDetails
+                            where pd.PurchaseID == p.PurchaseID
+                            select pd).Sum((pdd) => {
+                                return pdd.UnitPrice * pdd.Qty;
+                            })
+                    };
+            this.dataGridView1.DataSource = q.ToList();
         }
     }
 }
