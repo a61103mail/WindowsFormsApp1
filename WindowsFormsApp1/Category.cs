@@ -12,17 +12,18 @@ namespace WindowsFormsApp1
     using System;
     using System.Collections.Generic;
     
-    public partial class Product_LatestPrice
+    public partial class Category
     {
-        public int ProductID { get; set; }
-        public string ProductCode { get; set; }
-        public string CropCode { get; set; }
-        public string Name { get; set; }
-        public string Unit { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Category()
+        {
+            this.Products = new HashSet<Product>();
+        }
+    
         public int CategoryID { get; set; }
-        public Nullable<int> SupplierID { get; set; }
-        public Nullable<decimal> LatestUpperPrice { get; set; }
-        public string LatestMarket { get; set; }
-        public System.DateTime TransDate { get; set; }
+        public string Name { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Product> Products { get; set; }
     }
 }

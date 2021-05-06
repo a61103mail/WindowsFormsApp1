@@ -18,7 +18,6 @@ namespace WindowsFormsApp1
         public Order()
         {
             this.OrderDetails = new HashSet<OrderDetail>();
-            this.SalesDetails = new HashSet<SalesDetail>();
         }
     
         public int OrderID { get; set; }
@@ -35,7 +34,5 @@ namespace WindowsFormsApp1
         public virtual Employee Employee { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SalesDetail> SalesDetails { get; set; }
     }
 }

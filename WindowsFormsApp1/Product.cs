@@ -22,7 +22,6 @@ namespace WindowsFormsApp1
             this.Pictures = new HashSet<Picture>();
             this.PurchaseConfirmedDetails = new HashSet<PurchaseConfirmedDetail>();
             this.PurchaseDetails = new HashSet<PurchaseDetail>();
-            this.SalesDetails = new HashSet<SalesDetail>();
         }
     
         public int ProductID { get; set; }
@@ -34,6 +33,7 @@ namespace WindowsFormsApp1
         public Nullable<int> CustomerID { get; set; }
         public Nullable<int> SubCategoryID { get; set; }
     
+        public virtual Category Category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Inventory> Inventories { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -44,7 +44,5 @@ namespace WindowsFormsApp1
         public virtual ICollection<PurchaseConfirmedDetail> PurchaseConfirmedDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PurchaseDetail> PurchaseDetails { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SalesDetail> SalesDetails { get; set; }
     }
 }

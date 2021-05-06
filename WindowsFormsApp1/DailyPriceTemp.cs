@@ -15,7 +15,7 @@ namespace WindowsFormsApp1
     public partial class DailyPriceTemp
     {
         public int RecordID { get; set; }
-        public System.DateTime TransDate { get; set; }
+        public Nullable<System.DateTime> TransDate { get; set; }
         public string CropCode { get; set; }
         public string MarketCode { get; set; }
         public Nullable<decimal> Upper_Price { get; set; }
@@ -23,5 +23,7 @@ namespace WindowsFormsApp1
         public Nullable<decimal> Lower_Price { get; set; }
         public Nullable<decimal> Avg_Price { get; set; }
         public Nullable<decimal> Trans_Quantity { get; set; }
+        public Nullable<decimal> Yesterday_UpperPrice { get; set; }
+        public Nullable<decimal> Trend { get; set; }
     }
 }
