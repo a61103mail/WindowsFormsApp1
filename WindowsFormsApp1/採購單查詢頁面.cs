@@ -14,7 +14,10 @@ namespace WindowsFormsApp1
     {
         FOODEntities db = new FOODEntities();
         public int thesupplerid;
-        List<Purchase> purchaseList = new List<Purchase>(); 
+        List<Purchase> purchaseList = new List<Purchase>();
+        DateTime begDate = DateTime.Today.AddDays(7);
+        DateTime endDate = DateTime.Today.AddDays(1);
+
         public 採購單查詢頁面()
         {
             
@@ -23,15 +26,16 @@ namespace WindowsFormsApp1
             this.button2.DialogResult = DialogResult.Cancel;
             this.dateTimePicker2.Value = DateTime.Today.AddDays(1);
         }
-
+        
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-            DateTime begTime = Convert.ToDateTime(this.dateTimePicker1.Value.ToShortDateString());
-         
+             begDate = Convert.ToDateTime(this.dateTimePicker1.Value.ToShortDateString());
+             endDate = this.dateTimePicker2.Value;
 
             var q = from p in db.Purchases.AsEnumerable()
-                    where (p.PurchaseDate >= begTime && p.PurchaseDate <= this.dateTimePicker2.Value)
-                    
+                    from i in p.PurchaseDetails.AsEnumerable()
+                    where (p.PurchaseDate >= begDate && p.PurchaseDate <= endDate) && i.Product.Name.Contains(textBox2.Text) && p.Customer.Name.Contains(textBox1.Text)
+
                     select new {
                        訂單編號= p.PurchaseID,
                        訂單日期= p.PurchaseDate,
@@ -44,7 +48,8 @@ namespace WindowsFormsApp1
                                 return pdd.UnitPrice * pdd.Qty;
                             })
                     };
-            this.dataGridView1.DataSource = q.ToList();
+            
+            this.dataGridView1.DataSource = q.Distinct().ToList();
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -81,23 +86,7 @@ namespace WindowsFormsApp1
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            var q = from p in db.Purchases.AsEnumerable()
-                    where (p.Customer.Name.Contains(this.textBox1.Text))
-
-                    select new
-                    {
-                        訂單編號 = p.PurchaseID,
-                        訂單日期 = p.PurchaseDate,
-                        供應商編號 = p.SupplierID,
-                        供應商 = p.Customer.Name,
-                        Total = (
-                            from pd in p.PurchaseDetails
-                            where pd.PurchaseID == p.PurchaseID
-                            select pd).Sum((pdd) => {
-                                return pdd.UnitPrice * pdd.Qty;
-                            })
-                    };
-            this.dataGridView1.DataSource = q.ToList();
+            textBox2_TextChanged(sender, e);
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
@@ -112,7 +101,7 @@ namespace WindowsFormsApp1
 
             var q = from p in db.Purchases.AsEnumerable()
                     from i in p.PurchaseDetails.AsEnumerable()
-                    where i.Product.Name.Contains(textBox2.Text)
+                    where i.Product.Name.Contains(textBox2.Text) && p.Customer.Name.Contains(textBox1.Text)
 
                     select new
                     {
@@ -127,7 +116,12 @@ namespace WindowsFormsApp1
                                 return pdd.UnitPrice * pdd.Qty;
                             })
                     };
-            this.dataGridView1.DataSource = q.ToList();
+            this.dataGridView1.DataSource = q.Distinct().ToList();
+        }
+
+        private void 採購單查詢頁面_Load(object sender, EventArgs e)
+        {
+            textBox2_TextChanged(sender, e);
         }
     }
 }

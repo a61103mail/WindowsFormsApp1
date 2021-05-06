@@ -166,6 +166,7 @@ namespace WindowsFormsApp1
             this.Controls.Add(this.dateTimePicker1);
             this.Name = "採購單查詢頁面";
             this.Text = "採購單查詢頁面";
+            this.Load += new System.EventHandler(this.採購單查詢頁面_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
