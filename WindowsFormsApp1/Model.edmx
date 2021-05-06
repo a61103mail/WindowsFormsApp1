@@ -23,9 +23,9 @@
           <Property Name="Address" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="SalesID" Type="int" Nullable="false" />
           <Property Name="Phone" Type="nvarchar" MaxLength="15" Nullable="false" />
-          <Property Name="FAX" Type="nvarchar" MaxLength="15" Nullable="false" />
-          <Property Name="ContactPerson" Type="nvarchar" MaxLength="10" Nullable="false" />
-          <Property Name="ContactCellPhone" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="FAX" Type="nvarchar" MaxLength="15" />
+          <Property Name="ContactPerson" Type="nvarchar" MaxLength="10" />
+          <Property Name="ContactCellPhone" Type="nvarchar" MaxLength="15" />
           <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="DoB" Type="smalldatetime" />
           <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -65,6 +65,8 @@
           <Property Name="Lower_Price" Type="money" />
           <Property Name="Avg_Price" Type="money" />
           <Property Name="Trans_Quantity" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Yesterday_UpperPrice" Type="money" />
+          <Property Name="Trend" Type="decimal" Precision="5" Scale="2" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
@@ -78,7 +80,7 @@
           <Property Name="Cellphone" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="DOE" Type="date" Nullable="false" />
           <Property Name="Unicode" Type="nvarchar" MaxLength="10" Nullable="false" />
-          <Property Name="Password" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Email" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="EmployeeRole">
@@ -144,7 +146,7 @@
           </Key>
           <Property Name="PictureID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ProductCode" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="IMG" Type="binary" MaxLength="50" Nullable="false" />
+          <Property Name="IMG" Type="varbinary(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -248,18 +250,17 @@
             <PropertyRef Name="ProductCode" />
             <PropertyRef Name="CropCode" />
             <PropertyRef Name="Name" />
-            <PropertyRef Name="CategoryID" />
-            <PropertyRef Name="LatestMarket" />
           </Key>
           <Property Name="ProductID" Type="int" Nullable="false" />
           <Property Name="ProductCode" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="CropCode" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Unit" Type="nvarchar" MaxLength="10" />
-          <Property Name="CategoryID" Type="int" Nullable="false" />
+          <Property Name="Category" Type="nvarchar" MaxLength="20" />
           <Property Name="SupplierID" Type="int" />
           <Property Name="LatestUpperPrice" Type="money" />
-          <Property Name="LatestMarket" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="DailyTrend" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="LatestMarket" Type="nvarchar" MaxLength="10" />
           <Property Name="TransDate" Type="date" />
         </EntityType>
         <Association Name="FK_CustomerRole_Customer">
@@ -552,9 +553,10 @@
     [Product_LatestPrice].[CropCode] AS [CropCode], 
     [Product_LatestPrice].[Name] AS [Name], 
     [Product_LatestPrice].[Unit] AS [Unit], 
-    [Product_LatestPrice].[CategoryID] AS [CategoryID], 
+    [Product_LatestPrice].[Category] AS [Category], 
     [Product_LatestPrice].[SupplierID] AS [SupplierID], 
     [Product_LatestPrice].[LatestUpperPrice] AS [LatestUpperPrice], 
+    [Product_LatestPrice].[DailyTrend] AS [DailyTrend], 
     [Product_LatestPrice].[LatestMarket] AS [LatestMarket], 
     [Product_LatestPrice].[TransDate] AS [TransDate]
     FROM [dbo].[Product_LatestPrice] AS [Product_LatestPrice]</DefiningQuery>
@@ -664,9 +666,9 @@
           <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="SalesID" Type="Int32" Nullable="false" />
           <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="FAX" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ContactPerson" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ContactCellPhone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FAX" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="ContactPerson" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ContactCellPhone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="DoB" Type="DateTime" Precision="0" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
@@ -711,6 +713,8 @@
           <Property Name="Lower_Price" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="Avg_Price" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="Trans_Quantity" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Yesterday_UpperPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Trend" Type="Decimal" Precision="5" Scale="2" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
@@ -724,7 +728,7 @@
           <Property Name="Cellphone" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="DOE" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Unicode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="EmployeeRoles" Relationship="Self.FK_EmployeeRole_Employee" FromRole="Employee" ToRole="EmployeeRole" />
           <NavigationProperty Name="Orders" Relationship="Self.FK_Order_Employee" FromRole="Employee" ToRole="Order" />
@@ -803,7 +807,7 @@
           </Key>
           <Property Name="PictureID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ProductCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="IMG" Type="Binary" MaxLength="50" FixedLength="true" Nullable="false" />
+          <Property Name="IMG" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
           <NavigationProperty Name="Product" Relationship="Self.FK_Picture_Product" FromRole="Picture" ToRole="Product" />
         </EntityType>
         <EntityType Name="Product">
@@ -922,18 +926,17 @@
             <PropertyRef Name="ProductCode" />
             <PropertyRef Name="CropCode" />
             <PropertyRef Name="Name" />
-            <PropertyRef Name="CategoryID" />
-            <PropertyRef Name="LatestMarket" />
           </Key>
           <Property Name="ProductID" Type="Int32" Nullable="false" />
           <Property Name="ProductCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="CropCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Unit" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="CategoryID" Type="Int32" Nullable="false" />
+          <Property Name="Category" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="SupplierID" Type="Int32" />
           <Property Name="LatestUpperPrice" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="LatestMarket" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DailyTrend" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="LatestMarket" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="TransDate" Type="DateTime" Precision="0" />
         </EntityType>
         <Association Name="FK_Product_Category">
@@ -1348,6 +1351,8 @@
                 <ScalarProperty Name="Lower_Price" ColumnName="Lower_Price" />
                 <ScalarProperty Name="Avg_Price" ColumnName="Avg_Price" />
                 <ScalarProperty Name="Trans_Quantity" ColumnName="Trans_Quantity" />
+                <ScalarProperty Name="Yesterday_UpperPrice" ColumnName="Yesterday_UpperPrice" />
+                <ScalarProperty Name="Trend" ColumnName="Trend" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1536,9 +1541,10 @@
                 <ScalarProperty Name="CropCode" ColumnName="CropCode" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Unit" ColumnName="Unit" />
-                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
                 <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
                 <ScalarProperty Name="LatestUpperPrice" ColumnName="LatestUpperPrice" />
+                <ScalarProperty Name="DailyTrend" ColumnName="DailyTrend" />
                 <ScalarProperty Name="LatestMarket" ColumnName="LatestMarket" />
                 <ScalarProperty Name="TransDate" ColumnName="TransDate" />
               </MappingFragment>

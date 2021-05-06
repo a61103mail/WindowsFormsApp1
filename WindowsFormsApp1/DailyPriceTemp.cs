@@ -23,5 +23,7 @@ namespace WindowsFormsApp1
         public Nullable<decimal> Lower_Price { get; set; }
         public Nullable<decimal> Avg_Price { get; set; }
         public Nullable<decimal> Trans_Quantity { get; set; }
+        public Nullable<decimal> Yesterday_UpperPrice { get; set; }
+        public Nullable<decimal> Trend { get; set; }
     }
 }

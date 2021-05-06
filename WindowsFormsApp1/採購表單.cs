@@ -186,7 +186,6 @@ namespace WindowsFormsApp1
                     }
                     foreach (var n in q1)
                     {
-                        MessageBox.Show(n.price.ToString());
                         this.dataGridView1[3, e.RowIndex].Value = n.price.ToString();
                     }
 
@@ -210,7 +209,6 @@ namespace WindowsFormsApp1
                     }
                     foreach (var n in q1)
                     {
-                        MessageBox.Show(n.price.ToString());
                         this.dataGridView1[3, e.RowIndex].Value = n.price.ToString();
                     } 
                 }
