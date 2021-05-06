@@ -186,6 +186,7 @@ namespace WindowsFormsApp1
                     }
                     foreach (var n in q1)
                     {
+                        MessageBox.Show(n.price.ToString());
                         this.dataGridView1[3, e.RowIndex].Value = n.price.ToString();
                     }
 
@@ -209,6 +210,7 @@ namespace WindowsFormsApp1
                     }
                     foreach (var n in q1)
                     {
+                        MessageBox.Show(n.price.ToString());
                         this.dataGridView1[3, e.RowIndex].Value = n.price.ToString();
                     } 
                 }
@@ -237,20 +239,129 @@ namespace WindowsFormsApp1
         {
 
         }
-
+        
+        int indexTracker = 0;
+        List<int> pL=new List<int>();
         private void button3_Click(object sender, EventArgs e)
         {
             採購單查詢頁面 fk = new 採購單查詢頁面();
             DialogResult res = fk.ShowDialog();
             if (res == DialogResult.OK)
             {
-                sup = fk.thesupplerid;
+                pL.Clear();
+                foreach(int i in fk.purchaseID)
+                {
+                    pL.Add(i);
+                }
+                
+                DisplayOrderFields(pL,indexTracker);
             }
-            this.label4.Text = sup.ToString();
-            
-            var q = from s in this.db.Purchases
-                    where s.SupplierID == sup
-                    select s;
+        }
+
+        private void DisplayOrderFields(List<int> purchaseID,int tracker)
+        {
+            var q = from p in db.Purchases.AsEnumerable()
+                    where p.PurchaseID == purchaseID[tracker]
+                    select new { pid =p.PurchaseID,spid = p.SupplierID,spname =p.Customer.Name, spcp = p.Customer.ContactPerson, spph = p.Customer.Phone, spun = p.Customer.Unicode, spads = p.Customer.Address ,purchaseDate = p.PurchaseDate, RequiredDate = p.RequiredDate, DeliveryAddress = p.Deliveryaddress };
+            q = q.ToList();
+            textBox1.Text = q.FirstOrDefault().spname;
+            textBox2.Text = q.FirstOrDefault().spun;
+            label12.Text = q.FirstOrDefault().spid.ToString();
+            label4.Text = q.FirstOrDefault().pid.ToString();
+            textBox3.Text = q.FirstOrDefault().spcp;
+            textBox4.Text = q.FirstOrDefault().spph;
+            textBox5.Text = q.FirstOrDefault().spads;
+            dateTimePicker1.Value = q.FirstOrDefault().purchaseDate.Value;
+            dateTimePicker2.Value = q.FirstOrDefault().RequiredDate.Value;
+            textBox6.Text = q.FirstOrDefault().DeliveryAddress;
+
+            DisplayOrderDetails(q.FirstOrDefault().pid);
+
+
+
+        }
+
+        private void DisplayOrderDetails(int pid)
+        {
+            this.dataGridView1.Rows.Clear();
+            var q = from pd in db.PurchaseDetails
+                    where pd.PurchaseID == pid
+                    select new
+                    {
+                        pdid = pd.PurchaseID,
+                        productCode = pd.ProductCode,
+                        productName = pd.Product.Name,
+                        price = pd.UnitPrice,
+                        qty = pd.Qty,
+                        unit = pd.Unit,
+                        Total = pd.Qty * pd.UnitPrice,
+                        comment = pd.Comment
+
+                    };
+
+            for (int i = 0; i < q.Count(); i++)
+            {
+                DataGridViewRow dr = this.dataGridView1.Rows[0].Clone() as DataGridViewRow;
+                this.dataGridView1.Rows.Add(dr);
+                DataGridViewComboBoxCell cb = (DataGridViewComboBoxCell)dataGridView1.Rows[i].Cells[1];
+                cb.Value = q.ToList()[i].productCode;
+                this.dataGridView1[1, i].Value = q.ToList()[i].productCode;
+                this.dataGridView1[2, i].Value = q.ToList()[i].productName;
+                this.dataGridView1[3, i].Value = q.ToList()[i].price;
+                this.dataGridView1[4, i].Value = q.ToList()[i].qty;
+                this.dataGridView1[5, i].Value = q.ToList()[i].unit;
+                this.dataGridView1[6, i].Value = q.ToList()[i].Total;
+                this.dataGridView1[7, i].Value = q.ToList()[i].comment;
+
+
+
+
+
+
+
+            }
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            indexTracker += 1;
+            if (indexTracker < pL.Count)
+            {
+                
+                DisplayOrderFields(pL, indexTracker);
+
+            }
+            else
+            {
+                indexTracker = pL.Count-1;
+            }
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            indexTracker += -1;
+            if (indexTracker >= 0)
+            {
+                DisplayOrderFields(pL, indexTracker);
+            }
+            else
+            {
+                indexTracker = 0;
+            }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            indexTracker = pL.Count - 1;
+            DisplayOrderFields(pL, indexTracker);
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            indexTracker = 0;
+            DisplayOrderFields(pL, indexTracker);
         }
     }
 }

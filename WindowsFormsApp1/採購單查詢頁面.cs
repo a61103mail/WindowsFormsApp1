@@ -14,7 +14,7 @@ namespace WindowsFormsApp1
     {
         FOODEntities db = new FOODEntities();
         public int thesupplerid;
-        List<Purchase> purchaseList = new List<Purchase>();
+        public List<int> purchaseID = new List<int>();
         DateTime begDate = DateTime.Today.AddDays(7);
         DateTime endDate = DateTime.Today.AddDays(1);
 
@@ -32,50 +32,63 @@ namespace WindowsFormsApp1
              begDate = Convert.ToDateTime(this.dateTimePicker1.Value.ToShortDateString());
              endDate = this.dateTimePicker2.Value;
 
-            var q = from p in db.Purchases.AsEnumerable()
-                    from i in p.PurchaseDetails.AsEnumerable()
-                    where (p.PurchaseDate >= begDate && p.PurchaseDate <= endDate) && i.Product.Name.Contains(textBox2.Text) && p.Customer.Name.Contains(textBox1.Text)
+            var q = (from p in db.Purchases.AsEnumerable()
+                     from i in p.PurchaseDetails.AsEnumerable()
+                     where (p.PurchaseDate >= begDate && p.PurchaseDate <= endDate) && i.Product.Name.Contains(textBox2.Text) && p.Customer.Name.Contains(textBox1.Text) 
 
-                    select new {
-                       訂單編號= p.PurchaseID,
-                       訂單日期= p.PurchaseDate,
-                        供應商編號 = p.SupplierID,
-                        供應商 = p.Customer.Name,
-                        Total = (
-                            from pd in p.PurchaseDetails
-                            where pd.PurchaseID == p.PurchaseID
-                            select pd).Sum((pdd)=> {
-                                return pdd.UnitPrice * pdd.Qty;
-                            })
-                    };
-            
-            this.dataGridView1.DataSource = q.Distinct().ToList();
+                     select new
+                     {
+                         訂單編號 = p.PurchaseID,
+                         訂單日期 = p.PurchaseDate,
+                         供應商編號 = p.SupplierID,
+                         供應商 = p.Customer.Name,
+                         Total = p.PurchaseDetails.Sum((pdd) =>
+                             {
+                                 return pdd.UnitPrice * pdd.Qty;
+                             })
+                     }).Distinct();
+           
+           this.dataGridView1.DataSource = q.ToList();
+          
+
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == -1 || e.RowIndex == -1) return;
-            int x = dataGridView1.CurrentCell.ColumnIndex;
-            if (x == 0)
-            {
-                for (int i = 0; i < dataGridView1.Rows.Count; i++)
-                {
-                    DataGridViewCheckBoxCell checkcell = (DataGridViewCheckBoxCell)dataGridView1.Rows[i].Cells[0];
-                    checkcell.Value = false;
-                }
-                DataGridViewCheckBoxCell ifcheck = (DataGridViewCheckBoxCell)dataGridView1.Rows[e.RowIndex].Cells[0];
-                ifcheck.Value = true;
+            //if (e.ColumnIndex == -1 || e.RowIndex == -1) return;
+            //int x = dataGridView1.CurrentCell.ColumnIndex;
+            //if (x == 0)
+            //{
+            //    for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            //    {
+            //        DataGridViewCheckBoxCell checkcell = (DataGridViewCheckBoxCell)dataGridView1.Rows[i].Cells[0];
+            //        checkcell.Value = false;
+            //    }
+            //    DataGridViewCheckBoxCell ifcheck = (DataGridViewCheckBoxCell)dataGridView1.Rows[e.RowIndex].Cells[0];
+            //    ifcheck.Value = true;
 
-                Boolean b = Convert.ToBoolean(ifcheck.Value);
-                if (b)
-                {
-                    thesupplerid = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString());
-                }
-            }
+                //Boolean b = Convert.ToBoolean(ifcheck.Value);
+                //if (b)
+                //{
+                //    thesupplerid = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString());
+                //}
+            //}
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            foreach (DataGridViewRow dr in this.dataGridView1.Rows)
+            {
+                DataGridViewCheckBoxCell dc = dr.Cells[0] as DataGridViewCheckBoxCell;
+                if (Convert.ToBoolean(dc.Value))
+                {
+                   
+                    purchaseID.Add(Convert.ToInt32(dr.Cells[1].Value.ToString()));
+                    //MessageBox.Show(purchaseID.Count.ToString());
+                }
+
+
+            }
             this.Close();
         }
 
@@ -97,27 +110,29 @@ namespace WindowsFormsApp1
             //              where p.Product.Name.Contains(textBox2.Text)
             //              select new { pid = p.ProductCode })
             //                );
-           
 
-            var q = from p in db.Purchases.AsEnumerable()
-                    from i in p.PurchaseDetails.AsEnumerable()
-                    where i.Product.Name.Contains(textBox2.Text) && p.Customer.Name.Contains(textBox1.Text)
 
-                    select new
-                    {
-                        訂單編號 = p.PurchaseID,
-                        訂單日期 = p.PurchaseDate,
-                        供應商編號 = p.SupplierID,
-                        供應商 = p.Customer.Name,
-                        Total = (
-                            from pd in p.PurchaseDetails
-                            where pd.PurchaseID == p.PurchaseID
-                            select pd).Sum((pdd) => {
-                                return pdd.UnitPrice * pdd.Qty;
-                            })
+            var q = (from p in db.Purchases.AsEnumerable()
+                     from i in p.PurchaseDetails.AsEnumerable()
+                     where i.Product.Name.Contains(textBox2.Text) && p.Customer.Name.Contains(textBox1.Text)
 
-                    };
-            this.dataGridView1.DataSource = q.Distinct().ToList();
+                     select new
+                     {
+                         訂單編號 = p.PurchaseID,
+                         訂單日期 = p.PurchaseDate,
+                         供應商編號 = p.SupplierID,
+                         供應商 = p.Customer.Name,
+                         Total = (
+                             from pd in p.PurchaseDetails
+                             where pd.PurchaseID == p.PurchaseID
+                             select pd).Sum((pdd) =>
+                             {
+                                 return pdd.UnitPrice * pdd.Qty;
+                             })
+
+                     }).Distinct();
+            this.dataGridView1.DataSource = q.ToList();
+        
         }
 
         private void 採購單查詢頁面_Load(object sender, EventArgs e)
