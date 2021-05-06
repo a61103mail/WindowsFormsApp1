@@ -17,8 +17,6 @@ namespace WindowsFormsApp1
         FOODEntities db = new FOODEntities();
         global::Encoder.Security.Encoder encode = new global::Encoder.Security.Encoder();
         EncoderType type = EncoderType.SHA1;
-
-
         public Form1()
         {
             InitializeComponent();
@@ -33,21 +31,16 @@ namespace WindowsFormsApp1
         {
             var registered = new registered();
             registered.Show();
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        }       
 
         private void button3_Click(object sender, EventArgs e)
         {
-            var forgotPW = new ForgotPW();
-            forgotPW.Show();
+            ForgotPW forgotPW = new ForgotPW();
+            forgotPW.PWtextBox.Enabled = false;
+            forgotPW.CKDPWtextBox.Enabled = false;
+            forgotPW.ConfirmBtn.Enabled = false;
+            forgotPW.ShowDialog();
         }
-
-        
-
 
         private void button2_Click(object sender, EventArgs e)
         {

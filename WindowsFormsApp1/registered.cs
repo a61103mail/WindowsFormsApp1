@@ -14,8 +14,9 @@ namespace WindowsFormsApp1
 {
     public partial class registered : Form
     {
-        FOODEntities db = new FOODEntities();
-        global::Encoder.Security.Encoder encode = new global::Encoder.Security.Encoder();
+        FOODEntities db = new FOODEntities(); //database
+        global::Encoder.Security.Encoder encode = new global::Encoder.Security.Encoder(); //密碼
+        EncoderType type = EncoderType.SHA1;
         public registered()
         {
             InitializeComponent();
@@ -79,7 +80,7 @@ namespace WindowsFormsApp1
         {
             Customer cus = new Customer();
             Employee emp = new Employee();
-            EncoderType type = EncoderType.SHA1;
+            
             //客戶權限編號--
             //    CustomrtRoleID=1：個人
             //    CustomrtRoleID = 2：企業
@@ -150,7 +151,7 @@ namespace WindowsFormsApp1
             try
             {
                 db.SaveChanges();                
-                 var result = MessageBox.Show("帳號註冊成功！", "注意！", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                 var result = MessageBox.Show("帳號註冊成功！", "成功！", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 if (result == System.Windows.Forms.DialogResult.OK)
                 {                    
                     this.Close();
@@ -159,9 +160,9 @@ namespace WindowsFormsApp1
             catch (Exception ex)
             {
                 throw;
-            }
-           
+            }           
         }
+
 
         private void CheckID()
         {
