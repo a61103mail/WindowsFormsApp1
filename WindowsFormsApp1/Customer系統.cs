@@ -30,47 +30,12 @@ namespace WindowsFormsApp1
             foreach (var item in EMP)
             {
                 source_NAME.Add(item.Name);
-                source_Unicode.Add(item.Unicode);
-                source_Phone.Add(item.Phone);
-                source_ContactPerson.Add(item.ContactPerson);
-                source_ContactCellPhone.Add(item.ContactCellPhone);
-                source_FAX.Add(item.FAX);
             }
             //=========================讓TEXTBOX 可以有相近字顯示
             this.NameTextBox_Client.AutoCompleteCustomSource = source_NAME;
             this.NameTextBox_Client.AutoCompleteMode =
                                   AutoCompleteMode.Suggest;
             this.NameTextBox_Client.AutoCompleteSource =
-                                  AutoCompleteSource.CustomSource;
-            //-
-            this.UnicodeTextBox__Client.AutoCompleteCustomSource = source_Unicode;
-            this.UnicodeTextBox__Client.AutoCompleteMode =
-                                  AutoCompleteMode.Suggest;
-            this.UnicodeTextBox__Client.AutoCompleteSource =
-                                  AutoCompleteSource.CustomSource;
-            //-
-            this.PhoneTextBox_Client.AutoCompleteCustomSource = source_Phone;
-            this.PhoneTextBox_Client.AutoCompleteMode =
-                                  AutoCompleteMode.Suggest;
-            this.PhoneTextBox_Client.AutoCompleteSource =
-                                  AutoCompleteSource.CustomSource;
-            //-
-            this.ContactPersonTextBox__Client.AutoCompleteCustomSource = source_ContactPerson;
-            this.ContactPersonTextBox__Client.AutoCompleteMode =
-                                  AutoCompleteMode.Suggest;
-            this.ContactPersonTextBox__Client.AutoCompleteSource =
-                                  AutoCompleteSource.CustomSource;
-            //-
-            this.ContactCellPhoneTextBox__Client.AutoCompleteCustomSource = source_ContactCellPhone;
-            this.ContactCellPhoneTextBox__Client.AutoCompleteMode =
-                                  AutoCompleteMode.Suggest;
-            this.ContactCellPhoneTextBox__Client.AutoCompleteSource =
-                                  AutoCompleteSource.CustomSource;
-            //-
-            this.FaxTextBox__Client.AutoCompleteCustomSource = source_FAX;
-            this.FaxTextBox__Client.AutoCompleteMode =
-                                  AutoCompleteMode.Suggest;
-            this.FaxTextBox__Client.AutoCompleteSource =
                                   AutoCompleteSource.CustomSource;
         }
         internal void SelectCTMR(int ID)
@@ -91,11 +56,11 @@ namespace WindowsFormsApp1
                 UnicodeTextBox__Client.Text = item.Unicode;
                 AddressTextBox__Client.Text = item.Address;
                 SalesIDTextBox__Client.Text = item.SalesID.ToString();
-                ContactPersonTextBox__Client.Text = item.ContactPerson;
-                ContactCellPhoneTextBox__Client.Text = item.ContactCellPhone;
-                CustomerRoleTextBox_Client.Text = item.CustomerRoleID.ToString();
                 EmployeeTextBox__Client.Text = item.EMPName;
                 EmployeeTELTextBox__Client.Text = item.Cellphone;
+                CustomerRoleTextBox_Client.Text = item.CustomerRoleID.ToString();
+                ContactPersonTextBox__Client.Text = item.ContactPerson;
+                ContactCellPhoneTextBox__Client.Text = item.ContactCellPhone; 
             }
         }
         
@@ -134,6 +99,35 @@ namespace WindowsFormsApp1
             ctmr.DoB = this.DoBTimePicker.Value;
             ctmr.Password = ctmr.Password;
             db.SaveChanges();
+        }
+
+        private void btn_creat_Click(object sender, EventArgs e)
+        {
+            registered registered = new registered();
+            registered.Owner = this;
+            registered.ShowDialog();
+        }
+
+        private void btn_delete_Click(object sender, EventArgs e)
+        {
+            var result_once = MessageBox.Show("確定要刪除嗎!?", "注意！", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            if (result_once == System.Windows.Forms.DialogResult.OK)
+            {
+                var result_twice = MessageBox.Show("真的要刪除!?", "注意！", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                if (result_twice == System.Windows.Forms.DialogResult.OK)
+                {
+                    var result_three = MessageBox.Show("刪除就沒有囉!?", "注意！", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                    if (result_three == System.Windows.Forms.DialogResult.OK)
+                    {
+                        var ctmr = (from i in db.Customers
+                                    where i.CustomerID.ToString() == this.IDTextBox_Client.Text
+                                    select i).FirstOrDefault();
+                        db.Customers.Remove(ctmr);
+                        db.SaveChanges();
+                        MessageBox.Show("刪除成功，無法挽回!", "注意！", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
         }
     }
 }

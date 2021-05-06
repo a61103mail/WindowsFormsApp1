@@ -152,7 +152,9 @@ namespace WindowsFormsApp1
                 db.SaveChanges();                
                  var result = MessageBox.Show("帳號註冊成功！", "注意！", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 if (result == System.Windows.Forms.DialogResult.OK)
-                {                    
+                {
+                    Customer系統 CTMR = (Customer系統)this.Owner;
+                    CTMR.IDTextBox_Client.Text = cus.CustomerID.ToString();
                     this.Close();
                 }
             }

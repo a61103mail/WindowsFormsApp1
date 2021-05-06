@@ -31,6 +31,10 @@ namespace WindowsFormsApp1
         {
             this.label1 = new System.Windows.Forms.Label();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.DoBTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.btn_creat = new System.Windows.Forms.Button();
+            this.btn_search = new System.Windows.Forms.Button();
+            this.btn_delete = new System.Windows.Forms.Button();
             this.btn_modify = new System.Windows.Forms.Button();
             this.EmployeeTELTextBox__Client = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
@@ -62,10 +66,6 @@ namespace WindowsFormsApp1
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.btn_creat = new System.Windows.Forms.Button();
-            this.btn_search = new System.Windows.Forms.Button();
-            this.btn_delete = new System.Windows.Forms.Button();
-            this.DoBTimePicker = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -132,6 +132,60 @@ namespace WindowsFormsApp1
             this.splitContainer1.Size = new System.Drawing.Size(1102, 643);
             this.splitContainer1.SplitterDistance = 231;
             this.splitContainer1.TabIndex = 1;
+            // 
+            // DoBTimePicker
+            // 
+            this.DoBTimePicker.CalendarFont = new System.Drawing.Font("新細明體", 9F);
+            this.DoBTimePicker.Font = new System.Drawing.Font("新細明體", 7F);
+            this.DoBTimePicker.Location = new System.Drawing.Point(120, 139);
+            this.DoBTimePicker.Name = "DoBTimePicker";
+            this.DoBTimePicker.Size = new System.Drawing.Size(100, 19);
+            this.DoBTimePicker.TabIndex = 36;
+            // 
+            // btn_creat
+            // 
+            this.btn_creat.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_creat.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_creat.Image = global::WindowsFormsApp1.Properties.Resources.plus;
+            this.btn_creat.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_creat.Location = new System.Drawing.Point(806, 50);
+            this.btn_creat.Name = "btn_creat";
+            this.btn_creat.Size = new System.Drawing.Size(80, 42);
+            this.btn_creat.TabIndex = 35;
+            this.btn_creat.Text = "新增";
+            this.btn_creat.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_creat.UseVisualStyleBackColor = true;
+            this.btn_creat.Click += new System.EventHandler(this.btn_creat_Click);
+            // 
+            // btn_search
+            // 
+            this.btn_search.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_search.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_search.Image = global::WindowsFormsApp1.Properties.Resources.search;
+            this.btn_search.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_search.Location = new System.Drawing.Point(720, 50);
+            this.btn_search.Name = "btn_search";
+            this.btn_search.Size = new System.Drawing.Size(80, 42);
+            this.btn_search.TabIndex = 34;
+            this.btn_search.Text = "查詢";
+            this.btn_search.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_search.UseVisualStyleBackColor = true;
+            this.btn_search.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // btn_delete
+            // 
+            this.btn_delete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_delete.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_delete.Image = global::WindowsFormsApp1.Properties.Resources.minus;
+            this.btn_delete.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_delete.Location = new System.Drawing.Point(978, 50);
+            this.btn_delete.Name = "btn_delete";
+            this.btn_delete.Size = new System.Drawing.Size(80, 42);
+            this.btn_delete.TabIndex = 33;
+            this.btn_delete.Text = "刪除";
+            this.btn_delete.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_delete.UseVisualStyleBackColor = true;
+            this.btn_delete.Click += new System.EventHandler(this.btn_delete_Click);
             // 
             // btn_modify
             // 
@@ -424,58 +478,6 @@ namespace WindowsFormsApp1
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // btn_creat
-            // 
-            this.btn_creat.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_creat.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_creat.Image = global::WindowsFormsApp1.Properties.Resources.plus;
-            this.btn_creat.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_creat.Location = new System.Drawing.Point(806, 50);
-            this.btn_creat.Name = "btn_creat";
-            this.btn_creat.Size = new System.Drawing.Size(80, 42);
-            this.btn_creat.TabIndex = 35;
-            this.btn_creat.Text = "新增";
-            this.btn_creat.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_creat.UseVisualStyleBackColor = true;
-            // 
-            // btn_search
-            // 
-            this.btn_search.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_search.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_search.Image = global::WindowsFormsApp1.Properties.Resources.search;
-            this.btn_search.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_search.Location = new System.Drawing.Point(720, 50);
-            this.btn_search.Name = "btn_search";
-            this.btn_search.Size = new System.Drawing.Size(80, 42);
-            this.btn_search.TabIndex = 34;
-            this.btn_search.Text = "查詢";
-            this.btn_search.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_search.UseVisualStyleBackColor = true;
-            this.btn_search.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // btn_delete
-            // 
-            this.btn_delete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_delete.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_delete.Image = global::WindowsFormsApp1.Properties.Resources.minus;
-            this.btn_delete.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_delete.Location = new System.Drawing.Point(978, 50);
-            this.btn_delete.Name = "btn_delete";
-            this.btn_delete.Size = new System.Drawing.Size(80, 42);
-            this.btn_delete.TabIndex = 33;
-            this.btn_delete.Text = "刪除";
-            this.btn_delete.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_delete.UseVisualStyleBackColor = true;
-            // 
-            // DoBTimePicker
-            // 
-            this.DoBTimePicker.CalendarFont = new System.Drawing.Font("新細明體", 9F);
-            this.DoBTimePicker.Font = new System.Drawing.Font("新細明體", 7F);
-            this.DoBTimePicker.Location = new System.Drawing.Point(120, 139);
-            this.DoBTimePicker.Name = "DoBTimePicker";
-            this.DoBTimePicker.Size = new System.Drawing.Size(100, 19);
-            this.DoBTimePicker.TabIndex = 36;
             // 
             // Customer系統
             // 
