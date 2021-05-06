@@ -32,6 +32,8 @@ namespace WindowsFormsApp1
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Customer系統));
             this.label1 = new System.Windows.Forms.Label();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.PWTextBox_Client = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
@@ -68,7 +70,6 @@ namespace WindowsFormsApp1
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -95,6 +96,7 @@ namespace WindowsFormsApp1
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.button3);
             this.splitContainer1.Panel1.Controls.Add(this.button2);
             this.splitContainer1.Panel1.Controls.Add(this.button1);
             this.splitContainer1.Panel1.Controls.Add(this.PWTextBox_Client);
@@ -137,6 +139,35 @@ namespace WindowsFormsApp1
             this.splitContainer1.Size = new System.Drawing.Size(1102, 643);
             this.splitContainer1.SplitterDistance = 231;
             this.splitContainer1.TabIndex = 1;
+            // 
+            // button3
+            // 
+            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button3.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
+            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button3.Location = new System.Drawing.Point(836, 179);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(70, 25);
+            this.button3.TabIndex = 34;
+            this.button3.Text = "查詢";
+            this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button2
+            // 
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button2.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button2.Location = new System.Drawing.Point(988, 179);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(70, 25);
+            this.button2.TabIndex = 33;
+            this.button2.Text = "儲存";
+            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
@@ -375,7 +406,6 @@ namespace WindowsFormsApp1
             this.TELTextBox_Client.Name = "TELTextBox_Client";
             this.TELTextBox_Client.Size = new System.Drawing.Size(100, 27);
             this.TELTextBox_Client.TabIndex = 8;
-            this.TELTextBox_Client.TextChanged += new System.EventHandler(this.TELTextBox_Client_TextChanged);
             // 
             // label5
             // 
@@ -394,7 +424,6 @@ namespace WindowsFormsApp1
             this.CompanyIDTextBox__Client.Name = "CompanyIDTextBox__Client";
             this.CompanyIDTextBox__Client.Size = new System.Drawing.Size(100, 27);
             this.CompanyIDTextBox__Client.TabIndex = 6;
-            this.CompanyIDTextBox__Client.TextChanged += new System.EventHandler(this.CompanyIDTextBox__Client_TextChanged);
             // 
             // label4
             // 
@@ -413,7 +442,6 @@ namespace WindowsFormsApp1
             this.NameTextBox_Client.Name = "NameTextBox_Client";
             this.NameTextBox_Client.Size = new System.Drawing.Size(100, 27);
             this.NameTextBox_Client.TabIndex = 4;
-            this.NameTextBox_Client.TextChanged += new System.EventHandler(this.NameTextBox_Client_TextChanged);
             // 
             // label3
             // 
@@ -427,6 +455,7 @@ namespace WindowsFormsApp1
             // 
             // IDTextBox_Client
             // 
+            this.IDTextBox_Client.Enabled = false;
             this.IDTextBox_Client.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.IDTextBox_Client.Location = new System.Drawing.Point(120, 50);
             this.IDTextBox_Client.Name = "IDTextBox_Client";
@@ -475,20 +504,6 @@ namespace WindowsFormsApp1
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // button2
-            // 
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button2.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button2.Location = new System.Drawing.Point(988, 179);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(70, 25);
-            this.button2.TabIndex = 33;
-            this.button2.Text = "儲存";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.UseVisualStyleBackColor = true;
-            // 
             // Customer系統
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -511,42 +526,43 @@ namespace WindowsFormsApp1
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.TextBox IDTextBox_Client;
+        internal System.Windows.Forms.TextBox IDTextBox_Client;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TextBox EmployeeTELTextBox__Client;
+        internal System.Windows.Forms.TextBox EmployeeTELTextBox__Client;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.TextBox EmployeeIDTextBox__Client;
+        internal System.Windows.Forms.TextBox EmployeeIDTextBox__Client;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox EmployeeTextBox__Client;
+        internal System.Windows.Forms.TextBox EmployeeTextBox__Client;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox AddTextBox__Client;
+        internal System.Windows.Forms.TextBox AddTextBox__Client;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox EmailTextBox__Client;
+        internal System.Windows.Forms.TextBox EmailTextBox__Client;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox birthTextBox__Client;
+        internal System.Windows.Forms.TextBox birthTextBox__Client;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox FaxTextBox__Client;
+        internal System.Windows.Forms.TextBox FaxTextBox__Client;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox ContactTELTextBox__Client;
+        internal System.Windows.Forms.TextBox ContactTELTextBox__Client;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox ContactNameTextBox__Client;
+        internal System.Windows.Forms.TextBox ContactNameTextBox__Client;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox CategoryTextBox_Client;
+        internal System.Windows.Forms.TextBox CategoryTextBox_Client;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox TELTextBox_Client;
+        internal System.Windows.Forms.TextBox TELTextBox_Client;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox CompanyIDTextBox__Client;
+        internal System.Windows.Forms.TextBox CompanyIDTextBox__Client;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox NameTextBox_Client;
+        internal System.Windows.Forms.TextBox NameTextBox_Client;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox PWTextBox_Client;
+        internal System.Windows.Forms.TextBox PWTextBox_Client;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.TextBox AccountTextBox_Client;
+        internal System.Windows.Forms.TextBox AccountTextBox_Client;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
     }
 }

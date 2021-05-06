@@ -151,5 +151,13 @@ namespace WindowsFormsApp1
                 }
             }
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Select系統 s = new Select系統();
+            s.CTMRbtn.Checked = true;
+            s.Owner = this;//重要的一步，主要是使Form2的Owner指針指向Form1  
+            s.ShowDialog();
+        }
     }
 }
