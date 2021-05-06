@@ -65,6 +65,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 82.66666F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(759, 397);
             this.tableLayoutPanel1.TabIndex = 0;
+            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
             // tableLayoutPanel2
             // 
@@ -172,8 +173,9 @@
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(50, 31);
             this.button6.TabIndex = 2;
-            this.button6.Text = "button6";
+            this.button6.Text = "refresh";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button7
             // 

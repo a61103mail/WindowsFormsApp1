@@ -73,6 +73,9 @@
     <Compile Include="DailyPriceTemp.cs">
       <DependentUpon>FoodModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="database_firewall_rules.cs">
+      <DependentUpon>FoodModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Employee.cs">
       <DependentUpon>FoodModel.tt</DependentUpon>
     </Compile>

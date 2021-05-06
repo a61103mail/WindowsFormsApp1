@@ -21,10 +21,10 @@ namespace WindowsFormsApp1
         }
     
         public int OrderDetailID { get; set; }
-        public int OrderID { get; set; }
+        public Nullable<int> OrderID { get; set; }
         public string ProductCode { get; set; }
-        public decimal Qty { get; set; }
-        public decimal UnitPrice { get; set; }
+        public Nullable<decimal> Qty { get; set; }
+        public Nullable<decimal> UnitPrice { get; set; }
         public string Commert { get; set; }
         public string Unit { get; set; }
     

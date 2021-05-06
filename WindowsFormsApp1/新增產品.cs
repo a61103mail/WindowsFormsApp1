@@ -25,17 +25,32 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string Name = textBox1.Text;
-            string productcode = textBox2.Text;
-            string Unit = comboBox2.SelectedItem.ToString();
-            int CategoryId = comboBox1.SelectedIndex+1;
-            string CropCode = textBox3.Text;
-            string CustomerID = textBox4.Text;
+            Product newp = new Product();
+            newp.Name = textBox1.Text;
+            newp.ProductCode = textBox2.Text;
+            newp.Unit = comboBox2.SelectedItem.ToString();
+            newp.CategoryID = comboBox1.SelectedIndex+1;
+            newp.CropCode = textBox3.Text;
             //insert
+            DialogResult p = MessageBox.Show("確定新增?", "提醒", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
+            if (p == DialogResult.OK)
+            {
+                if(newp.Name=="" | newp.ProductCode=="" | newp.Unit=="" | newp.CropCode=="")
+                {
+                    MessageBox.Show("有*字號的項目必須填寫");
+                }
+                else
+                {
+                    this.FOODEntities.Products.Add(newp);
+                    this.FOODEntities.SaveChanges();//新增product回DB
+                }                  
+                MessageBox.Show("新增成功");
 
-  
+            }
 
-        }
+
+
+            }
         private FOODEntities FOODEntities = new FOODEntities();
         private void 新增產品_Load(object sender, EventArgs e)
         {

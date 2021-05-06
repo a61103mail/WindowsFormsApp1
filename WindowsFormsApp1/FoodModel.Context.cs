@@ -28,6 +28,7 @@ namespace WindowsFormsApp1
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<CustomerRole> CustomerRoles { get; set; }
+        public virtual DbSet<DailyPrice> DailyPrices { get; set; }
         public virtual DbSet<DailyPriceTemp> DailyPriceTemps { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<EmployeeRole> EmployeeRoles { get; set; }
@@ -42,9 +43,9 @@ namespace WindowsFormsApp1
         public virtual DbSet<PurchaseDetail> PurchaseDetails { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
-        public virtual DbSet<DailyPrice> DailyPrices { get; set; }
         public virtual DbSet<PurchaseConfirmedDetail> PurchaseConfirmedDetails { get; set; }
         public virtual DbSet<SalesDetail> SalesDetails { get; set; }
         public virtual DbSet<Product_LatestPrice> Product_LatestPrice { get; set; }
+        public virtual DbSet<database_firewall_rules> database_firewall_rules { get; set; }
     }
 }

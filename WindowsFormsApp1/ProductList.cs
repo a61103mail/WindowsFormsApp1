@@ -24,7 +24,6 @@ namespace WindowsFormsApp1
         private void ProductList_Load(object sender, EventArgs e)
         {
             var q = from p in this.FOODEntities.Product_LatestPrice
-
                     select p;
             this.dataGridView1.DataSource = q.ToList();
                     
@@ -54,6 +53,16 @@ namespace WindowsFormsApp1
             f.Show();
         }
 
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
 
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            var q = from p in this.FOODEntities.Product_LatestPrice
+                    select p;
+            this.dataGridView1.DataSource = q.ToList();
+        }
     }
 }
