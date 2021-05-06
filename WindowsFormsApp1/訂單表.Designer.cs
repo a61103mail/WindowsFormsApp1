@@ -78,36 +78,40 @@ namespace WindowsFormsApp1.Properties
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(50, 63);
+            this.label1.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label1.Location = new System.Drawing.Point(34, 63);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(56, 12);
+            this.label1.Size = new System.Drawing.Size(80, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "訂單編號:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label2.Location = new System.Drawing.Point(236, 99);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(56, 12);
+            this.label2.Size = new System.Drawing.Size(80, 16);
             this.label2.TabIndex = 2;
             this.label2.Text = "客戶編號:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(50, 99);
+            this.label3.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label3.Location = new System.Drawing.Point(34, 100);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(56, 12);
+            this.label3.Size = new System.Drawing.Size(80, 16);
             this.label3.TabIndex = 4;
             this.label3.Text = "客戶名稱:";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(50, 248);
+            this.label4.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label4.Location = new System.Drawing.Point(34, 238);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(56, 12);
+            this.label4.Size = new System.Drawing.Size(80, 16);
             this.label4.TabIndex = 6;
             this.label4.Text = "送貨地址:";
             // 
@@ -121,63 +125,70 @@ namespace WindowsFormsApp1.Properties
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label5.Location = new System.Drawing.Point(600, 63);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(56, 12);
+            this.label5.Size = new System.Drawing.Size(80, 16);
             this.label5.TabIndex = 8;
             this.label5.Text = "客服編號:";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label6.Location = new System.Drawing.Point(802, 63);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(56, 12);
+            this.label6.Size = new System.Drawing.Size(80, 16);
             this.label6.TabIndex = 10;
             this.label6.Text = "客服名稱:";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(826, 104);
+            this.label7.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label7.Location = new System.Drawing.Point(857, 104);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(80, 12);
+            this.label7.Size = new System.Drawing.Size(112, 16);
             this.label7.TabIndex = 12;
             this.label7.Text = "理貨人員編號:";
             // 
             // comboBox3
             // 
+            this.comboBox3.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(864, 60);
+            this.comboBox3.Location = new System.Drawing.Point(888, 60);
             this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(121, 20);
+            this.comboBox3.Size = new System.Drawing.Size(121, 24);
             this.comboBox3.TabIndex = 16;
             this.comboBox3.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
             // 
             // comboBox5
             // 
+            this.comboBox5.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Location = new System.Drawing.Point(686, 101);
+            this.comboBox5.Location = new System.Drawing.Point(718, 101);
             this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(121, 20);
+            this.comboBox5.Size = new System.Drawing.Size(121, 24);
             this.comboBox5.TabIndex = 18;
             this.comboBox5.SelectedIndexChanged += new System.EventHandler(this.comboBox5_SelectedIndexChanged);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label8.Location = new System.Drawing.Point(600, 104);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(80, 12);
+            this.label8.Size = new System.Drawing.Size(112, 16);
             this.label8.TabIndex = 19;
             this.label8.Text = "理貨人員名稱:";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(50, 280);
+            this.label9.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label9.Location = new System.Drawing.Point(34, 276);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(56, 12);
+            this.label9.Size = new System.Drawing.Size(80, 16);
             this.label9.TabIndex = 21;
             this.label9.Text = "交貨日期:";
             // 
@@ -191,9 +202,10 @@ namespace WindowsFormsApp1.Properties
             // label11
             // 
             this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label11.Location = new System.Drawing.Point(600, 151);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(32, 12);
+            this.label11.Size = new System.Drawing.Size(48, 16);
             this.label11.TabIndex = 25;
             this.label11.Text = "備註:";
             // 
@@ -211,15 +223,16 @@ namespace WindowsFormsApp1.Properties
             // label10
             // 
             this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label10.Location = new System.Drawing.Point(236, 63);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(56, 12);
+            this.label10.Size = new System.Drawing.Size(80, 16);
             this.label10.TabIndex = 30;
             this.label10.Text = "訂單日期:";
             // 
             // dateTimePicker2
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(298, 60);
+            this.dateTimePicker2.Location = new System.Drawing.Point(322, 59);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(200, 22);
             this.dateTimePicker2.TabIndex = 31;
@@ -227,18 +240,20 @@ namespace WindowsFormsApp1.Properties
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(50, 134);
+            this.label12.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label12.Location = new System.Drawing.Point(34, 131);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(56, 12);
+            this.label12.Size = new System.Drawing.Size(80, 16);
             this.label12.TabIndex = 32;
             this.label12.Text = "企業統編:";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(50, 172);
+            this.label13.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label13.Location = new System.Drawing.Point(34, 172);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(44, 12);
+            this.label13.Size = new System.Drawing.Size(64, 16);
             this.label13.TabIndex = 34;
             this.label13.Text = "聯絡人:";
             // 
@@ -252,15 +267,16 @@ namespace WindowsFormsApp1.Properties
             // label14
             // 
             this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label14.Location = new System.Drawing.Point(236, 172);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(56, 12);
+            this.label14.Size = new System.Drawing.Size(80, 16);
             this.label14.TabIndex = 36;
             this.label14.Text = "聯絡電話:";
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(298, 169);
+            this.textBox3.Location = new System.Drawing.Point(310, 169);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(121, 22);
             this.textBox3.TabIndex = 37;
@@ -268,9 +284,10 @@ namespace WindowsFormsApp1.Properties
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(50, 210);
+            this.label15.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label15.Location = new System.Drawing.Point(34, 207);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(56, 12);
+            this.label15.Size = new System.Drawing.Size(80, 16);
             this.label15.TabIndex = 38;
             this.label15.Text = "公司地址:";
             // 
@@ -309,16 +326,17 @@ namespace WindowsFormsApp1.Properties
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(912, 104);
+            this.label17.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label17.Location = new System.Drawing.Point(984, 104);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(39, 12);
+            this.label17.Size = new System.Drawing.Size(64, 16);
             this.label17.TabIndex = 43;
-            this.label17.Text = "label17";
+            this.label17.Text = "       ";
             // 
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(112, 63);
+            this.label18.Location = new System.Drawing.Point(120, 66);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(62, 12);
             this.label18.TabIndex = 44;
@@ -335,7 +353,7 @@ namespace WindowsFormsApp1.Properties
             this.unit,
             this.subtotal,
             this.Comment});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 301);
+            this.dataGridView1.Location = new System.Drawing.Point(25, 301);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(1090, 381);
@@ -390,7 +408,7 @@ namespace WindowsFormsApp1.Properties
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(663, 62);
+            this.label19.Location = new System.Drawing.Point(686, 67);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(95, 12);
             this.label19.TabIndex = 45;

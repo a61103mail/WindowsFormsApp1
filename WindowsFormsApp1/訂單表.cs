@@ -20,15 +20,16 @@ namespace WindowsFormsApp1.Properties
         }
 
         private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {           
-            
+        {
+            if (this.comboBox1.Text != "")
+            {
                 this.label16.Text = this.comboBox1.SelectedValue.ToString();
-          
-          
+
+
                 var p = this.db.Customers.AsEnumerable().Where(n => n.Name == $"{this.comboBox1.Text}").Select(n => new { n.Unicode });
                 var res = p.ToList()[0];
                 this.textBox6.Text = res.Unicode;
-           
+            }
         }
 
         FOODEntities db = new FOODEntities();
@@ -99,14 +100,7 @@ namespace WindowsFormsApp1.Properties
 
         private void comboBox5_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (this.comboBox5.SelectedValue.GetType().ToString() != "System.Int32")//柏翰寫的(如果用foreach就不用寫這邊)
-            {
-                this.label17.Text = "無編號";
-            }
-            else
-            {
-                this.label17.Text = this.comboBox5.SelectedValue.ToString();
-            }
+           
         }
 
       
@@ -254,14 +248,24 @@ namespace WindowsFormsApp1.Properties
 
 
         }
-        string suppliername;
+        string OrderID;
         private void button4_Click(object sender, EventArgs e)
         {
+            var q3 = this.db.Products.Select(n => new { pdid = n.ProductCode, pdna = n.ProductCode + "  " + n.Name });
+            //datagrirview匯入資料
+
+
+            this.ProductCode.DataSource = q3.ToList();
+            this.ProductCode.DisplayMember = "pdna";
+            this.ProductCode.ValueMember = "pdid";
+
+
+
             foreach (Control con in this.Controls)
             {
-                con.Enabled = true;
-                this.button3.Enabled = false;
-                this.button4.Enabled = false;
+                con.Enabled = false;
+                this.button2.Enabled = true;
+              
 
             }
 
@@ -269,34 +273,100 @@ namespace WindowsFormsApp1.Properties
          DialogResult res=   k.ShowDialog();
             if (res == DialogResult.OK)
             {
-                suppliername = k.suppliername;
+                OrderID = k.suppliername;
             }
-            var q = this.db.Orders.AsEnumerable().Where(n => n.OrderID.ToString() == k.suppliername).Select(n =>new { 
-                cname=n.Customer.Name ,
-                cid=n.CustomerID , 
-                epid=n.EmployeeID, 
-                epname=n.Employee.EmployeeID,
-                add=n.Address,
-            });
+            
+            var q = from o in this.db.Orders
+                    from od in this.db.OrderDetails
+                    where o.OrderID == od.OrderID && o.OrderID.ToString() == OrderID
+                    select new {
+                        oid = o.OrderID,
+                        cid = o.CustomerID,
+                        cname = o.Customer.Name,
+                        cunid = o.Customer.Unicode,
+                        add = o.Address,
+                        epid = o.Employee.EmployeeID,
+                        epname = o.Employee.Name,
+                        pcode = od.ProductCode,
+                        qty = od.Qty,
+                        unp=od.UnitPrice
+                    } ;
+            
             foreach (var p in q)
             {
-                this.comboBox1.Items.Add(p.cname);
-                this.label16.Text = this.comboBox1.SelectedIndex.ToString();
+               
+                label18.Text = p.oid.ToString();
+                //dateTimePicker1.Value = p.OrderDate.Value;
+                comboBox1.Text = p.cname;
+                label16.Text = p.cid.ToString();
+                textBox6.Text = p.cunid;
+                textBox5.Text = p.add;
+                label19.Text = p.epid.ToString() == null?"0": p.epid.ToString();
+                comboBox3.Text = p.epname;
+                comboBox5.Text = p.epname;
+                label17.Text = p.epid.ToString();
 
-            
             }
+            找尋DATAGRIDVIEW資料(OrderID);
+        }
+
+        private void 找尋DATAGRIDVIEW資料(string OrderID)
+        {
+            var q = this.db.OrderDetails.AsEnumerable().Where(n => n.OrderID.ToString() == OrderID).Select(n => new { prcode =n.ProductCode, prname=n.Product.Name, n.UnitPrice, n.Qty, n.Unit, n.Commert });
+
+            for (int i = 0; i < q.ToList().Count; i++)
+            {
+                DataGridViewRow dr = this.dataGridView1.Rows[0].Clone() as DataGridViewRow;
+                this.dataGridView1.Rows.Add(dr);
+                DataGridViewComboBoxCell dgc = (DataGridViewComboBoxCell) this.dataGridView1.Rows[i].Cells[0];
+                
+                dgc.Value = q.ToList()[i].prcode;
+                this.dataGridView1[1,i].Value = q.ToList()[i].prname;
+            }        
+                      
+            
            
+            //把資料丟進DATAGRIDVIEW(q.ToList().ToString());
+        }
+
+        private void 把資料丟進DATAGRIDVIEW(List<string> list)
+        {
+            
         }
 
         private void button5_Click(object sender, EventArgs e)
-        {//關閉所有欄位 只有新增查詢是可以用得
+        {//關閉所有欄位 只有新增查詢是可以用  清除所有欄位內的資料
             foreach (Control con in this.Controls)
             {
                 con.Enabled = false;
                 this.button4.Enabled = true;
                 this.button3.Enabled = true;
+                if (con is ComboBox)
+                {
+                    ComboBox cob = con as ComboBox;
+                    cob.SelectedIndex = -1;
+                }
+                else if (con is TextBox)
+                {
+                    TextBox tb = con as TextBox;
+                    tb.Text = string.Empty;
+                }
+                else if (con is Label)
+                {
+                    this.label16.Text = string.Empty;
+                    this.label17.Text = string.Empty;
+                    this.label18.Text = string.Empty;
+                    this.label19.Text = string.Empty;
+
+                }
+
+
             }
+         
+
         }
+
+      
 
         private void button2_Click(object sender, EventArgs e)
         {
