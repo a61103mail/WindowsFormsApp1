@@ -21,7 +21,7 @@ namespace WindowsFormsApp1
         public string Unit { get; set; }
         public int CategoryID { get; set; }
         public Nullable<int> SupplierID { get; set; }
-        public Nullable<decimal> LatestAvgPrice { get; set; }
+        public Nullable<decimal> LatestUpperPrice { get; set; }
         public string LatestMarket { get; set; }
         public System.DateTime TransDate { get; set; }
     }

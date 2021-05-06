@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="FOODModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="FOODModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Category">
           <Key>
             <PropertyRef Name="CategoryID" />
@@ -28,7 +28,7 @@
           <Property Name="ContactCellPhone" Type="nvarchar" MaxLength="15" Nullable="false" />
           <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="DoB" Type="smalldatetime" />
-          <Property Name="Password" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="CustomerRole">
           <Key>
@@ -37,38 +37,6 @@
           <Property Name="RoleID" Type="int" Nullable="false" />
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CustomerID" Type="int" Nullable="false" />
-        </EntityType>
-        <!--產生期間發現錯誤:
-警告 6002: 資料表/檢視 'FOOD.dbo.DailyPrice' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
-        <EntityType Name="DailyPrice">
-          <Key>
-            <PropertyRef Name="RecordID" />
-            <PropertyRef Name="TransDate" />
-            <PropertyRef Name="CropCode" />
-          </Key>
-          <Property Name="RecordID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="TransDate" Type="date" Nullable="false" />
-          <Property Name="CropCode" Type="nvarchar" MaxLength="10" Nullable="false" />
-          <Property Name="MarketCode" Type="nvarchar" MaxLength="10" />
-          <Property Name="Upper_Price" Type="money" />
-          <Property Name="Middle_Price" Type="money" />
-          <Property Name="Lower_Price" Type="money" />
-          <Property Name="Avg_Price" Type="money" />
-          <Property Name="Trans_Quantity" Type="decimal" Precision="18" Scale="0" />
-        </EntityType>
-        <EntityType Name="DailyPriceTemp">
-          <Key>
-            <PropertyRef Name="RecordID" />
-          </Key>
-          <Property Name="RecordID" Type="int" Nullable="false" />
-          <Property Name="TransDate" Type="date" Nullable="false" />
-          <Property Name="CropCode" Type="nvarchar" MaxLength="10" Nullable="false" />
-          <Property Name="MarketCode" Type="nvarchar" MaxLength="10" />
-          <Property Name="Upper_Price" Type="money" />
-          <Property Name="Middle_Price" Type="money" />
-          <Property Name="Lower_Price" Type="money" />
-          <Property Name="Avg_Price" Type="money" />
-          <Property Name="Trans_Quantity" Type="decimal" Precision="18" Scale="0" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
@@ -178,77 +146,11 @@
           <Property Name="TallyEmpID" Type="int" />
         </EntityType>
         <!--產生期間發現錯誤:
-警告 6002: 資料表/檢視 'FOOD.dbo.PurchaseConfirmedDetail' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
-        <EntityType Name="PurchaseConfirmedDetail">
-          <Key>
-            <PropertyRef Name="PurchaseComfirmedDetailID" />
-            <PropertyRef Name="PurchaseID" />
-            <PropertyRef Name="ProductCode" />
-            <PropertyRef Name="Qty" />
-            <PropertyRef Name="UnitPrice" />
-          </Key>
-          <Property Name="PurchaseComfirmedDetailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="PurchaseID" Type="int" Nullable="false" />
-          <Property Name="ProductCode" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="PurchaseDetailID" Type="int" />
-          <Property Name="Qty" Type="decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="UnitPrice" Type="money" Nullable="false" />
-          <Property Name="Unit" Type="nvarchar" MaxLength="10" />
-          <Property Name="Comment" Type="nvarchar" MaxLength="50" />
-        </EntityType>
-        <EntityType Name="PurchaseDetail">
-          <Key>
-            <PropertyRef Name="PurchaseDetailID" />
-          </Key>
-          <Property Name="PurchaseDetailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="PurchaseID" Type="int" Nullable="false" />
-          <Property Name="ProductCode" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="Qty" Type="decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="UnitPrice" Type="money" Nullable="false" />
-          <Property Name="Unit" Type="nvarchar" MaxLength="10" />
-          <Property Name="Comment" Type="nvarchar" MaxLength="50" />
-        </EntityType>
-        <EntityType Name="Role">
-          <Key>
-            <PropertyRef Name="RoleID" />
-          </Key>
-          <Property Name="RoleID" Type="int" Nullable="false" />
-          <Property Name="RoleName" Type="nvarchar" MaxLength="10" />
-        </EntityType>
-        <!--產生期間發現錯誤:
-警告 6002: 資料表/檢視 'FOOD.dbo.SalesDetail' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
-        <EntityType Name="SalesDetail">
-          <Key>
-            <PropertyRef Name="SalesDetailID" />
-            <PropertyRef Name="OrderID" />
-            <PropertyRef Name="ProductCode" />
-            <PropertyRef Name="UnitPrice" />
-            <PropertyRef Name="Qty" />
-          </Key>
-          <Property Name="SalesDetailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="OrderID" Type="int" Nullable="false" />
-          <Property Name="OrderDetailID" Type="int" />
-          <Property Name="ProductCode" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="UnitPrice" Type="money" Nullable="false" />
-          <Property Name="Qty" Type="decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="unit" Type="nvarchar" MaxLength="10" />
-          <Property Name="Comment" Type="nvarchar" MaxLength="50" />
-        </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
-        </EntityType>
-        <!--產生期間發現錯誤:
 警告 6002: 資料表/檢視 'FOOD.dbo.Product_LatestPrice' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
         <EntityType Name="Product_LatestPrice">
           <Key>
             <PropertyRef Name="ProductID" />
+            <PropertyRef Name="ProductCode" />
             <PropertyRef Name="CropCode" />
             <PropertyRef Name="Name" />
             <PropertyRef Name="CategoryID" />
@@ -256,13 +158,11 @@
             <PropertyRef Name="TransDate" />
           </Key>
           <Property Name="ProductID" Type="int" Nullable="false" />
-          <Property Name="ProductCode" Type="nvarchar" MaxLength="20" />
           <Property Name="CropCode" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Unit" Type="nvarchar" MaxLength="10" />
           <Property Name="CategoryID" Type="int" Nullable="false" />
           <Property Name="SupplierID" Type="int" />
-          <Property Name="LatestAvgPrice" Type="money" />
           <Property Name="LatestMarket" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="TransDate" Type="date" Nullable="false" />
         </EntityType>
@@ -620,7 +520,6 @@
     [Product_LatestPrice].[Unit] AS [Unit], 
     [Product_LatestPrice].[CategoryID] AS [CategoryID], 
     [Product_LatestPrice].[SupplierID] AS [SupplierID], 
-    [Product_LatestPrice].[LatestAvgPrice] AS [LatestAvgPrice], 
     [Product_LatestPrice].[LatestMarket] AS [LatestMarket], 
     [Product_LatestPrice].[TransDate] AS [TransDate]
     FROM [dbo].[Product_LatestPrice] AS [Product_LatestPrice]</DefiningQuery>
@@ -671,33 +570,62 @@
             <End Role="Product" EntitySet="Product" />
             <End Role="OrderDetail" EntitySet="OrderDetail" />
           </AssociationSet>
-          <AssociationSet Name="FK_Picture_Product" Association="Self.FK_Picture_Product">
-            <End Role="Product" EntitySet="Product" />
-            <End Role="Picture" EntitySet="Picture" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FOODModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="FOODEntities" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(FOODModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(FOODModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <FunctionImport Name="UpdateDailyPriceTemp" />
+          <EntitySet Name="Customers" EntityType="FOODModel.Customer" />
+          <EntitySet Name="CustomerRoles" EntityType="FOODModel.CustomerRole" />
+          <EntitySet Name="Employees" EntityType="FOODModel.Employee" />
+          <EntitySet Name="EmployeeRoles" EntityType="FOODModel.EmployeeRole" />
+          <EntitySet Name="EmpRoles" EntityType="FOODModel.EmpRole" />
+          <EntitySet Name="Orders" EntityType="FOODModel.Order" />
+          <EntitySet Name="OrderDetails" EntityType="FOODModel.OrderDetail" />
+          <EntitySet Name="Products" EntityType="FOODModel.Product" />
+          <EntitySet Name="Product_LatestPrice" EntityType="FOODModel.Product_LatestPrice" />
+          <EntitySet Name="database_firewall_rules" EntityType="FOODModel.database_firewall_rules" />
+          <AssociationSet Name="FK_CustomerRole_Customer" Association="FOODModel.FK_CustomerRole_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="CustomerRole" EntitySet="CustomerRoles" />
           </AssociationSet>
-          <AssociationSet Name="FK_Product_Category" Association="Self.FK_Product_Category">
-            <End Role="Category" EntitySet="Category" />
-            <End Role="Product" EntitySet="Product" />
           </AssociationSet>
-          <AssociationSet Name="FK_Purchase_Customer" Association="Self.FK_Purchase_Customer">
-            <End Role="Customer" EntitySet="Customer" />
-            <End Role="Purchase" EntitySet="Purchase" />
           </AssociationSet>
-          <AssociationSet Name="FK_PurchaseConfirmedDetail_Product" Association="Self.FK_PurchaseConfirmedDetail_Product">
-            <End Role="Product" EntitySet="Product" />
-            <End Role="PurchaseConfirmedDetail" EntitySet="PurchaseConfirmedDetail" />
           </AssociationSet>
-          <AssociationSet Name="FK_PurchaseConfirmedDetail_Purchase" Association="Self.FK_PurchaseConfirmedDetail_Purchase">
-            <End Role="Purchase" EntitySet="Purchase" />
-            <End Role="PurchaseConfirmedDetail" EntitySet="PurchaseConfirmedDetail" />
           </AssociationSet>
-          <AssociationSet Name="FK_PurchaseConfirmedDetail_PurchaseDetail" Association="Self.FK_PurchaseConfirmedDetail_PurchaseDetail">
-            <End Role="PurchaseDetail" EntitySet="PurchaseDetail" />
-            <End Role="PurchaseConfirmedDetail" EntitySet="PurchaseConfirmedDetail" />
           </AssociationSet>
-          <AssociationSet Name="FK_PurchaseDetail_Product" Association="Self.FK_PurchaseDetail_Product">
-            <End Role="Product" EntitySet="Product" />
-            <End Role="PurchaseDetail" EntitySet="PurchaseDetail" />
           </AssociationSet>
           <AssociationSet Name="FK_PurchaseDetail_Purchase" Association="Self.FK_PurchaseDetail_Purchase">
             <End Role="Purchase" EntitySet="Purchase" />
@@ -716,39 +644,14 @@
             <End Role="SalesDetail" EntitySet="SalesDetail" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
-    <!-- CSDL content -->
-    <edmx:ConceptualModels>
-      <Schema Namespace="FOODModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Category">
-          <Key>
-            <PropertyRef Name="CategoryID" />
-          </Key>
-          <Property Name="CategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Products" Relationship="Self.FK_Product_Category" FromRole="Category" ToRole="Product" />
-        </EntityType>
         <EntityType Name="Customer">
           <Key>
             <PropertyRef Name="CustomerID" />
           </Key>
           <Property Name="CustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CustomerRoleID" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Unicode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="SalesID" Type="Int32" Nullable="false" />
-          <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="FAX" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ContactPerson" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ContactCellPhone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="DoB" Type="DateTime" Precision="0" />
-          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="CustomerRoles" Relationship="Self.FK_CustomerRole_Customer" FromRole="Customer" ToRole="CustomerRole" />
-          <NavigationProperty Name="Orders" Relationship="Self.FK_Order_Customer" FromRole="Customer" ToRole="Order" />
-          <NavigationProperty Name="Purchases" Relationship="Self.FK_Purchase_Customer" FromRole="Customer" ToRole="Purchase" />
         </EntityType>
         <EntityType Name="CustomerRole">
           <Key>
@@ -757,8 +660,6 @@
           <Property Name="RoleID" Type="Int32" Nullable="false" />
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CustomerID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Customer" Relationship="Self.FK_CustomerRole_Customer" FromRole="CustomerRole" ToRole="Customer" />
-          <NavigationProperty Name="Role" Relationship="Self.FK_CustomerRole_Role" FromRole="CustomerRole" ToRole="Role" />
         </EntityType>
         <EntityType Name="DailyPriceTemp">
           <Key>
@@ -779,17 +680,9 @@
             <PropertyRef Name="EmployeeID" />
           </Key>
           <Property Name="EmployeeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="DOB" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Cellphone" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="DOE" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Unicode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="EmployeeRoles" Relationship="Self.FK_EmployeeRole_Employee" FromRole="Employee" ToRole="EmployeeRole" />
-          <NavigationProperty Name="Orders" Relationship="Self.FK_Order_Employee" FromRole="Employee" ToRole="Order" />
         </EntityType>
         <EntityType Name="EmployeeRole">
           <Key>
@@ -798,8 +691,6 @@
           <Property Name="RoleID" Type="Int32" Nullable="false" />
           <Property Name="EmployeeID" Type="Int32" Nullable="false" />
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="Employee" Relationship="Self.FK_EmployeeRole_Employee" FromRole="EmployeeRole" ToRole="Employee" />
-          <NavigationProperty Name="EmpRole" Relationship="Self.FK_EmployeeRole_EmpRole" FromRole="EmployeeRole" ToRole="EmpRole" />
         </EntityType>
         <EntityType Name="EmpRole">
           <Key>
@@ -807,7 +698,6 @@
           </Key>
           <Property Name="Name" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="RoleID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="EmployeeRoles" Relationship="Self.FK_EmployeeRole_EmpRole" FromRole="EmpRole" ToRole="EmployeeRole" />
         </EntityType>
         <EntityType Name="Inventory">
           <Key>
@@ -839,10 +729,6 @@
           <Property Name="Comment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Customer" Relationship="Self.FK_Order_Customer" FromRole="Order" ToRole="Customer" />
-          <NavigationProperty Name="Employee" Relationship="Self.FK_Order_Employee" FromRole="Order" ToRole="Employee" />
-          <NavigationProperty Name="OrderDetails" Relationship="Self.FK_OrderDetail_Order" FromRole="Order" ToRole="OrderDetail" />
-          <NavigationProperty Name="SalesDetails" Relationship="Self.FK_SalesDetail_Order" FromRole="Order" ToRole="SalesDetail" />
         </EntityType>
         <EntityType Name="OrderDetail">
           <Key>
@@ -850,14 +736,8 @@
           </Key>
           <Property Name="OrderDetailID" Type="Int32" Nullable="false" />
           <Property Name="OrderID" Type="Int32" Nullable="false" />
-          <Property Name="ProductCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Qty" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="UnitPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <Property Name="Commert" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Unit" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Order" Relationship="Self.FK_OrderDetail_Order" FromRole="OrderDetail" ToRole="Order" />
-          <NavigationProperty Name="Product" Relationship="Self.FK_OrderDetail_Product" FromRole="OrderDetail" ToRole="Product" />
-          <NavigationProperty Name="SalesDetails" Relationship="Self.FK_SalesDetail_OrderDetail" FromRole="OrderDetail" ToRole="SalesDetail" />
         </EntityType>
         <EntityType Name="Picture">
           <Key>
@@ -873,130 +753,15 @@
             <PropertyRef Name="ProductCode" />
           </Key>
           <Property Name="ProductID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ProductCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="CropCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Unit" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="CategoryID" Type="Int32" Nullable="false" />
           <Property Name="CustomerID" Type="Int32" />
           <Property Name="SubCategoryID" Type="Int32" />
-          <NavigationProperty Name="Category" Relationship="Self.FK_Product_Category" FromRole="Product" ToRole="Category" />
-          <NavigationProperty Name="Inventories" Relationship="Self.FK_Inventory_Product" FromRole="Product" ToRole="Inventory" />
-          <NavigationProperty Name="OrderDetails" Relationship="Self.FK_OrderDetail_Product" FromRole="Product" ToRole="OrderDetail" />
-          <NavigationProperty Name="Pictures" Relationship="Self.FK_Picture_Product" FromRole="Product" ToRole="Picture" />
-          <NavigationProperty Name="PurchaseConfirmedDetails" Relationship="Self.FK_PurchaseConfirmedDetail_Product" FromRole="Product" ToRole="PurchaseConfirmedDetail" />
-          <NavigationProperty Name="PurchaseDetails" Relationship="Self.FK_PurchaseDetail_Product" FromRole="Product" ToRole="PurchaseDetail" />
-          <NavigationProperty Name="SalesDetails" Relationship="Self.FK_SalesDetail_Product" FromRole="Product" ToRole="SalesDetail" />
-        </EntityType>
-        <EntityType Name="Purchase">
-          <Key>
-            <PropertyRef Name="PurchaseID" />
-          </Key>
-          <Property Name="PurchaseID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PurchaseDate" Type="DateTime" Precision="0" />
-          <Property Name="SupplierID" Type="Int32" />
-          <Property Name="PurchaserEmpID" Type="Int32" />
-          <Property Name="Deliveryaddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Comment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="RequiredDate" Type="DateTime" Precision="0" />
-          <Property Name="TallyEmpID" Type="Int32" />
-          <NavigationProperty Name="Customer" Relationship="Self.FK_Purchase_Customer" FromRole="Purchase" ToRole="Customer" />
-          <NavigationProperty Name="PurchaseConfirmedDetails" Relationship="Self.FK_PurchaseConfirmedDetail_Purchase" FromRole="Purchase" ToRole="PurchaseConfirmedDetail" />
-          <NavigationProperty Name="PurchaseDetails" Relationship="Self.FK_PurchaseDetail_Purchase" FromRole="Purchase" ToRole="PurchaseDetail" />
-        </EntityType>
-        <EntityType Name="PurchaseDetail">
-          <Key>
-            <PropertyRef Name="PurchaseDetailID" />
-          </Key>
-          <Property Name="PurchaseDetailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PurchaseID" Type="Int32" Nullable="false" />
-          <Property Name="ProductCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Qty" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="UnitPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="Unit" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="Comment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Product" Relationship="Self.FK_PurchaseDetail_Product" FromRole="PurchaseDetail" ToRole="Product" />
-          <NavigationProperty Name="Purchase" Relationship="Self.FK_PurchaseDetail_Purchase" FromRole="PurchaseDetail" ToRole="Purchase" />
-          <NavigationProperty Name="PurchaseConfirmedDetails" Relationship="Self.FK_PurchaseConfirmedDetail_PurchaseDetail" FromRole="PurchaseDetail" ToRole="PurchaseConfirmedDetail" />
-        </EntityType>
-        <EntityType Name="Role">
-          <Key>
-            <PropertyRef Name="RoleID" />
-          </Key>
-          <Property Name="RoleID" Type="Int32" Nullable="false" />
-          <Property Name="RoleName" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="CustomerRoles" Relationship="Self.FK_CustomerRole_Role" FromRole="Role" ToRole="CustomerRole" />
-        </EntityType>
-        <EntityType Name="sysdiagram">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
-        <EntityType Name="DailyPrice">
-          <Key>
-            <PropertyRef Name="RecordID" />
-            <PropertyRef Name="TransDate" />
-            <PropertyRef Name="CropCode" />
-          </Key>
-          <Property Name="RecordID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TransDate" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="CropCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="MarketCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="Upper_Price" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="Middle_Price" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="Lower_Price" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="Avg_Price" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="Trans_Quantity" Type="Decimal" Precision="18" Scale="0" />
-        </EntityType>
-        <EntityType Name="PurchaseConfirmedDetail">
-          <Key>
-            <PropertyRef Name="PurchaseComfirmedDetailID" />
-            <PropertyRef Name="PurchaseID" />
-            <PropertyRef Name="ProductCode" />
-            <PropertyRef Name="Qty" />
-            <PropertyRef Name="UnitPrice" />
-          </Key>
-          <Property Name="PurchaseComfirmedDetailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PurchaseID" Type="Int32" Nullable="false" />
-          <Property Name="ProductCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="PurchaseDetailID" Type="Int32" />
-          <Property Name="Qty" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="UnitPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="Unit" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="Comment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Product" Relationship="Self.FK_PurchaseConfirmedDetail_Product" FromRole="PurchaseConfirmedDetail" ToRole="Product" />
-          <NavigationProperty Name="Purchase" Relationship="Self.FK_PurchaseConfirmedDetail_Purchase" FromRole="PurchaseConfirmedDetail" ToRole="Purchase" />
-          <NavigationProperty Name="PurchaseDetail" Relationship="Self.FK_PurchaseConfirmedDetail_PurchaseDetail" FromRole="PurchaseConfirmedDetail" ToRole="PurchaseDetail" />
-        </EntityType>
-        <EntityType Name="SalesDetail">
-          <Key>
-            <PropertyRef Name="SalesDetailID" />
-            <PropertyRef Name="OrderID" />
-            <PropertyRef Name="ProductCode" />
-            <PropertyRef Name="UnitPrice" />
-            <PropertyRef Name="Qty" />
-          </Key>
-          <Property Name="SalesDetailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="OrderID" Type="Int32" Nullable="false" />
-          <Property Name="OrderDetailID" Type="Int32" />
-          <Property Name="ProductCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="UnitPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="Qty" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="unit" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="Comment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Order" Relationship="Self.FK_SalesDetail_Order" FromRole="SalesDetail" ToRole="Order" />
-          <NavigationProperty Name="OrderDetail" Relationship="Self.FK_SalesDetail_OrderDetail" FromRole="SalesDetail" ToRole="OrderDetail" />
-          <NavigationProperty Name="Product" Relationship="Self.FK_SalesDetail_Product" FromRole="SalesDetail" ToRole="Product" />
         </EntityType>
         <EntityType Name="Product_LatestPrice">
           <Key>
             <PropertyRef Name="ProductID" />
+            <PropertyRef Name="ProductCode" />
             <PropertyRef Name="CropCode" />
             <PropertyRef Name="Name" />
             <PropertyRef Name="CategoryID" />
@@ -1004,14 +769,9 @@
             <PropertyRef Name="TransDate" />
           </Key>
           <Property Name="ProductID" Type="Int32" Nullable="false" />
-          <Property Name="ProductCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="CropCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Unit" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="CategoryID" Type="Int32" Nullable="false" />
           <Property Name="SupplierID" Type="Int32" />
-          <Property Name="LatestAvgPrice" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="LatestMarket" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="TransDate" Type="DateTime" Nullable="false" Precision="0" />
         </EntityType>
         <EntityType Name="database_firewall_rules">
@@ -1024,9 +784,6 @@
             <PropertyRef Name="modify_date" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="start_ip_address" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="end_ip_address" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="create_date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="modify_date" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
@@ -1043,8 +800,6 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_CustomerRole_Customer">
-          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
-          <End Role="CustomerRole" Type="Self.CustomerRole" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Customer">
               <PropertyRef Name="CustomerID" />
@@ -1055,8 +810,6 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Order_Customer">
-          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
-          <End Role="Order" Type="Self.Order" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Customer">
               <PropertyRef Name="CustomerID" />
@@ -1091,8 +844,6 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_EmployeeRole_Employee">
-          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
-          <End Role="EmployeeRole" Type="Self.EmployeeRole" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Employee">
               <PropertyRef Name="EmployeeID" />
@@ -1103,8 +854,6 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Order_Employee">
-          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
-          <End Role="Order" Type="Self.Order" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Employee">
               <PropertyRef Name="EmployeeID" />
@@ -1115,8 +864,6 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_EmployeeRole_EmpRole">
-          <End Role="EmpRole" Type="Self.EmpRole" Multiplicity="1" />
-          <End Role="EmployeeRole" Type="Self.EmployeeRole" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="EmpRole">
               <PropertyRef Name="RoleID" />
@@ -1139,8 +886,6 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_OrderDetail_Order">
-          <End Role="Order" Type="Self.Order" Multiplicity="1" />
-          <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Order">
               <PropertyRef Name="OrderID" />
@@ -1163,8 +908,6 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_OrderDetail_Product">
-          <End Role="Product" Type="Self.Product" Multiplicity="1" />
-          <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Product">
               <PropertyRef Name="ProductCode" />
@@ -1422,14 +1165,7 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="FOODModelStoreContainer" CdmEntityContainer="FOODEntities">
-          <EntitySetMapping Name="Categories">
-            <EntityTypeMapping TypeName="FOODModel.Category">
-              <MappingFragment StoreEntitySet="Category">
-                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Customers">
             <EntityTypeMapping TypeName="FOODModel.Customer">
               <MappingFragment StoreEntitySet="Customer">
@@ -1446,6 +1182,18 @@
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="DoB" ColumnName="DoB" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="DoB" ColumnName="DoB" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="ContactCellPhone" ColumnName="ContactCellPhone" />
+                <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+                <ScalarProperty Name="FAX" ColumnName="FAX" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="SalesID" ColumnName="SalesID" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Unicode" ColumnName="Unicode" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CustomerRoleID" ColumnName="CustomerRoleID" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1455,21 +1203,6 @@
                 <ScalarProperty Name="RoleID" ColumnName="RoleID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="DailyPriceTemps">
-            <EntityTypeMapping TypeName="FOODModel.DailyPriceTemp">
-              <MappingFragment StoreEntitySet="DailyPriceTemp">
-                <ScalarProperty Name="RecordID" ColumnName="RecordID" />
-                <ScalarProperty Name="TransDate" ColumnName="TransDate" />
-                <ScalarProperty Name="CropCode" ColumnName="CropCode" />
-                <ScalarProperty Name="MarketCode" ColumnName="MarketCode" />
-                <ScalarProperty Name="Upper_Price" ColumnName="Upper_Price" />
-                <ScalarProperty Name="Middle_Price" ColumnName="Middle_Price" />
-                <ScalarProperty Name="Lower_Price" ColumnName="Lower_Price" />
-                <ScalarProperty Name="Avg_Price" ColumnName="Avg_Price" />
-                <ScalarProperty Name="Trans_Quantity" ColumnName="Trans_Quantity" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1486,6 +1219,15 @@
                 <ScalarProperty Name="Unicode" ColumnName="Unicode" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Unicode" ColumnName="Unicode" />
+                <ScalarProperty Name="DOE" ColumnName="DOE" />
+                <ScalarProperty Name="Cellphone" ColumnName="Cellphone" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1495,6 +1237,8 @@
                 <ScalarProperty Name="RoleID" ColumnName="RoleID" />
                 <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1503,24 +1247,6 @@
               <MappingFragment StoreEntitySet="EmpRole">
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="RoleID" ColumnName="RoleID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Inventories">
-            <EntityTypeMapping TypeName="FOODModel.Inventory">
-              <MappingFragment StoreEntitySet="Inventory">
-                <ScalarProperty Name="InventoryID" ColumnName="InventoryID" />
-                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
-                <ScalarProperty Name="Qty" ColumnName="Qty" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Markets">
-            <EntityTypeMapping TypeName="FOODModel.Market">
-              <MappingFragment StoreEntitySet="Market">
-                <ScalarProperty Name="MarketCode" ColumnName="MarketCode" />
-                <ScalarProperty Name="MarketName" ColumnName="MarketName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1536,6 +1262,14 @@
                 <ScalarProperty Name="Comment" ColumnName="Comment" />
                 <ScalarProperty Name="status" ColumnName="status" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="RequiredDate" ColumnName="RequiredDate" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1549,15 +1283,7 @@
                 <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
                 <ScalarProperty Name="Commert" ColumnName="Commert" />
                 <ScalarProperty Name="Unit" ColumnName="Unit" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Pictures">
-            <EntityTypeMapping TypeName="FOODModel.Picture">
-              <MappingFragment StoreEntitySet="Picture">
-                <ScalarProperty Name="PictureID" ColumnName="PictureID" />
                 <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
-                <ScalarProperty Name="IMG" ColumnName="IMG" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1572,61 +1298,7 @@
                 <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
                 <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
                 <ScalarProperty Name="SubCategoryID" ColumnName="SubCategoryID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Purchases">
-            <EntityTypeMapping TypeName="FOODModel.Purchase">
-              <MappingFragment StoreEntitySet="Purchase">
-                <ScalarProperty Name="PurchaseID" ColumnName="PurchaseID" />
-                <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
-                <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
-                <ScalarProperty Name="PurchaserEmpID" ColumnName="PurchaserEmpID" />
-                <ScalarProperty Name="Deliveryaddress" ColumnName="Deliveryaddress" />
-                <ScalarProperty Name="Comment" ColumnName="Comment" />
-                <ScalarProperty Name="status" ColumnName="status" />
-                <ScalarProperty Name="RequiredDate" ColumnName="RequiredDate" />
-                <ScalarProperty Name="TallyEmpID" ColumnName="TallyEmpID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PurchaseDetails">
-            <EntityTypeMapping TypeName="FOODModel.PurchaseDetail">
-              <MappingFragment StoreEntitySet="PurchaseDetail">
-                <ScalarProperty Name="PurchaseDetailID" ColumnName="PurchaseDetailID" />
-                <ScalarProperty Name="PurchaseID" ColumnName="PurchaseID" />
-                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
-                <ScalarProperty Name="Qty" ColumnName="Qty" />
-                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
                 <ScalarProperty Name="Unit" ColumnName="Unit" />
-                <ScalarProperty Name="Comment" ColumnName="Comment" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Roles">
-            <EntityTypeMapping TypeName="FOODModel.Role">
-              <MappingFragment StoreEntitySet="Role">
-                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
-                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="FOODModel.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="DailyPrices">
-            <EntityTypeMapping TypeName="FOODModel.DailyPrice">
-              <MappingFragment StoreEntitySet="DailyPrice">
-                <ScalarProperty Name="RecordID" ColumnName="RecordID" />
-                <ScalarProperty Name="TransDate" ColumnName="TransDate" />
                 <ScalarProperty Name="CropCode" ColumnName="CropCode" />
                 <ScalarProperty Name="MarketCode" ColumnName="MarketCode" />
                 <ScalarProperty Name="Upper_Price" ColumnName="Upper_Price" />
@@ -1658,10 +1330,6 @@
                 <ScalarProperty Name="OrderID" ColumnName="OrderID" />
                 <ScalarProperty Name="OrderDetailID" ColumnName="OrderDetailID" />
                 <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
-                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
-                <ScalarProperty Name="Qty" ColumnName="Qty" />
-                <ScalarProperty Name="unit" ColumnName="unit" />
-                <ScalarProperty Name="Comment" ColumnName="Comment" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1678,6 +1346,15 @@
                 <ScalarProperty Name="LatestAvgPrice" ColumnName="LatestAvgPrice" />
                 <ScalarProperty Name="LatestMarket" ColumnName="LatestMarket" />
                 <ScalarProperty Name="TransDate" ColumnName="TransDate" />
+                <ScalarProperty Name="LatestMarket" ColumnName="LatestMarket" />
+                <ScalarProperty Name="LatestUpperPrice" ColumnName="LatestUpperPrice" />
+                <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CropCode" ColumnName="CropCode" />
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1690,6 +1367,11 @@
                 <ScalarProperty Name="end_ip_address" ColumnName="end_ip_address" />
                 <ScalarProperty Name="create_date" ColumnName="create_date" />
                 <ScalarProperty Name="modify_date" ColumnName="modify_date" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="end_ip_address" ColumnName="end_ip_address" />
+                <ScalarProperty Name="start_ip_address" ColumnName="start_ip_address" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
