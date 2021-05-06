@@ -84,46 +84,14 @@ namespace WindowsFormsApp1.Properties
 
         private void 訂單表_Load(object sender, EventArgs e)
         {
-            
-            
-
-            var q = this.db.Customers.Select(n=>new { ctname=n.Name , ctid=n.CustomerID });//匯入客戶
-            
-
-            this.comboBox1.DataSource = q.ToList();
-            this.comboBox1.DisplayMember = "ctname";
-            this.comboBox1.ValueMember = "ctid";
-
-
-            var q1 = this.db.Employees.Select(n => new { empname = n.Name, empid = n.EmployeeID }); //匯入理貨人員，客服人員
-                 
-            this.comboBox5.DataSource = q1.ToList();
-            this.comboBox5.DisplayMember = "empname";
-            this.comboBox5.ValueMember = "empid";
-           
-            this.comboBox1.SelectedIndexChanged += ComboBox1_SelectedIndexChanged;
-            this.comboBox1.SelectedIndex = 1;
-            this.comboBox1.SelectedIndex = 0;
-
-            this.comboBox5.SelectedIndexChanged += comboBox5_SelectedIndexChanged;
-            this.comboBox5.SelectedIndex = 1;
-            this.comboBox5.SelectedIndex = 0;
-           
-            foreach (var p in q1)
+            foreach (Control con in this.Controls)
             {
-                this.comboBox3.Items.Add(p.empname);
-
+                con.Enabled = false;
+                this.button4.Enabled = true;
+                this.button3.Enabled = true;          
             }
-            
 
-            var q3 = this.db.Products.Select(n => new { pdid = n.ProductCode, pdna = n.ProductCode +"  "+ n.Name    });
-            //datagrirview匯入資料
-
-
-            this.ProductCode.DataSource = q3.ToList();
-            this.ProductCode.DisplayMember = "pdna";
-            this.ProductCode.ValueMember = "pdid";
-
+          
           
         }
 
@@ -231,6 +199,111 @@ namespace WindowsFormsApp1.Properties
             foreach (var p in q)
             {
                 this.label19.Text = p.ToString();
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            foreach (Control con in this.Controls)
+            {
+                con.Enabled = true;
+                this.button2.Enabled = false;
+                this.button4.Enabled = false;
+            
+            }
+
+
+
+            var q = this.db.Customers.Select(n => new { ctname = n.Name, ctid = n.CustomerID });//匯入客戶
+
+
+            this.comboBox1.DataSource = q.ToList();
+            this.comboBox1.DisplayMember = "ctname";
+            this.comboBox1.ValueMember = "ctid";
+
+
+            var q1 = this.db.Employees.Select(n => new { empname = n.Name, empid = n.EmployeeID }); //匯入理貨人員，客服人員
+
+            this.comboBox5.DataSource = q1.ToList();
+            this.comboBox5.DisplayMember = "empname";
+            this.comboBox5.ValueMember = "empid";
+
+            this.comboBox1.SelectedIndexChanged += ComboBox1_SelectedIndexChanged;
+            this.comboBox1.SelectedIndex = 1;
+            this.comboBox1.SelectedIndex = 0;
+
+            this.comboBox5.SelectedIndexChanged += comboBox5_SelectedIndexChanged;
+            this.comboBox5.SelectedIndex = 1;
+            this.comboBox5.SelectedIndex = 0;
+
+            foreach (var p in q1)
+            {
+                this.comboBox3.Items.Add(p.empname);
+
+            }
+
+
+            var q3 = this.db.Products.Select(n => new { pdid = n.ProductCode, pdna = n.ProductCode + "  " + n.Name });
+            //datagrirview匯入資料
+
+
+            this.ProductCode.DataSource = q3.ToList();
+            this.ProductCode.DisplayMember = "pdna";
+            this.ProductCode.ValueMember = "pdid";
+
+
+
+        }
+        string suppliername;
+        private void button4_Click(object sender, EventArgs e)
+        {
+            foreach (Control con in this.Controls)
+            {
+                con.Enabled = true;
+                this.button3.Enabled = false;
+                this.button4.Enabled = false;
+
+            }
+
+            查詢子表 k = new 查詢子表();
+         DialogResult res=   k.ShowDialog();
+            if (res == DialogResult.OK)
+            {
+                suppliername = k.suppliername;
+            }
+            var q = this.db.Orders.AsEnumerable().Where(n => n.OrderID.ToString() == k.suppliername).Select(n =>new { 
+                cname=n.Customer.Name ,
+                cid=n.CustomerID , 
+                epid=n.EmployeeID, 
+                epname=n.Employee.EmployeeID,
+                add=n.Address,
+            });
+            foreach (var p in q)
+            {
+                this.comboBox1.Items.Add(p.cname);
+                this.label16.Text = this.comboBox1.SelectedIndex.ToString();
+
+            
+            }
+           
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {//關閉所有欄位 只有新增查詢是可以用得
+            foreach (Control con in this.Controls)
+            {
+                con.Enabled = false;
+                this.button4.Enabled = true;
+                this.button3.Enabled = true;
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            foreach (Control con in this.Controls)
+            {
+                con.Enabled = true;                
+                this.button3.Enabled = false;
             }
         }
     }
