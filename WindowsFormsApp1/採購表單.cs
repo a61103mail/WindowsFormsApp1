@@ -12,6 +12,7 @@ namespace WindowsFormsApp1
 {
     public partial class 採購表單 : Form
     {
+        private BindingSource bs = new BindingSource();
         public 採購表單()
         {
             
@@ -365,6 +366,86 @@ namespace WindowsFormsApp1
             //        where emp.EmployeeID == int.Parse(this.label19.Text)
             //        select new { empID = emp.Unicode };
             //this.comboBox2.Text = q.ToList().ToString();
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            
+            
+            var q = (from p in this.db.Purchases
+                    where (p.PurchaseID).ToString() == this.label4.Text //??????????????????
+                    select p).FirstOrDefault();
+            var q1 = from pd in this.db.PurchaseDetails
+                      where (pd.PurchaseID).ToString() == this.label4.Text
+                      select pd;
+            var pds = q1.ToList();
+            int rows = 0;
+            
+
+            DialogResult s = MessageBox.Show("確定修改?", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
+            
+            if (s == DialogResult.OK)
+            {
+                if (q == null) return;
+                
+                q.PurchaseDate = this.dateTimePicker1.Value;
+                q.SupplierID = int.Parse(this.label12.Text);
+                //q.PurchaserEmpID = int.Parse(this.label18.Text);
+                q.Deliveryaddress = this.textBox6.Text;
+                q.Comment = this.richTextBox1.Text;
+                q.RequiredDate = this.dateTimePicker2.Value;
+                q.TallyEmpID = int.Parse(this.label19.Text);
+                
+                this.db.SaveChanges();
+
+                var dr = this.dataGridView1.Rows;
+                for (int i = 0; i < dr.Count; i++)
+                {
+                    if (i > pds.Count)
+                    {
+                        MessageBox.Show("gg", "", MessageBoxButtons.OK);
+                        break;
+                    }
+                    if (dr[i].Cells[1].Value != null)
+                    {
+                        pds[i].ProductCode = dr[i].Cells[1].Value.ToString();
+                        pds[i].Qty = decimal.Parse(dr[i].Cells[4].Value.ToString());
+                        pds[i].UnitPrice = decimal.Parse(dr[i].Cells[3].Value.ToString());
+                        pds[i].Unit = dr[i].Cells[5].Value.ToString();
+                        if (dr[i].Cells[7].Value != null)
+                        {
+                            pds[i].Comment = dr[i].Cells[7].Value.ToString();
+                        }
+                    }
+                    
+                     
+                    
+                }
+                rows = this.db.SaveChanges();
+                if (rows != 0) MessageBox.Show("修改成功", "", MessageBoxButtons.OK);
+            }
+            
+        }
+
+        private void dataGridView1_RowValidated(object sender, DataGridViewCellEventArgs e)
+        {
+            //var q1 = (from pd in this.db.PurchaseDetails
+            //          where (pd.PurchaseID).ToString() == this.label4.Text
+            //          select pd).FirstOrDefault();
+
+            //if (q1.ProductCode == this.dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString())
+            //{
+            //    q1.ProductCode = this.dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
+            //    q1.Qty = decimal.Parse(this.dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString());
+            //    q1.UnitPrice = decimal.Parse(this.dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString());
+            //    q1.Unit = this.dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
+            //    if (this.dataGridView1.Rows[e.RowIndex].Cells[7].Value != null)
+            //    {
+            //        q1.Comment = this.dataGridView1.Rows[e.RowIndex].Cells[7].Value.ToString();
+            //    }
+            //    this.db.SaveChanges();
+            //}
+            
         }
     }
 }
