@@ -17,6 +17,7 @@ namespace WindowsFormsApp1
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new 採購表單());
+            //Application.Run(new 新增採購品項(14));
         }
     }
 }
