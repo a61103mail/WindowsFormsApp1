@@ -31,92 +31,150 @@ namespace WindowsFormsApp1
         {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.AccounttextBox = new System.Windows.Forms.TextBox();
+            this.EmailtextBox = new System.Windows.Forms.TextBox();
+            this.ConfirmBtn = new System.Windows.Forms.Button();
+            this.BackBtn = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.PWtextBox = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.CKDPWtextBox = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.CheckBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("標楷體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label1.Location = new System.Drawing.Point(46, 106);
+            this.label1.Location = new System.Drawing.Point(145, 178);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(142, 21);
+            this.label1.Size = new System.Drawing.Size(76, 21);
             this.label1.TabIndex = 0;
-            this.label1.Text = "請輸入帳號：";
+            this.label1.Text = "帳號：";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("標楷體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label2.Location = new System.Drawing.Point(46, 160);
+            this.label2.Location = new System.Drawing.Point(132, 226);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(120, 21);
             this.label2.TabIndex = 1;
             this.label2.Text = "電子信箱：";
             // 
-            // textBox1
+            // AccounttextBox
             // 
-            this.textBox1.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(194, 102);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(226, 32);
-            this.textBox1.TabIndex = 2;
+            this.AccounttextBox.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AccounttextBox.Location = new System.Drawing.Point(274, 174);
+            this.AccounttextBox.Name = "AccounttextBox";
+            this.AccounttextBox.Size = new System.Drawing.Size(250, 32);
+            this.AccounttextBox.TabIndex = 2;
             // 
-            // textBox2
+            // EmailtextBox
             // 
-            this.textBox2.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(194, 156);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(226, 32);
-            this.textBox2.TabIndex = 3;
+            this.EmailtextBox.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EmailtextBox.Location = new System.Drawing.Point(274, 222);
+            this.EmailtextBox.Name = "EmailtextBox";
+            this.EmailtextBox.Size = new System.Drawing.Size(250, 32);
+            this.EmailtextBox.TabIndex = 3;
             // 
-            // button1
+            // ConfirmBtn
             // 
-            this.button1.Font = new System.Drawing.Font("標楷體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.button1.Location = new System.Drawing.Point(275, 209);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(60, 30);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "送出";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.ConfirmBtn.Font = new System.Drawing.Font("標楷體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.ConfirmBtn.Location = new System.Drawing.Point(387, 378);
+            this.ConfirmBtn.Name = "ConfirmBtn";
+            this.ConfirmBtn.Size = new System.Drawing.Size(60, 30);
+            this.ConfirmBtn.TabIndex = 4;
+            this.ConfirmBtn.Text = "確認";
+            this.ConfirmBtn.UseVisualStyleBackColor = true;
+            this.ConfirmBtn.Click += new System.EventHandler(this.ConfirmBtn_Click);
             // 
-            // button2
+            // BackBtn
             // 
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button2.Font = new System.Drawing.Font("標楷體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.button2.Location = new System.Drawing.Point(360, 209);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(60, 30);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "返回";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.BackBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BackBtn.Font = new System.Drawing.Font("標楷體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.BackBtn.Location = new System.Drawing.Point(464, 378);
+            this.BackBtn.Name = "BackBtn";
+            this.BackBtn.Size = new System.Drawing.Size(60, 30);
+            this.BackBtn.TabIndex = 5;
+            this.BackBtn.Text = "返回";
+            this.BackBtn.UseVisualStyleBackColor = true;
+            this.BackBtn.Click += new System.EventHandler(this.BackBtn_Click);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("標楷體", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label3.Location = new System.Drawing.Point(175, 34);
+            this.label3.Location = new System.Drawing.Point(269, 89);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(124, 27);
             this.label3.TabIndex = 6;
             this.label3.Text = "忘記密碼";
             // 
+            // PWtextBox
+            // 
+            this.PWtextBox.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PWtextBox.Location = new System.Drawing.Point(274, 269);
+            this.PWtextBox.Name = "PWtextBox";
+            this.PWtextBox.Size = new System.Drawing.Size(250, 32);
+            this.PWtextBox.TabIndex = 8;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("標楷體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label4.Location = new System.Drawing.Point(132, 273);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(120, 21);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "重設密碼：";
+            // 
+            // CKDPWtextBox
+            // 
+            this.CKDPWtextBox.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CKDPWtextBox.Location = new System.Drawing.Point(274, 317);
+            this.CKDPWtextBox.Name = "CKDPWtextBox";
+            this.CKDPWtextBox.Size = new System.Drawing.Size(250, 32);
+            this.CKDPWtextBox.TabIndex = 10;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("標楷體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label5.Location = new System.Drawing.Point(132, 321);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(120, 21);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "確認密碼：";
+            // 
+            // CheckBtn
+            // 
+            this.CheckBtn.Font = new System.Drawing.Font("標楷體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.CheckBtn.Location = new System.Drawing.Point(312, 378);
+            this.CheckBtn.Name = "CheckBtn";
+            this.CheckBtn.Size = new System.Drawing.Size(60, 30);
+            this.CheckBtn.TabIndex = 11;
+            this.CheckBtn.Text = "驗證";
+            this.CheckBtn.UseVisualStyleBackColor = true;
+            this.CheckBtn.Click += new System.EventHandler(this.CheckBtn_Click);
+            // 
             // ForgotPW
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(484, 261);
+            this.BackColor = System.Drawing.Color.SeaShell;
+            this.ClientSize = new System.Drawing.Size(659, 541);
+            this.Controls.Add(this.CheckBtn);
+            this.Controls.Add(this.CKDPWtextBox);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.PWtextBox);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.BackBtn);
+            this.Controls.Add(this.ConfirmBtn);
+            this.Controls.Add(this.EmailtextBox);
+            this.Controls.Add(this.AccounttextBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "ForgotPW";
@@ -130,10 +188,15 @@ namespace WindowsFormsApp1
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox AccounttextBox;
+        private System.Windows.Forms.TextBox EmailtextBox;
+        internal System.Windows.Forms.Button ConfirmBtn;
+        private System.Windows.Forms.Button BackBtn;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        internal System.Windows.Forms.TextBox CKDPWtextBox;
+        private System.Windows.Forms.Label label5;
+        internal System.Windows.Forms.TextBox PWtextBox;
+        private System.Windows.Forms.Button CheckBtn;
     }
 }

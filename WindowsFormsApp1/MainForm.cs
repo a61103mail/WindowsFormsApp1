@@ -13,11 +13,11 @@ namespace WindowsFormsApp1
 {
     public partial class MainForm : Form
     {
+        FOODEntities db = new FOODEntities();
         public MainForm()
         {
             InitializeComponent();
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
             panel1.Controls.Clear();
@@ -47,10 +47,6 @@ namespace WindowsFormsApp1
         private void button3_Click(object sender, EventArgs e)
         {
             Application.Exit();
-            
-
-
-         
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -72,5 +68,7 @@ namespace WindowsFormsApp1
             this.panel1.Controls.Add(訂單表);
             訂單表.Show();
         }
+
+        
     }
 }

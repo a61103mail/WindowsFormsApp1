@@ -14,8 +14,9 @@ namespace WindowsFormsApp1
 {
     public partial class registered : Form
     {
-        FOODEntities db = new FOODEntities();
-        global::Encoder.Security.Encoder encode = new global::Encoder.Security.Encoder();
+        FOODEntities db = new FOODEntities(); //database
+        global::Encoder.Security.Encoder encode = new global::Encoder.Security.Encoder(); //密碼
+        EncoderType type = EncoderType.SHA1;
         public registered()
         {
             InitializeComponent();
@@ -32,8 +33,8 @@ namespace WindowsFormsApp1
             EmailTextBox_register.Enabled = false;
             TELTextBox_register.Enabled = false;
             AddTextBox_register.Enabled = false;
-            panel1.Enabled = false;
-            panel2.Enabled = false;
+            companyPanel.Enabled = false;
+            personalPanel.Enabled = false;
             checkBox1.Enabled = false;
             CorrectButton.Enabled = false;
         }
@@ -45,8 +46,8 @@ namespace WindowsFormsApp1
             EmailTextBox_register.Enabled = true;
             TELTextBox_register.Enabled = true;
             AddTextBox_register.Enabled = true;
-            panel1.Enabled = false;
-            panel2.Enabled = true;
+            companyPanel.Enabled = false;
+            personalPanel.Enabled = true;
             checkBox1.Enabled = true;
             CorrectButton.Enabled = true;
 
@@ -60,14 +61,14 @@ namespace WindowsFormsApp1
             EmailTextBox_register.Enabled = true;
             TELTextBox_register.Enabled = true;
             AddTextBox_register.Enabled = true;
-            panel1.Enabled = true;
-            panel2.Enabled = false;
+            companyPanel.Enabled = true;
+            personalPanel.Enabled = false;
             checkBox1.Enabled = true;
             CorrectButton.Enabled = true;
         }
 
         private void BackButton_Click(object sender, EventArgs e)
-        {
+        {            
             this.Dispose();
         }
 
@@ -79,7 +80,7 @@ namespace WindowsFormsApp1
         {
             Customer cus = new Customer();
             Employee emp = new Employee();
-            EncoderType type = EncoderType.SHA1;
+            
             //客戶權限編號--
             //    CustomrtRoleID=1：個人
             //    CustomrtRoleID = 2：企業
@@ -150,7 +151,7 @@ namespace WindowsFormsApp1
             try
             {
                 db.SaveChanges();                
-                 var result = MessageBox.Show("帳號註冊成功！", "注意！", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                 var result = MessageBox.Show("帳號註冊成功！", "成功！", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 if (result == System.Windows.Forms.DialogResult.OK)
                 {
                     Customer系統 CTMR = (Customer系統)this.Owner;
@@ -161,9 +162,9 @@ namespace WindowsFormsApp1
             catch (Exception ex)
             {
                 throw;
-            }
-           
+            }           
         }
+
 
         private void CheckID()
         {
