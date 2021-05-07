@@ -19,10 +19,11 @@ namespace WindowsFormsApp1
         public string CropCode { get; set; }
         public string Name { get; set; }
         public string Unit { get; set; }
-        public int CategoryID { get; set; }
+        public string Category { get; set; }
         public Nullable<int> SupplierID { get; set; }
         public Nullable<decimal> LatestUpperPrice { get; set; }
+        public Nullable<decimal> DailyTrend { get; set; }
         public string LatestMarket { get; set; }
-        public System.DateTime TransDate { get; set; }
+        public Nullable<System.DateTime> TransDate { get; set; }
     }
 }
