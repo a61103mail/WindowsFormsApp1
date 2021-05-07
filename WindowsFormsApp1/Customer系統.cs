@@ -54,12 +54,12 @@ namespace WindowsFormsApp1
         {
             Select系統 s = new Select系統();
             s.CTMRbtn.Checked = true;
+            s.TopMost = true;
             s.Panel查詢.Enabled = false;
             s.Owner = this;//重要的一步，主要是使Form2的Owner指針指向Form1  
             s.AddCTMRtextboxsource();
             s.ShowDialog();
         }
-
         private void btn_modify_Click(object sender, EventArgs e)
         {
             try
@@ -83,17 +83,14 @@ namespace WindowsFormsApp1
             }
             catch (Exception ex)
             {
-                
             }
-                
-            
-            
         }
 
         private void btn_creat_Click(object sender, EventArgs e)
         {
             registered registered = new registered();
             registered.Owner = this;
+            registered.TopMost = true;
             registered.ShowDialog();
         }
 

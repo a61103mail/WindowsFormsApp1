@@ -237,6 +237,7 @@
       <DependentUpon>FoodModel.edmx</DependentUpon>
       <LastGenOutput>FoodModel.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\close.png" />
     <Content Include="Resources\correct.png" />
     <Content Include="Resources\edit.png" />
     <Content Include="Resources\power.png" />

@@ -109,6 +109,7 @@ namespace WindowsFormsApp1
         {
             Select系統 s = new Select系統();
             s.EMPbtn.Checked = true;
+            s.TopMost = true;
             s.Panel查詢.Enabled = false;
             s.Owner = this;//重要的一步，主要是使Form2的Owner指針指向Form1  
             s.AddEMPtextboxsource();
@@ -141,11 +142,14 @@ namespace WindowsFormsApp1
 
         private void btn_creat_Click(object sender, EventArgs e)
         {
-            btn_search.Enabled = false;
-            btn_modify.Enabled = false;
-            btn_delete.Enabled = false;
-            btn_creat.Enabled = false;
-            btn_save.Visible = true;
+            CURDpanel.Enabled = false;
+            Savepanel.Visible = true;
+            PWDpanel.Visible = true;
+            //btn_search.Enabled = false;
+            //btn_modify.Enabled = false;
+            //btn_delete.Enabled = false;
+            //btn_creat.Enabled = false;
+            //btn_save.Visible = true;
             //=====清除TEXT============
             NameTextBox_Employee.Text = null;
             UnicodeTextBox_Employee.Text = null;
@@ -155,29 +159,33 @@ namespace WindowsFormsApp1
             DOETextBox_Employee.Text = null;
             EmailTextBox_Employee.Text = null;
             AddressTextBox_Employee.Text = null;
-            PWDpanel.Visible = true;
+            PasswordtextBox_Employee.Text = null;
         }
         private void btn_save_Click(object sender, EventArgs e)
         {
-            btn_search.Enabled = true;
-            btn_modify.Enabled = true;
-            btn_delete.Enabled = true;
-            btn_creat.Enabled = true;
-            btn_save.Visible = false;
+            CURDpanel.Enabled = true;
+            Savepanel.Visible = false;
             PWDpanel.Visible = false;
-            Employee emp = new Employee();
-            emp.Name = this.NameTextBox_Employee.Text;
-            emp.DOB = DateTime.Parse(this.DOBTextBox_Employee.Text);
-            emp.Address = this.AddressTextBox_Employee.Text;
-            emp.Phone = this.PhoneTextBox_Employee.Text;
-            emp.Cellphone = this.CellPhoneTextBox_Employee.Text;
-            emp.DOE = DateTime.Parse(this.DOETextBox_Employee.Text);
-            emp.Unicode = this.UnicodeTextBox_Employee.Text;
-            emp.Password = this.PasswordtextBox_Employee.Text;
-            emp.Email = this.EmailTextBox_Employee.Text;
-            ENT.db.Employees.Add(emp);
-            ENT.db.SaveChanges();
-            EmployeeIDtextBox_Employee.Text = emp.EmployeeID.ToString(); ;
+            try
+            {
+                Employee emp = new Employee();
+                emp.Name = this.NameTextBox_Employee.Text;
+                emp.DOB = DateTime.Parse(this.DOBTextBox_Employee.Text);
+                emp.Address = this.AddressTextBox_Employee.Text;
+                emp.Phone = this.PhoneTextBox_Employee.Text;
+                emp.Cellphone = this.CellPhoneTextBox_Employee.Text;
+                emp.DOE = DateTime.Parse(this.DOETextBox_Employee.Text);
+                emp.Unicode = this.UnicodeTextBox_Employee.Text;
+                emp.Password = this.PasswordtextBox_Employee.Text;
+                emp.Email = this.EmailTextBox_Employee.Text;
+                ENT.db.Employees.Add(emp);
+                ENT.db.SaveChanges();
+                EmployeeIDtextBox_Employee.Text = emp.EmployeeID.ToString();
+            }
+            catch (Exception)
+            {
+            }
+             
         }
         private void btn_delete_Click(object sender, EventArgs e)
         {
@@ -201,6 +209,12 @@ namespace WindowsFormsApp1
             }
         }
 
-        
+        private void btn_close_Click(object sender, EventArgs e)
+        {
+            CURDpanel.Enabled = true;
+            Savepanel.Visible = false;
+            PWDpanel.Visible = false;
+
+        }
     }
 }
