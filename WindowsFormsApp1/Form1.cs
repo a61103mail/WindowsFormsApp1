@@ -74,14 +74,14 @@ namespace WindowsFormsApp1
             string CusName = "";
             string EmpName = "";
 
-            var CTMID = db.Customers.Where(n => n.Unicode == this.textBox1.Text).Select(n => new { n.Unicode, n.Password, n.Name });
+            var CTMID = db.Customers.Where(n => n.Unicode == this.textBox1.Text).Select(n => new { n.Unicode, n.Password, n.Name, n.CustomerRoleID });
             foreach (var item in CTMID)
             {
                 CusID = item.Unicode;
                 CusPW = item.Password;
                 CusName = item.Name;
             }
-            var EPYID = db.Employees.Where(n => n.Unicode == this.textBox1.Text).Select(n => new { n.Unicode, n.Password, n.Name });
+            var EPYID = db.Employees.Where(n => n.Unicode == this.textBox1.Text).Select(n => new { n.Unicode, n.Password, n.Name,n.EmployeeRoles });
             foreach (var item1 in EPYID)
             {
                 EmpID = item1.Unicode;
