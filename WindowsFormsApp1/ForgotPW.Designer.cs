@@ -47,7 +47,7 @@ namespace WindowsFormsApp1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("標楷體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label1.Location = new System.Drawing.Point(37, 78);
+            this.label1.Location = new System.Drawing.Point(145, 178);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(76, 21);
             this.label1.TabIndex = 0;
@@ -57,7 +57,7 @@ namespace WindowsFormsApp1
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("標楷體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label2.Location = new System.Drawing.Point(24, 126);
+            this.label2.Location = new System.Drawing.Point(132, 226);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(120, 21);
             this.label2.TabIndex = 1;
@@ -66,7 +66,7 @@ namespace WindowsFormsApp1
             // AccounttextBox
             // 
             this.AccounttextBox.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AccounttextBox.Location = new System.Drawing.Point(166, 74);
+            this.AccounttextBox.Location = new System.Drawing.Point(274, 174);
             this.AccounttextBox.Name = "AccounttextBox";
             this.AccounttextBox.Size = new System.Drawing.Size(250, 32);
             this.AccounttextBox.TabIndex = 2;
@@ -74,7 +74,7 @@ namespace WindowsFormsApp1
             // EmailtextBox
             // 
             this.EmailtextBox.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EmailtextBox.Location = new System.Drawing.Point(166, 122);
+            this.EmailtextBox.Location = new System.Drawing.Point(274, 222);
             this.EmailtextBox.Name = "EmailtextBox";
             this.EmailtextBox.Size = new System.Drawing.Size(250, 32);
             this.EmailtextBox.TabIndex = 3;
@@ -82,7 +82,7 @@ namespace WindowsFormsApp1
             // ConfirmBtn
             // 
             this.ConfirmBtn.Font = new System.Drawing.Font("標楷體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.ConfirmBtn.Location = new System.Drawing.Point(279, 278);
+            this.ConfirmBtn.Location = new System.Drawing.Point(387, 378);
             this.ConfirmBtn.Name = "ConfirmBtn";
             this.ConfirmBtn.Size = new System.Drawing.Size(60, 30);
             this.ConfirmBtn.TabIndex = 4;
@@ -94,7 +94,7 @@ namespace WindowsFormsApp1
             // 
             this.BackBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.BackBtn.Font = new System.Drawing.Font("標楷體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.BackBtn.Location = new System.Drawing.Point(356, 278);
+            this.BackBtn.Location = new System.Drawing.Point(464, 378);
             this.BackBtn.Name = "BackBtn";
             this.BackBtn.Size = new System.Drawing.Size(60, 30);
             this.BackBtn.TabIndex = 5;
@@ -106,7 +106,7 @@ namespace WindowsFormsApp1
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("標楷體", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label3.Location = new System.Drawing.Point(161, 26);
+            this.label3.Location = new System.Drawing.Point(269, 89);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(124, 27);
             this.label3.TabIndex = 6;
@@ -115,7 +115,7 @@ namespace WindowsFormsApp1
             // PWtextBox
             // 
             this.PWtextBox.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PWtextBox.Location = new System.Drawing.Point(166, 169);
+            this.PWtextBox.Location = new System.Drawing.Point(274, 269);
             this.PWtextBox.Name = "PWtextBox";
             this.PWtextBox.Size = new System.Drawing.Size(250, 32);
             this.PWtextBox.TabIndex = 8;
@@ -124,7 +124,7 @@ namespace WindowsFormsApp1
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("標楷體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label4.Location = new System.Drawing.Point(24, 173);
+            this.label4.Location = new System.Drawing.Point(132, 273);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(120, 21);
             this.label4.TabIndex = 7;
@@ -133,7 +133,7 @@ namespace WindowsFormsApp1
             // CKDPWtextBox
             // 
             this.CKDPWtextBox.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CKDPWtextBox.Location = new System.Drawing.Point(166, 217);
+            this.CKDPWtextBox.Location = new System.Drawing.Point(274, 317);
             this.CKDPWtextBox.Name = "CKDPWtextBox";
             this.CKDPWtextBox.Size = new System.Drawing.Size(250, 32);
             this.CKDPWtextBox.TabIndex = 10;
@@ -142,7 +142,7 @@ namespace WindowsFormsApp1
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("標楷體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label5.Location = new System.Drawing.Point(24, 221);
+            this.label5.Location = new System.Drawing.Point(132, 321);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(120, 21);
             this.label5.TabIndex = 9;
@@ -151,7 +151,7 @@ namespace WindowsFormsApp1
             // CheckBtn
             // 
             this.CheckBtn.Font = new System.Drawing.Font("標楷體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.CheckBtn.Location = new System.Drawing.Point(204, 278);
+            this.CheckBtn.Location = new System.Drawing.Point(312, 378);
             this.CheckBtn.Name = "CheckBtn";
             this.CheckBtn.Size = new System.Drawing.Size(60, 30);
             this.CheckBtn.TabIndex = 11;
@@ -163,7 +163,8 @@ namespace WindowsFormsApp1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(448, 337);
+            this.BackColor = System.Drawing.Color.SeaShell;
+            this.ClientSize = new System.Drawing.Size(659, 541);
             this.Controls.Add(this.CheckBtn);
             this.Controls.Add(this.CKDPWtextBox);
             this.Controls.Add(this.label5);

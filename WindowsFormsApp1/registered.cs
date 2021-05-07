@@ -33,8 +33,8 @@ namespace WindowsFormsApp1
             EmailTextBox_register.Enabled = false;
             TELTextBox_register.Enabled = false;
             AddTextBox_register.Enabled = false;
-            panel1.Enabled = false;
-            panel2.Enabled = false;
+            companyPanel.Enabled = false;
+            personalPanel.Enabled = false;
             checkBox1.Enabled = false;
             CorrectButton.Enabled = false;
         }
@@ -46,8 +46,8 @@ namespace WindowsFormsApp1
             EmailTextBox_register.Enabled = true;
             TELTextBox_register.Enabled = true;
             AddTextBox_register.Enabled = true;
-            panel1.Enabled = false;
-            panel2.Enabled = true;
+            companyPanel.Enabled = false;
+            personalPanel.Enabled = true;
             checkBox1.Enabled = true;
             CorrectButton.Enabled = true;
 
@@ -61,14 +61,14 @@ namespace WindowsFormsApp1
             EmailTextBox_register.Enabled = true;
             TELTextBox_register.Enabled = true;
             AddTextBox_register.Enabled = true;
-            panel1.Enabled = true;
-            panel2.Enabled = false;
+            companyPanel.Enabled = true;
+            personalPanel.Enabled = false;
             checkBox1.Enabled = true;
             CorrectButton.Enabled = true;
         }
 
         private void BackButton_Click(object sender, EventArgs e)
-        {
+        {            
             this.Dispose();
         }
 
