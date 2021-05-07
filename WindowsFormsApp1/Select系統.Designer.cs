@@ -102,6 +102,7 @@ namespace WindowsFormsApp1
             // phonetextBox
             // 
             this.phonetextBox.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.phonetextBox.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.phonetextBox.Location = new System.Drawing.Point(106, 119);
             this.phonetextBox.Name = "phonetextBox";
             this.phonetextBox.Size = new System.Drawing.Size(160, 27);
@@ -121,6 +122,7 @@ namespace WindowsFormsApp1
             // unicodetextBox
             // 
             this.unicodetextBox.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.unicodetextBox.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.unicodetextBox.Location = new System.Drawing.Point(106, 86);
             this.unicodetextBox.Name = "unicodetextBox";
             this.unicodetextBox.Size = new System.Drawing.Size(160, 27);
@@ -140,6 +142,7 @@ namespace WindowsFormsApp1
             // nametextBox
             // 
             this.nametextBox.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.nametextBox.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.nametextBox.Location = new System.Drawing.Point(106, 53);
             this.nametextBox.Name = "nametextBox";
             this.nametextBox.Size = new System.Drawing.Size(160, 27);
@@ -159,6 +162,7 @@ namespace WindowsFormsApp1
             // IDTextBox
             // 
             this.IDTextBox.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.IDTextBox.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.IDTextBox.Location = new System.Drawing.Point(106, 20);
             this.IDTextBox.Name = "IDTextBox";
             this.IDTextBox.Size = new System.Drawing.Size(160, 27);

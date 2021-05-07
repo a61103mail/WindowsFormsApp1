@@ -19,7 +19,6 @@ namespace WindowsFormsApp1
         {
             this.CustomerRoles = new HashSet<CustomerRole>();
             this.Orders = new HashSet<Order>();
-            this.Purchases = new HashSet<Purchase>();
         }
     
         public int CustomerID { get; set; }
@@ -40,7 +39,5 @@ namespace WindowsFormsApp1
         public virtual ICollection<CustomerRole> CustomerRoles { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Orders { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Purchase> Purchases { get; set; }
     }
 }

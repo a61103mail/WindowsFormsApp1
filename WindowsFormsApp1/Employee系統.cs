@@ -15,14 +15,12 @@ namespace WindowsFormsApp1
         public Employee系統()
         {
             InitializeComponent();
-            AddData();
             Addtextboxsource();
         }
-        FOODEntities db = new FOODEntities();
         internal void Addtextboxsource() {
             var source_NAME = new AutoCompleteStringCollection();
             var source_Unicode = new AutoCompleteStringCollection();
-            var EMP = db.Employees.Select(n=>new { n.Name , n.Unicode }).ToList();
+            var EMP = ENT.db.Employees.Select(n=>new { n.Name , n.Unicode }).ToList();
             foreach (var item in EMP)
             {
                 source_NAME.Add(item.Name);
@@ -30,29 +28,23 @@ namespace WindowsFormsApp1
             }
             
 
-            this.nameTextBox_Employee.AutoCompleteCustomSource = source_NAME;
-            this.nameTextBox_Employee.AutoCompleteMode =
+            this.NameTextBox_Employee.AutoCompleteCustomSource = source_NAME;
+            this.NameTextBox_Employee.AutoCompleteMode =
                                   AutoCompleteMode.SuggestAppend;
-            this.nameTextBox_Employee.AutoCompleteSource =
+            this.NameTextBox_Employee.AutoCompleteSource =
                                   AutoCompleteSource.CustomSource;
             //========================
-            this.PersonIDTextBox_Employee.AutoCompleteCustomSource = source_Unicode;
-            this.PersonIDTextBox_Employee.AutoCompleteMode =
+            this.UnicodeTextBox_Employee.AutoCompleteCustomSource = source_Unicode;
+            this.UnicodeTextBox_Employee.AutoCompleteMode =
                                   AutoCompleteMode.SuggestAppend;
-            this.PersonIDTextBox_Employee.AutoCompleteSource =
+            this.UnicodeTextBox_Employee.AutoCompleteSource =
                                   AutoCompleteSource.CustomSource;
         }
-        internal void AddData() 
-        { 
-        var EMPID = this.db.Employees.Select(n => new { empname = n.Name, empid = n.EmployeeID });
-            this.IDcomboBox_Employee.DataSource = EMPID.ToList();
-            this.IDcomboBox_Employee.DisplayMember = "empid";
-            this.IDcomboBox_Employee.ValueMember = "empid";
-        }
+        
         internal void SelectEMP(int ID) 
         {
-            var EMPID = this.db.Employees.Where(n=>n.EmployeeID==ID).Select(n =>new {  n.EmployeeID , n.Name, n.DOB,n.Address,n.Phone,n.Cellphone,n.DOE,n.Unicode}) ;
-            var EMP業務 = from OD in db.Orders
+            var EMPID = ENT.db.Employees.Where(n=>n.EmployeeID==ID).Select(n =>new {  n.EmployeeID , n.Name, n.DOB,n.Address,n.Phone,n.Cellphone,n.DOE,n.Unicode ,n.Email}) ;
+            var EMP業務 = from OD in ENT.db.Orders
                         where OD.EmployeeID==ID
                         select new 
                         {
@@ -68,20 +60,21 @@ namespace WindowsFormsApp1
             this.dataGridView_order.DataSource =EMP業務.ToList();
             foreach (var item in EMPID)
             {
-                this.nameTextBox_Employee.Text = item.Name;
-                this.PersonIDTextBox_Employee.Text = item.Unicode;
-                this.BirthTextBox_Employee.Text = item.DOB.ToShortDateString();
-                this.TELTextBox_Employee.Text = item.Cellphone;
-                this.TEL2TextBox_Employee.Text = item.Phone;
-                this.AddTextBox_Employee.Text = item.Address;
-                this.InTextBox_Employee.Text = item.DOE.ToShortDateString();
+                this.NameTextBox_Employee.Text = item.Name;
+                this.UnicodeTextBox_Employee.Text = item.Unicode;
+                this.DOBTextBox_Employee.Text = item.DOB.ToShortDateString();
+                this.CellPhoneTextBox_Employee.Text = item.Cellphone;
+                this.PhoneTextBox_Employee.Text = item.Phone;
+                this.AddressTextBox_Employee.Text = item.Address;
+                this.DOETextBox_Employee.Text = item.DOE.ToShortDateString();
+                this.EmailTextBox_Employee.Text = item.Email;
             }
         }
         internal void SelectODD(int ID) 
         {
-            var EMPOD = from OD in db.Orders
+            var EMPOD = from OD in ENT.db.Orders
                         from ODD in OD.OrderDetails
-                        from PD in db.Products
+                        from PD in ENT.db.Products
                         where OD.OrderID == ID && PD.ProductCode == ODD.ProductCode
                         select new
                         {
@@ -120,15 +113,7 @@ namespace WindowsFormsApp1
             this.dataGridView_ODD.DataSource = EMPOD.Select(n=>new { n.ODID,n.OD日期,n.產品,n.數量,n.售價}).ToList();
 
         }
-        private void IDcomboBox_Employee_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (!(this.IDcomboBox_Employee.DisplayMember==""))
-            {
-                var ID = int.Parse(this.IDcomboBox_Employee.SelectedValue.ToString());
-                SelectEMP(ID);
-            }
-            
-        }
+        
         private void dataGridView_order_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             var ID = this.dataGridView_order.CurrentRow.Cells["ODID"].Value.ToString();
@@ -136,18 +121,82 @@ namespace WindowsFormsApp1
             this.tabControl1.SelectedTab = XXX;
         }
 
-        private void nameTextBox_Employee_TextChanged(object sender, EventArgs e)
+        private void EmployeeIDtextBox_Employee_TextChanged(object sender, EventArgs e)
         {
-            var ID = db.Employees.Where(n => n.Name == nameTextBox_Employee.Text).Select(n => new { n.EmployeeID }).ToList();
+            var ID = ENT.db.Employees.Where(n => n.EmployeeID.ToString() == EmployeeIDtextBox_Employee.Text).Select(n => new { n.EmployeeID }).ToList();
             foreach (var item in ID)
             {
                 SelectEMP(item.EmployeeID);
             }
         }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void btn_search_Click(object sender, EventArgs e)
         {
+            Select系統 s = new Select系統();
+            s.EMPbtn.Checked = true;
+            s.Panel查詢.Enabled = false;
+            s.Owner = this;//重要的一步，主要是使Form2的Owner指針指向Form1  
+            s.AddEMPtextboxsource();
+            s.ShowDialog();
+        }
+
+        private void btn_modify_Click(object sender, EventArgs e)
+        {           
+                        
+            try
+            {
+                var emp = (from i in ENT.db.Employees
+                           where i.EmployeeID.ToString() == this.EmployeeIDtextBox_Employee.Text
+                           select i).FirstOrDefault();
+                emp.Unicode = this.UnicodeTextBox_Employee.Text;
+                emp.Name = this.NameTextBox_Employee.Text;
+                emp.DOB = DateTime.Parse(this.DOBTextBox_Employee.Text);
+                emp.Address = this.AddressTextBox_Employee.Text;
+                emp.Phone = this.PhoneTextBox_Employee.Text;
+                emp.Cellphone = this.CellPhoneTextBox_Employee.Text;
+                emp.Email = this.EmailTextBox_Employee.Text;
+                emp.DOE = DateTime.Parse(this.DOETextBox_Employee.Text);
+                emp.Password = emp.Password;
+                ENT.db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+               
+            }
+            
+
+
 
         }
+
+        private void btn_creat_Click(object sender, EventArgs e)
+        {
+            registered registered = new registered();
+            registered.Owner = this;
+            registered.ShowDialog();
+        }
+
+        private void btn_delete_Click(object sender, EventArgs e)
+        {
+            var result_once = MessageBox.Show("確定要刪除嗎!?", "注意！", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            if (result_once == System.Windows.Forms.DialogResult.OK)
+            {
+                var result_twice = MessageBox.Show("真的要刪除!?", "注意！", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                if (result_twice == System.Windows.Forms.DialogResult.OK)
+                {
+                    var result_three = MessageBox.Show("刪除就沒有囉!?", "注意！", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                    if (result_three == System.Windows.Forms.DialogResult.OK)
+                    {
+                        var emp = (from i in ENT.db.Employees
+                                    where i.EmployeeID.ToString() == this.EmployeeIDtextBox_Employee.Text
+                                    select i).FirstOrDefault();
+                        ENT.db.Employees.Remove(emp);
+                        ENT.db.SaveChanges();
+                        MessageBox.Show("刪除成功，無法挽回!", "注意！", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+        }
+
+        
     }
 }

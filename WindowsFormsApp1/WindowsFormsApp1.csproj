@@ -58,19 +58,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Category.cs">
-      <DependentUpon>FoodModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Customer.cs">
       <DependentUpon>FoodModel.tt</DependentUpon>
     </Compile>
     <Compile Include="CustomerRole.cs">
       <DependentUpon>FoodModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DailyPrice.cs">
-      <DependentUpon>FoodModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DailyPriceTemp.cs">
+    <Compile Include="database_firewall_rules.cs">
       <DependentUpon>FoodModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Employee.cs">
@@ -127,17 +121,11 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Inventory.cs">
-      <DependentUpon>FoodModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Market.cs">
-      <DependentUpon>FoodModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Order.cs">
       <DependentUpon>FoodModel.tt</DependentUpon>
@@ -145,10 +133,10 @@
     <Compile Include="OrderDetail.cs">
       <DependentUpon>FoodModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Picture.cs">
+    <Compile Include="Product.cs">
       <DependentUpon>FoodModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Product.cs">
+    <Compile Include="Product_LatestPrice.cs">
       <DependentUpon>FoodModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -158,27 +146,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Purchase.cs">
-      <DependentUpon>FoodModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="PurchaseConfirmedDetail.cs">
-      <DependentUpon>FoodModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="PurchaseDetail.cs">
-      <DependentUpon>FoodModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="PWD\Encoder.cs" />
-    <Compile Include="Role.cs">
-      <DependentUpon>FoodModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Select系統.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Select系統.Designer.cs">
       <DependentUpon>Select系統.cs</DependentUpon>
-    </Compile>
-    <Compile Include="sysdiagram.cs">
-      <DependentUpon>FoodModel.tt</DependentUpon>
     </Compile>
     <Compile Include="訂單表.cs">
       <SubType>Form</SubType>

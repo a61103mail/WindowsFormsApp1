@@ -19,6 +19,5 @@ namespace WindowsFormsApp1
         public int CustomerID { get; set; }
     
         public virtual Customer Customer { get; set; }
-        public virtual Role Role { get; set; }
     }
 }

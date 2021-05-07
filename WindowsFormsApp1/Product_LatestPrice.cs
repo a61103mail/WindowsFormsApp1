@@ -12,12 +12,18 @@ namespace WindowsFormsApp1
     using System;
     using System.Collections.Generic;
     
-    public partial class Picture
+    public partial class Product_LatestPrice
     {
-        public int PictureID { get; set; }
+        public int ProductID { get; set; }
         public string ProductCode { get; set; }
-        public byte[] IMG { get; set; }
-    
-        public virtual Product Product { get; set; }
+        public string CropCode { get; set; }
+        public string Name { get; set; }
+        public string Unit { get; set; }
+        public string Category { get; set; }
+        public Nullable<int> SupplierID { get; set; }
+        public Nullable<decimal> LatestUpperPrice { get; set; }
+        public Nullable<decimal> DailyTrend { get; set; }
+        public string LatestMarket { get; set; }
+        public Nullable<System.DateTime> TransDate { get; set; }
     }
 }

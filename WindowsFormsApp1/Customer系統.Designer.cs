@@ -170,11 +170,12 @@ namespace WindowsFormsApp1
             this.btn_search.Text = "查詢";
             this.btn_search.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_search.UseVisualStyleBackColor = true;
-            this.btn_search.Click += new System.EventHandler(this.button3_Click);
+            this.btn_search.Click += new System.EventHandler(this.btn_search_Click);
             // 
             // btn_delete
             // 
             this.btn_delete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_delete.Enabled = false;
             this.btn_delete.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_delete.Image = global::WindowsFormsApp1.Properties.Resources.minus;
             this.btn_delete.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -190,6 +191,7 @@ namespace WindowsFormsApp1
             // btn_modify
             // 
             this.btn_modify.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_modify.Enabled = false;
             this.btn_modify.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_modify.Image = global::WindowsFormsApp1.Properties.Resources.edit;
             this.btn_modify.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -531,10 +533,10 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Label label4;
         internal System.Windows.Forms.TextBox NameTextBox_Client;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btn_modify;
-        private System.Windows.Forms.Button btn_delete;
+        internal System.Windows.Forms.Button btn_modify;
+        internal System.Windows.Forms.Button btn_delete;
         private System.Windows.Forms.Button btn_search;
-        private System.Windows.Forms.Button btn_creat;
+        internal System.Windows.Forms.Button btn_creat;
         private System.Windows.Forms.DateTimePicker DoBTimePicker;
     }
 }
