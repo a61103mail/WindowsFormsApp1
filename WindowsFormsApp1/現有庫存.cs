@@ -15,6 +15,7 @@ namespace WindowsFormsApp1
         public 現有庫存()
         {
             InitializeComponent();
+            this.dataGridView1.AutoSize = true;
         }
         private FOODEntities FOODEntities = new FOODEntities();
         private void 現有庫存_Load(object sender, EventArgs e)
