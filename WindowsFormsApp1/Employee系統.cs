@@ -15,32 +15,8 @@ namespace WindowsFormsApp1
         public Employee系統()
         {
             InitializeComponent();
-            Addtextboxsource();
-        }
-        internal void Addtextboxsource() {
-            var source_NAME = new AutoCompleteStringCollection();
-            var source_Unicode = new AutoCompleteStringCollection();
-            var EMP = ENT.db.Employees.Select(n=>new { n.Name , n.Unicode }).ToList();
-            foreach (var item in EMP)
-            {
-                source_NAME.Add(item.Name);
-                source_Unicode.Add(item.Unicode);
-            }
             
-
-            this.NameTextBox_Employee.AutoCompleteCustomSource = source_NAME;
-            this.NameTextBox_Employee.AutoCompleteMode =
-                                  AutoCompleteMode.SuggestAppend;
-            this.NameTextBox_Employee.AutoCompleteSource =
-                                  AutoCompleteSource.CustomSource;
-            //========================
-            this.UnicodeTextBox_Employee.AutoCompleteCustomSource = source_Unicode;
-            this.UnicodeTextBox_Employee.AutoCompleteMode =
-                                  AutoCompleteMode.SuggestAppend;
-            this.UnicodeTextBox_Employee.AutoCompleteSource =
-                                  AutoCompleteSource.CustomSource;
         }
-        
         internal void SelectEMP(int ID) 
         {
             var EMPID = ENT.db.Employees.Where(n=>n.EmployeeID==ID).Select(n =>new {  n.EmployeeID , n.Name, n.DOB,n.Address,n.Phone,n.Cellphone,n.DOE,n.Unicode ,n.Email}) ;
@@ -160,21 +136,49 @@ namespace WindowsFormsApp1
             }
             catch (Exception ex)
             {
-               
             }
-            
-
-
-
         }
 
         private void btn_creat_Click(object sender, EventArgs e)
         {
-            registered registered = new registered();
-            registered.Owner = this;
-            registered.ShowDialog();
+            btn_search.Enabled = false;
+            btn_modify.Enabled = false;
+            btn_delete.Enabled = false;
+            btn_creat.Enabled = false;
+            btn_save.Visible = true;
+            //=====清除TEXT============
+            NameTextBox_Employee.Text = null;
+            UnicodeTextBox_Employee.Text = null;
+            DOBTextBox_Employee.Text = null;
+            CellPhoneTextBox_Employee.Text = null;
+            PhoneTextBox_Employee.Text = null;
+            DOETextBox_Employee.Text = null;
+            EmailTextBox_Employee.Text = null;
+            AddressTextBox_Employee.Text = null;
+            PWDpanel.Visible = true;
         }
-
+        private void btn_save_Click(object sender, EventArgs e)
+        {
+            btn_search.Enabled = true;
+            btn_modify.Enabled = true;
+            btn_delete.Enabled = true;
+            btn_creat.Enabled = true;
+            btn_save.Visible = false;
+            PWDpanel.Visible = false;
+            Employee emp = new Employee();
+            emp.Name = this.NameTextBox_Employee.Text;
+            emp.DOB = DateTime.Parse(this.DOBTextBox_Employee.Text);
+            emp.Address = this.AddressTextBox_Employee.Text;
+            emp.Phone = this.PhoneTextBox_Employee.Text;
+            emp.Cellphone = this.CellPhoneTextBox_Employee.Text;
+            emp.DOE = DateTime.Parse(this.DOETextBox_Employee.Text);
+            emp.Unicode = this.UnicodeTextBox_Employee.Text;
+            emp.Password = this.PasswordtextBox_Employee.Text;
+            emp.Email = this.EmailTextBox_Employee.Text;
+            ENT.db.Employees.Add(emp);
+            ENT.db.SaveChanges();
+            EmployeeIDtextBox_Employee.Text = emp.EmployeeID.ToString(); ;
+        }
         private void btn_delete_Click(object sender, EventArgs e)
         {
             var result_once = MessageBox.Show("確定要刪除嗎!?", "注意！", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);

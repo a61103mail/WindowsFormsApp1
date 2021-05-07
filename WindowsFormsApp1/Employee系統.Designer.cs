@@ -31,12 +31,7 @@ namespace WindowsFormsApp1
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.EmployeeIDtextBox_Employee = new System.Windows.Forms.TextBox();
-            this.btn_creat = new System.Windows.Forms.Button();
-            this.btn_search = new System.Windows.Forms.Button();
-            this.btn_delete = new System.Windows.Forms.Button();
-            this.btn_modify = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
-            this.PictureBox_Employee = new System.Windows.Forms.PictureBox();
             this.EmailTextBox_Employee = new System.Windows.Forms.TextBox();
             this.AddressTextBox_Employee = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -79,11 +74,19 @@ namespace WindowsFormsApp1
             this.c81 = new System.Windows.Forms.Label();
             this.foodDataSet1 = new WindowsFormsApp1.FOODDataSet();
             this.employeeTableAdapter1 = new WindowsFormsApp1.FOODDataSetTableAdapters.EmployeeTableAdapter();
+            this.btn_save = new System.Windows.Forms.Button();
+            this.btn_creat = new System.Windows.Forms.Button();
+            this.btn_search = new System.Windows.Forms.Button();
+            this.btn_delete = new System.Windows.Forms.Button();
+            this.btn_modify = new System.Windows.Forms.Button();
+            this.PictureBox_Employee = new System.Windows.Forms.PictureBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.PasswordtextBox_Employee = new System.Windows.Forms.TextBox();
+            this.PWDpanel = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PictureBox_Employee)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_order)).BeginInit();
@@ -95,6 +98,8 @@ namespace WindowsFormsApp1
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_ODD)).BeginInit();
             this.tableLayoutPanel_Customer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.foodDataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureBox_Employee)).BeginInit();
+            this.PWDpanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -106,6 +111,8 @@ namespace WindowsFormsApp1
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.PWDpanel);
+            this.splitContainer1.Panel1.Controls.Add(this.btn_save);
             this.splitContainer1.Panel1.Controls.Add(this.EmployeeIDtextBox_Employee);
             this.splitContainer1.Panel1.Controls.Add(this.btn_creat);
             this.splitContainer1.Panel1.Controls.Add(this.btn_search);
@@ -150,68 +157,6 @@ namespace WindowsFormsApp1
             this.EmployeeIDtextBox_Employee.TabIndex = 40;
             this.EmployeeIDtextBox_Employee.TextChanged += new System.EventHandler(this.EmployeeIDtextBox_Employee_TextChanged);
             // 
-            // btn_creat
-            // 
-            this.btn_creat.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_creat.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_creat.Image = global::WindowsFormsApp1.Properties.Resources.plus;
-            this.btn_creat.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_creat.Location = new System.Drawing.Point(819, 50);
-            this.btn_creat.Name = "btn_creat";
-            this.btn_creat.Size = new System.Drawing.Size(80, 42);
-            this.btn_creat.TabIndex = 39;
-            this.btn_creat.Text = "新增";
-            this.btn_creat.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_creat.UseVisualStyleBackColor = true;
-            this.btn_creat.Click += new System.EventHandler(this.btn_creat_Click);
-            // 
-            // btn_search
-            // 
-            this.btn_search.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_search.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_search.Image = global::WindowsFormsApp1.Properties.Resources.search;
-            this.btn_search.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_search.Location = new System.Drawing.Point(733, 50);
-            this.btn_search.Name = "btn_search";
-            this.btn_search.Size = new System.Drawing.Size(80, 42);
-            this.btn_search.TabIndex = 38;
-            this.btn_search.Text = "查詢";
-            this.btn_search.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_search.UseVisualStyleBackColor = true;
-            this.btn_search.Click += new System.EventHandler(this.btn_search_Click);
-            // 
-            // btn_delete
-            // 
-            this.btn_delete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_delete.Enabled = false;
-            this.btn_delete.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_delete.Image = global::WindowsFormsApp1.Properties.Resources.minus;
-            this.btn_delete.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_delete.Location = new System.Drawing.Point(991, 50);
-            this.btn_delete.Name = "btn_delete";
-            this.btn_delete.Size = new System.Drawing.Size(80, 42);
-            this.btn_delete.TabIndex = 37;
-            this.btn_delete.Text = "刪除";
-            this.btn_delete.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_delete.UseVisualStyleBackColor = true;
-            this.btn_delete.Click += new System.EventHandler(this.btn_delete_Click);
-            // 
-            // btn_modify
-            // 
-            this.btn_modify.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_modify.Enabled = false;
-            this.btn_modify.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_modify.Image = global::WindowsFormsApp1.Properties.Resources.edit;
-            this.btn_modify.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_modify.Location = new System.Drawing.Point(905, 50);
-            this.btn_modify.Name = "btn_modify";
-            this.btn_modify.Size = new System.Drawing.Size(80, 42);
-            this.btn_modify.TabIndex = 36;
-            this.btn_modify.Text = "修改";
-            this.btn_modify.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_modify.UseVisualStyleBackColor = true;
-            this.btn_modify.Click += new System.EventHandler(this.btn_modify_Click);
-            // 
             // label17
             // 
             this.label17.AutoSize = true;
@@ -222,18 +167,10 @@ namespace WindowsFormsApp1
             this.label17.TabIndex = 33;
             this.label17.Text = "電子信箱";
             // 
-            // PictureBox_Employee
-            // 
-            this.PictureBox_Employee.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.PictureBox_Employee.Location = new System.Drawing.Point(30, 50);
-            this.PictureBox_Employee.Name = "PictureBox_Employee";
-            this.PictureBox_Employee.Size = new System.Drawing.Size(142, 172);
-            this.PictureBox_Employee.TabIndex = 27;
-            this.PictureBox_Employee.TabStop = false;
-            // 
             // EmailTextBox_Employee
             // 
             this.EmailTextBox_Employee.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.EmailTextBox_Employee.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.EmailTextBox_Employee.Location = new System.Drawing.Point(505, 155);
             this.EmailTextBox_Employee.Name = "EmailTextBox_Employee";
             this.EmailTextBox_Employee.Size = new System.Drawing.Size(308, 27);
@@ -242,6 +179,7 @@ namespace WindowsFormsApp1
             // AddressTextBox_Employee
             // 
             this.AddressTextBox_Employee.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.AddressTextBox_Employee.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.AddressTextBox_Employee.Location = new System.Drawing.Point(284, 188);
             this.AddressTextBox_Employee.Name = "AddressTextBox_Employee";
             this.AddressTextBox_Employee.Size = new System.Drawing.Size(529, 27);
@@ -260,6 +198,7 @@ namespace WindowsFormsApp1
             // PhoneTextBox_Employee
             // 
             this.PhoneTextBox_Employee.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.PhoneTextBox_Employee.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.PhoneTextBox_Employee.Location = new System.Drawing.Point(505, 119);
             this.PhoneTextBox_Employee.Name = "PhoneTextBox_Employee";
             this.PhoneTextBox_Employee.Size = new System.Drawing.Size(116, 27);
@@ -290,6 +229,7 @@ namespace WindowsFormsApp1
             this.UnicodeTextBox_Employee.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.UnicodeTextBox_Employee.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.UnicodeTextBox_Employee.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.UnicodeTextBox_Employee.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.UnicodeTextBox_Employee.Location = new System.Drawing.Point(284, 86);
             this.UnicodeTextBox_Employee.Name = "UnicodeTextBox_Employee";
             this.UnicodeTextBox_Employee.Size = new System.Drawing.Size(100, 27);
@@ -308,6 +248,7 @@ namespace WindowsFormsApp1
             // DOETextBox_Employee
             // 
             this.DOETextBox_Employee.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.DOETextBox_Employee.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.DOETextBox_Employee.Location = new System.Drawing.Point(284, 152);
             this.DOETextBox_Employee.Name = "DOETextBox_Employee";
             this.DOETextBox_Employee.Size = new System.Drawing.Size(100, 27);
@@ -316,6 +257,7 @@ namespace WindowsFormsApp1
             // DOBTextBox_Employee
             // 
             this.DOBTextBox_Employee.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.DOBTextBox_Employee.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.DOBTextBox_Employee.Location = new System.Drawing.Point(505, 86);
             this.DOBTextBox_Employee.Name = "DOBTextBox_Employee";
             this.DOBTextBox_Employee.Size = new System.Drawing.Size(116, 27);
@@ -324,6 +266,7 @@ namespace WindowsFormsApp1
             // CellPhoneTextBox_Employee
             // 
             this.CellPhoneTextBox_Employee.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.CellPhoneTextBox_Employee.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.CellPhoneTextBox_Employee.Location = new System.Drawing.Point(284, 119);
             this.CellPhoneTextBox_Employee.Name = "CellPhoneTextBox_Employee";
             this.CellPhoneTextBox_Employee.Size = new System.Drawing.Size(100, 27);
@@ -679,6 +622,129 @@ namespace WindowsFormsApp1
             // 
             this.employeeTableAdapter1.ClearBeforeFill = true;
             // 
+            // btn_save
+            // 
+            this.btn_save.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_save.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_save.Image = global::WindowsFormsApp1.Properties.Resources.save;
+            this.btn_save.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_save.Location = new System.Drawing.Point(819, 98);
+            this.btn_save.Name = "btn_save";
+            this.btn_save.Size = new System.Drawing.Size(80, 37);
+            this.btn_save.TabIndex = 41;
+            this.btn_save.Text = "儲存";
+            this.btn_save.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_save.UseVisualStyleBackColor = true;
+            this.btn_save.Visible = false;
+            this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
+            // 
+            // btn_creat
+            // 
+            this.btn_creat.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_creat.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_creat.Image = global::WindowsFormsApp1.Properties.Resources.plus;
+            this.btn_creat.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_creat.Location = new System.Drawing.Point(819, 50);
+            this.btn_creat.Name = "btn_creat";
+            this.btn_creat.Size = new System.Drawing.Size(80, 42);
+            this.btn_creat.TabIndex = 39;
+            this.btn_creat.Text = "新增";
+            this.btn_creat.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_creat.UseVisualStyleBackColor = true;
+            this.btn_creat.Click += new System.EventHandler(this.btn_creat_Click);
+            // 
+            // btn_search
+            // 
+            this.btn_search.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_search.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_search.Image = global::WindowsFormsApp1.Properties.Resources.search;
+            this.btn_search.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_search.Location = new System.Drawing.Point(733, 50);
+            this.btn_search.Name = "btn_search";
+            this.btn_search.Size = new System.Drawing.Size(80, 42);
+            this.btn_search.TabIndex = 38;
+            this.btn_search.Text = "查詢";
+            this.btn_search.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_search.UseVisualStyleBackColor = true;
+            this.btn_search.Click += new System.EventHandler(this.btn_search_Click);
+            // 
+            // btn_delete
+            // 
+            this.btn_delete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_delete.Enabled = false;
+            this.btn_delete.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_delete.Image = global::WindowsFormsApp1.Properties.Resources.minus;
+            this.btn_delete.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_delete.Location = new System.Drawing.Point(991, 50);
+            this.btn_delete.Name = "btn_delete";
+            this.btn_delete.Size = new System.Drawing.Size(80, 42);
+            this.btn_delete.TabIndex = 37;
+            this.btn_delete.Text = "刪除";
+            this.btn_delete.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_delete.UseVisualStyleBackColor = true;
+            this.btn_delete.Click += new System.EventHandler(this.btn_delete_Click);
+            // 
+            // btn_modify
+            // 
+            this.btn_modify.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_modify.Enabled = false;
+            this.btn_modify.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_modify.Image = global::WindowsFormsApp1.Properties.Resources.edit;
+            this.btn_modify.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_modify.Location = new System.Drawing.Point(905, 50);
+            this.btn_modify.Name = "btn_modify";
+            this.btn_modify.Size = new System.Drawing.Size(80, 42);
+            this.btn_modify.TabIndex = 36;
+            this.btn_modify.Text = "修改";
+            this.btn_modify.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_modify.UseVisualStyleBackColor = true;
+            this.btn_modify.Click += new System.EventHandler(this.btn_modify_Click);
+            // 
+            // PictureBox_Employee
+            // 
+            this.PictureBox_Employee.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PictureBox_Employee.Location = new System.Drawing.Point(30, 50);
+            this.PictureBox_Employee.Name = "PictureBox_Employee";
+            this.PictureBox_Employee.Size = new System.Drawing.Size(142, 172);
+            this.PictureBox_Employee.TabIndex = 27;
+            this.PictureBox_Employee.TabStop = false;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label4.Location = new System.Drawing.Point(60, 13);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(72, 16);
+            this.label4.TabIndex = 42;
+            this.label4.Text = "員工密碼";
+            // 
+            // PasswordtextBox_Employee
+            // 
+            this.PasswordtextBox_Employee.AutoCompleteCustomSource.AddRange(new string[] {
+            "erin",
+            "tin",
+            "eeer",
+            "eal"});
+            this.PasswordtextBox_Employee.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.PasswordtextBox_Employee.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.PasswordtextBox_Employee.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.PasswordtextBox_Employee.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.PasswordtextBox_Employee.Location = new System.Drawing.Point(1, 49);
+            this.PasswordtextBox_Employee.Name = "PasswordtextBox_Employee";
+            this.PasswordtextBox_Employee.Size = new System.Drawing.Size(196, 27);
+            this.PasswordtextBox_Employee.TabIndex = 43;
+            // 
+            // PWDpanel
+            // 
+            this.PWDpanel.Controls.Add(this.label4);
+            this.PWDpanel.Controls.Add(this.PasswordtextBox_Employee);
+            this.PWDpanel.Location = new System.Drawing.Point(859, 137);
+            this.PWDpanel.Name = "PWDpanel";
+            this.PWDpanel.Size = new System.Drawing.Size(200, 100);
+            this.PWDpanel.TabIndex = 44;
+            this.PWDpanel.Visible = false;
+            // 
             // Employee系統
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -692,7 +758,6 @@ namespace WindowsFormsApp1
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.PictureBox_Employee)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_order)).EndInit();
@@ -704,6 +769,9 @@ namespace WindowsFormsApp1
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_ODD)).EndInit();
             this.tableLayoutPanel_Customer.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.foodDataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureBox_Employee)).EndInit();
+            this.PWDpanel.ResumeLayout(false);
+            this.PWDpanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -759,5 +827,9 @@ namespace WindowsFormsApp1
         internal System.Windows.Forms.Button btn_delete;
         internal System.Windows.Forms.Button btn_modify;
         internal System.Windows.Forms.TextBox EmployeeIDtextBox_Employee;
+        internal System.Windows.Forms.Button btn_save;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox PasswordtextBox_Employee;
+        private System.Windows.Forms.Panel PWDpanel;
     }
 }

@@ -32,10 +32,6 @@ namespace WindowsFormsApp1
             this.label1 = new System.Windows.Forms.Label();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.DoBTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.btn_creat = new System.Windows.Forms.Button();
-            this.btn_search = new System.Windows.Forms.Button();
-            this.btn_delete = new System.Windows.Forms.Button();
-            this.btn_modify = new System.Windows.Forms.Button();
             this.EmployeeTELTextBox__Client = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.SalesIDTextBox__Client = new System.Windows.Forms.TextBox();
@@ -66,6 +62,10 @@ namespace WindowsFormsApp1
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btn_creat = new System.Windows.Forms.Button();
+            this.btn_search = new System.Windows.Forms.Button();
+            this.btn_delete = new System.Windows.Forms.Button();
+            this.btn_modify = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -142,71 +142,10 @@ namespace WindowsFormsApp1
             this.DoBTimePicker.Size = new System.Drawing.Size(100, 19);
             this.DoBTimePicker.TabIndex = 36;
             // 
-            // btn_creat
-            // 
-            this.btn_creat.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_creat.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_creat.Image = global::WindowsFormsApp1.Properties.Resources.plus;
-            this.btn_creat.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_creat.Location = new System.Drawing.Point(806, 50);
-            this.btn_creat.Name = "btn_creat";
-            this.btn_creat.Size = new System.Drawing.Size(80, 42);
-            this.btn_creat.TabIndex = 35;
-            this.btn_creat.Text = "新增";
-            this.btn_creat.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_creat.UseVisualStyleBackColor = true;
-            this.btn_creat.Click += new System.EventHandler(this.btn_creat_Click);
-            // 
-            // btn_search
-            // 
-            this.btn_search.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_search.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_search.Image = global::WindowsFormsApp1.Properties.Resources.search;
-            this.btn_search.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_search.Location = new System.Drawing.Point(720, 50);
-            this.btn_search.Name = "btn_search";
-            this.btn_search.Size = new System.Drawing.Size(80, 42);
-            this.btn_search.TabIndex = 34;
-            this.btn_search.Text = "查詢";
-            this.btn_search.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_search.UseVisualStyleBackColor = true;
-            this.btn_search.Click += new System.EventHandler(this.btn_search_Click);
-            // 
-            // btn_delete
-            // 
-            this.btn_delete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_delete.Enabled = false;
-            this.btn_delete.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_delete.Image = global::WindowsFormsApp1.Properties.Resources.minus;
-            this.btn_delete.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_delete.Location = new System.Drawing.Point(978, 50);
-            this.btn_delete.Name = "btn_delete";
-            this.btn_delete.Size = new System.Drawing.Size(80, 42);
-            this.btn_delete.TabIndex = 33;
-            this.btn_delete.Text = "刪除";
-            this.btn_delete.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_delete.UseVisualStyleBackColor = true;
-            this.btn_delete.Click += new System.EventHandler(this.btn_delete_Click);
-            // 
-            // btn_modify
-            // 
-            this.btn_modify.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_modify.Enabled = false;
-            this.btn_modify.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_modify.Image = global::WindowsFormsApp1.Properties.Resources.edit;
-            this.btn_modify.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_modify.Location = new System.Drawing.Point(892, 50);
-            this.btn_modify.Name = "btn_modify";
-            this.btn_modify.Size = new System.Drawing.Size(80, 42);
-            this.btn_modify.TabIndex = 2;
-            this.btn_modify.Text = "修改";
-            this.btn_modify.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_modify.UseVisualStyleBackColor = true;
-            this.btn_modify.Click += new System.EventHandler(this.btn_modify_Click);
-            // 
             // EmployeeTELTextBox__Client
             // 
             this.EmployeeTELTextBox__Client.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.EmployeeTELTextBox__Client.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.EmployeeTELTextBox__Client.Location = new System.Drawing.Point(542, 173);
             this.EmployeeTELTextBox__Client.Name = "EmployeeTELTextBox__Client";
             this.EmployeeTELTextBox__Client.Size = new System.Drawing.Size(100, 27);
@@ -225,6 +164,7 @@ namespace WindowsFormsApp1
             // SalesIDTextBox__Client
             // 
             this.SalesIDTextBox__Client.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.SalesIDTextBox__Client.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.SalesIDTextBox__Client.Location = new System.Drawing.Point(120, 173);
             this.SalesIDTextBox__Client.Name = "SalesIDTextBox__Client";
             this.SalesIDTextBox__Client.Size = new System.Drawing.Size(100, 27);
@@ -243,6 +183,7 @@ namespace WindowsFormsApp1
             // EmployeeTextBox__Client
             // 
             this.EmployeeTextBox__Client.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.EmployeeTextBox__Client.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.EmployeeTextBox__Client.Location = new System.Drawing.Point(329, 173);
             this.EmployeeTextBox__Client.Name = "EmployeeTextBox__Client";
             this.EmployeeTextBox__Client.Size = new System.Drawing.Size(100, 27);
@@ -279,6 +220,7 @@ namespace WindowsFormsApp1
             // EmailTextBox__Client
             // 
             this.EmailTextBox__Client.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.EmailTextBox__Client.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.EmailTextBox__Client.Location = new System.Drawing.Point(758, 131);
             this.EmailTextBox__Client.Name = "EmailTextBox__Client";
             this.EmailTextBox__Client.Size = new System.Drawing.Size(300, 27);
@@ -307,6 +249,7 @@ namespace WindowsFormsApp1
             // FaxTextBox__Client
             // 
             this.FaxTextBox__Client.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.FaxTextBox__Client.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.FaxTextBox__Client.Location = new System.Drawing.Point(542, 92);
             this.FaxTextBox__Client.Name = "FaxTextBox__Client";
             this.FaxTextBox__Client.Size = new System.Drawing.Size(100, 27);
@@ -325,6 +268,7 @@ namespace WindowsFormsApp1
             // ContactCellPhoneTextBox__Client
             // 
             this.ContactCellPhoneTextBox__Client.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.ContactCellPhoneTextBox__Client.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.ContactCellPhoneTextBox__Client.Location = new System.Drawing.Point(965, 173);
             this.ContactCellPhoneTextBox__Client.Name = "ContactCellPhoneTextBox__Client";
             this.ContactCellPhoneTextBox__Client.Size = new System.Drawing.Size(93, 27);
@@ -343,6 +287,7 @@ namespace WindowsFormsApp1
             // ContactPersonTextBox__Client
             // 
             this.ContactPersonTextBox__Client.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.ContactPersonTextBox__Client.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.ContactPersonTextBox__Client.Location = new System.Drawing.Point(758, 173);
             this.ContactPersonTextBox__Client.Name = "ContactPersonTextBox__Client";
             this.ContactPersonTextBox__Client.Size = new System.Drawing.Size(100, 27);
@@ -361,6 +306,7 @@ namespace WindowsFormsApp1
             // CustomerRoleTextBox_Client
             // 
             this.CustomerRoleTextBox_Client.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.CustomerRoleTextBox_Client.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.CustomerRoleTextBox_Client.Location = new System.Drawing.Point(542, 50);
             this.CustomerRoleTextBox_Client.Name = "CustomerRoleTextBox_Client";
             this.CustomerRoleTextBox_Client.Size = new System.Drawing.Size(100, 27);
@@ -379,6 +325,7 @@ namespace WindowsFormsApp1
             // PhoneTextBox_Client
             // 
             this.PhoneTextBox_Client.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.PhoneTextBox_Client.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.PhoneTextBox_Client.Location = new System.Drawing.Point(120, 92);
             this.PhoneTextBox_Client.Name = "PhoneTextBox_Client";
             this.PhoneTextBox_Client.Size = new System.Drawing.Size(100, 27);
@@ -397,6 +344,7 @@ namespace WindowsFormsApp1
             // UnicodeTextBox__Client
             // 
             this.UnicodeTextBox__Client.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.UnicodeTextBox__Client.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.UnicodeTextBox__Client.Location = new System.Drawing.Point(329, 92);
             this.UnicodeTextBox__Client.Name = "UnicodeTextBox__Client";
             this.UnicodeTextBox__Client.Size = new System.Drawing.Size(100, 27);
@@ -415,6 +363,7 @@ namespace WindowsFormsApp1
             // NameTextBox_Client
             // 
             this.NameTextBox_Client.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.NameTextBox_Client.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.NameTextBox_Client.Location = new System.Drawing.Point(329, 50);
             this.NameTextBox_Client.Name = "NameTextBox_Client";
             this.NameTextBox_Client.Size = new System.Drawing.Size(100, 27);
@@ -480,6 +429,68 @@ namespace WindowsFormsApp1
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // btn_creat
+            // 
+            this.btn_creat.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_creat.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_creat.Image = global::WindowsFormsApp1.Properties.Resources.plus;
+            this.btn_creat.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_creat.Location = new System.Drawing.Point(806, 50);
+            this.btn_creat.Name = "btn_creat";
+            this.btn_creat.Size = new System.Drawing.Size(80, 42);
+            this.btn_creat.TabIndex = 35;
+            this.btn_creat.Text = "新增";
+            this.btn_creat.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_creat.UseVisualStyleBackColor = true;
+            this.btn_creat.Click += new System.EventHandler(this.btn_creat_Click);
+            // 
+            // btn_search
+            // 
+            this.btn_search.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_search.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_search.Image = global::WindowsFormsApp1.Properties.Resources.search;
+            this.btn_search.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_search.Location = new System.Drawing.Point(720, 50);
+            this.btn_search.Name = "btn_search";
+            this.btn_search.Size = new System.Drawing.Size(80, 42);
+            this.btn_search.TabIndex = 34;
+            this.btn_search.Text = "查詢";
+            this.btn_search.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_search.UseVisualStyleBackColor = true;
+            this.btn_search.Click += new System.EventHandler(this.btn_search_Click);
+            // 
+            // btn_delete
+            // 
+            this.btn_delete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_delete.Enabled = false;
+            this.btn_delete.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_delete.Image = global::WindowsFormsApp1.Properties.Resources.minus;
+            this.btn_delete.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_delete.Location = new System.Drawing.Point(978, 50);
+            this.btn_delete.Name = "btn_delete";
+            this.btn_delete.Size = new System.Drawing.Size(80, 42);
+            this.btn_delete.TabIndex = 33;
+            this.btn_delete.Text = "刪除";
+            this.btn_delete.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_delete.UseVisualStyleBackColor = true;
+            this.btn_delete.Click += new System.EventHandler(this.btn_delete_Click);
+            // 
+            // btn_modify
+            // 
+            this.btn_modify.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_modify.Enabled = false;
+            this.btn_modify.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_modify.Image = global::WindowsFormsApp1.Properties.Resources.edit;
+            this.btn_modify.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_modify.Location = new System.Drawing.Point(892, 50);
+            this.btn_modify.Name = "btn_modify";
+            this.btn_modify.Size = new System.Drawing.Size(80, 42);
+            this.btn_modify.TabIndex = 2;
+            this.btn_modify.Text = "修改";
+            this.btn_modify.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_modify.UseVisualStyleBackColor = true;
+            this.btn_modify.Click += new System.EventHandler(this.btn_modify_Click);
             // 
             // Customer系統
             // 

@@ -240,6 +240,7 @@
     <Content Include="Resources\correct.png" />
     <Content Include="Resources\edit.png" />
     <Content Include="Resources\power.png" />
+    <None Include="Resources\save.png" />
     <Content Include="Resources\wrong.png" />
     <None Include="Resources\search.png" />
     <None Include="Resources\plus.png" />
