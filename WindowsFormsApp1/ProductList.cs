@@ -68,5 +68,28 @@ namespace WindowsFormsApp1
                     select p;
             this.dataGridView1.DataSource = q.ToList();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            var selectedItem = this.dataGridView1.SelectedRows[0].DataBoundItem as Product_LatestPrice;
+
+            var q1 = from p in this.FOODEntities.Pictures
+                       where p.ProductCode == selectedItem.ProductCode
+                       select p;
+            var pics = q1.ToList();
+            Picture pic = null;
+            if (pics.Count != 0) pic = pics[0];
+
+            var q = from i in this.FOODEntities.Products
+                    where i.ProductID == selectedItem.ProductID
+                    select i;
+            var del = q.ToList();
+
+            if (pic != null) this.FOODEntities.Pictures.Remove(pic);
+            this.FOODEntities.Products.Remove(del[0]);
+            this.FOODEntities.SaveChanges();
+            this.button6_Click(this, EventArgs.Empty);
+
+        }
     }
 }
