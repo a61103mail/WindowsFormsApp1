@@ -133,17 +133,18 @@
             this.button7.Location = new System.Drawing.Point(204, 2);
             this.button7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(124, 31);
+            this.button7.Size = new System.Drawing.Size(112, 31);
             this.button7.TabIndex = 3;
-            this.button7.Text = "備用按鈕1";
+            this.button7.Text = "現有庫存";
             this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // button8
             // 
             this.button8.AutoSize = true;
             this.button8.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.button8.Font = new System.Drawing.Font("標楷體", 15.75F, System.Drawing.FontStyle.Bold);
-            this.button8.Location = new System.Drawing.Point(332, 2);
+            this.button8.Location = new System.Drawing.Point(320, 2);
             this.button8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(124, 31);

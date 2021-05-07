@@ -71,25 +71,34 @@ namespace WindowsFormsApp1
 
         private void button3_Click(object sender, EventArgs e)
         {
-            var selectedItem = this.dataGridView1.SelectedRows[0].DataBoundItem as Product_LatestPrice;
+            DialogResult pp = MessageBox.Show("確定刪除此項目?", "警告", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
+            if (pp == DialogResult.OK)
+            {
+                var selectedItem = this.dataGridView1.SelectedRows[0].DataBoundItem as Product_LatestPrice;
 
-            var q1 = from p in this.FOODEntities.Pictures
-                       where p.ProductCode == selectedItem.ProductCode
-                       select p;
-            var pics = q1.ToList();
-            Picture pic = null;
-            if (pics.Count != 0) pic = pics[0];
+                var q1 = from p in this.FOODEntities.Pictures
+                         where p.ProductCode == selectedItem.ProductCode
+                         select p;
+                var pics = q1.ToList();
+                Picture pic = null;
+                if (pics.Count != 0) pic = pics[0];
 
-            var q = from i in this.FOODEntities.Products
-                    where i.ProductID == selectedItem.ProductID
-                    select i;
-            var del = q.ToList();
+                var q = from i in this.FOODEntities.Products
+                        where i.ProductID == selectedItem.ProductID
+                        select i;
+                var del = q.ToList();
+                if (pic != null) this.FOODEntities.Pictures.Remove(pic);
+                this.FOODEntities.Products.Remove(del[0]);
+                this.FOODEntities.SaveChanges();
+                this.button6_Click(this, EventArgs.Empty);
+                MessageBox.Show("刪除成功");
+            }
+        }
 
-            if (pic != null) this.FOODEntities.Pictures.Remove(pic);
-            this.FOODEntities.Products.Remove(del[0]);
-            this.FOODEntities.SaveChanges();
-            this.button6_Click(this, EventArgs.Empty);
-
+        private void button7_Click(object sender, EventArgs e)
+        {
+            現有庫存 f = new 現有庫存();
+            f.Show();
         }
     }
 }
