@@ -244,6 +244,7 @@ namespace WindowsFormsApp1
         List<int> pL=new List<int>();
         private void button3_Click(object sender, EventArgs e)
         {
+            
             採購單查詢頁面 fk = new 採購單查詢頁面();
             DialogResult res = fk.ShowDialog();
             if (res == DialogResult.OK)
@@ -263,7 +264,7 @@ namespace WindowsFormsApp1
             var q = from p in db.Purchases.AsEnumerable()
                     where p.PurchaseID == purchaseID[tracker]
                     select new { pid =p.PurchaseID,spid = p.SupplierID,spname =p.Customer.Name, spcp = p.Customer.ContactPerson, spph = p.Customer.Phone, spun = p.Customer.Unicode, spads = p.Customer.Address ,purchaseDate = p.PurchaseDate, RequiredDate = p.RequiredDate, DeliveryAddress = p.Deliveryaddress,TallyID = p.TallyEmpID };
-            q = q.ToList();
+            //q = q.ToList();
             textBox1.Text = q.FirstOrDefault().spname;
             textBox2.Text = q.FirstOrDefault().spun;
             label12.Text = q.FirstOrDefault().spid.ToString();
@@ -370,8 +371,6 @@ namespace WindowsFormsApp1
 
         private void button9_Click(object sender, EventArgs e)
         {
-            
-            
             var q = (from p in this.db.Purchases
                     where (p.PurchaseID).ToString() == this.label4.Text //??????????????????
                     select p).FirstOrDefault();
@@ -401,13 +400,15 @@ namespace WindowsFormsApp1
                 var dr = this.dataGridView1.Rows;
                 for (int i = 0; i < dr.Count; i++)
                 {
-                    if (i > pds.Count)
-                    {
-                        MessageBox.Show("gg", "", MessageBoxButtons.OK);
-                        break;
-                    }
+                    
                     if (dr[i].Cells[1].Value != null)
                     {
+
+                        if (i >= pds.Count)
+                        {
+                            MessageBox.Show("gg", "", MessageBoxButtons.OK);
+                            break;
+                        }
                         pds[i].ProductCode = dr[i].Cells[1].Value.ToString();
                         pds[i].Qty = decimal.Parse(dr[i].Cells[4].Value.ToString());
                         pds[i].UnitPrice = decimal.Parse(dr[i].Cells[3].Value.ToString());
@@ -417,34 +418,10 @@ namespace WindowsFormsApp1
                             pds[i].Comment = dr[i].Cells[7].Value.ToString();
                         }
                     }
-                    
-                     
-                    
                 }
                 rows = this.db.SaveChanges();
                 if (rows != 0) MessageBox.Show("修改成功", "", MessageBoxButtons.OK);
             }
-            
-        }
-
-        private void dataGridView1_RowValidated(object sender, DataGridViewCellEventArgs e)
-        {
-            //var q1 = (from pd in this.db.PurchaseDetails
-            //          where (pd.PurchaseID).ToString() == this.label4.Text
-            //          select pd).FirstOrDefault();
-
-            //if (q1.ProductCode == this.dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString())
-            //{
-            //    q1.ProductCode = this.dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
-            //    q1.Qty = decimal.Parse(this.dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString());
-            //    q1.UnitPrice = decimal.Parse(this.dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString());
-            //    q1.Unit = this.dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
-            //    if (this.dataGridView1.Rows[e.RowIndex].Cells[7].Value != null)
-            //    {
-            //        q1.Comment = this.dataGridView1.Rows[e.RowIndex].Cells[7].Value.ToString();
-            //    }
-            //    this.db.SaveChanges();
-            //}
             
         }
     }
