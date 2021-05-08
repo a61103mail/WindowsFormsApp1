@@ -15,11 +15,13 @@ namespace WindowsFormsApp1
         private int purchaseID;
         private FOODEntities db = new FOODEntities();
         private List<ProductCodeAndNamesAndPrice> productCodeAndNamesAndPrice = new List<ProductCodeAndNamesAndPrice>();
+        private List<Product_LatestPrice> product_LatestPrices;
         private bool cmbSelecting = false;
         public string ProductCode;
-        public string ProductName;
+        public string productName;
         public decimal Qty;
         public decimal UnitPirce;
+        public string Unit;
         public decimal Total;
         public string Comment;
         public 新增採購品項(int purchaseID)
@@ -32,18 +34,18 @@ namespace WindowsFormsApp1
 
         private void 新增採購品項_Load(object sender, EventArgs e)
         {
+            this.product_LatestPrices = (this.Owner as 採購表單).product_LatestPrices;
             this.txtPurchaseID.Text = this.purchaseID.ToString();
-            this.productCodeAndNamesAndPrice = (from p in this.db.Products.AsEnumerable()
-                                                  select new 
-                                                  ProductCodeAndNamesAndPrice()
-                                                  { 
-                                                      ProductCode = p.ProductCode,
-                                                      Name = p.Name,
-                                                      UnitPrice = (from lp in this.db.Product_LatestPrice
-                                                                  where lp.ProductCode == p.ProductCode
-                                                                  select lp.LatestUpperPrice).FirstOrDefault().GetValueOrDefault()
+            this.productCodeAndNamesAndPrice = (from p in this.product_LatestPrices
+                                                select new
+                                                ProductCodeAndNamesAndPrice()
+                                                {
+                                                    ProductCode = p.ProductCode,
+                                                    Name = p.Name,
+                                                    UnitPrice = p.LatestUpperPrice.GetValueOrDefault(),
+                                                    Unit = p.Unit
 
-                                                  }).ToList();
+                                                }).ToList();
 
             this.cmbProductCode.DataSource = this.productCodeAndNamesAndPrice;
             this.cmbProductCode.DisplayMember = "ProductCode";
@@ -54,7 +56,6 @@ namespace WindowsFormsApp1
             this.button1.Click += Button1_Click;
             this.button2.Click += Button2_Click;
 
-
         }
 
         private void Button2_Click(object sender, EventArgs e)
@@ -64,11 +65,12 @@ namespace WindowsFormsApp1
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            dynamic selectedProdCode = this.cmbProductCode.SelectedItem;
-            this.ProductCode = selectedProdCode.ProductCode;
-            this.ProductName = this.txtProductName.Text;
+            ProductCodeAndNamesAndPrice selectedProduct = this.cmbProductCode.SelectedItem as ProductCodeAndNamesAndPrice;
+            this.ProductCode = selectedProduct.ProductCode;
+            this.productName = selectedProduct.Name;
             this.Qty = this.numQty.Value;
             this.UnitPirce = decimal.Parse(this.txtUnitPrice.Text);
+            this.Unit = selectedProduct.Unit;
             this.Total = this.Qty * this.UnitPirce;
             this.Comment = this.txtComment.Text;
             this.Close();
@@ -97,6 +99,7 @@ namespace WindowsFormsApp1
 
             this.txtUnitPrice.Text = selectedProdCode.UnitPrice.ToString();
             this.NumQty_ValueChanged(this, EventArgs.Empty);
+
             this.cmbSelecting = false;
         }
 
@@ -126,6 +129,7 @@ namespace WindowsFormsApp1
         public string ProductCode { get; set; }
         public string Name { get; set; }
         public decimal UnitPrice { get; set; }
+        public string Unit { get; set; }
     }
 
 }
