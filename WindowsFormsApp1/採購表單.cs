@@ -19,11 +19,11 @@ namespace WindowsFormsApp1
         private FOODEntities db = new FOODEntities();
         private List<Purchase> purchases; //先宣告採購單清單，等等要預先把所有採購單存進來，加快表單的反應速度
         private int currentIndex = 0; //這個欄位是指現在表單上顯示的是第幾筆採購單，預設為0
-        private List<GridViewItem> viewItems = new List<GridViewItem>(); //這個欄位是用來裝目前所顯示的採購單的所有採購明細，GridViewItem是自定義的class，請見最末
+        private List<PurchaseDetailItem> detailItems = new List<PurchaseDetailItem>(); //這個欄位是用來裝目前所顯示的採購單的所有採購明細，包含被刪除的採購明細。PurchaseDetailItem是自定義的class，請見最末
         private List<int> selectedPurchaseID ; //這個欄位是要紀錄從採購單查詢頁面傳回來的（使用者勾選的）所有採購單ID
-        public List<Product_LatestPrice> product_LatestPrices; //先宣告這個欄位，等等要裝最新產品價格，目的是為了要加快產品價格的查詢和採購單查詢頁面的讀取速度
+        public List<Product_LatestPrice> product_LatestPrices; //先宣告這個欄位，等等要裝最新產品價格，目的是為了要加快採購單查詢頁面的讀取速度
         private BindingSource bs = new BindingSource(); //這個BindingSource是用來繫結表單上面的採購單號、供應商、統編等控制項
-        private BindingList<GridViewItem> viewItemBs = new BindingList<GridViewItem>(); //這個BindingSource是用來繫結datagridview用的
+        private BindingSource viewBs = new BindingSource(); //這個BindingSource是用來繫結datagridview用的
         private bool rowEditing = false; //這個布林值（flag）是用來阻擋datagridview在編輯的過程中一直觸發CellValidating事件
         public 採購表單()
         {
@@ -42,56 +42,67 @@ namespace WindowsFormsApp1
         }
         private void 採購表單_Load(object sender, EventArgs e)
         {
+            var emps = (from emp in this.db.Employees
+                        select new
+                        {
+                            emp.Name,
+                            emp.EmployeeID
+                        }).ToList();
+            this.cmbPurchaseEmp.DataSource = new BindingSource() {DataSource = emps };
+            this.cmbPurchaseEmp.DisplayMember = "Name";
+            this.cmbPurchaseEmp.ValueMember = "EmployeeID";
+            this.cmbTallyEmp.DataSource = new BindingSource() { DataSource = emps };
+            this.cmbTallyEmp.DisplayMember = "Name";
+            this.cmbTallyEmp.ValueMember = "EmployeeID";
+
+            this.cmbSupplier.DataSource = (from sup in this.db.Customers
+                                           select new
+                                           {
+                                               sup.Name,
+                                               sup.CustomerID
+                                           }).ToList();
+            this.cmbSupplier.DisplayMember = "Name";
+            this.cmbSupplier.ValueMember = "CustomerID";
+
 
             //表單一開起來就要先顯示出第一筆採購單（也可以不要，看你想怎麼做）
 
             //先設定this.bs的資料來源為第一筆採購單和一些關連出來的資料（最前面已經把currentIndex設為0了）
             var 現在要顯示的採購單 = this.purchases[currentIndex];  //this.purchases[0]
-            this.bs.DataSource = new //匿名型別物件(*)
-            {
-                現在要顯示的採購單.PurchaseID,  //屬性 PurchaseID
-                現在要顯示的採購單.PurchaseDate, //屬性 PurchaseDate
-                現在要顯示的採購單.Customer.Name, //屬性 Name
-                現在要顯示的採購單.SupplierID, //...
-                現在要顯示的採購單.Customer.ContactPerson, //...
-                現在要顯示的採購單.Customer.ContactCellPhone,
-                現在要顯示的採購單.Customer.Unicode,
-                現在要顯示的採購單.Customer.Address,
-                Purchaser = (from emp in this.db.Employees
-                             where emp.EmployeeID == 現在要顯示的採購單.PurchaserEmpID
-                             select emp.Name).FirstOrDefault(),  //屬性Purchaser
-                現在要顯示的採購單.PurchaserEmpID, //屬性PurchaserEmpID
-                TallyEmp = (from emp in this.db.Employees
-                            where emp.EmployeeID == 現在要顯示的採購單.TallyEmpID
-                            select emp.Name).FirstOrDefault(), //屬性TallyEmp
-                現在要顯示的採購單.TallyEmpID,
-                現在要顯示的採購單.Deliveryaddress,
-                現在要顯示的採購單.RequiredDate,
-                現在要顯示的採購單.Comment
-            };
+            var purchaseItem = new PurchaseItem() { _p = 現在要顯示的採購單};
+            purchaseItem.SupplierName = purchaseItem._p.Customer.Name;
+            purchaseItem.PurchaserEmp = (from emp in this.db.Employees
+                                         where emp.EmployeeID == 現在要顯示的採購單.PurchaserEmpID
+                                         select emp.Name).FirstOrDefault();
+            purchaseItem.TallyEmp = (from emp in this.db.Employees
+                                     where emp.EmployeeID == 現在要顯示的採購單.TallyEmpID
+                                     select emp.Name).FirstOrDefault();
+            this.bs.DataSource = purchaseItem;
+
 
             //然後再綁定label4（要顯示採購單號的那個label）的Text屬性值等於bs的PurchaseID的值，等等在reload()裡面就會看到"綁定"到底是什麼意思
             this.label4.DataBindings.Add(new Binding("Text", this.bs, "PurchaseID"));
             //綁定dateTimePicker1（採購日期）的Value屬性值等於bs的PurchaseDate的值，等等在reload()裡面就會看到"綁定"到底是什麼意思...
-            this.dateTimePicker1.DataBindings.Add(new Binding("Value", this.bs, "PurchaseDate"));
+            this.dtpPurchase.DataBindings.Add(new Binding("Value", this.bs, "PurchaseDate"));
             //綁定this.textBox1（供應商名稱）的Text屬性值等於bs的Name的值，等等在reload()裡面就會看到"綁定"到底是什麼意思...
-            this.textBox1.DataBindings.Add(new Binding("Text", this.bs, "Name"));
-            this.label12.DataBindings.Add(new Binding("Text",this.bs, "SupplierID"));
-            this.textBox3.DataBindings.Add(new Binding("Text", this.bs, "ContactPerson"));
-            this.textBox4.DataBindings.Add(new Binding("Text", this.bs, "ContactCellPhone"));
-            this.textBox2.DataBindings.Add(new Binding("Text", this.bs, "Unicode"));
-            this.textBox5.DataBindings.Add(new Binding("Text", this.bs, "Address"));
-            this.comboBox1.DataBindings.Add(new Binding("Text", this.bs, "Purchaser"));
-            this.label18.DataBindings.Add(new Binding("Text", this.bs, "PurchaserEmpID"));
-            this.comboBox2.DataBindings.Add(new Binding("Text", this.bs, "TallyEmp"));
-            this.label19.DataBindings.Add(new Binding("Text", this.bs, "TallyEmpID"));
-            this.textBox6.DataBindings.Add(new Binding("Text", this.bs, "Deliveryaddress"));
-            this.dateTimePicker2.DataBindings.Add(new Binding("Value", this.bs, "RequiredDate"));
-            this.richTextBox1.DataBindings.Add(new Binding("Text", this.bs, "Comment"));
+            this.cmbSupplier.DataBindings.Add(new Binding("Text", this.bs, "SupplierName"));
+            this.lblSupplierID.DataBindings.Add(new Binding("Text",this.bs, "SupplierID"));
+            this.txtContact.DataBindings.Add(new Binding("Text", this.bs, "ContactPerson"));
+            this.txtPhone.DataBindings.Add(new Binding("Text", this.bs, "ContactCellPhone"));
+            this.txtUnicode.DataBindings.Add(new Binding("Text", this.bs, "Unicode"));
+            this.txtSupplierAddr.DataBindings.Add(new Binding("Text", this.bs, "Address"));
+            this.cmbPurchaseEmp.DataBindings.Add(new Binding("Text", this.bs, "PurchaserEmp"));
+            this.lblPurchaserEmpID.DataBindings.Add(new Binding("Text", this.bs, "PurchaserEmpID"));
+            this.cmbTallyEmp.DataBindings.Add(new Binding("Text", this.bs, "TallyEmp"));
+            this.lblTallyEmpID.DataBindings.Add(new Binding("Text", this.bs, "TallyEmpID"));
+            this.txtDeliveryAddr.DataBindings.Add(new Binding("Text", this.bs, "Deliveryaddress"));
+            this.dtpDelivery.DataBindings.Add(new Binding("Value", this.bs, "RequiredDate"));
+            this.txtComment.DataBindings.Add(new Binding("Text", this.bs, "Comment"));
+
             //思考一下，到底bs是什麼？
-            //雖然bs仍然是一個BindingSource物件，但它其實代表了那個匿名型別物件(*)
-            //那個個匿名型別物件裡面有的屬性包含了PurchaseID、PurchaseDate、Name......等一堆屬性
-            //只要這個匿名型別物件的屬性值有變動，就可以利用BindingSource一口氣全部跟著連動改變，等等在reload()裡面就會看到要怎麼做了。
+            //雖然bs仍然是一個BindingSource物件，但它其實代表了現在正在顯示的PurchaseItem物件
+            //PurchaseItem物件裡面有的屬性包含了PurchaseID、PurchaseDate、Name......等一堆屬性
+            //只要這個物件的屬性值有變動，就可以利用BindingSource一口氣全部跟著連動改變，等等在reload()裡面就會看到要怎麼做了。
 
 
             //表單中的listBox1是我加上去的，可以看到說現在被圈選出來的採購單有哪幾筆。那因為現在是表單剛開起來的時候，因此我先預設圈選出所有採購單
@@ -101,27 +112,22 @@ namespace WindowsFormsApp1
             //接下來，因為datagridview要顯示出的欄位有項次、料號、品名等8個欄位，和我們資料庫中PurchaseDetail的欄位不一致，因此我們要為了這個datagridview來定義一個class，如最末的GridViewItem，這樣等等用bindingsource才能抓到這些欄位並顯示在datagridview中
             //因為PurchaseDetail會頻繁的改動，因此就不要先撈進記憶體了
             //此外，因為要在表單一出現時就找出第一筆採購單，"並在datagridview中列出第一筆採購單的所有名細"，因此要先以第一筆採購單的PurchaseID來找出他的所有名細，並以GridViewItem的型別放進this.viewItems這個欄位（list）中
-            this.viewItems = (from pd in this.db.PurchaseDetails.AsEnumerable()
+            this.detailItems = (from pd in this.db.PurchaseDetails.AsEnumerable()
                               where pd.PurchaseID == this.purchases[0].PurchaseID
                               //或 where pd.PurchaseID == this.purchases[currentIndex].PurchaseID //現在currentIndex還是0哦！
                               //或 where pd.PurchaseID == this.selectedPurchaseID[currentIndex] //現在currentIndex還是0哦！
                               //或 where pd.PurchaseID == this.selectedPurchaseID[0]
-                              select new GridViewItem()
+                              select new PurchaseDetailItem()
                               {
-                                  _purchaseDetail = pd,
-                                  _purchaseDetailID = pd.PurchaseDetailID,
+                                  _pd = pd,
                                   項次 = 0, //這個是為了要製造出項次會1234的效果，說明起來有點麻煩，就略過囉！
-                                  價格 = pd.UnitPrice,
-                                  數量 = pd.Qty,
-                                  小計 = pd.Qty * pd.UnitPrice,
-                                  備註 = pd.Comment                                  
+                                  小計 = pd.Qty * pd.UnitPrice                                  
                               }).ToList();
-            GridViewItem.serialNo = 0; //這個是為了要製造出項次會自動1234的效果，說明起來有點麻煩，就略過囉！
+            PurchaseDetailItem.serialNo = 0; //這個是為了要製造出項次會自動1234的效果，說明起來有點麻煩，就略過囉！
 
-            this.viewItemBs = new BindingList<GridViewItem>(this.viewItems.Where((item)=> {
-                return (item.State != EntityState.Detached && item.State != EntityState.Deleted);
-                }).ToList());            
-            this.dataGridView1.DataSource = this.viewItemBs;            
+            this.reloadDataGridView();
+            
+            this.dataGridView1.DataSource = this.viewBs;
 
             this.dataGridView1.AllowUserToAddRows = false;  //把datagridview自動產生的最後一列空白列關掉
             this.dataGridView1.Columns["項次"].ReadOnly = true; //關閉項次欄位的編輯功能
@@ -134,16 +140,68 @@ namespace WindowsFormsApp1
             this.button5.Click += this.previousPurchase; //按下button5（<）會跳到上一筆採購單，如果現在是第一筆，就不跳
             this.button6.Click += this.nextPurchase; //按下button6（>）會跳到下一筆採購單，如果現在是最後一筆，就不跳
             this.button11.Click += this.addPurchaseDetail; //按下button11（新增品項）會開啟新增採購品項表單
-            this.button12.Click += this.delPurchaseDetail;
-            this.button9.Click += this.saveEdit;
-            this.button2.Click += Button2_Click;
+            this.button12.Click += this.delPurchaseDetail; //按下button12（刪除品項）會將在datagridview中選擇的項目標記為deleted，並從datagridview隱藏
+            this.button9.Click += this.saveEdit; //把資料寫進DB，該新增的新增、該刪除的刪除、先新增又刪除的就不做任何處理、沒變動的資料也不做任何處理
+            this.cmbSupplier.SelectedIndexChanged += ChangeSupplier;
+            this.cmbPurchaseEmp.SelectedIndexChanged += ChangePurchaserEmp;
+            this.cmbTallyEmp.SelectedIndexChanged += ChangeTallyEmp;
             this.dataGridView1.CellValidating += DataGridView1_CellValidating; //在datagridview中編輯格子中（cell）的內容後會觸發DataGridView1_CellValidating
 
+            this.MouseClick += 採購表單_MouseClick;
         }
 
-        private void Button2_Click(object sender, EventArgs e)
+        
+
+        private void ChangeSupplier(object sender, EventArgs e)
         {
-            
+            (this.bs.DataSource as PurchaseItem).SupplierID = (int)((sender as ComboBox).SelectedValue);
+            (this.bs.DataSource as PurchaseItem).SupplierName = (sender as ComboBox).Text;
+            this.bs.ResetBindings(false);
+        }
+
+        private void ChangePurchaserEmp(object sender, EventArgs e)
+        {
+            (this.bs.DataSource as PurchaseItem).PurchaserEmpID = (int)((sender as ComboBox).SelectedValue);
+            (this.bs.DataSource as PurchaseItem).PurchaserEmp = (sender as ComboBox).Text;
+            this.bs.ResetBindings(false);
+        }
+
+        private void ChangeTallyEmp(object sender, EventArgs e)
+        {
+
+            (this.bs.DataSource as PurchaseItem).TallyEmpID = (int)((sender as ComboBox).SelectedValue);
+            (this.bs.DataSource as PurchaseItem).TallyEmp = (sender as ComboBox).Text;
+            this.bs.ResetBindings(false);
+        }
+
+        private void 採購表單_MouseClick(object sender, MouseEventArgs e)
+        {
+            var q = (from p in this.purchases
+                     where p.PurchaseID == int.Parse(this.label4.Text)
+                     select p).First();
+
+            Console.WriteLine(this.db.Entry(q).State);
+        }
+
+        private void reloadDataGridView()
+        {
+            //this.db.Dispose();
+            //this.db = new FOODEntities();
+            //this.detailItems = (from pd in this.db.PurchaseDetails.AsEnumerable()
+            //                    where pd.PurchaseID == this.selectedPurchaseID[currentIndex]
+            //                    select new GridViewItem()
+            //                    {
+            //                        _purchaseDetail = pd,
+            //                        項次 = 0,
+            //                        小計 = pd.Qty * pd.UnitPrice,
+            //                    }).ToList();
+            //GridViewItem.serialNo = 0;
+            this.viewBs.DataSource = (from item in this.detailItems
+                                      where this.db.Entry(item._pd).State == EntityState.Added
+                                      || this.db.Entry(item._pd).State == EntityState.Modified
+                                      || this.db.Entry(item._pd).State == EntityState.Unchanged
+                                      select item).ToList();
+            this.viewBs.ResetBindings(false);
         }
 
         private void searchPurchase(object sender, EventArgs a)
@@ -161,6 +219,8 @@ namespace WindowsFormsApp1
         }
         private void reload()
         {
+            revertUnsavedChange();
+
             //reload()要做的事情有：1.刷新表單上的採購單資訊（採購單號、供應商、統編等一大堆）、2.刷新右上角的listbox、3.讀取現在這筆採購單的明細，並顯示在datagridview中。
 
             //1.刷新表單上的採購單資訊
@@ -179,28 +239,15 @@ namespace WindowsFormsApp1
                              select p).FirstOrDefault();  //FirstOrDefault()是指說，如果這個linq有查詢到一個或一個以上的結果，那就只回傳第一個結果。如果這個linq沒有查到任何結果，那就回傳null（如果預期結果值是物件）或0（如果預期結果值是int）或空字串（如果預期結果值是string）...
 
             //在查到要顯示的採購單後，再次指定this.bs的資料來源為新的這個要顯示的採購單和關連出的資訊
-            this.bs.DataSource = new //匿名型別物件(*)
-            {
-                現在要顯示的採購單.PurchaseID,
-                現在要顯示的採購單.PurchaseDate,
-                現在要顯示的採購單.Customer.Name,
-                現在要顯示的採購單.SupplierID,
-                現在要顯示的採購單.Customer.ContactPerson,
-                現在要顯示的採購單.Customer.ContactCellPhone,
-                現在要顯示的採購單.Customer.Unicode,
-                現在要顯示的採購單.Customer.Address,
-                Purchaser = (from emp in this.db.Employees
-                             where emp.EmployeeID == 現在要顯示的採購單.PurchaserEmpID
-                             select emp.Name).FirstOrDefault(),
-                現在要顯示的採購單.PurchaserEmpID,
-                TallyEmp = (from emp in this.db.Employees
-                            where emp.EmployeeID == 現在要顯示的採購單.TallyEmpID
-                            select emp.Name).FirstOrDefault(),
-                現在要顯示的採購單.TallyEmpID,
-                現在要顯示的採購單.Deliveryaddress,
-                現在要顯示的採購單.RequiredDate,
-                現在要顯示的採購單.Comment
-            };
+            var purchaseItem = new PurchaseItem() { _p = 現在要顯示的採購單 };
+            purchaseItem.SupplierName = purchaseItem._p.Customer.Name;
+            purchaseItem.PurchaserEmp = (from emp in this.db.Employees
+                                         where emp.EmployeeID == 現在要顯示的採購單.PurchaserEmpID
+                                         select emp.Name).FirstOrDefault();
+            purchaseItem.TallyEmp = (from emp in this.db.Employees
+                                     where emp.EmployeeID == 現在要顯示的採購單.TallyEmpID
+                                     select emp.Name).FirstOrDefault();
+            this.bs.DataSource = purchaseItem;
 
 
             ////////////////////關鍵！！雖然已經把this.bs的資料來源設定為新的要顯示的採購單（匿名型別物件）了，但bindingsource的規矩就是要再呼叫這個方法來更新所有和bindingsource綁定的控制項（this.label4、this.dateTimePicker1、this.textBox1 ... 等這一堆的控制項）
@@ -213,26 +260,17 @@ namespace WindowsFormsApp1
 
             //3.讀取現在這筆採購單的明細，並顯示在datagridview中
             //等於是把 採購表單_Load 中
-            this.viewItems = (from pd in this.db.PurchaseDetails.AsEnumerable()
+            this.detailItems = (from pd in this.db.PurchaseDetails.AsEnumerable()
                               where pd.PurchaseID == this.selectedPurchaseID[currentIndex]
-                              select new GridViewItem()
+                              select new PurchaseDetailItem()
                               {
-                                  _purchaseDetail = pd,
-                                  _purchaseDetailID = pd.PurchaseDetailID,                                  
+                                  _pd = pd,
                                   項次 = 0, //這個是為了要製造出項次會1234的效果，說明起來有點麻煩，就略過囉！
-                                  價格 = pd.UnitPrice,
-                                  數量 = pd.Qty,
                                   小計 = pd.Qty * pd.UnitPrice,
-                                  備註 = pd.Comment
-                              }).ToList();
-            
-            GridViewItem.serialNo = 0; //這個是為了要製造出項次會1234的效果，說明起來有點麻煩，就略過囉！            
+                              }).ToList();            
+            PurchaseDetailItem.serialNo = 0; //這個是為了要製造出項次會1234的效果，說明起來有點麻煩，就略過囉！            
 
-            this.viewItemBs = new BindingList<GridViewItem>(this.viewItems.Where((item) =>
-            {
-                return (item.State != EntityState.Detached && item.State != EntityState.Deleted);
-            }).ToList());
-            this.viewItemBs.ResetBindings();
+            reloadDataGridView();
         }
 
         private void previousPurchase(object sender, EventArgs e)
@@ -294,23 +332,20 @@ namespace WindowsFormsApp1
             var res = f.ShowDialog(this);
             if (res == DialogResult.OK)
             {
-                GridViewItem.serialNo = this.viewItems.Count;
-                var addedItem = new GridViewItem();
-                addedItem._purchaseDetail = this.db.Set<PurchaseDetail>().Create();
-                addedItem._purchaseDetail.PurchaseID = this.selectedPurchaseID[currentIndex];
-                addedItem._purchaseDetailID = -1;
-                addedItem._purchaseDetail.ProductCode = f.ProductCode;
-                addedItem._purchaseDetail.Qty = f.Qty;
-                addedItem._purchaseDetail.UnitPrice = f.UnitPirce;
-                addedItem._purchaseDetail.Unit = f.Unit;
-                addedItem._purchaseDetail.Comment = f.Comment;
-                addedItem.項次 = 0;
-                addedItem.State = EntityState.Added;
-                GridViewItem.serialNo = 0;
-                this.db.PurchaseDetails.Attach(addedItem._purchaseDetail);
-                this.viewItems.Add(addedItem);
-                this.viewItemBs.Add(addedItem);
-                this.viewItemBs.ResetBindings();
+                PurchaseDetailItem.serialNo = this.detailItems.Count;
+                var addedItem = new PurchaseDetailItem();
+                addedItem._pd = this.db.Set<PurchaseDetail>().Create();
+                addedItem.PurchaseID = this.selectedPurchaseID[currentIndex];
+                addedItem._pd.ProductCode = f.ProductCode;
+                addedItem.數量 = f.Qty;
+                addedItem.價格 = f.UnitPirce;
+                addedItem._pd.Unit = f.Unit;
+                addedItem.備註 = f.Comment;
+                addedItem.項次 = 0;                                
+                PurchaseDetailItem.serialNo = 0;
+                this.db.PurchaseDetails.Add(addedItem._pd);
+                this.detailItems.Add(addedItem);
+                this.reloadDataGridView();
             }
             f.Dispose();
         }
@@ -324,106 +359,175 @@ namespace WindowsFormsApp1
                     selectRowIndex.Add(cell.RowIndex);
                 }
             }
+            var items = this.viewBs.DataSource as List<PurchaseDetailItem>;
             foreach (int i in selectRowIndex)
             {
-                            
+                if (this.db.Entry(items[i]._pd).State == EntityState.Added)
+                {
+                    this.db.Entry(items[i]._pd).State = EntityState.Detached;
+                }
+                else
+                {
+                    this.db.Entry(items[i]._pd).State = EntityState.Deleted;
+                }
             }
-
-            
+            reloadDataGridView();
         }
 
         private void saveEdit(object sender, EventArgs e)
         {
             this.db.SaveChanges();
         }
+        private void revertUnsavedChange()
+        {
+            foreach (var item in this.detailItems)
+            {
+                if (this.db.Entry(item._pd).State == EntityState.Added)
+                {
+                    this.db.Entry(item._pd).State = EntityState.Detached;
+                }
+                else if (this.db.Entry(item._pd).State == EntityState.Modified)
+                {
+                    this.db.Entry(item._pd).Reload();
+                }
+                else if (this.db.Entry(item._pd).State == EntityState.Deleted)
+                {
+                    this.db.Entry(item._pd).Reload();
+                }
+            }
+        }
+
+        private void printDetailItems()
+        {
+            foreach (var item in this.detailItems)
+            {
+                Console.WriteLine(item._purchaseDetailID);
+                Console.WriteLine(this.db.Entry(item._pd).State);
+            }
+        }
         
     }
 
-    public class GridViewItem
+    public class PurchaseItem
+    {
+        public Purchase _p;
+        public int PurchaseID
+        {
+            get { return this._p.PurchaseID; }
+            set { this._p.PurchaseID = value; }
+        }
+        public DateTime PurchaseDate
+        {
+            get { return this._p.PurchaseDate.GetValueOrDefault(); }
+            set { this._p.PurchaseDate = value; }
+        }
+        public string SupplierName { get; set; }
+        public int SupplierID
+        {
+            get { return this._p.SupplierID.GetValueOrDefault(); }
+            set { this._p.SupplierID = value; }
+        }
+        public string ContactPerson
+        {
+            get { return this._p.Customer.ContactPerson; }
+        }
+        public string ContactCellPhone
+        {
+            get { return this._p.Customer.ContactCellPhone; }
+        }
+        public string Unicode
+        {
+            get { return this._p.Customer.Unicode; }
+        }
+        public string Address
+        {
+            get { return this._p.Customer.Address; }
+        }
+        public string PurchaserEmp { get; set; }
+        public int PurchaserEmpID
+        {
+            get { return this._p.PurchaserEmpID.GetValueOrDefault(); }
+            set { this._p.PurchaserEmpID = value; }
+
+        }
+        public string TallyEmp { get; set; }
+        public int TallyEmpID 
+        {
+            get { return this._p.TallyEmpID.GetValueOrDefault(); }
+            set { this._p.TallyEmpID = value; }
+        }
+        public string Deliveryaddress
+        {
+            get { return this._p.Deliveryaddress; }
+            set { this._p.Deliveryaddress = value; }
+        }
+        public DateTime RequiredDate {
+            get { return this._p.RequiredDate.GetValueOrDefault(); }
+            set { this._p.RequiredDate = value; } 
+        }
+        public string Comment 
+        {
+            get { return this._p.Comment; }
+            set { this._p.Comment = value; }
+        }
+    }
+
+
+    public class PurchaseDetailItem
     {
         public static int serialNo = 0;
         private int _項次 = 0;
-        public int _purchaseDetailID = -1;
-        public PurchaseDetail _purchaseDetail;
+        public PurchaseDetail _pd;
 
+        internal int _purchaseDetailID
+        {
+            get { return this._pd.PurchaseDetailID; }
+        }
         internal int PurchaseID
         {
-            get
-            {
-                return this._purchaseDetail.PurchaseID;
-            }
+            get { return this._pd.PurchaseID; }
+            set { this._pd.PurchaseID = value; }
         }
         public int 項次
         {
-            get
-            {
-                return this._項次;
-            }
-            set
-            {
-                this._項次 = GridViewItem.serialNo;
-            }
+            get { return this._項次; }
+            set { this._項次 = PurchaseDetailItem.serialNo; }
         }
-        public string 料號 
+        public string 料號
         {
-            get
-            {
-                return this._purchaseDetail.ProductCode;
-            }
+            get { return this._pd.ProductCode; }
+            internal set { this._pd.ProductCode = value; }
         }
         public string 品名
         {
-            get
-            {
-                return this._purchaseDetail.Product.Name;
-            }
+            get { return this._pd.Product.Name; }
         }
-        public decimal 價格 
+        public decimal 價格
         {
-            get
-            {
-                return this._purchaseDetail.UnitPrice;
-            }
-            set
-            {
-                this._purchaseDetail.UnitPrice = value;
-            }
+            get { return this._pd.UnitPrice; }
+            set { this._pd.UnitPrice = value; }
         }
-        public decimal 數量 
+        public decimal 數量
         {
-            get
-            {
-                return this._purchaseDetail.Qty;
-            }
-            set
-            {
-                this._purchaseDetail.Qty = value;
-            }
+            get { return this._pd.Qty; }
+            set { this._pd.Qty = value; }
         }
         public string 單位
         {
-            get
-            {
-                return this._purchaseDetail.Product.Unit;
-            }
+            get { return this._pd.Product.Unit; }
         }
         public decimal 小計 { get; set; }
-        public string 備註 
+
+        public string 備註
         {
-            get
-            {
-                return this._purchaseDetail.Comment;
-            }
-            set
-            {
-                this._purchaseDetail.Comment = value;
-            }
+            get { return this._pd.Comment; }
+            set { this._pd.Comment = value; }
         }
-        public EntityState State = EntityState.Unchanged;
-        public GridViewItem()
+        //public EntityState State = EntityState.Unchanged;
+        public PurchaseDetailItem()
         {
-            GridViewItem.serialNo += 1;
+            PurchaseDetailItem.serialNo += 1;
         }
-        
+
     }
 }

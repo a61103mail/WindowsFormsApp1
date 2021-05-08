@@ -29,38 +29,36 @@ namespace WindowsFormsApp1
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtUnicode = new System.Windows.Forms.TextBox();
+            this.txtContact = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtPhone = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.txtSupplierAddr = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.txtDeliveryAddr = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.label12 = new System.Windows.Forms.Label();
+            this.dtpDelivery = new System.Windows.Forms.DateTimePicker();
+            this.lblSupplierID = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.txtComment = new System.Windows.Forms.RichTextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.lblPurchaserEmpID = new System.Windows.Forms.Label();
+            this.lblTallyEmpID = new System.Windows.Forms.Label();
+            this.cmbPurchaseEmp = new System.Windows.Forms.ComboBox();
+            this.cmbTallyEmp = new System.Windows.Forms.ComboBox();
+            this.dtpPurchase = new System.Windows.Forms.DateTimePicker();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
@@ -73,17 +71,9 @@ namespace WindowsFormsApp1
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.button11 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
+            this.cmbSupplier = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // textBox1
-            // 
-            this.textBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.textBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.textBox1.Location = new System.Drawing.Point(84, 139);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(144, 22);
-            this.textBox1.TabIndex = 0;
             // 
             // label1
             // 
@@ -99,7 +89,7 @@ namespace WindowsFormsApp1
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("新細明體", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label2.Location = new System.Drawing.Point(15, 106);
+            this.label2.Location = new System.Drawing.Point(13, 106);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(82, 15);
             this.label2.TabIndex = 3;
@@ -135,19 +125,21 @@ namespace WindowsFormsApp1
             this.label5.TabIndex = 6;
             this.label5.Text = "統    編：";
             // 
-            // textBox2
+            // txtUnicode
             // 
-            this.textBox2.Location = new System.Drawing.Point(84, 175);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(164, 22);
-            this.textBox2.TabIndex = 7;
+            this.txtUnicode.Location = new System.Drawing.Point(93, 175);
+            this.txtUnicode.Name = "txtUnicode";
+            this.txtUnicode.ReadOnly = true;
+            this.txtUnicode.Size = new System.Drawing.Size(164, 22);
+            this.txtUnicode.TabIndex = 7;
             // 
-            // textBox3
+            // txtContact
             // 
-            this.textBox3.Location = new System.Drawing.Point(528, 138);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(123, 22);
-            this.textBox3.TabIndex = 9;
+            this.txtContact.Location = new System.Drawing.Point(528, 138);
+            this.txtContact.Name = "txtContact";
+            this.txtContact.ReadOnly = true;
+            this.txtContact.Size = new System.Drawing.Size(123, 22);
+            this.txtContact.TabIndex = 9;
             // 
             // label6
             // 
@@ -159,12 +151,13 @@ namespace WindowsFormsApp1
             this.label6.TabIndex = 8;
             this.label6.Text = "聯絡人：";
             // 
-            // textBox4
+            // txtPhone
             // 
-            this.textBox4.Location = new System.Drawing.Point(751, 138);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(164, 22);
-            this.textBox4.TabIndex = 11;
+            this.txtPhone.Location = new System.Drawing.Point(751, 138);
+            this.txtPhone.Name = "txtPhone";
+            this.txtPhone.ReadOnly = true;
+            this.txtPhone.Size = new System.Drawing.Size(164, 22);
+            this.txtPhone.TabIndex = 11;
             // 
             // label7
             // 
@@ -176,12 +169,13 @@ namespace WindowsFormsApp1
             this.label7.TabIndex = 10;
             this.label7.Text = "聯絡電話：";
             // 
-            // textBox5
+            // txtSupplierAddr
             // 
-            this.textBox5.Location = new System.Drawing.Point(375, 175);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(361, 22);
-            this.textBox5.TabIndex = 13;
+            this.txtSupplierAddr.Location = new System.Drawing.Point(375, 175);
+            this.txtSupplierAddr.Name = "txtSupplierAddr";
+            this.txtSupplierAddr.ReadOnly = true;
+            this.txtSupplierAddr.Size = new System.Drawing.Size(361, 22);
+            this.txtSupplierAddr.TabIndex = 13;
             // 
             // label8
             // 
@@ -193,12 +187,12 @@ namespace WindowsFormsApp1
             this.label8.TabIndex = 12;
             this.label8.Text = "供應商地址：";
             // 
-            // textBox6
+            // txtDeliveryAddr
             // 
-            this.textBox6.Location = new System.Drawing.Point(97, 292);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(361, 22);
-            this.textBox6.TabIndex = 15;
+            this.txtDeliveryAddr.Location = new System.Drawing.Point(93, 289);
+            this.txtDeliveryAddr.Name = "txtDeliveryAddr";
+            this.txtDeliveryAddr.Size = new System.Drawing.Size(361, 22);
+            this.txtDeliveryAddr.TabIndex = 15;
             // 
             // label9
             // 
@@ -230,22 +224,22 @@ namespace WindowsFormsApp1
             this.label11.TabIndex = 17;
             this.label11.Text = "交貨日期：";
             // 
-            // dateTimePicker2
+            // dtpDelivery
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(97, 331);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(176, 22);
-            this.dateTimePicker2.TabIndex = 19;
+            this.dtpDelivery.Location = new System.Drawing.Point(93, 330);
+            this.dtpDelivery.Name = "dtpDelivery";
+            this.dtpDelivery.Size = new System.Drawing.Size(176, 22);
+            this.dtpDelivery.TabIndex = 19;
             // 
-            // label12
+            // lblSupplierID
             // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("新細明體", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label12.Location = new System.Drawing.Point(372, 141);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(83, 15);
-            this.label12.TabIndex = 20;
-            this.label12.Text = "                   ";
+            this.lblSupplierID.AutoSize = true;
+            this.lblSupplierID.Font = new System.Drawing.Font("新細明體", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lblSupplierID.Location = new System.Drawing.Point(372, 141);
+            this.lblSupplierID.Name = "lblSupplierID";
+            this.lblSupplierID.Size = new System.Drawing.Size(83, 15);
+            this.lblSupplierID.TabIndex = 20;
+            this.lblSupplierID.Text = "                   ";
             // 
             // label13
             // 
@@ -297,13 +291,13 @@ namespace WindowsFormsApp1
             this.label17.TabIndex = 29;
             this.label17.Text = "備註：";
             // 
-            // richTextBox1
+            // txtComment
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(564, 214);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(378, 138);
-            this.richTextBox1.TabIndex = 30;
-            this.richTextBox1.Text = "";
+            this.txtComment.Location = new System.Drawing.Point(564, 214);
+            this.txtComment.Name = "txtComment";
+            this.txtComment.Size = new System.Drawing.Size(378, 138);
+            this.txtComment.TabIndex = 30;
+            this.txtComment.Text = "";
             // 
             // dataGridView1
             // 
@@ -315,57 +309,48 @@ namespace WindowsFormsApp1
             this.dataGridView1.Size = new System.Drawing.Size(946, 262);
             this.dataGridView1.TabIndex = 31;
             // 
-            // label18
+            // lblPurchaserEmpID
             // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("新細明體", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label18.Location = new System.Drawing.Point(341, 215);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(75, 15);
-            this.label18.TabIndex = 32;
-            this.label18.Text = "                 ";
+            this.lblPurchaserEmpID.AutoSize = true;
+            this.lblPurchaserEmpID.Font = new System.Drawing.Font("新細明體", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lblPurchaserEmpID.Location = new System.Drawing.Point(341, 215);
+            this.lblPurchaserEmpID.Name = "lblPurchaserEmpID";
+            this.lblPurchaserEmpID.Size = new System.Drawing.Size(75, 15);
+            this.lblPurchaserEmpID.TabIndex = 32;
+            this.lblPurchaserEmpID.Text = "                 ";
             // 
-            // label19
+            // lblTallyEmpID
             // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("新細明體", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label19.Location = new System.Drawing.Point(342, 255);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(91, 15);
-            this.label19.TabIndex = 33;
-            this.label19.Text = "                     ";
+            this.lblTallyEmpID.AutoSize = true;
+            this.lblTallyEmpID.Font = new System.Drawing.Font("新細明體", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lblTallyEmpID.Location = new System.Drawing.Point(342, 255);
+            this.lblTallyEmpID.Name = "lblTallyEmpID";
+            this.lblTallyEmpID.Size = new System.Drawing.Size(91, 15);
+            this.lblTallyEmpID.TabIndex = 33;
+            this.lblTallyEmpID.Text = "                     ";
             // 
-            // comboBox1
+            // cmbPurchaseEmp
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(93, 214);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 20);
-            this.comboBox1.TabIndex = 34;
+            this.cmbPurchaseEmp.FormattingEnabled = true;
+            this.cmbPurchaseEmp.Location = new System.Drawing.Point(93, 214);
+            this.cmbPurchaseEmp.Name = "cmbPurchaseEmp";
+            this.cmbPurchaseEmp.Size = new System.Drawing.Size(121, 20);
+            this.cmbPurchaseEmp.TabIndex = 34;
             // 
-            // comboBox2
+            // cmbTallyEmp
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(93, 252);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 20);
-            this.comboBox2.TabIndex = 35;
+            this.cmbTallyEmp.FormattingEnabled = true;
+            this.cmbTallyEmp.Location = new System.Drawing.Point(93, 252);
+            this.cmbTallyEmp.Name = "cmbTallyEmp";
+            this.cmbTallyEmp.Size = new System.Drawing.Size(121, 20);
+            this.cmbTallyEmp.TabIndex = 35;
             // 
-            // button2
+            // dtpPurchase
             // 
-            this.button2.Location = new System.Drawing.Point(12, 52);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(86, 31);
-            this.button2.TabIndex = 36;
-            this.button2.Text = "新增採購單";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(293, 102);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(176, 22);
-            this.dateTimePicker1.TabIndex = 37;
+            this.dtpPurchase.Location = new System.Drawing.Point(293, 102);
+            this.dtpPurchase.Name = "dtpPurchase";
+            this.dtpPurchase.Size = new System.Drawing.Size(176, 22);
+            this.dtpPurchase.TabIndex = 37;
             // 
             // button3
             // 
@@ -433,18 +418,18 @@ namespace WindowsFormsApp1
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(110, 52);
+            this.button9.Location = new System.Drawing.Point(15, 52);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(65, 31);
             this.button9.TabIndex = 44;
-            this.button9.Text = "修改";
+            this.button9.Text = "儲存";
             this.button9.UseVisualStyleBackColor = true;
             // 
             // button10
             // 
             this.button10.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.red;
             this.button10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button10.Location = new System.Drawing.Point(188, 52);
+            this.button10.Location = new System.Drawing.Point(89, 52);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(65, 31);
             this.button10.TabIndex = 45;
@@ -467,7 +452,7 @@ namespace WindowsFormsApp1
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 12;
             this.listBox1.Location = new System.Drawing.Point(638, 17);
-            this.listBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listBox1.Margin = new System.Windows.Forms.Padding(2);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(153, 88);
             this.listBox1.TabIndex = 46;
@@ -475,7 +460,7 @@ namespace WindowsFormsApp1
             // button11
             // 
             this.button11.Location = new System.Drawing.Point(284, 329);
-            this.button11.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button11.Margin = new System.Windows.Forms.Padding(2);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(74, 22);
             this.button11.TabIndex = 47;
@@ -485,19 +470,28 @@ namespace WindowsFormsApp1
             // button12
             // 
             this.button12.Location = new System.Drawing.Point(367, 329);
-            this.button12.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button12.Margin = new System.Windows.Forms.Padding(2);
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(65, 21);
             this.button12.TabIndex = 48;
             this.button12.Text = "刪除品項";
             this.button12.UseVisualStyleBackColor = true;
             // 
+            // cmbSupplier
+            // 
+            this.cmbSupplier.FormattingEnabled = true;
+            this.cmbSupplier.Location = new System.Drawing.Point(93, 138);
+            this.cmbSupplier.Name = "cmbSupplier";
+            this.cmbSupplier.Size = new System.Drawing.Size(121, 20);
+            this.cmbSupplier.TabIndex = 49;
+            // 
             // 採購表單
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(909, 499);
+            this.ClientSize = new System.Drawing.Size(977, 644);
+            this.Controls.Add(this.cmbSupplier);
             this.Controls.Add(this.button12);
             this.Controls.Add(this.button11);
             this.Controls.Add(this.listBox1);
@@ -509,39 +503,37 @@ namespace WindowsFormsApp1
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.label19);
-            this.Controls.Add(this.label18);
+            this.Controls.Add(this.dtpPurchase);
+            this.Controls.Add(this.cmbTallyEmp);
+            this.Controls.Add(this.cmbPurchaseEmp);
+            this.Controls.Add(this.lblTallyEmpID);
+            this.Controls.Add(this.lblPurchaserEmpID);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.txtComment);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label13);
-            this.Controls.Add(this.label12);
-            this.Controls.Add(this.dateTimePicker2);
+            this.Controls.Add(this.lblSupplierID);
+            this.Controls.Add(this.dtpDelivery);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.txtDeliveryAddr);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.txtSupplierAddr);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.txtPhone);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.txtContact);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtUnicode);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox1);
             this.Name = "採購表單";
             this.Text = "採購表單";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -551,40 +543,37 @@ namespace WindowsFormsApp1
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtUnicode;
+        private System.Windows.Forms.TextBox txtContact;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtPhone;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox txtSupplierAddr;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox txtDeliveryAddr;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.DateTimePicker dtpDelivery;
+        private System.Windows.Forms.Label lblSupplierID;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox txtComment;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Label lblPurchaserEmpID;
+        private System.Windows.Forms.Label lblTallyEmpID;
+        private System.Windows.Forms.ComboBox cmbPurchaseEmp;
+        private System.Windows.Forms.ComboBox cmbTallyEmp;
+        private System.Windows.Forms.DateTimePicker dtpPurchase;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
@@ -596,6 +585,7 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.ComboBox cmbSupplier;
     }
 }
 
