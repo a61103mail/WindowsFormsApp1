@@ -59,7 +59,7 @@ namespace WindowsFormsApp1
             this.cmbPurchaseEmp = new System.Windows.Forms.ComboBox();
             this.cmbTallyEmp = new System.Windows.Forms.ComboBox();
             this.dtpPurchase = new System.Windows.Forms.DateTimePicker();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
@@ -68,7 +68,7 @@ namespace WindowsFormsApp1
             this.btnSave = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.lbSelectedPurchase = new System.Windows.Forms.ListBox();
             this.btnAddDetail = new System.Windows.Forms.Button();
             this.btnDelDetail = new System.Windows.Forms.Button();
             this.cmbSupplier = new System.Windows.Forms.ComboBox();
@@ -353,15 +353,15 @@ namespace WindowsFormsApp1
             this.dtpPurchase.Size = new System.Drawing.Size(176, 22);
             this.dtpPurchase.TabIndex = 37;
             // 
-            // button3
+            // btnSearch
             // 
-            this.button3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.button3.Location = new System.Drawing.Point(89, 10);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(65, 31);
-            this.button3.TabIndex = 38;
-            this.button3.Text = "搜尋";
-            this.button3.UseVisualStyleBackColor = false;
+            this.btnSearch.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnSearch.Location = new System.Drawing.Point(89, 10);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(65, 31);
+            this.btnSearch.TabIndex = 38;
+            this.btnSearch.Text = "搜尋";
+            this.btnSearch.UseVisualStyleBackColor = false;
             // 
             // button4
             // 
@@ -448,15 +448,15 @@ namespace WindowsFormsApp1
             this.button1.Text = "`";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // listBox1
+            // lbSelectedPurchase
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 12;
-            this.listBox1.Location = new System.Drawing.Point(638, 17);
-            this.listBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(153, 88);
-            this.listBox1.TabIndex = 46;
+            this.lbSelectedPurchase.FormattingEnabled = true;
+            this.lbSelectedPurchase.ItemHeight = 12;
+            this.lbSelectedPurchase.Location = new System.Drawing.Point(638, 17);
+            this.lbSelectedPurchase.Margin = new System.Windows.Forms.Padding(2);
+            this.lbSelectedPurchase.Name = "lbSelectedPurchase";
+            this.lbSelectedPurchase.Size = new System.Drawing.Size(153, 88);
+            this.lbSelectedPurchase.TabIndex = 46;
             // 
             // btnAddDetail
             // 
@@ -505,7 +505,7 @@ namespace WindowsFormsApp1
             this.Controls.Add(this.cmbSupplier);
             this.Controls.Add(this.btnDelDetail);
             this.Controls.Add(this.btnAddDetail);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.lbSelectedPurchase);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnAddPurchase);
@@ -513,7 +513,7 @@ namespace WindowsFormsApp1
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.dtpPurchase);
             this.Controls.Add(this.cmbTallyEmp);
             this.Controls.Add(this.cmbPurchaseEmp);
@@ -585,7 +585,7 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.ComboBox cmbPurchaseEmp;
         private System.Windows.Forms.ComboBox cmbTallyEmp;
         private System.Windows.Forms.DateTimePicker dtpPurchase;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
@@ -593,7 +593,7 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Button btnAddPurchase;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox lbSelectedPurchase;
         private System.Windows.Forms.Button btnAddDetail;
         private System.Windows.Forms.Button btnDelDetail;
         private System.Windows.Forms.ComboBox cmbSupplier;
