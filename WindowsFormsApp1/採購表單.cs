@@ -289,6 +289,8 @@ namespace WindowsFormsApp1
                 this.selectedPurchaseID = (from p in this.purchases
                                            select p.PurchaseID).ToList();
                 this.lbSelectedPurchase.DataSource = this.selectedPurchaseID;
+                this.lbSelectedPurchase.SelectedIndex = this.selectedPurchaseID.Count - 1;
+                this.currentIndex = this.selectedPurchaseID.Count - 1;
             }
             else
             {
