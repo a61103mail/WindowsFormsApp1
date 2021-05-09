@@ -124,10 +124,11 @@ namespace WindowsFormsApp1
                                   小計 = pd.Qty * pd.UnitPrice                                  
                               }).ToList();
             PurchaseDetailItem.serialNo = 0; //這個是為了要製造出項次會自動1234的效果，說明起來有點麻煩，就略過囉！
+            this.dataGridView1.DataSource = this.viewBs;
 
             this.reloadDataGridView();
             
-            this.dataGridView1.DataSource = this.viewBs;
+            
 
             this.dataGridView1.AllowUserToAddRows = false;  //把datagridview自動產生的最後一列空白列關掉
             this.dataGridView1.Columns["項次"].ReadOnly = true; //關閉項次欄位的編輯功能
@@ -137,11 +138,12 @@ namespace WindowsFormsApp1
             this.dataGridView1.Columns["小計"].ReadOnly = true; //關閉小計欄位的編輯功能
 
             this.button3.Click += this.searchPurchase;  //按下button3（搜尋）會開啟採購單查詢頁面
+            this.btnCancel.Click += this.cancel;
             this.button5.Click += this.previousPurchase; //按下button5（<）會跳到上一筆採購單，如果現在是第一筆，就不跳
             this.button6.Click += this.nextPurchase; //按下button6（>）會跳到下一筆採購單，如果現在是最後一筆，就不跳
-            this.button11.Click += this.addPurchaseDetail; //按下button11（新增品項）會開啟新增採購品項表單
-            this.button12.Click += this.delPurchaseDetail; //按下button12（刪除品項）會將在datagridview中選擇的項目標記為deleted，並從datagridview隱藏
-            this.button9.Click += this.saveEdit; //把資料寫進DB，該新增的新增、該刪除的刪除、先新增又刪除的就不做任何處理、沒變動的資料也不做任何處理
+            this.btnAddDetail.Click += this.addPurchaseDetail; //按下button11（新增品項）會開啟新增採購品項表單
+            this.btnDelDetail.Click += this.delPurchaseDetail; //按下button12（刪除品項）會將在datagridview中選擇的項目標記為deleted，並從datagridview隱藏
+            this.btnSave.Click += this.saveEdit; //把資料寫進DB，該新增的新增、該刪除的刪除、先新增又刪除的就不做任何處理、沒變動的資料也不做任何處理
             this.cmbSupplier.SelectedIndexChanged += ChangeSupplier;
             this.cmbPurchaseEmp.SelectedIndexChanged += ChangePurchaserEmp;
             this.cmbTallyEmp.SelectedIndexChanged += ChangeTallyEmp;
@@ -150,7 +152,11 @@ namespace WindowsFormsApp1
             this.MouseClick += 採購表單_MouseClick;
         }
 
-        
+        private void cancel(object sender, EventArgs e)
+        {
+            this.revertUnsavedChange();
+            this.reloadDataGridView();
+        }
 
         private void ChangeSupplier(object sender, EventArgs e)
         {
@@ -185,17 +191,7 @@ namespace WindowsFormsApp1
 
         private void reloadDataGridView()
         {
-            //this.db.Dispose();
-            //this.db = new FOODEntities();
-            //this.detailItems = (from pd in this.db.PurchaseDetails.AsEnumerable()
-            //                    where pd.PurchaseID == this.selectedPurchaseID[currentIndex]
-            //                    select new GridViewItem()
-            //                    {
-            //                        _purchaseDetail = pd,
-            //                        項次 = 0,
-            //                        小計 = pd.Qty * pd.UnitPrice,
-            //                    }).ToList();
-            //GridViewItem.serialNo = 0;
+            
             this.viewBs.DataSource = (from item in this.detailItems
                                       where this.db.Entry(item._pd).State == EntityState.Added
                                       || this.db.Entry(item._pd).State == EntityState.Modified
@@ -340,6 +336,7 @@ namespace WindowsFormsApp1
                 addedItem.數量 = f.Qty;
                 addedItem.價格 = f.UnitPirce;
                 addedItem._pd.Unit = f.Unit;
+                addedItem.小計 = f.Total;
                 addedItem.備註 = f.Comment;
                 addedItem.項次 = 0;                                
                 PurchaseDetailItem.serialNo = 0;
@@ -380,6 +377,9 @@ namespace WindowsFormsApp1
         }
         private void revertUnsavedChange()
         {
+            //this.db.Dispose();
+            //this.db = new FOODEntities();
+
             foreach (var item in this.detailItems)
             {
                 if (this.db.Entry(item._pd).State == EntityState.Added)

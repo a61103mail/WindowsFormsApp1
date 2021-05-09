@@ -64,14 +64,15 @@ namespace WindowsFormsApp1
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
+            this.btnAddPurchase = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
+            this.btnAddDetail = new System.Windows.Forms.Button();
+            this.btnDelDetail = new System.Windows.Forms.Button();
             this.cmbSupplier = new System.Windows.Forms.ComboBox();
+            this.btnCancel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -406,35 +407,35 @@ namespace WindowsFormsApp1
             this.button7.Text = ">>";
             this.button7.UseVisualStyleBackColor = false;
             // 
-            // button8
+            // btnAddPurchase
             // 
-            this.button8.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.button8.Location = new System.Drawing.Point(14, 10);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(65, 31);
-            this.button8.TabIndex = 43;
-            this.button8.Text = "新增";
-            this.button8.UseVisualStyleBackColor = false;
+            this.btnAddPurchase.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnAddPurchase.Location = new System.Drawing.Point(14, 10);
+            this.btnAddPurchase.Name = "btnAddPurchase";
+            this.btnAddPurchase.Size = new System.Drawing.Size(65, 31);
+            this.btnAddPurchase.TabIndex = 43;
+            this.btnAddPurchase.Text = "新增";
+            this.btnAddPurchase.UseVisualStyleBackColor = false;
             // 
-            // button9
+            // btnSave
             // 
-            this.button9.Location = new System.Drawing.Point(15, 52);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(65, 31);
-            this.button9.TabIndex = 44;
-            this.button9.Text = "儲存";
-            this.button9.UseVisualStyleBackColor = true;
+            this.btnSave.Location = new System.Drawing.Point(15, 52);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(65, 31);
+            this.btnSave.TabIndex = 44;
+            this.btnSave.Text = "儲存";
+            this.btnSave.UseVisualStyleBackColor = true;
             // 
-            // button10
+            // btnDelete
             // 
-            this.button10.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.red;
-            this.button10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button10.Location = new System.Drawing.Point(89, 52);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(65, 31);
-            this.button10.TabIndex = 45;
-            this.button10.Text = "刪除此單";
-            this.button10.UseVisualStyleBackColor = true;
+            this.btnDelete.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.red;
+            this.btnDelete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnDelete.Location = new System.Drawing.Point(160, 52);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(65, 31);
+            this.btnDelete.TabIndex = 45;
+            this.btnDelete.Text = "刪除此單";
+            this.btnDelete.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
@@ -457,25 +458,25 @@ namespace WindowsFormsApp1
             this.listBox1.Size = new System.Drawing.Size(153, 88);
             this.listBox1.TabIndex = 46;
             // 
-            // button11
+            // btnAddDetail
             // 
-            this.button11.Location = new System.Drawing.Point(284, 329);
-            this.button11.Margin = new System.Windows.Forms.Padding(2);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(74, 22);
-            this.button11.TabIndex = 47;
-            this.button11.Text = "新增品項";
-            this.button11.UseVisualStyleBackColor = true;
+            this.btnAddDetail.Location = new System.Drawing.Point(284, 329);
+            this.btnAddDetail.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAddDetail.Name = "btnAddDetail";
+            this.btnAddDetail.Size = new System.Drawing.Size(74, 22);
+            this.btnAddDetail.TabIndex = 47;
+            this.btnAddDetail.Text = "新增品項";
+            this.btnAddDetail.UseVisualStyleBackColor = true;
             // 
-            // button12
+            // btnDelDetail
             // 
-            this.button12.Location = new System.Drawing.Point(367, 329);
-            this.button12.Margin = new System.Windows.Forms.Padding(2);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(65, 21);
-            this.button12.TabIndex = 48;
-            this.button12.Text = "刪除品項";
-            this.button12.UseVisualStyleBackColor = true;
+            this.btnDelDetail.Location = new System.Drawing.Point(367, 329);
+            this.btnDelDetail.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDelDetail.Name = "btnDelDetail";
+            this.btnDelDetail.Size = new System.Drawing.Size(65, 21);
+            this.btnDelDetail.TabIndex = 48;
+            this.btnDelDetail.Text = "刪除品項";
+            this.btnDelDetail.UseVisualStyleBackColor = true;
             // 
             // cmbSupplier
             // 
@@ -485,19 +486,29 @@ namespace WindowsFormsApp1
             this.cmbSupplier.Size = new System.Drawing.Size(121, 20);
             this.cmbSupplier.TabIndex = 49;
             // 
+            // btnCancel
+            // 
+            this.btnCancel.Location = new System.Drawing.Point(89, 52);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(65, 31);
+            this.btnCancel.TabIndex = 50;
+            this.btnCancel.Text = "取消";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            // 
             // 採購表單
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(977, 644);
+            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.cmbSupplier);
-            this.Controls.Add(this.button12);
-            this.Controls.Add(this.button11);
+            this.Controls.Add(this.btnDelDetail);
+            this.Controls.Add(this.btnAddDetail);
             this.Controls.Add(this.listBox1);
-            this.Controls.Add(this.button10);
-            this.Controls.Add(this.button9);
-            this.Controls.Add(this.button8);
+            this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.btnAddPurchase);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
@@ -579,13 +590,14 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button btnAddPurchase;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Button btnAddDetail;
+        private System.Windows.Forms.Button btnDelDetail;
         private System.Windows.Forms.ComboBox cmbSupplier;
+        private System.Windows.Forms.Button btnCancel;
     }
 }
 
