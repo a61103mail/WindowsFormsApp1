@@ -132,7 +132,8 @@ namespace WindowsFormsApp1
                 emp.Cellphone = this.CellPhoneTextBox_Employee.Text;
                 emp.Email = this.EmailTextBox_Employee.Text;
                 emp.DOE = DateTime.Parse(this.DOETextBox_Employee.Text);
-                emp.Password = emp.Password;
+                //emp.Password = emp.Password;
+                ENT.db.Entry(emp).State = System.Data.Entity.EntityState.Modified;
                 ENT.db.SaveChanges();
             }
             catch (Exception ex)
@@ -178,7 +179,8 @@ namespace WindowsFormsApp1
                 emp.Unicode = this.UnicodeTextBox_Employee.Text;
                 emp.Password = this.PasswordtextBox_Employee.Text;
                 emp.Email = this.EmailTextBox_Employee.Text;
-                ENT.db.Employees.Add(emp);
+                //ENT.db.Employees.Add(emp);
+                ENT.db.Entry(emp).State = System.Data.Entity.EntityState.Added;
                 ENT.db.SaveChanges();
                 EmployeeIDtextBox_Employee.Text = emp.EmployeeID.ToString();
             }
@@ -201,7 +203,8 @@ namespace WindowsFormsApp1
                         var emp = (from i in ENT.db.Employees
                                     where i.EmployeeID.ToString() == this.EmployeeIDtextBox_Employee.Text
                                     select i).FirstOrDefault();
-                        ENT.db.Employees.Remove(emp);
+                        //ENT.db.Employees.Remove(emp);
+                        ENT.db.Entry(emp).State = System.Data.Entity.EntityState.Deleted;
                         ENT.db.SaveChanges();
                         MessageBox.Show("刪除成功，無法挽回!", "注意！", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }

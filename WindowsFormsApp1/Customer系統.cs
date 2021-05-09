@@ -21,9 +21,10 @@ namespace WindowsFormsApp1
         {
             var CTMR = from c in ENT.db.Customers
                        from e in ENT.db.Employees
-                       where c.CustomerID == ID
-                       select new { c.CustomerID,c.CustomerRoleID,c.Name,c.Unicode,c.Address,c.SalesID,c.Phone,c.FAX,c.ContactPerson,c.ContactCellPhone,c.Email,c.DoB,EMPName=e.Name,e.Cellphone} ;
-            //var CTMR = this.ENT.db.Customers.Where(n => n.CustomerID == ID).Select(n => n);
+                       where c.CustomerID == ID &&c.SalesID==e.EmployeeID
+                       select new { c.CustomerID,c.CustomerRoleID,c.Name,c.Unicode,c.Address,c.SalesID,c.Phone,c.FAX,
+                       c.ContactPerson,c.ContactCellPhone,c.Email,c.DoB,EMPName=e.Name,e.Cellphone} ;
+            
             foreach (var item in CTMR)
             {
                 DoBTimePicker.Value = item.DoB.Value;
@@ -57,7 +58,7 @@ namespace WindowsFormsApp1
             s.TopMost = true;
             s.Panel查詢.Enabled = false;
             s.Owner = this;//重要的一步，主要是使Form2的Owner指針指向Form1  
-            s.AddCTMRtextboxsource();
+            s.AddCTMRtextboxsource();  //Select系統  裡的方法
             s.ShowDialog();
         }
         private void btn_modify_Click(object sender, EventArgs e)
@@ -78,8 +79,9 @@ namespace WindowsFormsApp1
                 ctmr.ContactCellPhone = this.ContactCellPhoneTextBox__Client.Text;
                 ctmr.Email = this.EmailTextBox__Client.Text;
                 ctmr.DoB = this.DoBTimePicker.Value;
-                ctmr.Password = ctmr.Password;
-                ENT.db.SaveChanges();
+                //ctmr.Password = ctmr.Password;
+                ENT.db.Entry(ctmr).State = System.Data.Entity.EntityState.Modified;
+                
             }
             catch (Exception ex)
             {
@@ -108,12 +110,17 @@ namespace WindowsFormsApp1
                         var ctmr = (from i in ENT.db.Customers
                                     where i.CustomerID.ToString() == this.IDTextBox_Client.Text
                                     select i).FirstOrDefault();
-                        ENT.db.Customers.Remove(ctmr);
-                        ENT.db.SaveChanges();
+                        //ENT.db.Customers.Remove(ctmr);
+                        ENT.db.Entry(ctmr).State = System.Data.Entity.EntityState.Deleted;
                         MessageBox.Show("刪除成功，無法挽回!", "注意！", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
             }
+        }
+
+        private void btn_save_Click(object sender, EventArgs e)
+        {
+            ENT.db.SaveChanges();
         }
     }
 }

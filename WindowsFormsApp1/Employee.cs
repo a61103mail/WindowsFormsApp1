@@ -19,6 +19,7 @@ namespace WindowsFormsApp1
         {
             this.EmployeeRoles = new HashSet<EmployeeRole>();
             this.Orders = new HashSet<Order>();
+            this.Customers = new HashSet<Customer>();
         }
     
         public int EmployeeID { get; set; }
@@ -36,5 +37,7 @@ namespace WindowsFormsApp1
         public virtual ICollection<EmployeeRole> EmployeeRoles { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Orders { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Customer> Customers { get; set; }
     }
 }
