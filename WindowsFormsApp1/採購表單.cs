@@ -13,31 +13,39 @@ namespace WindowsFormsApp1
     public partial class 採購表單 : Form
     {
         private BindingSource bs = new BindingSource();
+        FOODEntities db = new FOODEntities();
+        string suppliername;
         public 採購表單()
         {
             
             InitializeComponent();
+            controlbutton();
             addnews();
             addItemsCustomerName();
             
         }
-        FOODEntities db = new FOODEntities();
-        string suppliername;
+
+        private void controlbutton()
+        {
+            foreach (Control con in this.Controls)
+            {
+                con.Enabled = false;
+                this.button8.Enabled = true;
+                this.button3.Enabled = true;
+            }
+        }
+
+        
         private void addnews()
         {
             var q = from e in this.db.Employees
                     select new { empna = e.Name, empid = e.EmployeeID };
 
-            this.comboBox2.DataSource = q.ToList();
-            this.comboBox2.DisplayMember = "empna";
-            this.comboBox2.ValueMember = "empid";
-
-            //foreach (var n in q)
-            //{
-            //    this.comboBox2.Items.Add(n.empna);
-            //}
-
-
+            foreach (var n in q)
+            {
+                this.comboBox1.Items.Add(n.empna);
+                this.comboBox2.Items.Add(n.empna);
+            }
 
             var q2 = from p in this.db.Products
                      select new { pcd = p.ProductCode};
@@ -86,7 +94,14 @@ namespace WindowsFormsApp1
                 this.textBox5.Text = n.spads.ToString();
             }
         }
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var q = from em in this.db.Employees
+                    where em.Name == this.comboBox1.Text
+                    select em.EmployeeID;
 
+            this.label18.Text = q.FirstOrDefault().ToString();
+        }
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
             var q = from em in this.db.Employees
@@ -102,7 +117,7 @@ namespace WindowsFormsApp1
             {
                 PurchaseDate = this.dateTimePicker1.Value,
                 SupplierID = int.Parse(this.label12.Text),
-                //PurchaserEmpID = int.Parse(this.label18.Text),
+                PurchaserEmpID = int.Parse(this.label18.Text),
                 TallyEmpID = int.Parse(this.label19.Text),
                 Deliveryaddress = this.textBox6.Text,
                 RequiredDate = this.dateTimePicker2.Value,
@@ -138,6 +153,9 @@ namespace WindowsFormsApp1
             }
             this.db.SaveChanges();
             MessageBox.Show("新增成功", "", MessageBoxButtons.OK);
+            allclear();
+            this.comboBox1.SelectedIndex = 0;
+            this.comboBox2.SelectedIndex = 0;
         }
 
         private void dataGridView1_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
@@ -178,7 +196,6 @@ namespace WindowsFormsApp1
             {
                 if (e.ColumnIndex.Equals(1))
                 {
-                    //DataGridViewComboBoxCell cb = dataGridView1[0, e.RowIndex] as DataGridViewComboBoxCell;
                     DataGridViewComboBoxCell cb = (DataGridViewComboBoxCell)dataGridView1.Rows[e.RowIndex].Cells[1];
                     string id = cb.Value.ToString();
                     var q = from p in this.db.Products
@@ -207,7 +224,6 @@ namespace WindowsFormsApp1
                              where p1.Name == this.dataGridView1.CurrentCell.Value.ToString()
                              select new { price = p1.LatestUpperPrice };
 
-                    //DataGridViewComboBoxCell cb = dataGridView1[0, e.RowIndex] as DataGridViewComboBoxCell;
                     DataGridViewComboBoxCell cb = (DataGridViewComboBoxCell)dataGridView1.Rows[e.RowIndex].Cells[1];
                     cb.Value = q.ToList()[0];
                     foreach (var n in q)
@@ -244,77 +260,88 @@ namespace WindowsFormsApp1
         List<int> pL=new List<int>();
         private void button3_Click(object sender, EventArgs e)
         {
-            
             採購單查詢頁面 fk = new 採購單查詢頁面();
-            DialogResult res = fk.ShowDialog();
+            DialogResult res = fk.ShowDialog(this);
+            foreach (Control con in this.Controls)
+            {
+                con.Enabled = true;
+                this.button2.Enabled = false;
+                this.button2.BackColor = Color.WhiteSmoke;
+                this.button4.BackColor = Color.DarkGray;
+                this.button5.BackColor = Color.DarkGray;
+                this.button6.BackColor = Color.DarkGray;
+                this.button7.BackColor = Color.DarkGray;
+                this.button9.BackColor = Color.DarkGray;
+                this.button10.BackColor = Color.Tomato;
+            }
+            pL.Clear();
             if (res == DialogResult.OK)
             {
-                pL.Clear();
-                foreach(int i in fk.purchaseID)
-                {
-                    pL.Add(i);
-                }
-                
-                DisplayOrderFields(pL,indexTracker);
+                pL = fk.purchaseID;
+                if(pL.Count!=0)
+                DisplayOrderFields(pL, indexTracker);
             }
+            fk.Dispose();
         }
 
         private void DisplayOrderFields(List<int> purchaseID,int tracker)
         {
-            var q = from p in db.Purchases.AsEnumerable()
-                    where p.PurchaseID == purchaseID[tracker]
-                    select new { pid =p.PurchaseID,spid = p.SupplierID,spname =p.Customer.Name, spcp = p.Customer.ContactPerson, spph = p.Customer.Phone, spun = p.Customer.Unicode, spads = p.Customer.Address ,purchaseDate = p.PurchaseDate, RequiredDate = p.RequiredDate, DeliveryAddress = p.Deliveryaddress,TallyID = p.TallyEmpID };
-            //q = q.ToList();
-            textBox1.Text = q.FirstOrDefault().spname;
-            textBox2.Text = q.FirstOrDefault().spun;
-            label12.Text = q.FirstOrDefault().spid.ToString();
-            label4.Text = q.FirstOrDefault().pid.ToString();
-            textBox3.Text = q.FirstOrDefault().spcp;
-            textBox4.Text = q.FirstOrDefault().spph;
-            textBox5.Text = q.FirstOrDefault().spads;
-            dateTimePicker1.Value = q.FirstOrDefault().purchaseDate.Value;
-            dateTimePicker2.Value = q.FirstOrDefault().RequiredDate.Value;
-            textBox6.Text = q.FirstOrDefault().DeliveryAddress;
-            label19.Text = q.FirstOrDefault().TallyID.ToString();
-            comboBox2.SelectedValue = q.FirstOrDefault().TallyID;
+            dataGridView1.Rows.Clear();
+            foreach (Control con in this.Controls)
+            {
+                if (con is ComboBox)
+                {
+                    ComboBox cob = con as ComboBox;
+                    cob.SelectedIndex = -1;
+                }
+            }
+                var q = (from p in db.Purchases.AsEnumerable()
+                     where p.PurchaseID == purchaseID[tracker]
+                     select new { pid = p.PurchaseID, spid = p.SupplierID, spname = p.Customer.Name, spcp = p.Customer.ContactPerson, spph = p.Customer.Phone, spun = p.Customer.Unicode, spads = p.Customer.Address, purchaseDate = p.PurchaseDate, RequiredDate = p.RequiredDate, DeliveryAddress = p.Deliveryaddress, TallyID = p.TallyEmpID,puempID=p.PurchaserEmpID }).FirstOrDefault();
+            var q2 = (from pd in db.PurchaseDetails
+                      where pd.PurchaseID == q.pid
+                      select new
+                      {
+                          pdid = pd.PurchaseID,
+                          productCode = pd.ProductCode,
+                          productName = pd.Product.Name,
+                          price = pd.UnitPrice,
+                          qty = pd.Qty,
+                          unit = pd.Unit,
+                          Total = pd.Qty * pd.UnitPrice,
+                          comment = pd.Comment,
+                          pudt = pd.PurchaseDetailID
+                      }).ToList();
+            var q3 = (from emp in this.db.Employees
+                     where emp.EmployeeID == q.TallyID
+                     select emp.Name).FirstOrDefault();
+            var q4 = (from emp in this.db.Employees
+                      where emp.EmployeeID == q.puempID
+                      select emp.Name).FirstOrDefault();
+            this.textBox1.Text = q.spname;
+            this.textBox2.Text = q.spun;
+            this.label12.Text = q.spid.ToString();
+            this.label4.Text = q.pid.ToString();
+            this.textBox3.Text = q.spcp;
+            this.textBox4.Text = q.spph;
+            this.textBox5.Text = q.spads;
+            this.dateTimePicker1.Value = q.purchaseDate.Value;
+            this.dateTimePicker2.Value = q.RequiredDate.Value;
+            this.textBox6.Text = q.DeliveryAddress;
+            this.comboBox2.Text = q3.ToString();
+            this.comboBox1.Text = q4.ToString();
 
-            DisplayOrderDetails(q.FirstOrDefault().pid);
-
-
-
-        }
-
-        private void DisplayOrderDetails(int pid)
-        {
-            this.dataGridView1.Rows.Clear();
-            var q = from pd in db.PurchaseDetails
-                    where pd.PurchaseID == pid
-                    select new
-                    {
-                        pdid = pd.PurchaseID,
-                        productCode = pd.ProductCode,
-                        productName = pd.Product.Name,
-                        price = pd.UnitPrice,
-                        qty = pd.Qty,
-                        unit = pd.Unit,
-                        Total = pd.Qty * pd.UnitPrice,
-                        comment = pd.Comment
-
-                    };
-
-            for (int i = 0; i < q.Count(); i++)
+            for (int i = 0; i < q2.Count(); i++)
             {
                 DataGridViewRow dr = this.dataGridView1.Rows[0].Clone() as DataGridViewRow;
                 this.dataGridView1.Rows.Add(dr);
-                DataGridViewComboBoxCell cb = (DataGridViewComboBoxCell)dataGridView1.Rows[i].Cells[1];
-                cb.Value = q.ToList()[i].productCode;
-                this.dataGridView1[1, i].Value = q.ToList()[i].productCode;
-                this.dataGridView1[2, i].Value = q.ToList()[i].productName;
-                this.dataGridView1[3, i].Value = q.ToList()[i].price;
-                this.dataGridView1[4, i].Value = q.ToList()[i].qty;
-                this.dataGridView1[5, i].Value = q.ToList()[i].unit;
-                this.dataGridView1[6, i].Value = q.ToList()[i].Total;
-                this.dataGridView1[7, i].Value = q.ToList()[i].comment;
+                this.dataGridView1[1, i].Value = q2[i].productCode;
+                this.dataGridView1[2, i].Value = q2[i].productName;
+                this.dataGridView1[3, i].Value = q2[i].price;
+                this.dataGridView1[4, i].Value = q2[i].qty;
+                this.dataGridView1[5, i].Value = q2[i].unit;
+                this.dataGridView1[7, i].Value = q2[i].comment;
+                this.dataGridView1[8, i].Value = q2[i].pudt;
             }
 
         }
@@ -356,19 +383,6 @@ namespace WindowsFormsApp1
             DisplayOrderFields(pL, indexTracker);
         }
 
-        private void 採購表單_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label19_TextChanged(object sender, EventArgs e)
-        {
-            //var q = from emp in this.db.Employees
-            //        where emp.EmployeeID == int.Parse(this.label19.Text)
-            //        select new { empID = emp.Unicode };
-            //this.comboBox2.Text = q.ToList().ToString();
-        }
-
         private void button9_Click(object sender, EventArgs e)
         {
             var q = (from p in this.db.Purchases
@@ -378,8 +392,9 @@ namespace WindowsFormsApp1
                       where (pd.PurchaseID).ToString() == this.label4.Text
                       select pd;
             var pds = q1.ToList();
-            int rows = 0;
-            
+            //int rows = 0;
+            List<int> myIntLists = new List<int>();
+            List<int> myIntLists2 = new List<int>();
 
             DialogResult s = MessageBox.Show("確定修改?", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
             
@@ -389,7 +404,7 @@ namespace WindowsFormsApp1
                 
                 q.PurchaseDate = this.dateTimePicker1.Value;
                 q.SupplierID = int.Parse(this.label12.Text);
-                //q.PurchaserEmpID = int.Parse(this.label18.Text);
+                q.PurchaserEmpID = int.Parse(this.label18.Text);
                 q.Deliveryaddress = this.textBox6.Text;
                 q.Comment = this.richTextBox1.Text;
                 q.RequiredDate = this.dateTimePicker2.Value;
@@ -398,31 +413,167 @@ namespace WindowsFormsApp1
                 this.db.SaveChanges();
 
                 var dr = this.dataGridView1.Rows;
-                for (int i = 0; i < dr.Count; i++)
+                for (int i = 0; i < dr.Count - 1; i++)
                 {
-                    
-                    if (dr[i].Cells[1].Value != null)
+                    if (dr[i].Cells["pudt"].Value == null)
                     {
-
-                        if (i >= pds.Count)
-                        {
-                            MessageBox.Show("gg", "", MessageBoxButtons.OK);
-                            break;
-                        }
-                        pds[i].ProductCode = dr[i].Cells[1].Value.ToString();
-                        pds[i].Qty = decimal.Parse(dr[i].Cells[4].Value.ToString());
-                        pds[i].UnitPrice = decimal.Parse(dr[i].Cells[3].Value.ToString());
-                        pds[i].Unit = dr[i].Cells[5].Value.ToString();
+                        PurchaseDetail pcdt = new PurchaseDetail();
+                        pcdt.PurchaseID = int.Parse(this.label4.Text);
+                        pcdt.ProductCode = dr[i].Cells[1].Value.ToString();
+                        pcdt.Qty = decimal.Parse(dr[i].Cells[4].Value.ToString());
+                        pcdt.UnitPrice = decimal.Parse(dr[i].Cells[3].Value.ToString());
+                        pcdt.Unit = dr[i].Cells[5].Value.ToString();
                         if (dr[i].Cells[7].Value != null)
                         {
-                            pds[i].Comment = dr[i].Cells[7].Value.ToString();
+                            pcdt.Comment = dr[i].Cells[7].Value.ToString();
+                        }
+                        this.db.PurchaseDetails.Add(pcdt);
+                    }
+                }
+                this.db.SaveChanges();
+                for (int j = 0; j < pds.Count; j++)
+                {
+                    for (int i = 0; i < dr.Count - 1; i++)
+                    {
+                        
+                        if (dr[i].Cells["pudt"].Value != null)
+                        {
+                            myIntLists.Add(int.Parse(dr[i].Cells["pudt"].Value.ToString()));
+                            if (pds[j].PurchaseDetailID == int.Parse(dr[i].Cells["pudt"].Value.ToString()))
+                            {
+                                pds[j].ProductCode = dr[i].Cells[1].Value.ToString();
+                                pds[j].Qty = decimal.Parse(dr[i].Cells[4].Value.ToString());
+                                pds[j].UnitPrice = decimal.Parse(dr[i].Cells[3].Value.ToString());
+                                pds[j].Unit = dr[i].Cells[5].Value.ToString();
+                                if (dr[i].Cells[7].Value != null)
+                                {
+                                    pds[j].Comment = dr[i].Cells[7].Value.ToString();
+                                }
+                            }
                         }
                     }
                 }
-                rows = this.db.SaveChanges();
-                if (rows != 0) MessageBox.Show("修改成功", "", MessageBoxButtons.OK);
+                this.db.SaveChanges();
+                foreach (var n in pds)
+                {
+                    myIntLists2.Add(int.Parse(n.PurchaseDetailID.ToString()));
+                }
+                var diffArr = myIntLists2.Where(c => !myIntLists.Contains(c)).ToArray();
+                for (int i = 0; i < diffArr.Length; i++)
+                {
+                    int z = int.Parse(diffArr[i].ToString());
+                    var q3 = from pd in this.db.PurchaseDetails
+                             where pd.PurchaseDetailID == z
+                             select pd;
+                    var a = q3.ToList();
+                    foreach (var d in a)
+                    {
+                        this.db.PurchaseDetails.Remove(d);
+                    }
+                    this.db.SaveChanges();
+                }
+                MessageBox.Show("修改成功", "", MessageBoxButtons.OK);
             }
             
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            foreach (Control con in this.Controls)
+            {
+                con.Enabled = true;
+                this.button2.BackColor = Color.DarkGray;
+                this.button4.BackColor = Color.WhiteSmoke;
+                this.button5.BackColor = Color.WhiteSmoke;
+                this.button6.BackColor = Color.WhiteSmoke;
+                this.button7.BackColor = Color.WhiteSmoke;
+                this.button9.BackColor = Color.WhiteSmoke;
+                this.button10.BackColor = Color.WhiteSmoke;
+                this.button4.Enabled = false;
+                this.button5.Enabled = false;
+                this.button6.Enabled = false;
+                this.button7.Enabled = false;
+                this.button9.Enabled = false;
+                this.button10.Enabled = false;
+            }
+
+            allclear();
+            this.comboBox1.SelectedIndex = 0;
+            this.comboBox2.SelectedIndex = 0;
+        }
+        private void allclear()
+        {
+            dataGridView1.Rows.Clear();
+            foreach (Control con in this.Controls)
+            {
+                if (con is ComboBox)
+                {
+                    ComboBox cob = con as ComboBox;
+                    cob.SelectedIndex = -1;
+                }
+                else if (con is TextBox)
+                {
+                    TextBox tb = con as TextBox;
+                    tb.Text = string.Empty;
+                }
+                else if (con is Label)
+                {
+                    this.label4.Text = string.Empty;
+                    this.label12.Text = string.Empty;
+                    this.label18.Text = string.Empty;
+                    this.label19.Text = string.Empty;
+                }
+            }
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            if (label4.Text == "     ") return;
+            else { 
+            DialogResult s = MessageBox.Show("確定刪除整筆採購單?", "提醒", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
+                if (s == DialogResult.OK)
+                {
+                    if (this.label4.Text != null)
+                    {
+
+                        var q1 = from pd in this.db.PurchaseDetails
+                                 where (pd.PurchaseID).ToString() == this.label4.Text
+                                 select pd;
+                        var a = q1.ToList();
+                        foreach (var n in a)
+                        {
+                            this.db.PurchaseDetails.Remove(n);
+                        }
+
+                        var q = from p in this.db.Purchases
+                                where (p.PurchaseID).ToString() == this.label4.Text
+                                select p;
+                        var b = q.ToList();
+                        foreach (var x in b)
+                        {
+                            this.db.Purchases.Remove(x);
+                        }
+
+                        this.db.SaveChanges();
+                    }
+                    MessageBox.Show("刪除成功", "", MessageBoxButtons.OK);
+                    foreach (Control con in this.Controls)
+                    {
+                        con.Enabled = false;
+                        this.button2.BackColor = Color.WhiteSmoke;
+                        this.button4.BackColor = Color.WhiteSmoke;
+                        this.button5.BackColor = Color.WhiteSmoke;
+                        this.button6.BackColor = Color.WhiteSmoke;
+                        this.button7.BackColor = Color.WhiteSmoke;
+                        this.button9.BackColor = Color.WhiteSmoke;
+                        this.button10.BackColor = Color.WhiteSmoke;
+                        this.button3.Enabled = true;
+                        this.button8.Enabled = true;
+                    }
+                    allclear();
+                }
+                
+            }
         }
     }
 }
