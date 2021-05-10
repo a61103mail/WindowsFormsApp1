@@ -14,12 +14,6 @@ namespace WindowsFormsApp1
     
     public partial class OrderDetail
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public OrderDetail()
-        {
-            this.SalesDetails = new HashSet<SalesDetail>();
-        }
-    
         public int OrderDetailID { get; set; }
         public Nullable<int> OrderID { get; set; }
         public string ProductCode { get; set; }
@@ -30,7 +24,5 @@ namespace WindowsFormsApp1
     
         public virtual Order Order { get; set; }
         public virtual Product Product { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SalesDetail> SalesDetails { get; set; }
     }
 }

@@ -24,7 +24,6 @@ namespace WindowsFormsApp1
         public string Comment { get; set; }
     
         public virtual Order Order { get; set; }
-        public virtual OrderDetail OrderDetail { get; set; }
         public virtual Product Product { get; set; }
     }
 }

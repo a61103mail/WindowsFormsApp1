@@ -42,6 +42,7 @@ namespace WindowsFormsApp1
         public virtual DbSet<Purchase> Purchases { get; set; }
         public virtual DbSet<PurchaseDetail> PurchaseDetails { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
+        public virtual DbSet<Status> Status { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<PurchaseConfirmedDetail> PurchaseConfirmedDetails { get; set; }
         public virtual DbSet<SalesDetail> SalesDetails { get; set; }

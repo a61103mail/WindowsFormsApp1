@@ -25,6 +25,5 @@ namespace WindowsFormsApp1
     
         public virtual Product Product { get; set; }
         public virtual Purchase Purchase { get; set; }
-        public virtual PurchaseDetail PurchaseDetail { get; set; }
     }
 }

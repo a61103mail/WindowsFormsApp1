@@ -12,37 +12,29 @@ namespace WindowsFormsApp1
     using System;
     using System.Collections.Generic;
     
-    public partial class Customer
+    public partial class Status
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Customer()
+        public Status()
         {
-            this.CustomerRoles = new HashSet<CustomerRole>();
+            this.Customers = new HashSet<Customer>();
+            this.Employees = new HashSet<Employee>();
             this.Orders = new HashSet<Order>();
+            this.Products = new HashSet<Product>();
             this.Purchases = new HashSet<Purchase>();
         }
     
-        public int CustomerID { get; set; }
-        public int CustomerRoleID { get; set; }
-        public string Name { get; set; }
-        public string Unicode { get; set; }
-        public string Address { get; set; }
-        public int SalesID { get; set; }
-        public string Phone { get; set; }
-        public string FAX { get; set; }
-        public string ContactPerson { get; set; }
-        public string ContactCellPhone { get; set; }
-        public string Email { get; set; }
-        public Nullable<System.DateTime> DoB { get; set; }
-        public Nullable<short> status { get; set; }
-        public string Password { get; set; }
+        public short StatusID { get; set; }
+        public string Status1 { get; set; }
     
-        public virtual Employee Employee { get; set; }
-        public virtual Status Status1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CustomerRole> CustomerRoles { get; set; }
+        public virtual ICollection<Customer> Customers { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Employee> Employees { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Orders { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Product> Products { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Purchase> Purchases { get; set; }
     }
