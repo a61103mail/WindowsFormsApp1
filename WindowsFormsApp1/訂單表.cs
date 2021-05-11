@@ -38,6 +38,8 @@ namespace WindowsFormsApp1.Properties
                 con.Enabled = true;
                 this.button2.Enabled = false;
                 this.button4.Enabled = false;
+                this.button6.Enabled = false; 
+                this.button7.Enabled = false;
             }
             var q = this.db.Customers.Select(n => new { ctname = n.Name, ctid = n.CustomerID });//匯入客戶
 
@@ -190,7 +192,7 @@ namespace WindowsFormsApp1.Properties
 
             if (rowEditing == true) return;  //如果row正在編輯中，就return掉這個function  伯夷
 
-            Console.WriteLine("hit!!");
+          
             //try  //可以不需要try catch了，但是還是建議把try catch包回去以防萬一  伯夷
             //{
             if (e.ColumnIndex == 0 && rowEditing == false)
