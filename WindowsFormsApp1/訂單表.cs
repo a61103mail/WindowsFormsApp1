@@ -437,6 +437,79 @@ namespace WindowsFormsApp1.Properties
             {
                 con.Enabled = true;
                 this.button3.Enabled = false;
+                this.button1.Enabled = false;
+            }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            var od = (this.db.Orders.Select(n => n)).FirstOrDefault();
+            DialogResult p = MessageBox.Show("確定修改?", "提醒", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
+            if (p == DialogResult.OK)
+            {
+                if (od == null) return;
+               
+                od.DeliveryAddress = this.textBox4.Text;
+                //-----------------------------------------------------------------------
+                var odd1 = this.db.OrderDetails.Where(n=>n.OrderID.ToString()==this.label18.Text).Select(n => n);
+                var psd= odd1.ToList();
+               
+                var dr = this.dataGridView1.Rows;
+                int row = 0;
+                for (int i = 0; i < dr.Count; i++) {
+                    
+                    if (i>=psd.Count)
+                {
+                    MessageBox.Show("這邊是修改不是新增", "提醒", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    break;
+                }
+
+              else  if (dr[i].Cells[0].Value != null)
+                {
+                    psd[i].ProductCode = dr[i].Cells[0].Value.ToString();
+                    psd[i].Qty = decimal.Parse(dr[i].Cells[3].Value.ToString());
+                    psd[i].UnitPrice = decimal.Parse(dr[i].Cells[2].Value.ToString());
+                    psd[i].Unit = dr[i].Cells[4].Value.ToString();
+                    if (dr[i].Cells[6].Value != null)
+                    {
+                        psd[i].Commert = dr[i].Cells[6].Value.ToString();
+                    }
+                        row = this.db.SaveChanges();//新增OD回DB
+                    }
+            }   
+                  
+                if (row != 0) MessageBox.Show("修改成功", "提醒", MessageBoxButtons.OK);
+            }
+
+            allclear();
+          
+
+            }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            DialogResult p = MessageBox.Show("確定刪除?(資料不會復原)", "提醒", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
+            if (p == DialogResult.OK)
+            {
+                var od = this.db.Orders.AsEnumerable().Where(n => n.OrderID.ToString() == this.label18.Text).Select(n => n);
+
+                var odd = this.db.OrderDetails.AsEnumerable().Where(n => n.OrderID.ToString() == this.label18.Text).Select(n => n);
+                var oddd = odd.ToList();
+                var od1 = od.ToList();
+                if (oddd != null)
+                {
+                    foreach (var q in oddd)
+                    {
+                        this.db.OrderDetails.Remove(q);
+
+                    }
+                }
+                foreach (var q in od1)
+                {
+                    this.db.Orders.Remove(q);
+                }
+                this.db.SaveChanges();
+                MessageBox.Show("刪除成功", "提醒", MessageBoxButtons.OK);
             }
         }
     }

@@ -354,7 +354,6 @@ namespace WindowsFormsApp1.Properties
             this.unit,
             this.subtotal,
             this.Comment});
-            this.dataGridView1.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.dataGridView1.Location = new System.Drawing.Point(25, 301);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 24;
