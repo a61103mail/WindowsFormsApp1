@@ -31,7 +31,7 @@ namespace WindowsFormsApp1
             var q = from i in FOODEntities.Products
                     select new displayItem{ ProductId = i.ProductID, ProductCode = i.ProductCode, Name = i.Name, Unit = i.Unit };
             this.dataGridView1.DataSource = q.ToList();
-
+            this.dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -54,6 +54,7 @@ namespace WindowsFormsApp1
                     this.FOODEntities.Inventories.Add(newI);
                     this.FOODEntities.SaveChanges();//新增product回DB
                     MessageBox.Show("新增成功");
+                    textBox2.Text = "";
                 }
                 else
                 {
@@ -76,6 +77,12 @@ namespace WindowsFormsApp1
                 FOODEntities.SaveChanges();
                 MessageBox.Show("刪除成功");
             }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            現有庫存 f = new 現有庫存();
+            f.Show();
         }
     }
 

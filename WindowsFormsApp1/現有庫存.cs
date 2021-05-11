@@ -22,8 +22,9 @@ namespace WindowsFormsApp1
         {
             var q = from i in this.FOODEntities.Inventories
                     join j in this.FOODEntities.Products on i.ProductCode equals j.ProductCode
-                    select new { i.InventoryID,i.ProductCode,產品名稱=j.Name,數量=i.Qty,單位=j.Unit,上次盤點日期=i.Date};
+                    select new { i.ProductCode,產品名稱=j.Name,數量=i.Qty,單位=j.Unit,上次盤點日期=i.Date};
             dataGridView1.DataSource = q.ToList();
+            this.dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
     }
 }
