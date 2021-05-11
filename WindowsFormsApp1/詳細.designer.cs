@@ -45,6 +45,7 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.label13 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -184,6 +185,7 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.label13, 0, 10);
             this.tableLayoutPanel1.Controls.Add(this.label12, 0, 9);
             this.tableLayoutPanel1.Controls.Add(this.label4, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.label11, 0, 8);
@@ -196,7 +198,8 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel1.Controls.Add(this.label8, 0, 5);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(343, 92);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 10;
+            this.tableLayoutPanel1.RowCount = 11;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -216,7 +219,7 @@ namespace WindowsFormsApp1
             this.button1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.button1.Font = new System.Drawing.Font("標楷體", 15.75F, System.Drawing.FontStyle.Bold);
             this.button1.Location = new System.Drawing.Point(12, 383);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(89, 31);
             this.button1.TabIndex = 14;
@@ -230,13 +233,23 @@ namespace WindowsFormsApp1
             this.button2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.button2.Font = new System.Drawing.Font("標楷體", 15.75F, System.Drawing.FontStyle.Bold);
             this.button2.Location = new System.Drawing.Point(244, 383);
-            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(89, 31);
             this.button2.TabIndex = 15;
             this.button2.Text = "下一個";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("標楷體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label13.Location = new System.Drawing.Point(4, 221);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(114, 21);
+            this.label13.TabIndex = 13;
+            this.label13.Text = "產品狀態:";
             // 
             // 詳細
             // 
@@ -278,5 +291,6 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label13;
     }
 }

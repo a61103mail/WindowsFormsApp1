@@ -23,7 +23,7 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
             this.selectedIndex = selectedIndex;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 11; i++)
             {
                 var lbl = new Label();
                 labels.Add(lbl);
@@ -62,7 +62,8 @@ namespace WindowsFormsApp1
                 LatestUpperPrice = selectedProduct.LatestUpperPrice,
                 DailyTrend = selectedProduct.DailyTrend,
                 LatestMarket = selectedProduct.LatestMarket,
-                LatestTransDate = selectedProduct.TransDate.GetValueOrDefault().ToShortDateString()
+                LatestTransDate = selectedProduct.TransDate.GetValueOrDefault().ToShortDateString(),
+                Status = selectedProduct.Status
             };
             this.bindingSource.DataSource = selectedDetail;
 
