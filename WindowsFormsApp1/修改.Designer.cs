@@ -79,10 +79,11 @@ namespace WindowsFormsApp1
             // 
             // comboBox1
             // 
+            this.comboBox1.Font = new System.Drawing.Font("標楷體", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(367, 175);
+            this.comboBox1.Location = new System.Drawing.Point(367, 166);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 20);
+            this.comboBox1.Size = new System.Drawing.Size(121, 32);
             this.comboBox1.TabIndex = 5;
             // 
             // 修改
