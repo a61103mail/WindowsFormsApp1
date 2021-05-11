@@ -23,7 +23,12 @@ namespace WindowsFormsApp1
         public Form1()
         {
             InitializeComponent();
-            this.TopMost = true;
+            
+            this.pictureBox1.SendToBack();//将背景图片放到最下面
+            this.panel1.BackColor = Color.FromArgb(85,Color.Gray);//将Panel设为透明
+            this.panel1.Parent = this.pictureBox1;//将panel父控件设为背景图片控件
+            this.panel1.BringToFront();//将panel放在前面
+            this.pictureBox1.BackColor = Color.FromArgb(85, Color.Gray);
         }
         private void button4_Click(object sender, EventArgs e)
         {
@@ -32,14 +37,18 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
+            this.IsMdiContainer = true;
             registered regis = new registered();            
             regis.Dock = DockStyle.Fill;
             regis.TopLevel = false;
             regis.TopMost = true;
             regis.FormBorderStyle = FormBorderStyle.None;
-            this.panel3.Controls.Add(regis);
+            regis.MdiParent = this;
+            regis.Parent = panel3;
             this.panel2.Visible = false;
             regis.Show();
+
+            
 
             //var registered = new registered();
             //registered.Show();
@@ -98,8 +107,12 @@ namespace WindowsFormsApp1
                 if (this.textBox1.Text == CusID && encode.Encrypt(type, this.textBox2.Text) == CusPW)
                 {                    
                     MainForm main = new MainForm();
+                    main.Owner = this;
                     main.MainForm_NameLabel.Text = CusName + "，您好！";
-                    main.Show();
+                    this.Hide();
+                    main.ShowDialog();
+                    this.textBox1.Text = "";
+                    this.textBox2.Text = "";
                 }
                 else
                 {
@@ -111,8 +124,12 @@ namespace WindowsFormsApp1
                 if (this.textBox1.Text == EmpID && encode.Encrypt(type, this.textBox2.Text) == EmpPW)
                 {                    
                     MainForm main = new MainForm();
+                    main.Owner = this;
                     main.MainForm_NameLabel.Text = EmpName+"，您好！";
-                    main.Show();
+                    this.Hide();
+                    main.ShowDialog();
+                    this.textBox1.Text = "";
+                    this.textBox2.Text = "";
                 }
                 else
                 {
@@ -198,6 +215,16 @@ namespace WindowsFormsApp1
         private void panel3_ControlRemoved(object sender, ControlEventArgs e)
         {
             this.panel2.Visible = true;
+        }
+
+        private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e)
+        {
+
+        }
+
+        private void button4_MouseMove(object sender, MouseEventArgs e)
+        {
+            
         }
     }
 }

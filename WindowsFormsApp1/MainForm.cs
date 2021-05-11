@@ -51,10 +51,13 @@ namespace WindowsFormsApp1
 
         private void label1_Click(object sender, EventArgs e)
         {
-            var label = new Form1();
-            label.Show();
-        }
+            Form1 form = (Form1)this.Owner;
+            
+            this.Close();
+            form.Visible = true;
 
+        }
+        
         private void button5_Click(object sender, EventArgs e)
         {
             panel1.Controls.Clear();
@@ -69,6 +72,9 @@ namespace WindowsFormsApp1
             訂單表.Show();
         }
 
-        
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

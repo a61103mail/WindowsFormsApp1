@@ -27,11 +27,11 @@ namespace WindowsFormsApp1
         public string Unit { get; set; }
         public int CategoryID { get; set; }
         public Nullable<int> CustomerID { get; set; }
-        public Nullable<short> Status { get; set; }
+        public Nullable<short> ProductStatus { get; set; }
         public Nullable<int> SubCategoryID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
-        public virtual Status Status1 { get; set; }
+        public virtual StatusList StatusList { get; set; }
     }
 }

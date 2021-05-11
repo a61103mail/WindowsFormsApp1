@@ -20,6 +20,8 @@ namespace WindowsFormsApp1
         public registered()
         {
             InitializeComponent();
+            this.TransparencyKey = this.BackColor;
+            
         }
         private void registered_Load(object sender, EventArgs e)
         {
@@ -37,6 +39,7 @@ namespace WindowsFormsApp1
             personalPanel.Enabled = false;
             checkBox1.Enabled = false;
             CorrectButton.Enabled = false;
+            
         }
         private void PersonRadioButton_register_CheckedChanged(object sender, EventArgs e)
         {            
@@ -86,8 +89,13 @@ namespace WindowsFormsApp1
             //    CustomrtRoleID = 2：企業
             if (PersonRadioButton_register.Checked == true)
             {
+                var x = CheckID();
+                if (x=="Fine"|| x=="NO")
+                {
+                    return;
+                }
+                
                 cus.CustomerRoleID = 1;
-                CheckID();
                 cus.Unicode = id;
                 cus.Email = EmailTextBox_register.Text;
                 cus.Phone = TELTextBox_register.Text;
@@ -97,8 +105,8 @@ namespace WindowsFormsApp1
                 cus.FAX = FaxTextBox_register.Text;
                 cus.ContactPerson = ContactNameTextBox_register.Text;
                 cus.ContactCellPhone = ContactTELTextBox_register.Text;
-
                 
+
 
                 if (PWTextBox_register.Text == CorrectPWTextBox_register.Text)
                 {
@@ -161,12 +169,12 @@ namespace WindowsFormsApp1
             }
             catch (Exception ex)
             {
-                throw;
+               
             }           
         }
 
 
-        private void CheckID()
+        private string CheckID()
         {
             id = AccountTextBox_register.Text.ToUpper();
             if (Regex.IsMatch(id, @"^[A-Z]{1}[1-2]{1}[0-9]{8}$"))
@@ -190,18 +198,19 @@ namespace WindowsFormsApp1
                 count = 10 - ((Esum + Nsum) % 10);//把上述的總和加起來,取餘數後,10-該餘數為檢查碼,要等於最後一個數字
                 if (count == Convert.ToInt32(id[9].ToString()))//判斷計算總和是不是等於檢查碼
                 {                    
-                    return;
+                    return "OK";
                 }
                 else
                 {
-                    MessageBox.Show( "身分證字號不存在");
+                    MessageBox.Show( "身分證字號不存在"); return "NO";
                 }
             }
             else
             {
                 MessageBox.Show( "身分證格式錯誤");
+                return "NO";
             }
-            
+            return "Fine";
         }
     }
 }

@@ -25,7 +25,7 @@ namespace WindowsFormsApp1
                        where c.CustomerID == ID &&c.SalesID==e.EmployeeID &&o.CustomerID==c.CustomerID
                        select new { c.CustomerID,c.CustomerRoleID,c.Name,c.Unicode,c.Address,c.SalesID,c.Phone,c.FAX,
                        c.ContactPerson,c.ContactCellPhone,c.Email,c.DoB,EMPName=e.Name,e.Cellphone,
-                           o.OrderID,o.OrderDate,o.RequiredDate,訂單地址=o.Address,o.Status1.StatusName,o.EmployeeID} ;
+                           o.OrderID,o.OrderDate,o.RequiredDate,訂單地址=o.Address,o.StatusList.StatusName,o.EmployeeID} ;
             
             foreach (var item in CTMR)
             {
@@ -151,7 +151,7 @@ namespace WindowsFormsApp1
                             負責人 = OD.Employee.Name,
                             截止 = OD.RequiredDate,
                             最後修改 = OD.ModifiedDate,
-                            狀態 = OD.Status1.StatusName
+                            狀態 = OD.StatusList.StatusName
                         };
             
             this.dataGridView_orderdetail.DataSource = EMPOD.Select(n => new { n.ODID, n.OD日期, n.產品, n.數量, n.售價 }).ToList();

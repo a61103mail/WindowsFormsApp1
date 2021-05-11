@@ -33,6 +33,6 @@ namespace WindowsFormsApp1
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<OrderDetail> OrderDetails { get; set; }
         public virtual DbSet<Product> Products { get; set; }
-        public virtual DbSet<Status> Status { get; set; }
+        public virtual DbSet<StatusList> StatusLists { get; set; }
     }
 }

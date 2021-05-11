@@ -69,14 +69,14 @@ namespace WindowsFormsApp1
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1154, 642);
+            this.panel1.Size = new System.Drawing.Size(1747, 895);
             this.panel1.TabIndex = 1;
             // 
             // button1
             // 
             this.button1.Dock = System.Windows.Forms.DockStyle.Top;
             this.button1.Font = new System.Drawing.Font("標楷體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.button1.Location = new System.Drawing.Point(0, 300);
+            this.button1.Location = new System.Drawing.Point(0, 50);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(153, 50);
             this.button1.TabIndex = 0;
@@ -94,19 +94,19 @@ namespace WindowsFormsApp1
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.button3);
-            this.splitContainer1.Panel1.Controls.Add(this.button1);
             this.splitContainer1.Panel1.Controls.Add(this.button7);
             this.splitContainer1.Panel1.Controls.Add(this.button6);
             this.splitContainer1.Panel1.Controls.Add(this.button5);
             this.splitContainer1.Panel1.Controls.Add(this.button4);
+            this.splitContainer1.Panel1.Controls.Add(this.button3);
             this.splitContainer1.Panel1.Controls.Add(this.button2);
+            this.splitContainer1.Panel1.Controls.Add(this.button1);
             this.splitContainer1.Panel1.Controls.Add(this.label1);
             // 
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(1311, 691);
+            this.splitContainer1.Size = new System.Drawing.Size(1904, 961);
             this.splitContainer1.SplitterDistance = 153;
             this.splitContainer1.TabIndex = 3;
             // 
@@ -114,7 +114,7 @@ namespace WindowsFormsApp1
             // 
             this.button3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.button3.Font = new System.Drawing.Font("標楷體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.button3.Location = new System.Drawing.Point(0, 641);
+            this.button3.Location = new System.Drawing.Point(0, 911);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(153, 50);
             this.button3.TabIndex = 9;
@@ -126,7 +126,7 @@ namespace WindowsFormsApp1
             // 
             this.button7.Dock = System.Windows.Forms.DockStyle.Top;
             this.button7.Font = new System.Drawing.Font("標楷體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.button7.Location = new System.Drawing.Point(0, 250);
+            this.button7.Location = new System.Drawing.Point(0, 300);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(153, 50);
             this.button7.TabIndex = 8;
@@ -137,7 +137,7 @@ namespace WindowsFormsApp1
             // 
             this.button6.Dock = System.Windows.Forms.DockStyle.Top;
             this.button6.Font = new System.Drawing.Font("標楷體", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.button6.Location = new System.Drawing.Point(0, 200);
+            this.button6.Location = new System.Drawing.Point(0, 250);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(153, 50);
             this.button6.TabIndex = 7;
@@ -148,7 +148,7 @@ namespace WindowsFormsApp1
             // 
             this.button5.Dock = System.Windows.Forms.DockStyle.Top;
             this.button5.Font = new System.Drawing.Font("標楷體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.button5.Location = new System.Drawing.Point(0, 150);
+            this.button5.Location = new System.Drawing.Point(0, 200);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(153, 50);
             this.button5.TabIndex = 6;
@@ -160,7 +160,7 @@ namespace WindowsFormsApp1
             // 
             this.button4.Dock = System.Windows.Forms.DockStyle.Top;
             this.button4.Font = new System.Drawing.Font("標楷體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.button4.Location = new System.Drawing.Point(0, 100);
+            this.button4.Location = new System.Drawing.Point(0, 150);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(153, 50);
             this.button4.TabIndex = 5;
@@ -171,7 +171,7 @@ namespace WindowsFormsApp1
             // 
             this.button2.Dock = System.Windows.Forms.DockStyle.Top;
             this.button2.Font = new System.Drawing.Font("標楷體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.button2.Location = new System.Drawing.Point(0, 50);
+            this.button2.Location = new System.Drawing.Point(0, 100);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(153, 50);
             this.button2.TabIndex = 3;
@@ -194,8 +194,8 @@ namespace WindowsFormsApp1
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.panel1);
-            this.splitContainer2.Size = new System.Drawing.Size(1154, 691);
-            this.splitContainer2.SplitterDistance = 45;
+            this.splitContainer2.Size = new System.Drawing.Size(1747, 961);
+            this.splitContainer2.SplitterDistance = 62;
             this.splitContainer2.TabIndex = 2;
             // 
             // MainForm_NameLabel
@@ -204,21 +204,21 @@ namespace WindowsFormsApp1
             this.MainForm_NameLabel.Font = new System.Drawing.Font("標楷體", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.MainForm_NameLabel.Location = new System.Drawing.Point(3, 10);
             this.MainForm_NameLabel.Name = "MainForm_NameLabel";
-            this.MainForm_NameLabel.Size = new System.Drawing.Size(96, 27);
+            this.MainForm_NameLabel.Size = new System.Drawing.Size(0, 27);
             this.MainForm_NameLabel.TabIndex = 0;
-            this.MainForm_NameLabel.Text = "label2";
             this.MainForm_NameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1311, 691);
+            this.ClientSize = new System.Drawing.Size(1904, 961);
             this.Controls.Add(this.splitContainer1);
             this.Name = "MainForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultBounds;
             this.Text = "食材通";
             this.TopMost = true;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();

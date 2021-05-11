@@ -12,10 +12,10 @@ namespace WindowsFormsApp1
     using System;
     using System.Collections.Generic;
     
-    public partial class Status
+    public partial class StatusList
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Status()
+        public StatusList()
         {
             this.Customers = new HashSet<Customer>();
             this.Employees = new HashSet<Employee>();

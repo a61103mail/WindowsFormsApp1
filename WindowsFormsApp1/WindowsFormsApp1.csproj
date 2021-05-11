@@ -59,19 +59,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Customer.cs">
-      <DependentUpon>FoodModel.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="CustomerRole.cs">
-      <DependentUpon>FoodModel.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Employee.cs">
-      <DependentUpon>FoodModel.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="EmployeeRole.cs">
-      <DependentUpon>FoodModel.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="EmpRole.cs">
-      <DependentUpon>FoodModel.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="ENT.cs" />
     <Compile Include="Customer系統.cs">
@@ -85,21 +85,6 @@
     </Compile>
     <Compile Include="Employee系統.Designer.cs">
       <DependentUpon>Employee系統.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FoodModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>FoodModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="FoodModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>FoodModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="FoodModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>FoodModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="ForgotPW.cs">
       <SubType>Form</SubType>
@@ -124,14 +109,29 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Order.cs">
-      <DependentUpon>FoodModel.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="OrderDetail.cs">
-      <DependentUpon>FoodModel.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Product.cs">
-      <DependentUpon>FoodModel.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -147,8 +147,8 @@
     <Compile Include="Select系統.Designer.cs">
       <DependentUpon>Select系統.cs</DependentUpon>
     </Compile>
-    <Compile Include="Status.cs">
-      <DependentUpon>FoodModel.tt</DependentUpon>
+    <Compile Include="StatusList.cs">
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="訂單表.cs">
       <SubType>Form</SubType>
@@ -202,12 +202,12 @@
     <None Include="FOODDataSet1.xss">
       <DependentUpon>FOODDataSet1.xsd</DependentUpon>
     </None>
-    <EntityDeploy Include="FoodModel.edmx">
+    <EntityDeploy Include="Model.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>FoodModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>Model.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="FoodModel.edmx.diagram">
-      <DependentUpon>FoodModel.edmx</DependentUpon>
+    <None Include="Model.edmx.diagram">
+      <DependentUpon>Model.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -225,18 +225,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\close.png" />
-    <Content Include="FoodModel.Context.tt">
+    <Content Include="Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>FoodModel.edmx</DependentUpon>
-      <LastGenOutput>FoodModel.Context.cs</LastGenOutput>
+      <DependentUpon>Model.edmx</DependentUpon>
+      <LastGenOutput>Model.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="FoodModel.tt">
+    <Content Include="Model.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>FoodModel.edmx</DependentUpon>
-      <LastGenOutput>FoodModel.cs</LastGenOutput>
+      <DependentUpon>Model.edmx</DependentUpon>
+      <LastGenOutput>Model.cs</LastGenOutput>
     </Content>
+    <Content Include="Resources\B1.jpg" />
+    <Content Include="Resources\B2.jpg" />
+    <Content Include="Resources\B3.jpg" />
     <Content Include="Resources\correct.png" />
     <Content Include="Resources\edit.png" />
+    <Content Include="Resources\G1.jpeg" />
+    <Content Include="Resources\G2.jpeg" />
+    <Content Include="Resources\G3.jpeg" />
     <Content Include="Resources\power.png" />
     <None Include="Resources\save.png" />
     <Content Include="Resources\wrong.png" />
