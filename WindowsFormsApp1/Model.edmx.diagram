@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="d6cbd65a75b74e45abb3c9581dca5e65" Name="Diagram1">
+      <Diagram DiagramId="0faeb935e20d49368097aad1014664a1" Name="Diagram1">
         <EntityTypeShape EntityType="FOODModel.Category" Width="1.5" PointX="0.75" PointY="9.625" IsExpanded="true" />
         <EntityTypeShape EntityType="FOODModel.Customer" Width="1.5" PointX="3.75" PointY="3.5" IsExpanded="true" />
         <EntityTypeShape EntityType="FOODModel.CustomerRole" Width="1.5" PointX="9" PointY="1.5" IsExpanded="true" />
@@ -26,6 +26,7 @@
         <EntityTypeShape EntityType="FOODModel.PurchaseConfirmedDetail" Width="1.5" PointX="10.5" PointY="7.125" IsExpanded="true" />
         <EntityTypeShape EntityType="FOODModel.SalesDetail" Width="1.5" PointX="10.5" PointY="10.875" IsExpanded="true" />
         <EntityTypeShape EntityType="FOODModel.Product_LatestPrice" Width="1.5" PointX="0.75" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FOODModel.database_firewall_rules" Width="1.5" PointX="12.75" PointY="5.875" IsExpanded="true" />
         <AssociationConnector Association="FOODModel.FK_Product_Category" ManuallyRouted="false" />
         <AssociationConnector Association="FOODModel.FK_CustomerRole_Customer" ManuallyRouted="false" />
         <AssociationConnector Association="FOODModel.FK_Order_Customer" ManuallyRouted="false" />

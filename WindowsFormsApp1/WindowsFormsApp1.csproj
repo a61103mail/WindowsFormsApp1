@@ -36,13 +36,13 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+    <Reference Include="EntityFramework, Version=6.2.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\EntityFramework.6.2.0\lib\net40\EntityFramework.dll</HintPath>
+      <HintPath>..\..\..\專題\WindowsFormsApp1\WindowsFormsApp1\packages\EntityFramework.6.2.0\lib\net40\EntityFramework.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+    <Reference Include="EntityFramework.SqlServer, Version=6.2.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\EntityFramework.6.2.0\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\..\..\專題\WindowsFormsApp1\WindowsFormsApp1\packages\EntityFramework.6.2.0\lib\net40\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -73,6 +73,9 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="DailyPriceTemp.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="database_firewall_rules.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Employee.cs">
@@ -146,6 +149,12 @@
     <Compile Include="sysdiagram.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="出貨單.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="出貨單.Designer.cs">
+      <DependentUpon>出貨單.cs</DependentUpon>
+    </Compile>
     <Compile Include="查詢子表.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -170,6 +179,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="出貨單.resx">
+      <DependentUpon>出貨單.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="查詢子表.resx">
       <DependentUpon>查詢子表.cs</DependentUpon>
     </EmbeddedResource>
