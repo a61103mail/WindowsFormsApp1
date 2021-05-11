@@ -63,7 +63,7 @@ namespace WindowsFormsApp1
                 DailyTrend = selectedProduct.DailyTrend,
                 LatestMarket = selectedProduct.LatestMarket,
                 LatestTransDate = selectedProduct.TransDate.GetValueOrDefault().ToShortDateString(),
-                Status = selectedProduct.Status
+                ProductStatus = selectedProduct.StatusName
             };
             this.bindingSource.DataSource = selectedDetail;
 

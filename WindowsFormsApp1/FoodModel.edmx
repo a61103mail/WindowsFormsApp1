@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="FOODModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="FOODModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Category">
           <Key>
             <PropertyRef Name="CategoryID" />
@@ -28,7 +28,7 @@
           <Property Name="ContactCellPhone" Type="nvarchar" MaxLength="15" />
           <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="DoB" Type="date" />
-          <Property Name="status" Type="smallint" />
+          <Property Name="CustomerStatus" Type="smallint" />
           <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="CustomerRole">
@@ -82,7 +82,7 @@
           <Property Name="DOE" Type="date" Nullable="false" />
           <Property Name="Unicode" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="status" Type="smallint" />
+          <Property Name="EmployeeStatus" Type="smallint" />
           <Property Name="Email" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="EmployeeRole">
@@ -127,7 +127,7 @@
           <Property Name="EmployeeID" Type="int" />
           <Property Name="RequiredDate" Type="date" />
           <Property Name="Comment" Type="nvarchar" MaxLength="50" />
-          <Property Name="status" Type="smallint" />
+          <Property Name="OrderStatus" Type="smallint" />
           <Property Name="Address" Type="nvarchar" MaxLength="50" />
           <Property Name="DeliveryAddress" Type="nvarchar" MaxLength="50" />
         </EntityType>
@@ -162,7 +162,7 @@
           <Property Name="Unit" Type="nvarchar" MaxLength="10" />
           <Property Name="CategoryID" Type="int" Nullable="false" />
           <Property Name="CustomerID" Type="int" />
-          <Property Name="Status" Type="smallint" />
+          <Property Name="ProductStatus" Type="smallint" />
           <Property Name="SubCategoryID" Type="int" />
         </EntityType>
         <EntityType Name="Purchase">
@@ -175,7 +175,7 @@
           <Property Name="PurchaserEmpID" Type="int" />
           <Property Name="Deliveryaddress" Type="nvarchar" MaxLength="50" />
           <Property Name="Comment" Type="nvarchar" MaxLength="50" />
-          <Property Name="status" Type="smallint" />
+          <Property Name="PurchaseStatus" Type="smallint" />
           <Property Name="RequiredDate" Type="date" />
           <Property Name="TallyEmpID" Type="int" />
         </EntityType>
@@ -236,12 +236,12 @@
           <Property Name="unit" Type="nvarchar" MaxLength="10" />
           <Property Name="Comment" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="Status">
+        <EntityType Name="StatusList">
           <Key>
             <PropertyRef Name="StatusID" />
           </Key>
           <Property Name="StatusID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Status" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="StatusName" Type="nvarchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -269,7 +269,7 @@
           <Property Name="Unit" Type="nvarchar" MaxLength="10" />
           <Property Name="Category" Type="nvarchar" MaxLength="20" />
           <Property Name="SupplierID" Type="int" />
-          <Property Name="Status" Type="nvarchar" MaxLength="20" />
+          <Property Name="StatusName" Type="nvarchar" MaxLength="20" />
           <Property Name="LatestUpperPrice" Type="money" />
           <Property Name="DailyTrend" Type="decimal" Precision="5" Scale="2" />
           <Property Name="LatestMarket" Type="nvarchar" MaxLength="10" />
@@ -306,14 +306,14 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Customer_Status">
-          <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
+          <End Role="StatusList" Type="Self.StatusList" Multiplicity="0..1" />
           <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Status">
+            <Principal Role="StatusList">
               <PropertyRef Name="StatusID" />
             </Principal>
             <Dependent Role="Customer">
-              <PropertyRef Name="status" />
+              <PropertyRef Name="CustomerStatus" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -342,14 +342,14 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Employee_Status">
-          <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
+          <End Role="StatusList" Type="Self.StatusList" Multiplicity="0..1" />
           <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Status">
+            <Principal Role="StatusList">
               <PropertyRef Name="StatusID" />
             </Principal>
             <Dependent Role="Employee">
-              <PropertyRef Name="status" />
+              <PropertyRef Name="EmployeeStatus" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -426,14 +426,14 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Order_Status">
-          <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
+          <End Role="StatusList" Type="Self.StatusList" Multiplicity="0..1" />
           <End Role="Order" Type="Self.Order" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Status">
+            <Principal Role="StatusList">
               <PropertyRef Name="StatusID" />
             </Principal>
             <Dependent Role="Order">
-              <PropertyRef Name="status" />
+              <PropertyRef Name="OrderStatus" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -486,14 +486,14 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Product_Status">
-          <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
+          <End Role="StatusList" Type="Self.StatusList" Multiplicity="0..1" />
           <End Role="Product" Type="Self.Product" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Status">
+            <Principal Role="StatusList">
               <PropertyRef Name="StatusID" />
             </Principal>
             <Dependent Role="Product">
-              <PropertyRef Name="Status" />
+              <PropertyRef Name="ProductStatus" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -534,14 +534,14 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Purchase_Status">
-          <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
+          <End Role="StatusList" Type="Self.StatusList" Multiplicity="0..1" />
           <End Role="Purchase" Type="Self.Purchase" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Status">
+            <Principal Role="StatusList">
               <PropertyRef Name="StatusID" />
             </Principal>
             <Dependent Role="Purchase">
-              <PropertyRef Name="status" />
+              <PropertyRef Name="PurchaseStatus" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -635,7 +635,7 @@
           <EntitySet Name="Purchase" EntityType="Self.Purchase" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PurchaseDetail" EntityType="Self.PurchaseDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StatusList" EntityType="Self.StatusList" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PurchaseConfirmedDetail" EntityType="Self.PurchaseConfirmedDetail" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -670,7 +670,7 @@
     [Product_LatestPrice].[Unit] AS [Unit], 
     [Product_LatestPrice].[Category] AS [Category], 
     [Product_LatestPrice].[SupplierID] AS [SupplierID], 
-    [Product_LatestPrice].[Status] AS [Status], 
+    [Product_LatestPrice].[StatusName] AS [StatusName], 
     [Product_LatestPrice].[LatestUpperPrice] AS [LatestUpperPrice], 
     [Product_LatestPrice].[DailyTrend] AS [DailyTrend], 
     [Product_LatestPrice].[LatestMarket] AS [LatestMarket], 
@@ -692,7 +692,7 @@
             <End Role="Customer" EntitySet="Customer" />
           </AssociationSet>
           <AssociationSet Name="FK_Customer_Status" Association="Self.FK_Customer_Status">
-            <End Role="Status" EntitySet="Status" />
+            <End Role="StatusList" EntitySet="StatusList" />
             <End Role="Customer" EntitySet="Customer" />
           </AssociationSet>
           <AssociationSet Name="FK_CustomerRole_Customer" Association="Self.FK_CustomerRole_Customer">
@@ -704,7 +704,7 @@
             <End Role="CustomerRole" EntitySet="CustomerRole" />
           </AssociationSet>
           <AssociationSet Name="FK_Employee_Status" Association="Self.FK_Employee_Status">
-            <End Role="Status" EntitySet="Status" />
+            <End Role="StatusList" EntitySet="StatusList" />
             <End Role="Employee" EntitySet="Employee" />
           </AssociationSet>
           <AssociationSet Name="FK_EmployeeRole_Employee" Association="Self.FK_EmployeeRole_Employee">
@@ -732,7 +732,7 @@
             <End Role="Order" EntitySet="Order" />
           </AssociationSet>
           <AssociationSet Name="FK_Order_Status" Association="Self.FK_Order_Status">
-            <End Role="Status" EntitySet="Status" />
+            <End Role="StatusList" EntitySet="StatusList" />
             <End Role="Order" EntitySet="Order" />
           </AssociationSet>
           <AssociationSet Name="FK_OrderDetail_Order" Association="Self.FK_OrderDetail_Order">
@@ -752,7 +752,7 @@
             <End Role="Product" EntitySet="Product" />
           </AssociationSet>
           <AssociationSet Name="FK_Product_Status" Association="Self.FK_Product_Status">
-            <End Role="Status" EntitySet="Status" />
+            <End Role="StatusList" EntitySet="StatusList" />
             <End Role="Product" EntitySet="Product" />
           </AssociationSet>
           <AssociationSet Name="FK_Purchase_Customer" Association="Self.FK_Purchase_Customer">
@@ -768,7 +768,7 @@
             <End Role="Purchase" EntitySet="Purchase" />
           </AssociationSet>
           <AssociationSet Name="FK_Purchase_Status" Association="Self.FK_Purchase_Status">
-            <End Role="Status" EntitySet="Status" />
+            <End Role="StatusList" EntitySet="StatusList" />
             <End Role="Purchase" EntitySet="Purchase" />
           </AssociationSet>
           <AssociationSet Name="FK_PurchaseConfirmedDetail_Product" Association="Self.FK_PurchaseConfirmedDetail_Product">
@@ -796,7 +796,8 @@
             <End Role="SalesDetail" EntitySet="SalesDetail" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="FOODModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -824,10 +825,10 @@
           <Property Name="ContactCellPhone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="DoB" Type="DateTime" Precision="0" />
-          <Property Name="status" Type="Int16" />
+          <Property Name="CustomerStatus" Type="Int16" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Employee" Relationship="Self.FK_Customer_Employee" FromRole="Customer" ToRole="Employee" />
-          <NavigationProperty Name="Status1" Relationship="Self.FK_Customer_Status" FromRole="Customer" ToRole="Status" />
+          <NavigationProperty Name="StatusList" Relationship="Self.FK_Customer_Status" FromRole="Customer" ToRole="StatusList" />
           <NavigationProperty Name="CustomerRoles" Relationship="Self.FK_CustomerRole_Customer" FromRole="Customer" ToRole="CustomerRole" />
           <NavigationProperty Name="Orders" Relationship="Self.FK_Order_Customer" FromRole="Customer" ToRole="Order" />
           <NavigationProperty Name="Purchases" Relationship="Self.FK_Purchase_Customer" FromRole="Customer" ToRole="Purchase" />
@@ -885,10 +886,10 @@
           <Property Name="DOE" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Unicode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="status" Type="Int16" />
+          <Property Name="EmployeeStatus" Type="Int16" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Customers" Relationship="Self.FK_Customer_Employee" FromRole="Employee" ToRole="Customer" />
-          <NavigationProperty Name="Status1" Relationship="Self.FK_Employee_Status" FromRole="Employee" ToRole="Status" />
+          <NavigationProperty Name="StatusList" Relationship="Self.FK_Employee_Status" FromRole="Employee" ToRole="StatusList" />
           <NavigationProperty Name="EmployeeRoles" Relationship="Self.FK_EmployeeRole_Employee" FromRole="Employee" ToRole="EmployeeRole" />
           <NavigationProperty Name="Orders" Relationship="Self.FK_Order_Employee" FromRole="Employee" ToRole="Order" />
           <NavigationProperty Name="Orders1" Relationship="Self.FK_Order_Employee1" FromRole="Employee" ToRole="Order" />
@@ -941,13 +942,13 @@
           <Property Name="EmployeeID" Type="Int32" />
           <Property Name="RequiredDate" Type="DateTime" Precision="0" />
           <Property Name="Comment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="status" Type="Int16" />
+          <Property Name="OrderStatus" Type="Int16" />
           <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DeliveryAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Customer" Relationship="Self.FK_Order_Customer" FromRole="Order" ToRole="Customer" />
           <NavigationProperty Name="Employee" Relationship="Self.FK_Order_Employee" FromRole="Order" ToRole="Employee" />
           <NavigationProperty Name="Employee1" Relationship="Self.FK_Order_Employee1" FromRole="Order" ToRole="Employee" />
-          <NavigationProperty Name="Status1" Relationship="Self.FK_Order_Status" FromRole="Order" ToRole="Status" />
+          <NavigationProperty Name="StatusList" Relationship="Self.FK_Order_Status" FromRole="Order" ToRole="StatusList" />
           <NavigationProperty Name="OrderDetails" Relationship="Self.FK_OrderDetail_Order" FromRole="Order" ToRole="OrderDetail" />
           <NavigationProperty Name="SalesDetails" Relationship="Self.FK_SalesDetail_Order" FromRole="Order" ToRole="SalesDetail" />
         </EntityType>
@@ -985,13 +986,13 @@
           <Property Name="Unit" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="CategoryID" Type="Int32" Nullable="false" />
           <Property Name="CustomerID" Type="Int32" />
-          <Property Name="Status" Type="Int16" />
+          <Property Name="ProductStatus" Type="Int16" />
           <Property Name="SubCategoryID" Type="Int32" />
           <NavigationProperty Name="Category" Relationship="Self.FK_Product_Category" FromRole="Product" ToRole="Category" />
           <NavigationProperty Name="Inventories" Relationship="Self.FK_Inventory_Product" FromRole="Product" ToRole="Inventory" />
           <NavigationProperty Name="OrderDetails" Relationship="Self.FK_OrderDetail_Product" FromRole="Product" ToRole="OrderDetail" />
           <NavigationProperty Name="Pictures" Relationship="Self.FK_Picture_Product" FromRole="Product" ToRole="Picture" />
-          <NavigationProperty Name="Status1" Relationship="Self.FK_Product_Status" FromRole="Product" ToRole="Status" />
+          <NavigationProperty Name="StatusList" Relationship="Self.FK_Product_Status" FromRole="Product" ToRole="StatusList" />
           <NavigationProperty Name="PurchaseConfirmedDetails" Relationship="Self.FK_PurchaseConfirmedDetail_Product" FromRole="Product" ToRole="PurchaseConfirmedDetail" />
           <NavigationProperty Name="PurchaseDetails" Relationship="Self.FK_PurchaseDetail_Product" FromRole="Product" ToRole="PurchaseDetail" />
           <NavigationProperty Name="SalesDetails" Relationship="Self.FK_SalesDetail_Product" FromRole="Product" ToRole="SalesDetail" />
@@ -1006,13 +1007,13 @@
           <Property Name="PurchaserEmpID" Type="Int32" />
           <Property Name="Deliveryaddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Comment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="status" Type="Int16" />
+          <Property Name="PurchaseStatus" Type="Int16" />
           <Property Name="RequiredDate" Type="DateTime" Precision="0" />
           <Property Name="TallyEmpID" Type="Int32" />
           <NavigationProperty Name="Customer" Relationship="Self.FK_Purchase_Customer" FromRole="Purchase" ToRole="Customer" />
           <NavigationProperty Name="Employee" Relationship="Self.FK_Purchase_Employee" FromRole="Purchase" ToRole="Employee" />
           <NavigationProperty Name="Employee1" Relationship="Self.FK_Purchase_Employee1" FromRole="Purchase" ToRole="Employee" />
-          <NavigationProperty Name="Status1" Relationship="Self.FK_Purchase_Status" FromRole="Purchase" ToRole="Status" />
+          <NavigationProperty Name="StatusList" Relationship="Self.FK_Purchase_Status" FromRole="Purchase" ToRole="StatusList" />
           <NavigationProperty Name="PurchaseConfirmedDetails" Relationship="Self.FK_PurchaseConfirmedDetail_Purchase" FromRole="Purchase" ToRole="PurchaseConfirmedDetail" />
           <NavigationProperty Name="PurchaseDetails" Relationship="Self.FK_PurchaseDetail_Purchase" FromRole="Purchase" ToRole="PurchaseDetail" />
         </EntityType>
@@ -1038,17 +1039,17 @@
           <Property Name="RoleName" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="CustomerRoles" Relationship="Self.FK_CustomerRole_Role" FromRole="Role" ToRole="CustomerRole" />
         </EntityType>
-        <EntityType Name="Status">
+        <EntityType Name="StatusList">
           <Key>
             <PropertyRef Name="StatusID" />
           </Key>
           <Property Name="StatusID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Status1" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Customers" Relationship="Self.FK_Customer_Status" FromRole="Status" ToRole="Customer" />
-          <NavigationProperty Name="Employees" Relationship="Self.FK_Employee_Status" FromRole="Status" ToRole="Employee" />
-          <NavigationProperty Name="Orders" Relationship="Self.FK_Order_Status" FromRole="Status" ToRole="Order" />
-          <NavigationProperty Name="Products" Relationship="Self.FK_Product_Status" FromRole="Status" ToRole="Product" />
-          <NavigationProperty Name="Purchases" Relationship="Self.FK_Purchase_Status" FromRole="Status" ToRole="Purchase" />
+          <Property Name="StatusName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Customers" Relationship="Self.FK_Customer_Status" FromRole="StatusList" ToRole="Customer" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK_Employee_Status" FromRole="StatusList" ToRole="Employee" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Order_Status" FromRole="StatusList" ToRole="Order" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_Product_Status" FromRole="StatusList" ToRole="Product" />
+          <NavigationProperty Name="Purchases" Relationship="Self.FK_Purchase_Status" FromRole="StatusList" ToRole="Purchase" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -1098,6 +1099,26 @@
           <NavigationProperty Name="Order" Relationship="Self.FK_SalesDetail_Order" FromRole="SalesDetail" ToRole="Order" />
           <NavigationProperty Name="Product" Relationship="Self.FK_SalesDetail_Product" FromRole="SalesDetail" ToRole="Product" />
         </EntityType>
+        <EntityType Name="Product_LatestPrice">
+          <Key>
+            <PropertyRef Name="ProductID" />
+            <PropertyRef Name="ProductCode" />
+            <PropertyRef Name="CropCode" />
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="ProductCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CropCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Unit" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Category" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="SupplierID" Type="Int32" />
+          <Property Name="StatusName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="LatestUpperPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="DailyTrend" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="LatestMarket" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="TransDate" Type="DateTime" Precision="0" />
+        </EntityType>
         <EntityType Name="database_firewall_rules">
           <Key>
             <PropertyRef Name="id" />
@@ -1139,14 +1160,14 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Customer_Status">
-          <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
+          <End Role="StatusList" Type="Self.StatusList" Multiplicity="0..1" />
           <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Status">
+            <Principal Role="StatusList">
               <PropertyRef Name="StatusID" />
             </Principal>
             <Dependent Role="Customer">
-              <PropertyRef Name="status" />
+              <PropertyRef Name="CustomerStatus" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1199,14 +1220,14 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Employee_Status">
-          <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
+          <End Role="StatusList" Type="Self.StatusList" Multiplicity="0..1" />
           <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Status">
+            <Principal Role="StatusList">
               <PropertyRef Name="StatusID" />
             </Principal>
             <Dependent Role="Employee">
-              <PropertyRef Name="status" />
+              <PropertyRef Name="EmployeeStatus" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1295,14 +1316,14 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Order_Status">
-          <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
+          <End Role="StatusList" Type="Self.StatusList" Multiplicity="0..1" />
           <End Role="Order" Type="Self.Order" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Status">
+            <Principal Role="StatusList">
               <PropertyRef Name="StatusID" />
             </Principal>
             <Dependent Role="Order">
-              <PropertyRef Name="status" />
+              <PropertyRef Name="OrderStatus" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1355,14 +1376,14 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Product_Status">
-          <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
+          <End Role="StatusList" Type="Self.StatusList" Multiplicity="0..1" />
           <End Role="Product" Type="Self.Product" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Status">
+            <Principal Role="StatusList">
               <PropertyRef Name="StatusID" />
             </Principal>
             <Dependent Role="Product">
-              <PropertyRef Name="Status" />
+              <PropertyRef Name="ProductStatus" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1403,14 +1424,14 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Purchase_Status">
-          <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
+          <End Role="StatusList" Type="Self.StatusList" Multiplicity="0..1" />
           <End Role="Purchase" Type="Self.Purchase" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Status">
+            <Principal Role="StatusList">
               <PropertyRef Name="StatusID" />
             </Principal>
             <Dependent Role="Purchase">
-              <PropertyRef Name="status" />
+              <PropertyRef Name="PurchaseStatus" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1456,10 +1477,11 @@
           <EntitySet Name="Purchases" EntityType="Self.Purchase" />
           <EntitySet Name="PurchaseDetails" EntityType="Self.PurchaseDetail" />
           <EntitySet Name="Roles" EntityType="Self.Role" />
-          <EntitySet Name="Status" EntityType="Self.Status" />
+          <EntitySet Name="StatusLists" EntityType="Self.StatusList" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="PurchaseConfirmedDetails" EntityType="Self.PurchaseConfirmedDetail" />
           <EntitySet Name="SalesDetails" EntityType="Self.SalesDetail" />
+          <EntitySet Name="Product_LatestPrice" EntityType="Self.Product_LatestPrice" />
           <EntitySet Name="database_firewall_rules" EntityType="Self.database_firewall_rules" />
           <AssociationSet Name="FK_Product_Category" Association="Self.FK_Product_Category">
             <End Role="Category" EntitySet="Categories" />
@@ -1470,7 +1492,7 @@
             <End Role="Customer" EntitySet="Customers" />
           </AssociationSet>
           <AssociationSet Name="FK_Customer_Status" Association="Self.FK_Customer_Status">
-            <End Role="Status" EntitySet="Status" />
+            <End Role="StatusList" EntitySet="StatusLists" />
             <End Role="Customer" EntitySet="Customers" />
           </AssociationSet>
           <AssociationSet Name="FK_CustomerRole_Customer" Association="Self.FK_CustomerRole_Customer">
@@ -1490,7 +1512,7 @@
             <End Role="CustomerRole" EntitySet="CustomerRoles" />
           </AssociationSet>
           <AssociationSet Name="FK_Employee_Status" Association="Self.FK_Employee_Status">
-            <End Role="Status" EntitySet="Status" />
+            <End Role="StatusList" EntitySet="StatusLists" />
             <End Role="Employee" EntitySet="Employees" />
           </AssociationSet>
           <AssociationSet Name="FK_EmployeeRole_Employee" Association="Self.FK_EmployeeRole_Employee">
@@ -1522,7 +1544,7 @@
             <End Role="Inventory" EntitySet="Inventories" />
           </AssociationSet>
           <AssociationSet Name="FK_Order_Status" Association="Self.FK_Order_Status">
-            <End Role="Status" EntitySet="Status" />
+            <End Role="StatusList" EntitySet="StatusLists" />
             <End Role="Order" EntitySet="Orders" />
           </AssociationSet>
           <AssociationSet Name="FK_OrderDetail_Order" Association="Self.FK_OrderDetail_Order">
@@ -1542,7 +1564,7 @@
             <End Role="Picture" EntitySet="Pictures" />
           </AssociationSet>
           <AssociationSet Name="FK_Product_Status" Association="Self.FK_Product_Status">
-            <End Role="Status" EntitySet="Status" />
+            <End Role="StatusList" EntitySet="StatusLists" />
             <End Role="Product" EntitySet="Products" />
           </AssociationSet>
           <AssociationSet Name="FK_PurchaseConfirmedDetail_Product" Association="Self.FK_PurchaseConfirmedDetail_Product">
@@ -1558,7 +1580,7 @@
             <End Role="SalesDetail" EntitySet="SalesDetails" />
           </AssociationSet>
           <AssociationSet Name="FK_Purchase_Status" Association="Self.FK_Purchase_Status">
-            <End Role="Status" EntitySet="Status" />
+            <End Role="StatusList" EntitySet="StatusLists" />
             <End Role="Purchase" EntitySet="Purchases" />
           </AssociationSet>
           <AssociationSet Name="FK_PurchaseConfirmedDetail_Purchase" Association="Self.FK_PurchaseConfirmedDetail_Purchase">
@@ -1569,28 +1591,7 @@
             <End Role="Purchase" EntitySet="Purchases" />
             <End Role="PurchaseDetail" EntitySet="PurchaseDetails" />
           </AssociationSet>
-          <EntitySet Name="Product_LatestPrice" EntityType="FOODModel.Product_LatestPrice" />
         </EntityContainer>
-        <EntityType Name="Product_LatestPrice">
-          <Key>
-            <PropertyRef Name="ProductID" />
-            <PropertyRef Name="ProductCode" />
-            <PropertyRef Name="CropCode" />
-            <PropertyRef Name="Name" />
-          </Key>
-          <Property Name="ProductID" Type="Int32" Nullable="false" />
-          <Property Name="ProductCode" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="CropCode" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Unit" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="Category" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="SupplierID" Type="Int32" />
-          <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="LatestUpperPrice" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="DailyTrend" Type="Decimal" Precision="5" Scale="2" />
-          <Property Name="LatestMarket" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="TransDate" Type="DateTime" Precision="0" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1620,7 +1621,7 @@
                 <ScalarProperty Name="ContactCellPhone" ColumnName="ContactCellPhone" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="DoB" ColumnName="DoB" />
-                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="CustomerStatus" ColumnName="CustomerStatus" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1678,7 +1679,7 @@
                 <ScalarProperty Name="DOE" ColumnName="DOE" />
                 <ScalarProperty Name="Unicode" ColumnName="Unicode" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="EmployeeStatus" ColumnName="EmployeeStatus" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1728,7 +1729,7 @@
                 <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
                 <ScalarProperty Name="RequiredDate" ColumnName="RequiredDate" />
                 <ScalarProperty Name="Comment" ColumnName="Comment" />
-                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="DeliveryAddress" ColumnName="DeliveryAddress" />
               </MappingFragment>
@@ -1766,7 +1767,7 @@
                 <ScalarProperty Name="Unit" ColumnName="Unit" />
                 <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
                 <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ProductStatus" ColumnName="ProductStatus" />
                 <ScalarProperty Name="SubCategoryID" ColumnName="SubCategoryID" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1780,7 +1781,7 @@
                 <ScalarProperty Name="PurchaserEmpID" ColumnName="PurchaserEmpID" />
                 <ScalarProperty Name="Deliveryaddress" ColumnName="Deliveryaddress" />
                 <ScalarProperty Name="Comment" ColumnName="Comment" />
-                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="PurchaseStatus" ColumnName="PurchaseStatus" />
                 <ScalarProperty Name="RequiredDate" ColumnName="RequiredDate" />
                 <ScalarProperty Name="TallyEmpID" ColumnName="TallyEmpID" />
               </MappingFragment>
@@ -1807,11 +1808,11 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Status">
-            <EntityTypeMapping TypeName="FOODModel.Status">
-              <MappingFragment StoreEntitySet="Status">
+          <EntitySetMapping Name="StatusLists">
+            <EntityTypeMapping TypeName="FOODModel.StatusList">
+              <MappingFragment StoreEntitySet="StatusList">
                 <ScalarProperty Name="StatusID" ColumnName="StatusID" />
-                <ScalarProperty Name="Status1" ColumnName="Status" />
+                <ScalarProperty Name="StatusName" ColumnName="StatusName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1854,6 +1855,24 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Product_LatestPrice">
+            <EntityTypeMapping TypeName="FOODModel.Product_LatestPrice">
+              <MappingFragment StoreEntitySet="Product_LatestPrice">
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+                <ScalarProperty Name="CropCode" ColumnName="CropCode" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
+                <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+                <ScalarProperty Name="LatestUpperPrice" ColumnName="LatestUpperPrice" />
+                <ScalarProperty Name="DailyTrend" ColumnName="DailyTrend" />
+                <ScalarProperty Name="LatestMarket" ColumnName="LatestMarket" />
+                <ScalarProperty Name="TransDate" ColumnName="TransDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="database_firewall_rules">
             <EntityTypeMapping TypeName="FOODModel.database_firewall_rules">
               <MappingFragment StoreEntitySet="database_firewall_rules">
@@ -1863,24 +1882,6 @@
                 <ScalarProperty Name="end_ip_address" ColumnName="end_ip_address" />
                 <ScalarProperty Name="create_date" ColumnName="create_date" />
                 <ScalarProperty Name="modify_date" ColumnName="modify_date" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Product_LatestPrice">
-            <EntityTypeMapping TypeName="FOODModel.Product_LatestPrice">
-              <MappingFragment StoreEntitySet="Product_LatestPrice">
-                <ScalarProperty Name="TransDate" ColumnName="TransDate" />
-                <ScalarProperty Name="LatestMarket" ColumnName="LatestMarket" />
-                <ScalarProperty Name="DailyTrend" ColumnName="DailyTrend" />
-                <ScalarProperty Name="LatestUpperPrice" ColumnName="LatestUpperPrice" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
-                <ScalarProperty Name="Category" ColumnName="Category" />
-                <ScalarProperty Name="Unit" ColumnName="Unit" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="CropCode" ColumnName="CropCode" />
-                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
-                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

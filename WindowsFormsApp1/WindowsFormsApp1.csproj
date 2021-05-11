@@ -150,7 +150,7 @@
     <Compile Include="SalesDetail.cs">
       <DependentUpon>FoodModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Status.cs">
+    <Compile Include="StatusList.cs">
       <DependentUpon>FoodModel.tt</DependentUpon>
     </Compile>
     <Compile Include="sysdiagram.cs">
