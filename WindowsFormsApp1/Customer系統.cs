@@ -87,7 +87,7 @@ namespace WindowsFormsApp1
                 ENT.db.Entry(ctmr).State = System.Data.Entity.EntityState.Modified;
                 
             }
-            catch (Exception ex)
+            catch (Exception )
             {
             }
         }

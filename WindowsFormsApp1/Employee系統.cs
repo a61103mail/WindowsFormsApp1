@@ -135,7 +135,7 @@ namespace WindowsFormsApp1
                 ENT.db.Entry(emp).State = System.Data.Entity.EntityState.Modified;
                 ENT.db.SaveChanges();
             }
-            catch (Exception ex)
+            catch (Exception )
             {
             }
         }

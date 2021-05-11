@@ -167,7 +167,7 @@ namespace WindowsFormsApp1
                     this.Close();
                 }
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                
             }           
@@ -210,7 +210,7 @@ namespace WindowsFormsApp1
                 MessageBox.Show( "身分證格式錯誤");
                 return "NO";
             }
-            return "Fine";
+            
         }
     }
 }
