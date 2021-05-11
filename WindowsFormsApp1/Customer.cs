@@ -34,8 +34,11 @@ namespace WindowsFormsApp1
         public string ContactCellPhone { get; set; }
         public string Email { get; set; }
         public Nullable<System.DateTime> DoB { get; set; }
+        public Nullable<short> CustomerStatus { get; set; }
         public string Password { get; set; }
     
+        public virtual Employee Employee { get; set; }
+        public virtual StatusList StatusList { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CustomerRole> CustomerRoles { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

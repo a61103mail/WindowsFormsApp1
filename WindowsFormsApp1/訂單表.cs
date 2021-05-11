@@ -136,7 +136,7 @@ namespace WindowsFormsApp1.Properties
                 MessageBox.Show("新增成功", "提醒", MessageBoxButtons.OK);
 
             }
-
+            allclear();
         }
 
 
@@ -302,6 +302,7 @@ namespace WindowsFormsApp1.Properties
             {
                 con.Enabled = false;
                 this.button2.Enabled = true;
+                this.button5.Enabled = true;
 
             }
 
@@ -326,26 +327,11 @@ namespace WindowsFormsApp1.Properties
                         epname = o.Employee.Name,
                         pcode = od.ProductCode,
                         qty = od.Qty,
-                        unp = od.UnitPrice
+                        unp = od.UnitPrice,
+                        status = o.OrderStatus
                     };
 
-            //var q = from od in this.db.OrderDetails
-            //        where od.OrderID.ToString() == OrderID
-            //        select new
-            //        {
-            //            oid = od.OrderID,
-            //            cid = od.Order.CustomerID,
-            //            cname = od.Order.Customer.Name,
-            //            cunid = od.Order.Customer.Unicode,
-            //            add = od.Order.Address,
-            //            epid = od.Order.Employee.EmployeeID,
-            //            epname = od.Order.Employee.Name,
-            //            pcode = od.ProductCode,
-            //            qty = od.Qty,
-            //            unp = od.UnitPrice
-            //        };
-            //也可以這樣寫，但是效能沒有比原本的好
-            //伯夷
+          
 
             foreach (var p in q)
             {
@@ -360,9 +346,29 @@ namespace WindowsFormsApp1.Properties
                 comboBox3.Text = p.epname;
                 comboBox5.Text = p.epname;
                 label17.Text = p.epid.ToString();
+                selectmodel(int.Parse(p.status.ToString()));
 
             }
             找尋DATAGRIDVIEW資料(OrderID);
+        }
+        private void selectmodel(int v)
+        {
+            switch (v)
+            {
+                case 1:
+                   this.label20.Text = "未銷單";
+                    this.label20.ForeColor = Color.Black;
+
+                    break;
+                case 2:
+                    this.label20.Text = "已銷單";
+                    this.label20.ForeColor = Color.ForestGreen;
+                    break;
+                case 3:
+                    this.label20.Text = "已作廢";
+                    this.label20.ForeColor = Color.Red;
+                        break;
+            }
         }
 
         private void 找尋DATAGRIDVIEW資料(string OrderID)
@@ -381,50 +387,22 @@ namespace WindowsFormsApp1.Properties
 
                 dgc.Value = q.ToList()[i].prcode;
                 this.dataGridView1[1, i].Value = q.ToList()[i].prname;
+                this.dataGridView1[2, i].Value = q.ToList()[i].UnitPrice;
+                this.dataGridView1[3, i].Value = q.ToList()[i].Qty;
+                this.dataGridView1[4, i].Value = q.ToList()[i].Unit;
+                this.dataGridView1[6, i].Value = q.ToList()[i].Commert;
             }
 
 
 
-            //把資料丟進DATAGRIDVIEW(q.ToList().ToString());
         }
 
-        private void 把資料丟進DATAGRIDVIEW(List<string> list)
-        {
-
-        }
-
+      
         private void button5_Click(object sender, EventArgs e)
         {//關閉所有欄位 只有新增查詢是可以用  清除所有欄位內的資料
-            foreach (Control con in this.Controls)
-            {
-                dataGridView1.Rows.Clear();  /////dataGridView忘了清哦！ 伯夷
-
-                con.Enabled = false;
-                this.button4.Enabled = true;
-                this.button3.Enabled = true;
-                if (con is ComboBox)
-                {
-                    ComboBox cob = con as ComboBox;
-                    cob.SelectedIndex = -1;
-                }
-                else if (con is TextBox)
-                {
-                    TextBox tb = con as TextBox;
-                    tb.Text = string.Empty;
-                }
-                else if (con is Label)
-                {
-                    this.label16.Text = string.Empty;
-                    this.label17.Text = string.Empty;
-                    this.label18.Text = string.Empty;
-                    this.label19.Text = string.Empty;
-
-                }
 
 
-
-
-            }
+            allclear();
 
 
         }
@@ -486,31 +464,58 @@ namespace WindowsFormsApp1.Properties
 
             }
 
+        private void allclear()
+        {
+            foreach (Control con in this.Controls)
+            {
+                dataGridView1.Rows.Clear();  /////dataGridView忘了清哦！ 伯夷
+
+                con.Enabled = false;
+                this.button4.Enabled = true;
+                this.button3.Enabled = true;
+                if (con is ComboBox)
+                {
+                    ComboBox cob = con as ComboBox;
+                    cob.SelectedIndex = -1;
+                }
+                else if (con is TextBox)
+                {
+                    TextBox tb = con as TextBox;
+                    tb.Text = string.Empty;
+                }
+                else if (con is Label)
+                {
+                    this.label16.Text = string.Empty;
+                    this.label17.Text = string.Empty;
+                    this.label18.Text = string.Empty;
+                    this.label19.Text = string.Empty;
+                    this.label20.Text = string.Empty;
+
+                }
+
+
+
+
+            }
+        }
+
         private void button7_Click(object sender, EventArgs e)
         {
+            string a = "3";
             DialogResult p = MessageBox.Show("確定刪除?(資料不會復原)", "提醒", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
             if (p == DialogResult.OK)
             {
-                var od = this.db.Orders.AsEnumerable().Where(n => n.OrderID.ToString() == this.label18.Text).Select(n => n);
+                var od = (this.db.Orders.Where(n => n.OrderID.ToString() == OrderID).Select(n => n)).ToList();
+              
+                od[0].OrderStatus = short.Parse(a);
 
-                var odd = this.db.OrderDetails.AsEnumerable().Where(n => n.OrderID.ToString() == this.label18.Text).Select(n => n);
-                var oddd = odd.ToList();
-                var od1 = od.ToList();
-                if (oddd != null)
-                {
-                    foreach (var q in oddd)
-                    {
-                        this.db.OrderDetails.Remove(q);
 
-                    }
-                }
-                foreach (var q in od1)
-                {
-                    this.db.Orders.Remove(q);
-                }
+
                 this.db.SaveChanges();
                 MessageBox.Show("刪除成功", "提醒", MessageBoxButtons.OK);
             }
+            allclear();
         }
+       
     }
 }
