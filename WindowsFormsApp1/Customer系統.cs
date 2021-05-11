@@ -21,9 +21,11 @@ namespace WindowsFormsApp1
         {
             var CTMR = from c in ENT.db.Customers
                        from e in ENT.db.Employees
-                       where c.CustomerID == ID &&c.SalesID==e.EmployeeID
+                       from o in ENT.db.Orders
+                       where c.CustomerID == ID &&c.SalesID==e.EmployeeID &&o.CustomerID==c.CustomerID
                        select new { c.CustomerID,c.CustomerRoleID,c.Name,c.Unicode,c.Address,c.SalesID,c.Phone,c.FAX,
-                       c.ContactPerson,c.ContactCellPhone,c.Email,c.DoB,EMPName=e.Name,e.Cellphone} ;
+                       c.ContactPerson,c.ContactCellPhone,c.Email,c.DoB,EMPName=e.Name,e.Cellphone,
+                           o.OrderID,o.OrderDate,o.RequiredDate,訂單地址=o.Address,o.Status1.StatusName,o.EmployeeID} ;
             
             foreach (var item in CTMR)
             {
@@ -42,6 +44,7 @@ namespace WindowsFormsApp1
                 ContactPersonTextBox__Client.Text = item.ContactPerson;
                 ContactCellPhoneTextBox__Client.Text = item.ContactCellPhone; 
             }
+            this.dataGridView_order.DataSource = CTMR.Select(s=>new {ODID=s.OrderID,s.OrderDate,s.RequiredDate,s.訂單地址,s.EmployeeID,s.StatusName }).ToList();
         }
         private void IDTextBox_Client_TextChanged(object sender, EventArgs e)
         {
@@ -50,6 +53,7 @@ namespace WindowsFormsApp1
             {
                 SelectCTMR(item.CustomerID);
             }
+
         }
         private void btn_search_Click(object sender, EventArgs e)
         {
@@ -121,6 +125,43 @@ namespace WindowsFormsApp1
         private void btn_save_Click(object sender, EventArgs e)
         {
             ENT.db.SaveChanges();
+        }
+        internal void SelectODD(int ID)
+        {
+            var EMPOD = from OD in ENT.db.Orders
+                        from ODD in OD.OrderDetails
+                        from PD in ENT.db.Products
+                        where OD.OrderID == ID && PD.ProductCode == ODD.ProductCode
+                        select new
+                        {
+                            ODID = OD.OrderID,
+                            ODDID = ODD.OrderDetailID,
+                            OD日期 = OD.OrderDate,
+                            產品 = PD.Name,
+                            數量 = ODD.Qty,
+                            售價 = ODD.UnitPrice,
+                            客戶 = OD.Customer.Name,
+                            統一編號 = OD.Customer.Unicode,
+                            客戶電話 = OD.Customer.Phone,
+                            客戶傳真 = OD.Customer.FAX,
+                            客戶負責人 = OD.Customer.ContactPerson,
+                            負責人電話 = OD.Customer.ContactCellPhone,
+                            負責人Email = OD.Customer.Email,
+                            地址 = OD.Address,
+                            負責人 = OD.Employee.Name,
+                            截止 = OD.RequiredDate,
+                            最後修改 = OD.ModifiedDate,
+                            狀態 = OD.Status1.StatusName
+                        };
+            
+            this.dataGridView_orderdetail.DataSource = EMPOD.Select(n => new { n.ODID, n.OD日期, n.產品, n.數量, n.售價 }).ToList();
+
+        }
+        private void dataGridView_order_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var ID = this.dataGridView_order.CurrentRow.Cells["ODID"].Value.ToString();
+            SelectODD(int.Parse(ID));
+            this.tabControl1.SelectedTab = XXX;
         }
     }
 }

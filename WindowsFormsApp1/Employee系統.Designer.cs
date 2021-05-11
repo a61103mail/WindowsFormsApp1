@@ -30,16 +30,18 @@ namespace WindowsFormsApp1
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.CURDpanel = new System.Windows.Forms.Panel();
+            this.btn_delete = new System.Windows.Forms.Button();
+            this.btn_modify = new System.Windows.Forms.Button();
+            this.btn_search = new System.Windows.Forms.Button();
+            this.btn_creat = new System.Windows.Forms.Button();
+            this.Savepanel = new System.Windows.Forms.Panel();
+            this.btn_save = new System.Windows.Forms.Button();
             this.btn_close = new System.Windows.Forms.Button();
             this.PWDpanel = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.PasswordtextBox_Employee = new System.Windows.Forms.TextBox();
-            this.btn_save = new System.Windows.Forms.Button();
             this.EmployeeIDtextBox_Employee = new System.Windows.Forms.TextBox();
-            this.btn_creat = new System.Windows.Forms.Button();
-            this.btn_search = new System.Windows.Forms.Button();
-            this.btn_delete = new System.Windows.Forms.Button();
-            this.btn_modify = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
             this.PictureBox_Employee = new System.Windows.Forms.PictureBox();
             this.EmailTextBox_Employee = new System.Windows.Forms.TextBox();
@@ -84,12 +86,12 @@ namespace WindowsFormsApp1
             this.c81 = new System.Windows.Forms.Label();
             this.foodDataSet1 = new WindowsFormsApp1.FOODDataSet();
             this.employeeTableAdapter1 = new WindowsFormsApp1.FOODDataSetTableAdapters.EmployeeTableAdapter();
-            this.Savepanel = new System.Windows.Forms.Panel();
-            this.CURDpanel = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.CURDpanel.SuspendLayout();
+            this.Savepanel.SuspendLayout();
             this.PWDpanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox_Employee)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -103,8 +105,6 @@ namespace WindowsFormsApp1
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_ODD)).BeginInit();
             this.tableLayoutPanel_Customer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.foodDataSet1)).BeginInit();
-            this.Savepanel.SuspendLayout();
-            this.CURDpanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -146,6 +146,104 @@ namespace WindowsFormsApp1
             this.splitContainer1.Size = new System.Drawing.Size(1092, 602);
             this.splitContainer1.SplitterDistance = 240;
             this.splitContainer1.TabIndex = 2;
+            // 
+            // CURDpanel
+            // 
+            this.CURDpanel.Controls.Add(this.btn_delete);
+            this.CURDpanel.Controls.Add(this.btn_modify);
+            this.CURDpanel.Controls.Add(this.btn_search);
+            this.CURDpanel.Controls.Add(this.btn_creat);
+            this.CURDpanel.Location = new System.Drawing.Point(717, 46);
+            this.CURDpanel.Name = "CURDpanel";
+            this.CURDpanel.Size = new System.Drawing.Size(339, 42);
+            this.CURDpanel.TabIndex = 47;
+            // 
+            // btn_delete
+            // 
+            this.btn_delete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_delete.Enabled = false;
+            this.btn_delete.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_delete.Image = global::WindowsFormsApp1.Properties.Resources.minus;
+            this.btn_delete.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_delete.Location = new System.Drawing.Point(258, 0);
+            this.btn_delete.Name = "btn_delete";
+            this.btn_delete.Size = new System.Drawing.Size(80, 42);
+            this.btn_delete.TabIndex = 37;
+            this.btn_delete.Text = "刪除";
+            this.btn_delete.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_delete.UseVisualStyleBackColor = true;
+            this.btn_delete.Click += new System.EventHandler(this.btn_delete_Click);
+            // 
+            // btn_modify
+            // 
+            this.btn_modify.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_modify.Enabled = false;
+            this.btn_modify.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_modify.Image = global::WindowsFormsApp1.Properties.Resources.edit;
+            this.btn_modify.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_modify.Location = new System.Drawing.Point(172, 0);
+            this.btn_modify.Name = "btn_modify";
+            this.btn_modify.Size = new System.Drawing.Size(80, 42);
+            this.btn_modify.TabIndex = 36;
+            this.btn_modify.Text = "修改";
+            this.btn_modify.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_modify.UseVisualStyleBackColor = true;
+            this.btn_modify.Click += new System.EventHandler(this.btn_modify_Click);
+            // 
+            // btn_search
+            // 
+            this.btn_search.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_search.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_search.Image = global::WindowsFormsApp1.Properties.Resources.search;
+            this.btn_search.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_search.Location = new System.Drawing.Point(0, 0);
+            this.btn_search.Name = "btn_search";
+            this.btn_search.Size = new System.Drawing.Size(80, 42);
+            this.btn_search.TabIndex = 38;
+            this.btn_search.Text = "查詢";
+            this.btn_search.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_search.UseVisualStyleBackColor = true;
+            this.btn_search.Click += new System.EventHandler(this.btn_search_Click);
+            // 
+            // btn_creat
+            // 
+            this.btn_creat.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_creat.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_creat.Image = global::WindowsFormsApp1.Properties.Resources.plus;
+            this.btn_creat.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_creat.Location = new System.Drawing.Point(86, 0);
+            this.btn_creat.Name = "btn_creat";
+            this.btn_creat.Size = new System.Drawing.Size(80, 42);
+            this.btn_creat.TabIndex = 39;
+            this.btn_creat.Text = "新增";
+            this.btn_creat.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_creat.UseVisualStyleBackColor = true;
+            this.btn_creat.Click += new System.EventHandler(this.btn_creat_Click);
+            // 
+            // Savepanel
+            // 
+            this.Savepanel.Controls.Add(this.btn_save);
+            this.Savepanel.Controls.Add(this.btn_close);
+            this.Savepanel.Location = new System.Drawing.Point(757, 94);
+            this.Savepanel.Name = "Savepanel";
+            this.Savepanel.Size = new System.Drawing.Size(172, 37);
+            this.Savepanel.TabIndex = 46;
+            this.Savepanel.Visible = false;
+            // 
+            // btn_save
+            // 
+            this.btn_save.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_save.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_save.Image = global::WindowsFormsApp1.Properties.Resources.save;
+            this.btn_save.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_save.Location = new System.Drawing.Point(0, 0);
+            this.btn_save.Name = "btn_save";
+            this.btn_save.Size = new System.Drawing.Size(80, 37);
+            this.btn_save.TabIndex = 41;
+            this.btn_save.Text = "儲存";
+            this.btn_save.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_save.UseVisualStyleBackColor = true;
+            this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
             // 
             // btn_close
             // 
@@ -198,21 +296,6 @@ namespace WindowsFormsApp1
             this.PasswordtextBox_Employee.Size = new System.Drawing.Size(196, 27);
             this.PasswordtextBox_Employee.TabIndex = 43;
             // 
-            // btn_save
-            // 
-            this.btn_save.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_save.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_save.Image = global::WindowsFormsApp1.Properties.Resources.save;
-            this.btn_save.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_save.Location = new System.Drawing.Point(0, 0);
-            this.btn_save.Name = "btn_save";
-            this.btn_save.Size = new System.Drawing.Size(80, 37);
-            this.btn_save.TabIndex = 41;
-            this.btn_save.Text = "儲存";
-            this.btn_save.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_save.UseVisualStyleBackColor = true;
-            this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
-            // 
             // EmployeeIDtextBox_Employee
             // 
             this.EmployeeIDtextBox_Employee.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
@@ -224,68 +307,6 @@ namespace WindowsFormsApp1
             this.EmployeeIDtextBox_Employee.Size = new System.Drawing.Size(100, 27);
             this.EmployeeIDtextBox_Employee.TabIndex = 40;
             this.EmployeeIDtextBox_Employee.TextChanged += new System.EventHandler(this.EmployeeIDtextBox_Employee_TextChanged);
-            // 
-            // btn_creat
-            // 
-            this.btn_creat.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_creat.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_creat.Image = global::WindowsFormsApp1.Properties.Resources.plus;
-            this.btn_creat.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_creat.Location = new System.Drawing.Point(86, 0);
-            this.btn_creat.Name = "btn_creat";
-            this.btn_creat.Size = new System.Drawing.Size(80, 42);
-            this.btn_creat.TabIndex = 39;
-            this.btn_creat.Text = "新增";
-            this.btn_creat.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_creat.UseVisualStyleBackColor = true;
-            this.btn_creat.Click += new System.EventHandler(this.btn_creat_Click);
-            // 
-            // btn_search
-            // 
-            this.btn_search.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_search.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_search.Image = global::WindowsFormsApp1.Properties.Resources.search;
-            this.btn_search.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_search.Location = new System.Drawing.Point(0, 0);
-            this.btn_search.Name = "btn_search";
-            this.btn_search.Size = new System.Drawing.Size(80, 42);
-            this.btn_search.TabIndex = 38;
-            this.btn_search.Text = "查詢";
-            this.btn_search.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_search.UseVisualStyleBackColor = true;
-            this.btn_search.Click += new System.EventHandler(this.btn_search_Click);
-            // 
-            // btn_delete
-            // 
-            this.btn_delete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_delete.Enabled = false;
-            this.btn_delete.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_delete.Image = global::WindowsFormsApp1.Properties.Resources.minus;
-            this.btn_delete.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_delete.Location = new System.Drawing.Point(258, 0);
-            this.btn_delete.Name = "btn_delete";
-            this.btn_delete.Size = new System.Drawing.Size(80, 42);
-            this.btn_delete.TabIndex = 37;
-            this.btn_delete.Text = "刪除";
-            this.btn_delete.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_delete.UseVisualStyleBackColor = true;
-            this.btn_delete.Click += new System.EventHandler(this.btn_delete_Click);
-            // 
-            // btn_modify
-            // 
-            this.btn_modify.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_modify.Enabled = false;
-            this.btn_modify.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_modify.Image = global::WindowsFormsApp1.Properties.Resources.edit;
-            this.btn_modify.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_modify.Location = new System.Drawing.Point(172, 0);
-            this.btn_modify.Name = "btn_modify";
-            this.btn_modify.Size = new System.Drawing.Size(80, 42);
-            this.btn_modify.TabIndex = 36;
-            this.btn_modify.Text = "修改";
-            this.btn_modify.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_modify.UseVisualStyleBackColor = true;
-            this.btn_modify.Click += new System.EventHandler(this.btn_modify_Click);
             // 
             // label17
             // 
@@ -523,7 +544,7 @@ namespace WindowsFormsApp1
             this.XXX.Padding = new System.Windows.Forms.Padding(3);
             this.XXX.Size = new System.Drawing.Size(1084, 332);
             this.XXX.TabIndex = 1;
-            this.XXX.Text = "XXX";
+            this.XXX.Text = "訂單細項";
             this.XXX.UseVisualStyleBackColor = true;
             // 
             // splitContainer2
@@ -761,27 +782,6 @@ namespace WindowsFormsApp1
             // 
             this.employeeTableAdapter1.ClearBeforeFill = true;
             // 
-            // Savepanel
-            // 
-            this.Savepanel.Controls.Add(this.btn_save);
-            this.Savepanel.Controls.Add(this.btn_close);
-            this.Savepanel.Location = new System.Drawing.Point(757, 94);
-            this.Savepanel.Name = "Savepanel";
-            this.Savepanel.Size = new System.Drawing.Size(172, 37);
-            this.Savepanel.TabIndex = 46;
-            this.Savepanel.Visible = false;
-            // 
-            // CURDpanel
-            // 
-            this.CURDpanel.Controls.Add(this.btn_delete);
-            this.CURDpanel.Controls.Add(this.btn_modify);
-            this.CURDpanel.Controls.Add(this.btn_search);
-            this.CURDpanel.Controls.Add(this.btn_creat);
-            this.CURDpanel.Location = new System.Drawing.Point(717, 46);
-            this.CURDpanel.Name = "CURDpanel";
-            this.CURDpanel.Size = new System.Drawing.Size(339, 42);
-            this.CURDpanel.TabIndex = 47;
-            // 
             // Employee系統
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -795,6 +795,8 @@ namespace WindowsFormsApp1
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.CURDpanel.ResumeLayout(false);
+            this.Savepanel.ResumeLayout(false);
             this.PWDpanel.ResumeLayout(false);
             this.PWDpanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox_Employee)).EndInit();
@@ -809,8 +811,6 @@ namespace WindowsFormsApp1
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_ODD)).EndInit();
             this.tableLayoutPanel_Customer.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.foodDataSet1)).EndInit();
-            this.Savepanel.ResumeLayout(false);
-            this.CURDpanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

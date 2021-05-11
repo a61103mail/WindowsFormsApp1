@@ -31,6 +31,7 @@ namespace WindowsFormsApp1
         {
             this.label1 = new System.Windows.Forms.Label();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.btn_save = new System.Windows.Forms.Button();
             this.DoBTimePicker = new System.Windows.Forms.DateTimePicker();
             this.btn_creat = new System.Windows.Forms.Button();
             this.btn_search = new System.Windows.Forms.Button();
@@ -65,20 +66,25 @@ namespace WindowsFormsApp1
             this.label2 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.btn_save = new System.Windows.Forms.Button();
+            this.XXX = new System.Windows.Forms.TabPage();
+            this.dataGridView_order = new System.Windows.Forms.DataGridView();
+            this.dataGridView_orderdetail = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.XXX.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_order)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_orderdetail)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("標楷體", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label1.Location = new System.Drawing.Point(13, 13);
+            this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(124, 27);
             this.label1.TabIndex = 0;
@@ -135,6 +141,21 @@ namespace WindowsFormsApp1
             this.splitContainer1.SplitterDistance = 231;
             this.splitContainer1.TabIndex = 1;
             // 
+            // btn_save
+            // 
+            this.btn_save.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_save.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_save.Image = global::WindowsFormsApp1.Properties.Resources.save;
+            this.btn_save.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_save.Location = new System.Drawing.Point(669, 50);
+            this.btn_save.Name = "btn_save";
+            this.btn_save.Size = new System.Drawing.Size(71, 42);
+            this.btn_save.TabIndex = 37;
+            this.btn_save.Text = "儲存";
+            this.btn_save.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_save.UseVisualStyleBackColor = true;
+            this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
+            // 
             // DoBTimePicker
             // 
             this.DoBTimePicker.CalendarFont = new System.Drawing.Font("新細明體", 9F);
@@ -152,7 +173,7 @@ namespace WindowsFormsApp1
             this.btn_creat.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_creat.Location = new System.Drawing.Point(841, 50);
             this.btn_creat.Name = "btn_creat";
-            this.btn_creat.Size = new System.Drawing.Size(80, 42);
+            this.btn_creat.Size = new System.Drawing.Size(71, 42);
             this.btn_creat.TabIndex = 35;
             this.btn_creat.Text = "新增";
             this.btn_creat.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -167,7 +188,7 @@ namespace WindowsFormsApp1
             this.btn_search.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_search.Location = new System.Drawing.Point(755, 50);
             this.btn_search.Name = "btn_search";
-            this.btn_search.Size = new System.Drawing.Size(80, 42);
+            this.btn_search.Size = new System.Drawing.Size(71, 42);
             this.btn_search.TabIndex = 34;
             this.btn_search.Text = "查詢";
             this.btn_search.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -183,7 +204,7 @@ namespace WindowsFormsApp1
             this.btn_delete.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_delete.Location = new System.Drawing.Point(1013, 50);
             this.btn_delete.Name = "btn_delete";
-            this.btn_delete.Size = new System.Drawing.Size(80, 42);
+            this.btn_delete.Size = new System.Drawing.Size(71, 42);
             this.btn_delete.TabIndex = 33;
             this.btn_delete.Text = "刪除";
             this.btn_delete.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -199,7 +220,7 @@ namespace WindowsFormsApp1
             this.btn_modify.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_modify.Location = new System.Drawing.Point(927, 50);
             this.btn_modify.Name = "btn_modify";
-            this.btn_modify.Size = new System.Drawing.Size(80, 42);
+            this.btn_modify.Size = new System.Drawing.Size(71, 42);
             this.btn_modify.TabIndex = 2;
             this.btn_modify.Text = "修改";
             this.btn_modify.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -466,7 +487,7 @@ namespace WindowsFormsApp1
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.XXX);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
@@ -476,6 +497,7 @@ namespace WindowsFormsApp1
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.dataGridView_order);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -484,30 +506,43 @@ namespace WindowsFormsApp1
             this.tabPage1.Text = "訂貨紀錄";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // tabPage2
+            // XXX
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1094, 382);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.XXX.Controls.Add(this.dataGridView_orderdetail);
+            this.XXX.Location = new System.Drawing.Point(4, 22);
+            this.XXX.Name = "XXX";
+            this.XXX.Padding = new System.Windows.Forms.Padding(3);
+            this.XXX.Size = new System.Drawing.Size(1094, 382);
+            this.XXX.TabIndex = 1;
+            this.XXX.Text = "訂貨細項";
+            this.XXX.UseVisualStyleBackColor = true;
             // 
-            // btn_save
+            // dataGridView_order
             // 
-            this.btn_save.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_save.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_save.Image = global::WindowsFormsApp1.Properties.Resources.save;
-            this.btn_save.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_save.Location = new System.Drawing.Point(669, 50);
-            this.btn_save.Name = "btn_save";
-            this.btn_save.Size = new System.Drawing.Size(80, 42);
-            this.btn_save.TabIndex = 37;
-            this.btn_save.Text = "儲存";
-            this.btn_save.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_save.UseVisualStyleBackColor = true;
-            this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
+            this.dataGridView_order.AllowUserToAddRows = false;
+            this.dataGridView_order.AllowUserToDeleteRows = false;
+            this.dataGridView_order.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_order.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView_order.Location = new System.Drawing.Point(3, 3);
+            this.dataGridView_order.Name = "dataGridView_order";
+            this.dataGridView_order.ReadOnly = true;
+            this.dataGridView_order.RowTemplate.Height = 24;
+            this.dataGridView_order.Size = new System.Drawing.Size(1088, 376);
+            this.dataGridView_order.TabIndex = 0;
+            this.dataGridView_order.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_order_CellClick);
+            // 
+            // dataGridView_orderdetail
+            // 
+            this.dataGridView_orderdetail.AllowUserToAddRows = false;
+            this.dataGridView_orderdetail.AllowUserToDeleteRows = false;
+            this.dataGridView_orderdetail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_orderdetail.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView_orderdetail.Location = new System.Drawing.Point(3, 3);
+            this.dataGridView_orderdetail.Name = "dataGridView_orderdetail";
+            this.dataGridView_orderdetail.ReadOnly = true;
+            this.dataGridView_orderdetail.RowTemplate.Height = 24;
+            this.dataGridView_orderdetail.Size = new System.Drawing.Size(1088, 376);
+            this.dataGridView_orderdetail.TabIndex = 0;
             // 
             // Customer系統
             // 
@@ -523,6 +558,10 @@ namespace WindowsFormsApp1
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.XXX.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_order)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_orderdetail)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -535,7 +574,7 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage XXX;
         internal System.Windows.Forms.TextBox EmployeeTELTextBox__Client;
         private System.Windows.Forms.Label label15;
         internal System.Windows.Forms.TextBox SalesIDTextBox__Client;
@@ -567,5 +606,7 @@ namespace WindowsFormsApp1
         internal System.Windows.Forms.Button btn_creat;
         private System.Windows.Forms.DateTimePicker DoBTimePicker;
         internal System.Windows.Forms.Button btn_save;
+        private System.Windows.Forms.DataGridView dataGridView_order;
+        private System.Windows.Forms.DataGridView dataGridView_orderdetail;
     }
 }

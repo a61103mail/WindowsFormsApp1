@@ -30,7 +30,7 @@ namespace WindowsFormsApp1
                             地址 = OD.Address,
                             截止 = OD.RequiredDate,
                             最後修改 = OD.ModifiedDate,
-                            狀態 = OD.status
+                            狀態 = OD.Status1.StatusName
                         };
             
             this.dataGridView_order.DataSource =EMP業務.ToList();
@@ -51,7 +51,8 @@ namespace WindowsFormsApp1
             var EMPOD = from OD in ENT.db.Orders
                         from ODD in OD.OrderDetails
                         from PD in ENT.db.Products
-                        where OD.OrderID == ID && PD.ProductCode == ODD.ProductCode
+                        from s in ENT.db.Status
+                        where OD.OrderID == ID && PD.ProductCode == ODD.ProductCode&&OD.status==s.StatusID
                         select new
                         {
                             ODID = OD.OrderID,
@@ -71,7 +72,7 @@ namespace WindowsFormsApp1
                             負責人 = OD.Employee.Name,
                             截止 = OD.RequiredDate,
                             最後修改 = OD.ModifiedDate,
-                            狀態 = OD.status
+                            狀態 = s.StatusName
                         };
             foreach (var item in EMPOD)
             {
