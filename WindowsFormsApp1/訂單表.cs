@@ -92,6 +92,7 @@ namespace WindowsFormsApp1.Properties
 
         private void button1_Click(object sender, EventArgs e)
         {
+            string status = "1";
             Order order = new Order(); //新增Order欄位
 
             order.OrderDate = this.dateTimePicker2.Value;
@@ -100,15 +101,18 @@ namespace WindowsFormsApp1.Properties
             order.EmployeeID = int.Parse(this.label19.Text);
             order.Address = this.textBox4.Text;
             order.Comment = this.richTextBox1.Text;
+            order.OrderStatus =short.Parse(status);
 
-
-
+          
 
             DialogResult p = MessageBox.Show("確定新增?", "提醒", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
             if (p == DialogResult.OK)
             {
                 this.db.Orders.Add(order);
+
+                this.db.Entry(order).State = System.Data.Entity.EntityState.Added; //柏頤的神奇方法
                 this.db.SaveChanges();//新增Order回DB
+
                 this.label18.Text = order.OrderID.ToString();//顯示出新增的流水號
                 foreach (DataGridViewRow dr in this.dataGridView1.Rows)
                 {
@@ -129,9 +133,11 @@ namespace WindowsFormsApp1.Properties
 
 
                         this.db.OrderDetails.Add(od);
-
+                        this.db.Entry(od).State = System.Data.Entity.EntityState.Added;
                     }
                 }
+
+               
                 this.db.SaveChanges();//新增OD回DB
                 MessageBox.Show("新增成功", "提醒", MessageBoxButtons.OK);
 
@@ -377,7 +383,7 @@ namespace WindowsFormsApp1.Properties
             //////////要不要考慮一下在button4_Click(object sender, EventArgs e)先撈一次OrderDetails等著用？
             //////////因為只有button4_Click會呼叫這個方法，所以可以共用相同的OrderDetails清單
             ///////// 伯夷
-            var q = this.db.OrderDetails.AsEnumerable().Where(n => n.OrderID.ToString() == OrderID).Select(n => new { prcode = n.ProductCode, prname = n.Product.Name, n.UnitPrice, n.Qty, n.Unit, n.Commert });
+            var q = this.db.OrderDetails.Where(n => n.OrderID.ToString() == OrderID).Select(n => new { prcode = n.ProductCode, prname = n.Product.Name, n.UnitPrice, n.Qty, n.Unit, n.Commert });
 
             for (int i = 0; i < q.ToList().Count; i++)
             {

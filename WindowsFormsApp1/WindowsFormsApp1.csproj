@@ -149,12 +149,6 @@
     <Compile Include="sysdiagram.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="出貨單.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="出貨單.Designer.cs">
-      <DependentUpon>出貨單.cs</DependentUpon>
-    </Compile>
     <Compile Include="查詢子表.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -179,9 +173,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="出貨單.resx">
-      <DependentUpon>出貨單.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="查詢子表.resx">
       <DependentUpon>查詢子表.cs</DependentUpon>
     </EmbeddedResource>
