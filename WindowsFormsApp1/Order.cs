@@ -27,12 +27,14 @@ namespace WindowsFormsApp1
         public Nullable<int> EmployeeID { get; set; }
         public Nullable<System.DateTime> RequiredDate { get; set; }
         public string Comment { get; set; }
-        public string status { get; set; }
+        public Nullable<short> status { get; set; }
         public string Address { get; set; }
         public string DeliveryAddress { get; set; }
     
         public virtual Customer Customer { get; set; }
         public virtual Employee Employee { get; set; }
+        public virtual Employee Employee1 { get; set; }
+        public virtual Status Status1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
     }

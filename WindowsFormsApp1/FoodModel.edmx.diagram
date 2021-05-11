@@ -4,25 +4,29 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="71887f6d75314ccfb688531dc6d2f94a" Name="Diagram1">
-        <EntityTypeShape EntityType="FOODModel.Customer" Width="1.5" PointX="1.125" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="FOODModel.CustomerRole" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="FOODModel.Employee" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="FOODModel.EmployeeRole" Width="1.5" PointX="9" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="FOODModel.EmpRole" Width="1.5" PointX="6.75" PointY="9.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="FOODModel.Order" Width="1.5" PointX="6" PointY="4.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="FOODModel.OrderDetail" Width="1.5" PointX="8.25" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="FOODModel.Product" Width="1.5" PointX="6" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="FOODModel.Product_LatestPrice" Width="1.5" PointX="2.75" PointY="8" IsExpanded="true" />
-        <EntityTypeShape EntityType="FOODModel.database_firewall_rules" Width="1.5" PointX="8.75" PointY="9" IsExpanded="true" />
+      <Diagram DiagramId="70e723c3b0a04febb46ecc6afaca0660" Name="Diagram1">
+        <EntityTypeShape EntityType="FOODModel.Customer" Width="1.5" PointX="5.25" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FOODModel.CustomerRole" Width="1.5" PointX="7.5" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FOODModel.Employee" Width="1.5" PointX="3" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FOODModel.EmployeeRole" Width="1.5" PointX="5.25" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FOODModel.EmpRole" Width="1.5" PointX="3" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FOODModel.Order" Width="1.5" PointX="10.5" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FOODModel.OrderDetail" Width="1.5" PointX="12.75" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FOODModel.Product" Width="1.5" PointX="3" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FOODModel.Status" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
+        <AssociationConnector Association="FOODModel.FK_Customer_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="FOODModel.FK_Customer_Status" ManuallyRouted="false" />
         <AssociationConnector Association="FOODModel.FK_CustomerRole_Customer" ManuallyRouted="false" />
         <AssociationConnector Association="FOODModel.FK_Order_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="FOODModel.FK_Employee_Status" ManuallyRouted="false" />
         <AssociationConnector Association="FOODModel.FK_EmployeeRole_Employee" ManuallyRouted="false" />
         <AssociationConnector Association="FOODModel.FK_Order_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="FOODModel.FK_Order_Employee1" ManuallyRouted="false" />
         <AssociationConnector Association="FOODModel.FK_EmployeeRole_EmpRole" ManuallyRouted="false" />
+        <AssociationConnector Association="FOODModel.FK_Order_Status" ManuallyRouted="false" />
         <AssociationConnector Association="FOODModel.FK_OrderDetail_Order" ManuallyRouted="false" />
         <AssociationConnector Association="FOODModel.FK_OrderDetail_Product" ManuallyRouted="false" />
-        <AssociationConnector Association="FOODModel.FK_Customer_Employee" />
+        <AssociationConnector Association="FOODModel.FK_Product_Status" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
