@@ -29,7 +29,7 @@ namespace WindowsFormsApp1
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
@@ -276,6 +276,7 @@ namespace WindowsFormsApp1
             this.button5.TabIndex = 0;
             this.button5.Text = "刪除此單";
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // dateTimePicker1
             // 
@@ -477,8 +478,8 @@ namespace WindowsFormsApp1
             // 
             // prodname
             // 
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            this.prodname.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            this.prodname.DefaultCellStyle = dataGridViewCellStyle3;
             this.prodname.HeaderText = "品名";
             this.prodname.Name = "prodname";
             this.prodname.ReadOnly = true;

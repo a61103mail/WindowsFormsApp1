@@ -251,7 +251,6 @@ namespace WindowsFormsApp1
                 this.dataGridView1[4, i].Value = q2[i].qty;
                 this.dataGridView1[5, i].Value = q2[i].unit;
                 this.dataGridView1[7, i].Value = q2[i].comm;
-                
             }
         }
         private void button4_Click(object sender, EventArgs e)
@@ -293,6 +292,33 @@ namespace WindowsFormsApp1
                     MessageBox.Show("修改成功", "", MessageBoxButtons.OK);
                 }
             
+        }
+        private void button5_Click(object sender, EventArgs e)
+        {
+            string d = "3";
+            if (textBox3.Text == "") return;
+            else
+            {
+                DialogResult s = MessageBox.Show("確定刪除整筆採購單?", "提醒", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
+                if (s == DialogResult.OK)
+                {
+                    if (this.label4.Text != null)
+                    {
+                        var q1 = from cfd in this.db.PurchaseConfirmedDetails
+                                 where (cfd.PurchaseID).ToString() == this.textBox3.Text
+                                 select cfd;
+                        var a = q1.ToList();
+                        foreach (var n in a)
+                        {
+                            this.db.PurchaseConfirmedDetails.Remove(n);
+                        }
+
+                        this.db.SaveChanges();
+                    }
+                    MessageBox.Show("刪除成功", "", MessageBoxButtons.OK);
+                }
+
+            }
         }
     }
 }
