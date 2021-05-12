@@ -149,6 +149,9 @@
     <Compile Include="sysdiagram.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="WeeklyPriceTemp.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="查詢子表.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -160,6 +163,18 @@
     </Compile>
     <Compile Include="訂單表.Designer.cs">
       <DependentUpon>訂單表.cs</DependentUpon>
+    </Compile>
+    <Compile Include="銷貨單.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="銷貨單.Designer.cs">
+      <DependentUpon>銷貨單.cs</DependentUpon>
+    </Compile>
+    <Compile Include="銷貨單查詢表.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="銷貨單查詢表.Designer.cs">
+      <DependentUpon>銷貨單查詢表.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -178,6 +193,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="訂單表.resx">
       <DependentUpon>訂單表.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="銷貨單.resx">
+      <DependentUpon>銷貨單.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="銷貨單查詢表.resx">
+      <DependentUpon>銷貨單查詢表.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="Model.edmx">
       <Generator>EntityModelCodeGenerator</Generator>

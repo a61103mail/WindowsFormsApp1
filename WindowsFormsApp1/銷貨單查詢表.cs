@@ -10,46 +10,51 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class 查詢子表 : Form
+    public partial class 銷貨單查詢表 : Form
     {
-        public 查詢子表()
+        FOODEntities db = new FOODEntities();
+        public string suppliername;
+
+        public 銷貨單查詢表()
         {
             InitializeComponent();
             this.button1.DialogResult = DialogResult.OK;
             this.button2.DialogResult = DialogResult.Cancel;
             Suppliertodata();
         }
-        FOODEntities db = new FOODEntities();
-        public string suppliername;
+
         private void Suppliertodata()
         {
             if (this.textBox1.Text == "")
             {
-                var q = this.db.Orders.Select(n => new { 訂單編號 = n.OrderID, 客戶姓名 = n.Customer.Name, 訂貨日期 = n.OrderDate });
+               
+                var q = from n in this.db.SalesDetails
+                        select new
+                        {
+                            訂單編號 = n.OrderID,
+                            產品=n.Product.Name,
+                            訂貨日期 = n.Order.OrderDate
+
+                        };
                 this.dataGridView1.DataSource = q.ToList();
             }
             else if (this.textBox1.Text != "")
             {
-                var q = from n in this.db.Orders.AsEnumerable()
-                        from c in this.db.Customers.AsEnumerable()
-                        where n.CustomerID == c.CustomerID && n.OrderID.ToString() == $"{this.textBox1.Text}"
-                        || c.Name == $"{this.textBox1.Text}"
-                        select new { 訂單編號 = n.OrderID, 客戶姓名 = c.Name, 訂貨日期 = n.OrderDate };
+               
+                var q = from n in this.db.SalesDetails.AsEnumerable()
+                       where n.OrderID.ToString()
+                        == $"{this.textBox1.Text}" || n.Product.Name== $"{this.textBox1.Text}"
+                        select new
+                        {
+                            
+                            訂單編號 = n.OrderID,
+                            產品 = n.Product.Name,
+                            訂貨日期 = n.Order.OrderDate
+
+                        };
                 this.dataGridView1.DataSource = q.ToList();
             }
-
         }
-
-
-
-       
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            Suppliertodata();
-        }
-
-       
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -61,7 +66,7 @@ namespace WindowsFormsApp1
             this.Close();
         }
 
-        private void dataGridView1_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == -1 || e.RowIndex == -1) return;
             int x = dataGridView1.CurrentCell.ColumnIndex;
@@ -86,18 +91,14 @@ namespace WindowsFormsApp1
                     {
                         suppliername = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
                     }
-                    }
+                }
             }
         }
 
-        private void 查詢子表_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void 銷貨單查詢表_Load(object sender, EventArgs e)
         {
 
         }
     }
+    
 }

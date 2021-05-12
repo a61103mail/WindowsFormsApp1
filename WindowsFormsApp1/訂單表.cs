@@ -55,6 +55,7 @@ namespace WindowsFormsApp1.Properties
             this.comboBox5.ValueMember = "empid";
 
 
+
             this.comboBox1.SelectedIndexChanged += ComboBox1_SelectedIndexChanged;
             this.ComboBox1_SelectedIndexChanged(this, EventArgs.Empty);  //這樣可以少觸發一次(原本先選1會觸發一次，選0又會再觸發一次)  伯夷
 
@@ -82,10 +83,14 @@ namespace WindowsFormsApp1.Properties
             if (this.comboBox1.Text != "")
             {
                 this.label16.Text = this.comboBox1.SelectedValue.ToString();
-                var p = this.db.Customers.AsEnumerable().Where(n => n.Name == $"{this.comboBox1.Text}").Select(n => n.Unicode); //不用new啦！ 伯夷
+                var p = this.db.Customers.AsEnumerable().Where(n => n.Name == $"{this.comboBox1.Text}").Select(n => n); //不用new啦！ 伯夷
                 var res = p.ToList()[0];
                 //this.textBox6.Text = res.Unicode;  伯夷
-                this.textBox6.Text = res;
+                this.textBox6.Text = res.Unicode.ToString();
+                this.textBox2.Text = res.ContactPerson;
+                this.textBox3.Text = res.ContactCellPhone;
+                this.textBox5.Text = res.Address;
+                
             }
         }
 
@@ -100,7 +105,7 @@ namespace WindowsFormsApp1.Properties
             order.OrderDate = this.dateTimePicker2.Value;
             order.RequiredDate = this.dateTimePicker1.Value;
             order.CustomerID = int.Parse(this.label16.Text);
-            order.EmployeeID = int.Parse(this.label19.Text);
+            order.EmployeeID = int.Parse(this.comboBox5.Text);
             order.Address = this.textBox4.Text;
             order.Comment = this.richTextBox1.Text;
             order.OrderStatus =short.Parse(status);
@@ -282,12 +287,14 @@ namespace WindowsFormsApp1.Properties
 
         private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-
-            var q = this.db.Employees.AsEnumerable().Where(n => n.Name == $"{this.comboBox3.Text}").Select(n => n.EmployeeID);
-            foreach (var p in q)
+            if (this.comboBox3.Text != "")
             {
-                this.label19.Text = p.ToString();
+
+                var q = this.db.Employees.AsEnumerable().Where(n => n.Name == $"{this.comboBox3.Text}").Select(n => n.EmployeeID);
+                foreach (var p in q)
+                {
+                    this.label19.Text = p.ToString();
+                }
             }
         }
 
@@ -315,68 +322,56 @@ namespace WindowsFormsApp1.Properties
             }
 
             查詢子表 k = new 查詢子表();
+            k.TopMost = true;
             DialogResult res = k.ShowDialog();
+            MessageBox.Show(res.ToString());
             if (res == DialogResult.OK)
             {
                 OrderID = k.suppliername;
+                MessageBox.Show(OrderID);
+
+
+                var q = from o in this.db.Orders
+                        from od in this.db.OrderDetails
+                        where o.OrderID == od.OrderID && o.OrderID.ToString() == OrderID
+                        select new
+                        {
+                            oid = o.OrderID,
+                            cid = o.CustomerID,
+                            cname = o.Customer.Name,
+                            cunid = o.Customer.Unicode,
+                            add = o.Address,
+                            epid = o.Employee.EmployeeID,
+                            epname = o.Employee.Name,
+                            pcode = od.ProductCode,
+                            qty = od.Qty,
+                            unp = od.UnitPrice,
+                            status = o.StatusList.StatusName
+                        };
+
+
+
+                foreach (var p in q)
+                {
+
+                    label18.Text = p.oid.ToString();
+                    //dateTimePicker1.Value = p.OrderDate.Value;
+                    comboBox1.Text = p.cname;
+                    label16.Text = p.cid.ToString();
+                    textBox6.Text = p.cunid;
+                    textBox5.Text = p.add;
+                    label19.Text = p.epid.ToString() == null ? "0" : p.epid.ToString();
+                    comboBox3.Text = p.epname;
+                    comboBox5.Text = p.epname;
+                    label17.Text = p.epid.ToString();
+                    label20.Text = p.status;
+
+
+                }
+                找尋DATAGRIDVIEW資料(OrderID);
+
             }
 
-            var q = from o in this.db.Orders
-                    from od in this.db.OrderDetails
-                    where o.OrderID == od.OrderID && o.OrderID.ToString() == OrderID
-                    select new
-                    {
-                        oid = o.OrderID,
-                        cid = o.CustomerID,
-                        cname = o.Customer.Name,
-                        cunid = o.Customer.Unicode,
-                        add = o.Address,
-                        epid = o.Employee.EmployeeID,
-                        epname = o.Employee.Name,
-                        pcode = od.ProductCode,
-                        qty = od.Qty,
-                        unp = od.UnitPrice,
-                        status = o.OrderStatus
-                    };
-
-          
-
-            foreach (var p in q)
-            {
-
-                label18.Text = p.oid.ToString();
-                //dateTimePicker1.Value = p.OrderDate.Value;
-                comboBox1.Text = p.cname;
-                label16.Text = p.cid.ToString();
-                textBox6.Text = p.cunid;
-                textBox5.Text = p.add;
-                label19.Text = p.epid.ToString() == null ? "0" : p.epid.ToString();
-                comboBox3.Text = p.epname;
-                comboBox5.Text = p.epname;
-                label17.Text = p.epid.ToString();
-                selectmodel(int.Parse(p.status.ToString()));
-
-            }
-            找尋DATAGRIDVIEW資料(OrderID);
-        }
-        private void selectmodel(int v)
-        {
-            switch (v)
-            {
-                case 1:
-                   this.label20.Text = "未銷單";
-                    this.label20.ForeColor = Color.Black;
-
-                    break;
-                case 2:
-                    this.label20.Text = "已銷單";
-                    this.label20.ForeColor = Color.ForestGreen;
-                    break;
-                case 3:
-                    this.label20.Text = "已作廢";
-                    this.label20.ForeColor = Color.Red;
-                        break;
-            }
         }
 
         private void 找尋DATAGRIDVIEW資料(string OrderID)
@@ -524,6 +519,7 @@ namespace WindowsFormsApp1.Properties
             }
             allclear();
         }
+
        
     }
 }
