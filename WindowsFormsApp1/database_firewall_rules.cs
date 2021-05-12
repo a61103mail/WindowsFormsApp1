@@ -12,17 +12,13 @@ namespace WindowsFormsApp1
     using System;
     using System.Collections.Generic;
     
-    public partial class OrderDetail
+    public partial class database_firewall_rules
     {
-        public int OrderDetailID { get; set; }
-        public int OrderID { get; set; }
-        public int ProductID { get; set; }
-        public decimal Qty { get; set; }
-        public decimal UnitPrice { get; set; }
-        public string Commert { get; set; }
-        public string Unit { get; set; }
-    
-        public virtual Order Order { get; set; }
-        public virtual Product Product { get; set; }
+        public int id { get; set; }
+        public string name { get; set; }
+        public string start_ip_address { get; set; }
+        public string end_ip_address { get; set; }
+        public System.DateTime create_date { get; set; }
+        public System.DateTime modify_date { get; set; }
     }
 }
