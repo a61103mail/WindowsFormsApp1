@@ -40,6 +40,7 @@ namespace WindowsFormsApp1
             this.button2 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.splitContainer_CUMR = new System.Windows.Forms.SplitContainer();
@@ -49,7 +50,6 @@ namespace WindowsFormsApp1
             this.button3 = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.MainForm_NameLabel = new System.Windows.Forms.Label();
-            this.button9 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -144,6 +144,7 @@ namespace WindowsFormsApp1
             // splitContainer_EMP
             // 
             this.splitContainer_EMP.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainer_EMP.IsSplitterFixed = true;
             this.splitContainer_EMP.Location = new System.Drawing.Point(0, 5);
             this.splitContainer_EMP.Margin = new System.Windows.Forms.Padding(0);
             this.splitContainer_EMP.Name = "splitContainer_EMP";
@@ -231,6 +232,20 @@ namespace WindowsFormsApp1
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
+            // button9
+            // 
+            this.button9.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.button9.Font = new System.Drawing.Font("標楷體", 14F);
+            this.button9.Location = new System.Drawing.Point(1, 209);
+            this.button9.Margin = new System.Windows.Forms.Padding(1);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(185, 50);
+            this.button9.TabIndex = 9;
+            this.button9.Text = "銷單管理系統";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
             // button6
             // 
             this.button6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -260,6 +275,7 @@ namespace WindowsFormsApp1
             // splitContainer_CUMR
             // 
             this.splitContainer_CUMR.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainer_CUMR.IsSplitterFixed = true;
             this.splitContainer_CUMR.Location = new System.Drawing.Point(0, 426);
             this.splitContainer_CUMR.Margin = new System.Windows.Forms.Padding(0);
             this.splitContainer_CUMR.Name = "splitContainer_CUMR";
@@ -353,20 +369,6 @@ namespace WindowsFormsApp1
             this.MainForm_NameLabel.Size = new System.Drawing.Size(0, 27);
             this.MainForm_NameLabel.TabIndex = 0;
             this.MainForm_NameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // button9
-            // 
-            this.button9.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.button9.Font = new System.Drawing.Font("標楷體", 14F);
-            this.button9.Location = new System.Drawing.Point(1, 209);
-            this.button9.Margin = new System.Windows.Forms.Padding(1);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(185, 50);
-            this.button9.TabIndex = 9;
-            this.button9.Text = "銷單管理系統";
-            this.button9.UseVisualStyleBackColor = true;
-            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // MainForm
             // 

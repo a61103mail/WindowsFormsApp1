@@ -282,6 +282,11 @@ namespace WindowsFormsApp1
                 Allclear();
             }
         }
+
+        private void splitContainer6_SplitterMoved(object sender, SplitterEventArgs e)
+        {
+
+        }
     }
 
        

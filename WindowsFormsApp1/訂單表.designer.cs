@@ -487,7 +487,7 @@ namespace WindowsFormsApp1.Properties
             // 
             // button7
             // 
-            this.button7.BackColor = System.Drawing.Color.Red;
+            this.button7.BackColor = System.Drawing.Color.Salmon;
             this.button7.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.button7.Location = new System.Drawing.Point(318, 28);
             this.button7.Name = "button7";
@@ -514,7 +514,7 @@ namespace WindowsFormsApp1.Properties
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1138, 694);
+            this.ClientSize = new System.Drawing.Size(1713, 866);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button6);
