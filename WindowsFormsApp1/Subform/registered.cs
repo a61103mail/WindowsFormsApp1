@@ -20,7 +20,7 @@ namespace WindowsFormsApp1
         public registered()
         {
             InitializeComponent();
-            this.TransparencyKey = this.BackColor;
+            //this.TransparencyKey = this.BackColor;
             
         }
         private void registered_Load(object sender, EventArgs e)

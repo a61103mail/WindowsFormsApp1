@@ -106,7 +106,7 @@ namespace WindowsFormsApp1
             this.phonetextBox.Location = new System.Drawing.Point(106, 119);
             this.phonetextBox.Name = "phonetextBox";
             this.phonetextBox.Size = new System.Drawing.Size(160, 27);
-            this.phonetextBox.TabIndex = 10;
+            this.phonetextBox.TabIndex = 4;
             this.phonetextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Select系統_KeyDown);
             // 
             // label4
@@ -126,7 +126,7 @@ namespace WindowsFormsApp1
             this.unicodetextBox.Location = new System.Drawing.Point(106, 86);
             this.unicodetextBox.Name = "unicodetextBox";
             this.unicodetextBox.Size = new System.Drawing.Size(160, 27);
-            this.unicodetextBox.TabIndex = 8;
+            this.unicodetextBox.TabIndex = 3;
             this.unicodetextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Select系統_KeyDown);
             // 
             // label3
@@ -146,7 +146,7 @@ namespace WindowsFormsApp1
             this.nametextBox.Location = new System.Drawing.Point(106, 53);
             this.nametextBox.Name = "nametextBox";
             this.nametextBox.Size = new System.Drawing.Size(160, 27);
-            this.nametextBox.TabIndex = 6;
+            this.nametextBox.TabIndex = 2;
             this.nametextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Select系統_KeyDown);
             // 
             // label1
@@ -166,7 +166,7 @@ namespace WindowsFormsApp1
             this.IDTextBox.Location = new System.Drawing.Point(106, 20);
             this.IDTextBox.Name = "IDTextBox";
             this.IDTextBox.Size = new System.Drawing.Size(160, 27);
-            this.IDTextBox.TabIndex = 4;
+            this.IDTextBox.TabIndex = 1;
             this.IDTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Select系統_KeyDown);
             // 
             // label2

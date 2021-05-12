@@ -12,13 +12,18 @@ namespace WindowsFormsApp1
     using System;
     using System.Collections.Generic;
     
-    public partial class CustomerRole
+    public partial class Role
     {
-        public int RoleID { get; set; }
-        public int ID { get; set; }
-        public int CustomerID { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Role()
+        {
+            this.CustomerRoles = new HashSet<CustomerRole>();
+        }
     
-        public virtual Customer Customer { get; set; }
-        public virtual Role Role { get; set; }
+        public int RoleID { get; set; }
+        public string RoleName { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CustomerRole> CustomerRoles { get; set; }
     }
 }

@@ -67,9 +67,11 @@ namespace WindowsFormsApp1
             this.label13 = new System.Windows.Forms.Label();
             this.NameTextBox_register = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.companyPanel.SuspendLayout();
             this.personalPanel.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -79,7 +81,7 @@ namespace WindowsFormsApp1
             this.label1.Name = "label1";
             this.label1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.label1.Size = new System.Drawing.Size(90, 48);
-            this.label1.TabIndex = 0;
+            this.label1.TabIndex = 99;
             this.label1.Text = "身分證字號(統一編號)";
             // 
             // label2
@@ -89,7 +91,7 @@ namespace WindowsFormsApp1
             this.label2.Location = new System.Drawing.Point(42, 153);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(40, 16);
-            this.label2.TabIndex = 1;
+            this.label2.TabIndex = 98;
             this.label2.Text = "密碼";
             // 
             // AccountTextBox_register
@@ -114,7 +116,7 @@ namespace WindowsFormsApp1
             this.CorrectPWTextBox_register.Location = new System.Drawing.Point(138, 193);
             this.CorrectPWTextBox_register.Name = "CorrectPWTextBox_register";
             this.CorrectPWTextBox_register.Size = new System.Drawing.Size(156, 27);
-            this.CorrectPWTextBox_register.TabIndex = 7;
+            this.CorrectPWTextBox_register.TabIndex = 4;
             // 
             // TELTextBox_register
             // 
@@ -141,7 +143,7 @@ namespace WindowsFormsApp1
             this.label4.Location = new System.Drawing.Point(42, 244);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(72, 16);
-            this.label4.TabIndex = 4;
+            this.label4.TabIndex = 789;
             this.label4.Text = "電子信箱";
             // 
             // label5
@@ -160,7 +162,7 @@ namespace WindowsFormsApp1
             this.EmailTextBox_register.Location = new System.Drawing.Point(138, 241);
             this.EmailTextBox_register.Name = "EmailTextBox_register";
             this.EmailTextBox_register.Size = new System.Drawing.Size(156, 27);
-            this.EmailTextBox_register.TabIndex = 11;
+            this.EmailTextBox_register.TabIndex = 5;
             // 
             // label7
             // 
@@ -198,7 +200,7 @@ namespace WindowsFormsApp1
             this.checkBox1.Location = new System.Drawing.Point(361, 388);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(267, 20);
-            this.checkBox1.TabIndex = 18;
+            this.checkBox1.TabIndex = 15;
             this.checkBox1.Text = "是否要接收新鮮食材的第一消息？";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
@@ -208,7 +210,7 @@ namespace WindowsFormsApp1
             this.CorrectButton.Location = new System.Drawing.Point(361, 438);
             this.CorrectButton.Name = "CorrectButton";
             this.CorrectButton.Size = new System.Drawing.Size(119, 34);
-            this.CorrectButton.TabIndex = 19;
+            this.CorrectButton.TabIndex = 16;
             this.CorrectButton.Text = "確認註冊資料";
             this.CorrectButton.UseVisualStyleBackColor = true;
             this.CorrectButton.Click += new System.EventHandler(this.CorrectButton_Click);
@@ -219,7 +221,7 @@ namespace WindowsFormsApp1
             this.BackButton.Location = new System.Drawing.Point(491, 439);
             this.BackButton.Name = "BackButton";
             this.BackButton.Size = new System.Drawing.Size(119, 34);
-            this.BackButton.TabIndex = 20;
+            this.BackButton.TabIndex = 17;
             this.BackButton.Text = "返回登入頁";
             this.BackButton.UseVisualStyleBackColor = true;
             this.BackButton.Click += new System.EventHandler(this.BackButton_Click);
@@ -230,13 +232,13 @@ namespace WindowsFormsApp1
             this.dateTimePicker1.Location = new System.Drawing.Point(99, 65);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(156, 22);
-            this.dateTimePicker1.TabIndex = 21;
+            this.dateTimePicker1.TabIndex = 8;
             // 
             // PersonRadioButton_register
             // 
             this.PersonRadioButton_register.AutoSize = true;
             this.PersonRadioButton_register.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.PersonRadioButton_register.Location = new System.Drawing.Point(138, 59);
+            this.PersonRadioButton_register.Location = new System.Drawing.Point(3, 3);
             this.PersonRadioButton_register.Name = "PersonRadioButton_register";
             this.PersonRadioButton_register.Size = new System.Drawing.Size(58, 20);
             this.PersonRadioButton_register.TabIndex = 23;
@@ -259,7 +261,7 @@ namespace WindowsFormsApp1
             // 
             this.CompanyRadioButton_register.AutoSize = true;
             this.CompanyRadioButton_register.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.CompanyRadioButton_register.Location = new System.Drawing.Point(214, 59);
+            this.CompanyRadioButton_register.Location = new System.Drawing.Point(79, 3);
             this.CompanyRadioButton_register.Name = "CompanyRadioButton_register";
             this.CompanyRadioButton_register.Size = new System.Drawing.Size(58, 20);
             this.CompanyRadioButton_register.TabIndex = 25;
@@ -284,7 +286,7 @@ namespace WindowsFormsApp1
             this.companyPanel.Location = new System.Drawing.Point(343, 89);
             this.companyPanel.Name = "companyPanel";
             this.companyPanel.Size = new System.Drawing.Size(285, 235);
-            this.companyPanel.TabIndex = 26;
+            this.companyPanel.TabIndex = 7;
             // 
             // label18
             // 
@@ -302,7 +304,7 @@ namespace WindowsFormsApp1
             this.CompanyAddTextBox_register.Location = new System.Drawing.Point(111, 193);
             this.CompanyAddTextBox_register.Name = "CompanyAddTextBox_register";
             this.CompanyAddTextBox_register.Size = new System.Drawing.Size(156, 27);
-            this.CompanyAddTextBox_register.TabIndex = 21;
+            this.CompanyAddTextBox_register.TabIndex = 14;
             // 
             // label17
             // 
@@ -321,7 +323,7 @@ namespace WindowsFormsApp1
             this.ContactTELTextBox_register.Location = new System.Drawing.Point(111, 152);
             this.ContactTELTextBox_register.Name = "ContactTELTextBox_register";
             this.ContactTELTextBox_register.Size = new System.Drawing.Size(156, 27);
-            this.ContactTELTextBox_register.TabIndex = 19;
+            this.ContactTELTextBox_register.TabIndex = 13;
             // 
             // label16
             // 
@@ -340,7 +342,7 @@ namespace WindowsFormsApp1
             this.ContactNameTextBox_register.Location = new System.Drawing.Point(111, 104);
             this.ContactNameTextBox_register.Name = "ContactNameTextBox_register";
             this.ContactNameTextBox_register.Size = new System.Drawing.Size(156, 27);
-            this.ContactNameTextBox_register.TabIndex = 10;
+            this.ContactNameTextBox_register.TabIndex = 12;
             // 
             // label15
             // 
@@ -357,7 +359,7 @@ namespace WindowsFormsApp1
             this.CompanyNameTextBox_register.Location = new System.Drawing.Point(111, 16);
             this.CompanyNameTextBox_register.Name = "CompanyNameTextBox_register";
             this.CompanyNameTextBox_register.Size = new System.Drawing.Size(156, 27);
-            this.CompanyNameTextBox_register.TabIndex = 8;
+            this.CompanyNameTextBox_register.TabIndex = 10;
             // 
             // label14
             // 
@@ -376,7 +378,7 @@ namespace WindowsFormsApp1
             this.FaxTextBox_register.Location = new System.Drawing.Point(111, 61);
             this.FaxTextBox_register.Name = "FaxTextBox_register";
             this.FaxTextBox_register.Size = new System.Drawing.Size(156, 27);
-            this.FaxTextBox_register.TabIndex = 6;
+            this.FaxTextBox_register.TabIndex = 11;
             // 
             // label12
             // 
@@ -399,7 +401,7 @@ namespace WindowsFormsApp1
             this.personalPanel.Location = new System.Drawing.Point(39, 336);
             this.personalPanel.Name = "personalPanel";
             this.personalPanel.Size = new System.Drawing.Size(267, 156);
-            this.personalPanel.TabIndex = 27;
+            this.personalPanel.TabIndex = 7;
             // 
             // label19
             // 
@@ -417,7 +419,7 @@ namespace WindowsFormsApp1
             this.AddTextBox_register.Location = new System.Drawing.Point(99, 109);
             this.AddTextBox_register.Name = "AddTextBox_register";
             this.AddTextBox_register.Size = new System.Drawing.Size(156, 27);
-            this.AddTextBox_register.TabIndex = 24;
+            this.AddTextBox_register.TabIndex = 9;
             // 
             // label13
             // 
@@ -435,20 +437,20 @@ namespace WindowsFormsApp1
             this.NameTextBox_register.Location = new System.Drawing.Point(99, 20);
             this.NameTextBox_register.Name = "NameTextBox_register";
             this.NameTextBox_register.Size = new System.Drawing.Size(156, 27);
-            this.NameTextBox_register.TabIndex = 22;
+            this.NameTextBox_register.TabIndex = 7;
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.personalPanel);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.companyPanel);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.CompanyRadioButton_register);
             this.panel1.Controls.Add(this.AccountTextBox_register);
             this.panel1.Controls.Add(this.label10);
             this.panel1.Controls.Add(this.PWTextBox_register);
-            this.panel1.Controls.Add(this.PersonRadioButton_register);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.BackButton);
             this.panel1.Controls.Add(this.label3);
@@ -463,6 +465,15 @@ namespace WindowsFormsApp1
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(700, 530);
             this.panel1.TabIndex = 28;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.CompanyRadioButton_register);
+            this.panel2.Controls.Add(this.PersonRadioButton_register);
+            this.panel2.Location = new System.Drawing.Point(138, 63);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(156, 27);
+            this.panel2.TabIndex = 1;
             // 
             // registered
             // 
@@ -481,6 +492,8 @@ namespace WindowsFormsApp1
             this.personalPanel.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -525,5 +538,6 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.TextBox AddTextBox_register;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
     }
 }

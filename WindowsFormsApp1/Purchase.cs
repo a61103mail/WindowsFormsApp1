@@ -12,33 +12,32 @@ namespace WindowsFormsApp1
     using System;
     using System.Collections.Generic;
     
-    public partial class Order
+    public partial class Purchase
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Order()
+        public Purchase()
         {
-            this.OrderDetails = new HashSet<OrderDetail>();
-            this.SalesDetails = new HashSet<SalesDetail>();
+            this.PurchaseConfirmedDetails = new HashSet<PurchaseConfirmedDetail>();
+            this.PurchaseDetails = new HashSet<PurchaseDetail>();
         }
     
-        public int OrderID { get; set; }
-        public Nullable<System.DateTime> OrderDate { get; set; }
-        public Nullable<System.DateTime> ModifiedDate { get; set; }
-        public Nullable<int> CustomerID { get; set; }
-        public Nullable<int> EmployeeID { get; set; }
-        public Nullable<System.DateTime> RequiredDate { get; set; }
+        public int PurchaseID { get; set; }
+        public Nullable<System.DateTime> PurchaseDate { get; set; }
+        public Nullable<int> SupplierID { get; set; }
+        public Nullable<int> PurchaserEmpID { get; set; }
+        public string Deliveryaddress { get; set; }
         public string Comment { get; set; }
-        public Nullable<short> OrderStatus { get; set; }
-        public string Address { get; set; }
-        public string DeliveryAddress { get; set; }
+        public Nullable<short> PurchaseStatus { get; set; }
+        public Nullable<System.DateTime> RequiredDate { get; set; }
+        public Nullable<int> TallyEmpID { get; set; }
     
         public virtual Customer Customer { get; set; }
         public virtual Employee Employee { get; set; }
         public virtual Employee Employee1 { get; set; }
         public virtual StatusList StatusList { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
+        public virtual ICollection<PurchaseConfirmedDetail> PurchaseConfirmedDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SalesDetail> SalesDetails { get; set; }
+        public virtual ICollection<PurchaseDetail> PurchaseDetails { get; set; }
     }
 }

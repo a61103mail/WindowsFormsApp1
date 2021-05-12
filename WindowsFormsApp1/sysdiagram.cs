@@ -12,13 +12,12 @@ namespace WindowsFormsApp1
     using System;
     using System.Collections.Generic;
     
-    public partial class CustomerRole
+    public partial class sysdiagram
     {
-        public int RoleID { get; set; }
-        public int ID { get; set; }
-        public int CustomerID { get; set; }
-    
-        public virtual Customer Customer { get; set; }
-        public virtual Role Role { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

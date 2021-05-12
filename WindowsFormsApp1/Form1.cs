@@ -25,11 +25,13 @@ namespace WindowsFormsApp1
             InitializeComponent();
             
             this.pictureBox1.SendToBack();//将背景图片放到最下面
-            this.panel1.BackColor = Color.FromArgb(85,Color.Gray);//将Panel设为透明
-            this.panel1.Parent = this.pictureBox1;//将panel父控件设为背景图片控件
-            this.panel1.BringToFront();//将panel放在前面
-            this.pictureBox1.BackColor = Color.FromArgb(85, Color.Gray);
+            this.panel1.BackColor = Color.FromArgb(85,Color.Black);//将Panel设为透明            
+            this.panel1.Parent = this.pictureBox1;//将panel父控件设为背景图片控件            
+            this.panel1.BringToFront();//将panel放在前面            
+            this.pictureBox1.BackColor = Color.FromArgb(85, Color.Black);            
         }
+
+
         private void button4_Click(object sender, EventArgs e)
         {
             this.Dispose();
@@ -47,7 +49,6 @@ namespace WindowsFormsApp1
             regis.Parent = panel3;
             this.panel2.Visible = false;
             regis.Show();
-
             
 
             //var registered = new registered();
@@ -215,12 +216,7 @@ namespace WindowsFormsApp1
         private void panel3_ControlRemoved(object sender, ControlEventArgs e)
         {
             this.panel2.Visible = true;
-        }
-
-        private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e)
-        {
-
-        }
+        }               
 
         private void button4_MouseMove(object sender, MouseEventArgs e)
         {

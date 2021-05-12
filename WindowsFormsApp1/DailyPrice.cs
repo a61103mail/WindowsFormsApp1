@@ -12,13 +12,16 @@ namespace WindowsFormsApp1
     using System;
     using System.Collections.Generic;
     
-    public partial class CustomerRole
+    public partial class DailyPrice
     {
-        public int RoleID { get; set; }
-        public int ID { get; set; }
-        public int CustomerID { get; set; }
-    
-        public virtual Customer Customer { get; set; }
-        public virtual Role Role { get; set; }
+        public int RecordID { get; set; }
+        public System.DateTime TransDate { get; set; }
+        public string CropCode { get; set; }
+        public string MarketCode { get; set; }
+        public Nullable<decimal> Upper_Price { get; set; }
+        public Nullable<decimal> Middle_Price { get; set; }
+        public Nullable<decimal> Lower_Price { get; set; }
+        public Nullable<decimal> Avg_Price { get; set; }
+        public Nullable<decimal> Trans_Quantity { get; set; }
     }
 }

@@ -12,13 +12,13 @@ namespace WindowsFormsApp1
     using System;
     using System.Collections.Generic;
     
-    public partial class CustomerRole
+    public partial class Inventory
     {
-        public int RoleID { get; set; }
-        public int ID { get; set; }
-        public int CustomerID { get; set; }
+        public int InventoryID { get; set; }
+        public string ProductCode { get; set; }
+        public Nullable<decimal> Qty { get; set; }
+        public Nullable<System.DateTime> Date { get; set; }
     
-        public virtual Customer Customer { get; set; }
-        public virtual Role Role { get; set; }
+        public virtual Product Product { get; set; }
     }
 }

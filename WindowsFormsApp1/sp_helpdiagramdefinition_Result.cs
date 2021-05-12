@@ -10,15 +10,10 @@
 namespace WindowsFormsApp1
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class CustomerRole
+    public partial class sp_helpdiagramdefinition_Result
     {
-        public int RoleID { get; set; }
-        public int ID { get; set; }
-        public int CustomerID { get; set; }
-    
-        public virtual Customer Customer { get; set; }
-        public virtual Role Role { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

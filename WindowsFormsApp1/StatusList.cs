@@ -21,6 +21,7 @@ namespace WindowsFormsApp1
             this.Employees = new HashSet<Employee>();
             this.Orders = new HashSet<Order>();
             this.Products = new HashSet<Product>();
+            this.Purchases = new HashSet<Purchase>();
         }
     
         public short StatusID { get; set; }
@@ -34,5 +35,7 @@ namespace WindowsFormsApp1
         public virtual ICollection<Order> Orders { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Product> Products { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Purchase> Purchases { get; set; }
     }
 }

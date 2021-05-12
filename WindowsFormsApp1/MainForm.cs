@@ -18,6 +18,7 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
         }
+
         private void button1_Click(object sender, EventArgs e)
         {
             panel1.Controls.Clear();
@@ -53,29 +54,98 @@ namespace WindowsFormsApp1
         {
             Form1 form = (Form1)this.Owner;
             form.Visible = true;
+            form.BackColor = Color.Black;
             this.Close();
-            
-
         }
         
         private void button5_Click(object sender, EventArgs e)
         {
-            //panel1.Controls.Clear();
-            //訂單表 訂單表 = new 訂單表()
-            //{
-            //    Dock = DockStyle.Fill,
-            //    TopLevel = false,
-            //    TopMost = true
-            //};
-            //訂單表.FormBorderStyle = FormBorderStyle.None;
-            //this.panel1.Controls.Add(訂單表);
-            //訂單表.Show();
+            panel1.Controls.Clear();
+            訂單表 訂單表 = new 訂單表()
+            {
+                Dock = DockStyle.Fill,
+                TopLevel = false,
+                TopMost = true
+            };
+            訂單表.FormBorderStyle = FormBorderStyle.None;
+            this.panel1.Controls.Add(訂單表);
+            訂單表.Show();
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Form1 form = (Form1)this.Owner;
             form.Visible = true;
+        }
+
+        private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e)
+        {
+
+        }
+
+        private void lbl_EMP_Click(object sender, EventArgs e)
+        {
+            lbl_meau_Click("lbl_EMP");
+
+        }
+
+        private void lbl_CUMR_Click(object sender, EventArgs e)
+        {
+            lbl_meau_Click("lbl_CUMR");
+        }
+        private void lbl_meau_Click(string str)
+        {
+            switch (str)
+            {
+                case "lbl_EMP":
+                    if (this.splitContainer_EMP.Panel2Collapsed == true)
+                    {
+                        this.splitContainer_EMP.Panel2Collapsed = false;
+                        this.splitContainer_EMP.Height = 370;
+                    }
+                    else
+                    {
+                        this.splitContainer_EMP.Panel2Collapsed = true;
+                        this.splitContainer_EMP.Height = 50;
+                    }
+                    break;
+
+                case "lbl_CUMR":
+                    if (this.splitContainer_CUMR.Panel2Collapsed == true)
+                    {
+                        this.splitContainer_CUMR.Panel2Collapsed = false;
+                        this.splitContainer_CUMR.Height = 370;
+                    }
+                    else
+                    {
+                        this.splitContainer_CUMR.Panel2Collapsed = true;
+                        this.splitContainer_CUMR.Height = 50;
+                    }
+                    break;
+
+                default:
+                    if (this.splitContainer_CUMR.Panel2Collapsed == true)
+                    {
+                        this.splitContainer_CUMR.Panel2Collapsed = false;
+                        this.splitContainer_CUMR.Height = 370;
+                        this.splitContainer_EMP.Panel2Collapsed = false;
+                        this.splitContainer_EMP.Height = 370;
+                    }
+                    else
+                    {
+                        this.splitContainer_CUMR.Panel2Collapsed = true;
+                        this.splitContainer_CUMR.Height = 50;
+                        this.splitContainer_EMP.Panel2Collapsed = true;
+                        this.splitContainer_EMP.Height = 50;
+                    }
+                    break;
+            }
+            
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            lbl_meau_Click("Load");
         }
     }
 }

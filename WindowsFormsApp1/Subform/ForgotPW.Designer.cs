@@ -85,7 +85,7 @@ namespace WindowsFormsApp1
             this.ConfirmBtn.Location = new System.Drawing.Point(387, 378);
             this.ConfirmBtn.Name = "ConfirmBtn";
             this.ConfirmBtn.Size = new System.Drawing.Size(60, 30);
-            this.ConfirmBtn.TabIndex = 4;
+            this.ConfirmBtn.TabIndex = 7;
             this.ConfirmBtn.Text = "確認";
             this.ConfirmBtn.UseVisualStyleBackColor = true;
             this.ConfirmBtn.Click += new System.EventHandler(this.ConfirmBtn_Click);
@@ -97,7 +97,7 @@ namespace WindowsFormsApp1
             this.BackBtn.Location = new System.Drawing.Point(464, 378);
             this.BackBtn.Name = "BackBtn";
             this.BackBtn.Size = new System.Drawing.Size(60, 30);
-            this.BackBtn.TabIndex = 5;
+            this.BackBtn.TabIndex = 8;
             this.BackBtn.Text = "返回";
             this.BackBtn.UseVisualStyleBackColor = true;
             this.BackBtn.Click += new System.EventHandler(this.BackBtn_Click);
@@ -118,7 +118,7 @@ namespace WindowsFormsApp1
             this.PWtextBox.Location = new System.Drawing.Point(274, 269);
             this.PWtextBox.Name = "PWtextBox";
             this.PWtextBox.Size = new System.Drawing.Size(250, 32);
-            this.PWtextBox.TabIndex = 8;
+            this.PWtextBox.TabIndex = 4;
             // 
             // label4
             // 
@@ -136,7 +136,7 @@ namespace WindowsFormsApp1
             this.CKDPWtextBox.Location = new System.Drawing.Point(274, 317);
             this.CKDPWtextBox.Name = "CKDPWtextBox";
             this.CKDPWtextBox.Size = new System.Drawing.Size(250, 32);
-            this.CKDPWtextBox.TabIndex = 10;
+            this.CKDPWtextBox.TabIndex = 5;
             // 
             // label5
             // 
@@ -154,7 +154,7 @@ namespace WindowsFormsApp1
             this.CheckBtn.Location = new System.Drawing.Point(312, 378);
             this.CheckBtn.Name = "CheckBtn";
             this.CheckBtn.Size = new System.Drawing.Size(60, 30);
-            this.CheckBtn.TabIndex = 11;
+            this.CheckBtn.TabIndex = 6;
             this.CheckBtn.Text = "驗證";
             this.CheckBtn.UseVisualStyleBackColor = true;
             this.CheckBtn.Click += new System.EventHandler(this.CheckBtn_Click);
@@ -163,7 +163,7 @@ namespace WindowsFormsApp1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.SeaShell;
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(659, 541);
             this.Controls.Add(this.CheckBtn);
             this.Controls.Add(this.CKDPWtextBox);

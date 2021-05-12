@@ -34,7 +34,6 @@ namespace WindowsFormsApp1
             this.button1 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.CustomerRadioButton = new System.Windows.Forms.RadioButton();
@@ -45,6 +44,7 @@ namespace WindowsFormsApp1
             this.EMPRadioButton = new System.Windows.Forms.RadioButton();
             this.label2 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -55,6 +55,7 @@ namespace WindowsFormsApp1
             // 
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("標楷體", 36F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(4, 3);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(461, 44);
@@ -65,6 +66,7 @@ namespace WindowsFormsApp1
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("標楷體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.button1.ForeColor = System.Drawing.Color.Black;
             this.button1.Location = new System.Drawing.Point(449, 338);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(65, 33);
@@ -83,7 +85,7 @@ namespace WindowsFormsApp1
             this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkGray;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
-            this.button4.Location = new System.Drawing.Point(642, 1);
+            this.button4.Location = new System.Drawing.Point(652, 0);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(48, 48);
             this.button4.TabIndex = 9;
@@ -93,7 +95,7 @@ namespace WindowsFormsApp1
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.BackColor = System.Drawing.Color.Silver;
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.button4);
             this.panel1.Controls.Add(this.panel2);
@@ -103,16 +105,9 @@ namespace WindowsFormsApp1
             this.panel1.Size = new System.Drawing.Size(700, 580);
             this.panel1.TabIndex = 12;
             // 
-            // panel3
-            // 
-            this.panel3.Location = new System.Drawing.Point(0, 50);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(700, 530);
-            this.panel3.TabIndex = 21;
-            this.panel3.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.panel3_ControlRemoved);
-            // 
             // panel2
             // 
+            this.panel2.BackColor = System.Drawing.Color.Transparent;
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.CustomerRadioButton);
             this.panel2.Controls.Add(this.button1);
@@ -123,6 +118,7 @@ namespace WindowsFormsApp1
             this.panel2.Controls.Add(this.EMPRadioButton);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.button2);
+            this.panel2.ForeColor = System.Drawing.Color.White;
             this.panel2.Location = new System.Drawing.Point(0, 50);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(700, 530);
@@ -173,9 +169,9 @@ namespace WindowsFormsApp1
             // 
             // button3
             // 
-            this.button3.BackColor = System.Drawing.Color.LightGray;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.BackColor = System.Drawing.Color.Transparent;
             this.button3.Font = new System.Drawing.Font("標楷體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.button3.ForeColor = System.Drawing.Color.Black;
             this.button3.Location = new System.Drawing.Point(408, 391);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(106, 33);
@@ -219,6 +215,7 @@ namespace WindowsFormsApp1
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("標楷體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.button2.ForeColor = System.Drawing.Color.Black;
             this.button2.Location = new System.Drawing.Point(363, 338);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(71, 33);
@@ -226,6 +223,15 @@ namespace WindowsFormsApp1
             this.button2.Text = "登入";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.Transparent;
+            this.panel3.Location = new System.Drawing.Point(0, 50);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(700, 530);
+            this.panel3.TabIndex = 21;
+            this.panel3.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.panel3_ControlRemoved);
             // 
             // pictureBox1
             // 
