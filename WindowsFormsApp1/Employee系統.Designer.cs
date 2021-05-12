@@ -84,8 +84,7 @@ namespace WindowsFormsApp1
             this.c31 = new System.Windows.Forms.Label();
             this.c21 = new System.Windows.Forms.Label();
             this.c81 = new System.Windows.Forms.Label();
-            this.foodDataSet1 = new WindowsFormsApp1.FOODDataSet();
-            this.employeeTableAdapter1 = new WindowsFormsApp1.FOODDataSetTableAdapters.EmployeeTableAdapter();
+            
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -104,7 +103,6 @@ namespace WindowsFormsApp1
             this.splitContainer2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_ODD)).BeginInit();
             this.tableLayoutPanel_Customer.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.foodDataSet1)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -772,15 +770,7 @@ namespace WindowsFormsApp1
             this.c81.TabIndex = 14;
             this.c81.Text = "MAIL";
             this.c81.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // foodDataSet1
-            // 
-            this.foodDataSet1.DataSetName = "FOODDataSet";
-            this.foodDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // employeeTableAdapter1
-            // 
-            this.employeeTableAdapter1.ClearBeforeFill = true;
+            
             // 
             // Employee系統
             // 
@@ -810,7 +800,7 @@ namespace WindowsFormsApp1
             this.splitContainer2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_ODD)).EndInit();
             this.tableLayoutPanel_Customer.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.foodDataSet1)).EndInit();
+            
             this.ResumeLayout(false);
 
         }
@@ -838,8 +828,7 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.TextBox AddressTextBox_Employee;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
-        private FOODDataSet foodDataSet1;
-        private FOODDataSetTableAdapters.EmployeeTableAdapter employeeTableAdapter1;
+        
         private System.Windows.Forms.DataGridView dataGridView_order;
         private System.Windows.Forms.TabPage XXX;
         private System.Windows.Forms.SplitContainer splitContainer2;

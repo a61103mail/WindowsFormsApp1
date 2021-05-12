@@ -52,29 +52,30 @@ namespace WindowsFormsApp1
         private void label1_Click(object sender, EventArgs e)
         {
             Form1 form = (Form1)this.Owner;
-            
-            this.Close();
             form.Visible = true;
+            this.Close();
+            
 
         }
         
         private void button5_Click(object sender, EventArgs e)
         {
-            panel1.Controls.Clear();
-            訂單表 訂單表 = new 訂單表()
-            {
-                Dock = DockStyle.Fill,
-                TopLevel = false,
-                TopMost = true
-            };
-            訂單表.FormBorderStyle = FormBorderStyle.None;
-            this.panel1.Controls.Add(訂單表);
-            訂單表.Show();
+            //panel1.Controls.Clear();
+            //訂單表 訂單表 = new 訂單表()
+            //{
+            //    Dock = DockStyle.Fill,
+            //    TopLevel = false,
+            //    TopMost = true
+            //};
+            //訂單表.FormBorderStyle = FormBorderStyle.None;
+            //this.panel1.Controls.Add(訂單表);
+            //訂單表.Show();
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
+            Form1 form = (Form1)this.Owner;
+            form.Visible = true;
         }
     }
 }

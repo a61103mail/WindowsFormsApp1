@@ -109,7 +109,7 @@ namespace WindowsFormsApp1
                     MainForm main = new MainForm();
                     main.Owner = this;
                     main.MainForm_NameLabel.Text = CusName + "，您好！";
-                    this.Hide();
+                    this.Visible=false;
                     main.ShowDialog();
                     this.textBox1.Text = "";
                     this.textBox2.Text = "";
@@ -126,7 +126,7 @@ namespace WindowsFormsApp1
                     MainForm main = new MainForm();
                     main.Owner = this;
                     main.MainForm_NameLabel.Text = EmpName+"，您好！";
-                    this.Hide();
+                    this.Visible = false;
                     main.ShowDialog();
                     this.textBox1.Text = "";
                     this.textBox2.Text = "";
