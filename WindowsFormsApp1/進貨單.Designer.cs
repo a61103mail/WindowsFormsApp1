@@ -29,7 +29,7 @@ namespace WindowsFormsApp1
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
@@ -264,6 +264,7 @@ namespace WindowsFormsApp1
             this.button4.TabIndex = 0;
             this.button4.Text = "修改";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button5
             // 
@@ -476,8 +477,8 @@ namespace WindowsFormsApp1
             // 
             // prodname
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.prodname.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            this.prodname.DefaultCellStyle = dataGridViewCellStyle2;
             this.prodname.HeaderText = "品名";
             this.prodname.Name = "prodname";
             this.prodname.ReadOnly = true;

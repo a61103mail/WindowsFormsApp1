@@ -254,5 +254,45 @@ namespace WindowsFormsApp1
                 
             }
         }
+        private void button4_Click(object sender, EventArgs e)
+        {
+            var q1 = from pd in this.db.PurchaseConfirmedDetails
+                     where (pd.PurchaseID).ToString() == this.textBox3.Text
+                     select pd;
+            var pds = q1.ToList();
+            List<int> myIntLists = new List<int>();
+            List<int> myIntLists2 = new List<int>();
+            
+                DialogResult s = MessageBox.Show("確定修改?", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
+
+                if (s == DialogResult.OK)
+                {
+                    var dr = this.dataGridView1.Rows;
+                    for (int j = 0; j < pds.Count; j++)
+                    {
+                        for (int i = 0; i < dr.Count - 1; i++)
+                        {
+                            if (dr[i].Cells["pcdid"].Value != null)
+                            {
+                                if (pds[j].PurchaseComfirmedDetailID == int.Parse(dr[i].Cells["pcdid"].Value.ToString()))
+                                {
+                                    pds[j].ProductCode = dr[i].Cells[1].Value.ToString();
+                                    pds[j].Qty = decimal.Parse(dr[i].Cells[4].Value.ToString());
+                                    pds[j].UnitPrice = decimal.Parse(dr[i].Cells[3].Value.ToString());
+                                    pds[j].Unit = dr[i].Cells[5].Value.ToString();
+                                    if (dr[i].Cells[7].Value != null)
+                                    {
+                                        pds[j].Comment = dr[i].Cells[7].Value.ToString();
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    this.db.SaveChanges();
+                    
+                    MessageBox.Show("修改成功", "", MessageBoxButtons.OK);
+                }
+            
+        }
     }
 }
