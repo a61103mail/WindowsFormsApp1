@@ -32,8 +32,8 @@ namespace WindowsFormsApp1
 
                      select new
                      {
-                         訂單編號 = p.PurchaseID,
-                         訂單日期 = p.PurchaseDate,
+                         採購單編號 = p.PurchaseID,
+                         採購日期 = p.PurchaseDate,
                          供應商編號 = p.SupplierID,
                          供應商 = p.Customer.Name,
                          Total = (
@@ -54,8 +54,8 @@ namespace WindowsFormsApp1
                      where /*i.Product.Name.Contains(textBox2.Text)*/(from i in p.PurchaseDetails where i.PurchaseID == p.PurchaseID select i.Product.Name).FirstOrDefault().Contains(textBox2.Text) && p.Customer.Name.Contains(textBox1.Text)
                      select new
                      {
-                         訂單編號 = p.PurchaseID,
-                         訂單日期 = p.PurchaseDate,
+                         採購單編號 = p.PurchaseID,
+                         採購日期 = p.PurchaseDate,
                          供應商編號 = p.SupplierID,
                          供應商 = p.Customer.Name,
                          Total = (
@@ -80,8 +80,8 @@ namespace WindowsFormsApp1
                      where (p.PurchaseDate >= begDate && p.PurchaseDate <= endDate) /*&& i.Product.Name.Contains(textBox2.Text)*/ && p.Customer.Name.Contains(textBox1.Text) && (from i in p.PurchaseDetails where i.PurchaseID == p.PurchaseID select i.Product.Name).FirstOrDefault().Contains(textBox2.Text)
                      select new
                      {
-                         訂單編號 = p.PurchaseID,
-                         訂單日期 = p.PurchaseDate,
+                         採購單編號 = p.PurchaseID,
+                         採購日期 = p.PurchaseDate,
                          供應商編號 = p.SupplierID,
                          供應商 = p.Customer.Name,
                          Total = p.PurchaseDetails.Sum((pdd) =>

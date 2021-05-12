@@ -14,12 +14,6 @@ namespace WindowsFormsApp1
     
     public partial class PurchaseDetail
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public PurchaseDetail()
-        {
-            this.PurchaseConfirmedDetails = new HashSet<PurchaseConfirmedDetail>();
-        }
-    
         public int PurchaseDetailID { get; set; }
         public int PurchaseID { get; set; }
         public string ProductCode { get; set; }
@@ -30,7 +24,5 @@ namespace WindowsFormsApp1
     
         public virtual Product Product { get; set; }
         public virtual Purchase Purchase { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PurchaseConfirmedDetail> PurchaseConfirmedDetails { get; set; }
     }
 }

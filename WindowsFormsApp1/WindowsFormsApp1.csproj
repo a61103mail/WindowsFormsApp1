@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{99A5EF96-2B3B-4051-BB0A-637908B3B488}</ProjectGuid>
+    <ProjectGuid>{3E2C0E8D-D63F-4B9B-8844-90A884C2A6A6}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>WindowsFormsApp1</RootNamespace>
     <AssemblyName>WindowsFormsApp1</AssemblyName>
@@ -133,6 +133,9 @@
     <Compile Include="SalesDetail.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="StatusList.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="sysdiagram.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -162,6 +165,12 @@
     <Compile Include="進貨單.Designer.cs">
       <DependentUpon>進貨單.cs</DependentUpon>
     </Compile>
+    <Compile Include="進貨單查詢表.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="進貨單查詢表.Designer.cs">
+      <DependentUpon>進貨單查詢表.cs</DependentUpon>
+    </Compile>
     <Compile Include="進貨轉單查詢.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -189,6 +198,9 @@
     </Compile>
     <EmbeddedResource Include="進貨單.resx">
       <DependentUpon>進貨單.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="進貨單查詢表.resx">
+      <DependentUpon>進貨單查詢表.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="進貨轉單查詢.resx">
       <DependentUpon>進貨轉單查詢.cs</DependentUpon>

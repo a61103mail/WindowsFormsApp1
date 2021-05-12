@@ -17,14 +17,13 @@ namespace WindowsFormsApp1
         public int PurchaseComfirmedDetailID { get; set; }
         public int PurchaseID { get; set; }
         public string ProductCode { get; set; }
-        public Nullable<int> PurchaseDetailID { get; set; }
         public decimal Qty { get; set; }
         public decimal UnitPrice { get; set; }
         public string Unit { get; set; }
         public string Comment { get; set; }
+        public Nullable<System.DateTime> ComfirmedDate { get; set; }
     
         public virtual Product Product { get; set; }
         public virtual Purchase Purchase { get; set; }
-        public virtual PurchaseDetail PurchaseDetail { get; set; }
     }
 }
