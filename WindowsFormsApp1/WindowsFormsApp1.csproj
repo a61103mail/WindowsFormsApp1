@@ -205,10 +205,10 @@
     <Compile Include="WeeklyPriceTemp.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="查詢子表.cs">
+    <Compile Include="Subform\查詢子表.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="查詢子表.designer.cs">
+    <Compile Include="Subform\查詢子表.designer.cs">
       <DependentUpon>查詢子表.cs</DependentUpon>
     </Compile>
     <Compile Include="訂單表.cs">
@@ -216,6 +216,18 @@
     </Compile>
     <Compile Include="訂單表.designer.cs">
       <DependentUpon>訂單表.cs</DependentUpon>
+    </Compile>
+    <Compile Include="銷貨單.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="銷貨單.designer.cs">
+      <DependentUpon>銷貨單.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Subform\銷貨單查詢表.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Subform\銷貨單查詢表.designer.cs">
+      <DependentUpon>銷貨單查詢表.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Customer系統.resx">
       <DependentUpon>Customer系統.cs</DependentUpon>
@@ -243,11 +255,17 @@
     <EmbeddedResource Include="Subform\Select系統.resx">
       <DependentUpon>Select系統.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="查詢子表.resx">
+    <EmbeddedResource Include="Subform\查詢子表.resx">
       <DependentUpon>查詢子表.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="訂單表.resx">
       <DependentUpon>訂單表.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="銷貨單.resx">
+      <DependentUpon>銷貨單.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Subform\銷貨單查詢表.resx">
+      <DependentUpon>銷貨單查詢表.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="Model.edmx">
       <Generator>EntityModelCodeGenerator</Generator>

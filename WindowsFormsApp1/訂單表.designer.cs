@@ -318,29 +318,32 @@ namespace WindowsFormsApp1.Properties
             // label16
             // 
             this.label16.AutoSize = true;
+            this.label16.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label16.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label16.Location = new System.Drawing.Point(307, 99);
+            this.label16.Location = new System.Drawing.Point(318, 99);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(56, 16);
+            this.label16.Size = new System.Drawing.Size(58, 18);
             this.label16.TabIndex = 42;
             this.label16.Text = "      ";
             // 
             // label17
             // 
             this.label17.AutoSize = true;
+            this.label17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label17.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label17.Location = new System.Drawing.Point(984, 104);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(64, 16);
+            this.label17.Size = new System.Drawing.Size(66, 18);
             this.label17.TabIndex = 43;
             this.label17.Text = "       ";
             // 
             // label18
             // 
             this.label18.AutoSize = true;
+            this.label18.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label18.Location = new System.Drawing.Point(120, 66);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(62, 12);
+            this.label18.Size = new System.Drawing.Size(64, 14);
             this.label18.TabIndex = 44;
             this.label18.Text = "                   ";
             // 
@@ -409,18 +412,20 @@ namespace WindowsFormsApp1.Properties
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(686, 67);
+            this.label19.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label19.Font = new System.Drawing.Font("標楷體", 12F);
+            this.label19.Location = new System.Drawing.Point(682, 63);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(95, 12);
+            this.label19.Size = new System.Drawing.Size(114, 18);
             this.label19.TabIndex = 45;
-            this.label19.Text = "                              ";
+            this.label19.Text = "             ";
             // 
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.Location = new System.Drawing.Point(25, 0);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(89, 23);
+            this.button3.Size = new System.Drawing.Size(94, 23);
             this.button3.TabIndex = 85;
             this.button3.Text = "新增訂單";
             this.button3.UseVisualStyleBackColor = true;

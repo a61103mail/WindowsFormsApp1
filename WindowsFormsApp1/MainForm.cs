@@ -147,5 +147,19 @@ namespace WindowsFormsApp1
         {
             lbl_meau_Click("Load");
         }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            panel1.Controls.Clear();
+            銷貨單 銷貨單 = new 銷貨單()
+            {
+                Dock = DockStyle.Fill,
+                TopLevel = false,
+                TopMost = true
+            };
+            銷貨單.FormBorderStyle = FormBorderStyle.None;
+            this.panel1.Controls.Add(銷貨單);
+            銷貨單.Show();
+        }
     }
 }
