@@ -515,9 +515,8 @@ namespace WindowsFormsApp1
             // 
             // pcdid
             // 
-            this.pcdid.HeaderText = "pcdid";
+            this.pcdid.HeaderText = "進貨編號";
             this.pcdid.Name = "pcdid";
-            this.pcdid.Visible = false;
             // 
             // 進貨單
             // 

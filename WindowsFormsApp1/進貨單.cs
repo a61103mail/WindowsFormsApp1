@@ -123,10 +123,16 @@ namespace WindowsFormsApp1
                     }
                     decimal c = a - b;
                     if (this.dataGridView1[4, e.RowIndex].Value == null)
-                        return;
-                    else if (decimal.Parse(this.dataGridView1[4, e.RowIndex].Value.ToString()) > c)
                     {
-                        MessageBox.Show(this.dataGridView1[1, e.RowIndex].Value+" ,進貨數量不可大於採購數量。\n最大進貨數量為："+c);
+                        return;
+                    }
+                    else if (this.dataGridView1[8, e.RowIndex].Value != null)
+                    {
+                        return;
+                    }
+                    else if (decimal.Parse(this.dataGridView1[4, e.RowIndex].Value.ToString()) > c && this.dataGridView1[8, e.RowIndex].Value == null)
+                    {
+                        MessageBox.Show(this.dataGridView1[2, e.RowIndex].Value + " ,進貨數量不可大於採購數量。\n最大進貨數量為：" + c);
                     }
                 }
             }
@@ -201,7 +207,52 @@ namespace WindowsFormsApp1
 
         private void thepurchasecfsearch(int pid)
         {
-
+            var q = (from p in this.db.Purchases
+                     where p.PurchaseID == pid
+                     select new
+                     {
+                         purchaseid = p.PurchaseID,
+                         purchaseemp = p.Employee.Name,
+                         purchaseTally = p.Employee1.Name,
+                         suppliername = p.Customer.Name,
+                         suppliercp = p.Customer.ContactPerson,
+                         supplierph = p.Customer.ContactCellPhone,
+                         deliveryaddress = p.Deliveryaddress,
+                         purchaseComment = p.Comment
+                     }).FirstOrDefault();
+            var q2 = (from pd in db.PurchaseConfirmedDetails
+                      where pd.PurchaseID == pid
+                      select new
+                      {
+                          productCode = pd.ProductCode,
+                          productName = pd.Product.Name,
+                          price = pd.UnitPrice,
+                          qty = pd.Qty,
+                          unit = pd.Unit,
+                          comm = pd.Comment,
+                          pcpdid = pd.PurchaseComfirmedDetailID
+                      }).ToList();
+            this.textBox3.Text = q.purchaseid.ToString();
+            this.textBox6.Text = q.purchaseemp;
+            this.textBox8.Text = q.purchaseTally;
+            this.textBox4.Text = q.suppliername;
+            this.textBox7.Text = q.suppliercp;
+            this.textBox9.Text = q.supplierph;
+            this.textBox5.Text = q.deliveryaddress;
+            this.textBox1.Text = q.purchaseComment;
+            for (int i = 0; i < q2.Count(); i++)
+            {
+                DataGridViewRow dr = this.dataGridView1.Rows[0].Clone() as DataGridViewRow;
+                this.dataGridView1.Rows.Add(dr);
+                this.dataGridView1[8, i].Value = q2[i].pcpdid;
+                this.dataGridView1[1, i].Value = q2[i].productCode;
+                this.dataGridView1[2, i].Value = q2[i].productName;
+                this.dataGridView1[3, i].Value = q2[i].price;
+                this.dataGridView1[4, i].Value = q2[i].qty;
+                this.dataGridView1[5, i].Value = q2[i].unit;
+                this.dataGridView1[7, i].Value = q2[i].comm;
+                
+            }
         }
     }
 }
