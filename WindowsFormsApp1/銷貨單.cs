@@ -124,18 +124,16 @@ namespace WindowsFormsApp1
                     if (dr.Cells[0].Value != null)
                     {
                         
-                        sales.ProductCode = dr.Cells[0].Value.ToString();
-                        MessageBox.Show(dr.Cells[0].Value.ToString());
-                        sales.UnitPrice=decimal.Parse(dr.Cells[2].Value.ToString());
+                     sales.ProductCode = dr.Cells[0].Value.ToString();          sales.UnitPrice=decimal.Parse(dr.Cells[2].Value.ToString());
                         sales.unit= dr.Cells[4].Value.ToString();
 
                         this.db.SalesDetails.Add(sales);                       
                     }
                 }
                 short a = 2;
-                var q1 = (this.db.Orders.Where(n => n.OrderID.ToString() == OrderID).Select(n => n.OrderStatus)).FirstOrDefault();
-                Order od = new Order();
-                od.OrderStatus = a;
+                Order q1 = this.db.Orders.Where(n => n.OrderID.ToString() == OrderID).Select(n => n).FirstOrDefault();
+                
+                q1.OrderStatus = a;
                
                 this.db.SaveChanges();//新增OD回DB
                 MessageBox.Show("新增成功", "提醒", MessageBoxButtons.OK);
