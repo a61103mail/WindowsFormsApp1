@@ -17,11 +17,28 @@ namespace WindowsFormsApp1
         public 進貨單()
         {
             InitializeComponent();
+            //thecontorl();
+        }
+
+        private void thecontorl()
+        {
+            this.button1.Enabled = true;
+            this.button2.Enabled = false;
+            this.button3.Enabled = true;
+            this.button4.Enabled = false;
+            this.button5.Enabled = false;
+            this.button5.BackColor = Color.Gainsboro;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             allclear();
+            foreach (Control con in this.Controls)
+            {
+                con.Enabled = true;
+                this.button4.Enabled = false;
+                this.button5.Enabled = false;
+            }
             進貨轉單查詢 f = new 進貨轉單查詢();
             DialogResult res = f.ShowDialog();
             if (res == DialogResult.OK)
@@ -143,8 +160,10 @@ namespace WindowsFormsApp1
         }
         private void allclear()
         {
+            DateTime t = DateTime.Today;
             dataGridView1.Rows.Clear();
-            foreach (Control con in this.Controls)
+            this.dateTimePicker1.Value = t;
+            foreach (Control con in this.splitContainer2.Panel2.Controls)
             {
                 if (con is TextBox)
                 {
@@ -187,11 +206,18 @@ namespace WindowsFormsApp1
             }
             this.db.SaveChanges();
             MessageBox.Show("新增成功", "", MessageBoxButtons.OK);
+            thecontorl();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             allclear();
+            this.button1.Enabled = true;
+            this.button2.Enabled = false;
+            this.button3.Enabled = true;
+            this.button4.Enabled = true;
+            this.button5.Enabled = true;
+            this.button5.BackColor = Color.Salmon;
             進貨單查詢表 f = new 進貨單查詢表();
             DialogResult res = f.ShowDialog();
             if (res == DialogResult.OK)
@@ -295,7 +321,9 @@ namespace WindowsFormsApp1
         }
         private void button5_Click(object sender, EventArgs e)
         {
-            string d = "3";
+            var q = (from p in this.db.Purchases
+                     where p.PurchaseID == pid
+                     select p).FirstOrDefault();
             if (textBox3.Text == "") return;
             else
             {
@@ -305,20 +333,22 @@ namespace WindowsFormsApp1
                     if (this.label4.Text != null)
                     {
                         var q1 = from cfd in this.db.PurchaseConfirmedDetails
-                                 where (cfd.PurchaseID).ToString() == this.textBox3.Text
+                                 where cfd.PurchaseID == pid
                                  select cfd;
                         var a = q1.ToList();
                         foreach (var n in a)
                         {
                             this.db.PurchaseConfirmedDetails.Remove(n);
                         }
-
+                        q.PurchaseStatus = 1;
                         this.db.SaveChanges();
                     }
                     MessageBox.Show("刪除成功", "", MessageBoxButtons.OK);
                 }
 
             }
+            allclear();
+            thecontorl();
         }
     }
 }

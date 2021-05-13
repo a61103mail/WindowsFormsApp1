@@ -563,25 +563,6 @@ namespace WindowsFormsApp1
                                 select p).ToList();
                         q[0].PurchaseStatus = short.Parse(a);
                         this.db.SaveChanges();
-                        //var q1 = from pd in this.db.PurchaseDetails
-                        //         where (pd.PurchaseID).ToString() == this.label4.Text
-                        //         select pd;
-                        //var a = q1.ToList();
-                        //foreach (var n in a)
-                        //{
-                        //    this.db.PurchaseDetails.Remove(n);
-                        //}
-
-                        //var q = from p in this.db.Purchases
-                        //        where (p.PurchaseID).ToString() == this.label4.Text
-                        //        select p;
-                        //var b = q.ToList();
-                        //foreach (var x in b)
-                        //{
-                        //    this.db.Purchases.Remove(x);
-                        //}
-
-                        //this.db.SaveChanges();
                     }
                     MessageBox.Show("刪除成功", "", MessageBoxButtons.OK);
                     foreach (Control con in this.Controls)

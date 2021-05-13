@@ -29,7 +29,7 @@ namespace WindowsFormsApp1
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
@@ -478,8 +478,8 @@ namespace WindowsFormsApp1
             // 
             // prodname
             // 
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            this.prodname.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            this.prodname.DefaultCellStyle = dataGridViewCellStyle6;
             this.prodname.HeaderText = "品名";
             this.prodname.Name = "prodname";
             this.prodname.ReadOnly = true;
@@ -519,6 +519,7 @@ namespace WindowsFormsApp1
             // 
             this.pcdid.HeaderText = "進貨編號";
             this.pcdid.Name = "pcdid";
+            this.pcdid.Visible = false;
             // 
             // 進貨單
             // 
