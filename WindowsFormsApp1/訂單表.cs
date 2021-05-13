@@ -105,7 +105,7 @@ namespace WindowsFormsApp1.Properties
             order.OrderDate = this.dateTimePicker2.Value;
             order.RequiredDate = this.dateTimePicker1.Value;
             order.CustomerID = int.Parse(this.label16.Text);
-            order.EmployeeID = int.Parse(this.comboBox5.Text);
+            order.EmployeeID = int.Parse(this.label19.Text);
             order.Address = this.textBox4.Text;
             order.Comment = this.richTextBox1.Text;
             order.OrderStatus =short.Parse(status);
@@ -328,7 +328,7 @@ namespace WindowsFormsApp1.Properties
             if (res == DialogResult.OK)
             {
                 OrderID = k.suppliername;
-                MessageBox.Show(OrderID);
+                
 
 
                 var q = from o in this.db.Orders
@@ -439,7 +439,7 @@ namespace WindowsFormsApp1.Properties
                 int row = 0;
                 for (int i = 0; i < dr.Count; i++) {
                     
-                    if (i>=psd.Count)
+                    if (i>psd.Count)
                 {
                     MessageBox.Show("這邊是修改不是新增", "提醒", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;

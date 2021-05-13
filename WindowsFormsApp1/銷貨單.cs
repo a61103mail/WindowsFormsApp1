@@ -152,7 +152,7 @@ namespace WindowsFormsApp1
             if (res == DialogResult.OK)
             {
                 StautsID = k.suppliername;
-                MessageBox.Show(StautsID);
+                
 
 
                 var q = from o in this.orders
