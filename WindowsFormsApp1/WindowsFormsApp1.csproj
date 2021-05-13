@@ -199,6 +199,30 @@
     <Compile Include="Subform\registered.Designer.cs">
       <DependentUpon>registered.cs</DependentUpon>
     </Compile>
+    <Compile Include="Subform\採購單查詢頁面.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Subform\採購單查詢頁面.designer.cs">
+      <DependentUpon>採購單查詢頁面.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Subform\採購搜尋頁面.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Subform\採購搜尋頁面.designer.cs">
+      <DependentUpon>採購搜尋頁面.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Subform\進貨單查詢表.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Subform\進貨單查詢表.designer.cs">
+      <DependentUpon>進貨單查詢表.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Subform\進貨轉單查詢.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Subform\進貨轉單查詢.designer.cs">
+      <DependentUpon>進貨轉單查詢.cs</DependentUpon>
+    </Compile>
     <Compile Include="sysdiagram.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -211,6 +235,12 @@
     <Compile Include="Subform\查詢子表.designer.cs">
       <DependentUpon>查詢子表.cs</DependentUpon>
     </Compile>
+    <Compile Include="採購表單.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="採購表單.designer.cs">
+      <DependentUpon>採購表單.cs</DependentUpon>
+    </Compile>
     <Compile Include="訂單表.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -222,6 +252,12 @@
     </Compile>
     <Compile Include="Subform\銷貨單查詢表.designer.cs">
       <DependentUpon>銷貨單查詢表.cs</DependentUpon>
+    </Compile>
+    <Compile Include="進貨單.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="進貨單.designer.cs">
+      <DependentUpon>進貨單.cs</DependentUpon>
     </Compile>
     <Compile Include="銷貨單.cs">
       <SubType>Form</SubType>
@@ -255,14 +291,32 @@
     <EmbeddedResource Include="Subform\Select系統.resx">
       <DependentUpon>Select系統.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Subform\採購單查詢頁面.resx">
+      <DependentUpon>採購單查詢頁面.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Subform\採購搜尋頁面.resx">
+      <DependentUpon>採購搜尋頁面.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Subform\查詢子表.resx">
       <DependentUpon>查詢子表.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Subform\進貨單查詢表.resx">
+      <DependentUpon>進貨單查詢表.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Subform\進貨轉單查詢.resx">
+      <DependentUpon>進貨轉單查詢.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="採購表單.resx">
+      <DependentUpon>採購表單.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="訂單表.resx">
       <DependentUpon>訂單表.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Subform\銷貨單查詢表.resx">
       <DependentUpon>銷貨單查詢表.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="進貨單.resx">
+      <DependentUpon>進貨單.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="銷貨單.resx">
       <DependentUpon>銷貨單.cs</DependentUpon>
@@ -289,6 +343,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\搜尋圖示.jpg" />
     <None Include="Resources\close.png" />
     <Content Include="Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -310,6 +365,7 @@
     <Content Include="Resources\G3.jpeg" />
     <Content Include="Resources\power.png" />
     <None Include="Resources\save.png" />
+    <Content Include="Resources\red.JPG" />
     <Content Include="Resources\wrong.png" />
     <None Include="Resources\search.png" />
     <None Include="Resources\plus.png" />

@@ -161,5 +161,33 @@ namespace WindowsFormsApp1
             this.panel1.Controls.Add(銷貨單);
             銷貨單.Show();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            panel1.Controls.Clear();
+            採購表單 採購表單 = new 採購表單()
+            {
+                Dock = DockStyle.Fill,
+                TopLevel = false,
+                TopMost = true
+            };
+            採購表單.FormBorderStyle = FormBorderStyle.None;
+            this.panel1.Controls.Add(採購表單);
+            採購表單.Show();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            panel1.Controls.Clear();
+            進貨單 進貨單 = new 進貨單()
+            {
+                Dock = DockStyle.Fill,
+                TopLevel = false,
+                TopMost = true
+            };
+            進貨單.FormBorderStyle = FormBorderStyle.None;
+            this.panel1.Controls.Add(進貨單);
+            進貨單.Show();
+        }
     }
 }

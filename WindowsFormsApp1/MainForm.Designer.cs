@@ -215,8 +215,9 @@ namespace WindowsFormsApp1
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(185, 50);
             this.button4.TabIndex = 5;
-            this.button4.Text = "產品管理系統";
+            this.button4.Text = "採購管理系統";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button5
             // 
@@ -256,8 +257,9 @@ namespace WindowsFormsApp1
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(185, 50);
             this.button6.TabIndex = 7;
-            this.button6.Text = "進貨系統";
+            this.button6.Text = "進貨管理系統";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button7
             // 
