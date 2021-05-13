@@ -85,6 +85,9 @@
     <Compile Include="EmpRole.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="GetOrderAndDetailsByCustomerID_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Inventory.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -130,6 +133,24 @@
     </Compile>
     <Compile Include="Product.cs">
       <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Products\修改.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Products\修改.designer.cs">
+      <DependentUpon>修改.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Products\新增產品.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Products\新增產品.designer.cs">
+      <DependentUpon>新增產品.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Products\詳細.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Products\詳細.designer.cs">
+      <DependentUpon>詳細.cs</DependentUpon>
     </Compile>
     <Compile Include="Product_LatestPrice.cs">
       <DependentUpon>Model.tt</DependentUpon>
@@ -211,6 +232,12 @@
     <Compile Include="Subform\採購搜尋頁面.designer.cs">
       <DependentUpon>採購搜尋頁面.cs</DependentUpon>
     </Compile>
+    <Compile Include="Subform\現有庫存.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Subform\現有庫存.designer.cs">
+      <DependentUpon>現有庫存.cs</DependentUpon>
+    </Compile>
     <Compile Include="Subform\進貨單查詢表.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -223,23 +250,29 @@
     <Compile Include="Subform\進貨轉單查詢.designer.cs">
       <DependentUpon>進貨轉單查詢.cs</DependentUpon>
     </Compile>
-    <Compile Include="sysdiagram.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="WeeklyPriceTemp.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
     <Compile Include="Subform\查詢子表.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Subform\查詢子表.designer.cs">
       <DependentUpon>查詢子表.cs</DependentUpon>
     </Compile>
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WeeklyPriceTemp.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="採購表單.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="採購表單.designer.cs">
       <DependentUpon>採購表單.cs</DependentUpon>
+    </Compile>
+    <Compile Include="盤點.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="盤點.designer.cs">
+      <DependentUpon>盤點.cs</DependentUpon>
     </Compile>
     <Compile Include="訂單表.cs">
       <SubType>Form</SubType>
@@ -271,6 +304,15 @@
     <EmbeddedResource Include="Employee系統.resx">
       <DependentUpon>Employee系統.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Products\修改.resx">
+      <DependentUpon>修改.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Products\新增產品.resx">
+      <DependentUpon>新增產品.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Products\詳細.resx">
+      <DependentUpon>詳細.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Subform\ForgotPW.resx">
       <DependentUpon>ForgotPW.cs</DependentUpon>
     </EmbeddedResource>
@@ -300,6 +342,9 @@
     <EmbeddedResource Include="Subform\查詢子表.resx">
       <DependentUpon>查詢子表.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Subform\現有庫存.resx">
+      <DependentUpon>現有庫存.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Subform\進貨單查詢表.resx">
       <DependentUpon>進貨單查詢表.cs</DependentUpon>
     </EmbeddedResource>
@@ -308,6 +353,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="採購表單.resx">
       <DependentUpon>採購表單.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="盤點.resx">
+      <DependentUpon>盤點.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="訂單表.resx">
       <DependentUpon>訂單表.cs</DependentUpon>
@@ -343,8 +391,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\搜尋圖示.jpg" />
-    <None Include="Resources\close.png" />
     <Content Include="Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model.edmx</DependentUpon>
@@ -355,6 +401,8 @@
       <DependentUpon>Model.edmx</DependentUpon>
       <LastGenOutput>Model.cs</LastGenOutput>
     </Content>
+    <Content Include="Resources\搜尋圖示.jpg" />
+    <None Include="Resources\close.png" />
     <Content Include="Resources\B1.jpg" />
     <Content Include="Resources\B2.jpg" />
     <Content Include="Resources\B3.jpg" />
