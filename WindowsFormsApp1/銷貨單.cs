@@ -16,9 +16,7 @@ namespace WindowsFormsApp1
         string StautsID;
         private List<Order> orders;
         private List<OrderDetail> orderDetails;
-        private List<SalesDetail> salesDetails;
-        private List<Employee> employees;
-        private List<Customer> customers;
+        private List<SalesDetail> salesDetails;       
         FOODEntities db = new FOODEntities();
         private bool rowEditing = false;
         public 銷貨單()
@@ -33,10 +31,7 @@ namespace WindowsFormsApp1
             orderDetails = q1.ToList();
             var q2 = this.db.SalesDetails.Select(n => n);
             salesDetails = q2.ToList();
-            var q3 = this.db.Customers.Select(n => n);
-            customers = q3.ToList();
-            var q4 = this.db.Employees.Select(n => n);
-            employees = q4.ToList();
+            
         }
         private void Allclear()
         {
@@ -138,10 +133,10 @@ namespace WindowsFormsApp1
                     }
                 }
                 short a = 2;
-                var q1 = this.db.Orders.Where(n => n.OrderID.ToString() == OrderID).Select(n => n.OrderStatus);
+                var q1 = (this.db.Orders.Where(n => n.OrderID.ToString() == OrderID).Select(n => n.OrderStatus)).FirstOrDefault();
                 Order od = new Order();
                 od.OrderStatus = a;
-                this.db.Orders.Add(od);
+               
                 this.db.SaveChanges();//新增OD回DB
                 MessageBox.Show("新增成功", "提醒", MessageBoxButtons.OK);
 
