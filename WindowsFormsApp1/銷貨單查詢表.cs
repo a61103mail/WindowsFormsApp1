@@ -29,6 +29,7 @@ namespace WindowsFormsApp1
             {
                
                 var q = from n in this.db.SalesDetails
+                        where n.Order.OrderStatus == 1
                         select new
                         {
                             訂單編號 = n.OrderID,

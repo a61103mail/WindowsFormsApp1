@@ -17,8 +17,7 @@ namespace WindowsFormsApp1
         private List<Order> orders;
         private List<OrderDetail> orderDetails;
         private List<SalesDetail> salesDetails;
-        private List<Employee> employees;
-        private List<Customer> customers;
+       
         FOODEntities db = new FOODEntities();
         private bool rowEditing = false;
         public 銷貨單()
@@ -33,10 +32,7 @@ namespace WindowsFormsApp1
             orderDetails = q1.ToList();
             var q2 = this.db.SalesDetails.Select(n => n);
             salesDetails = q2.ToList();
-            var q3 = this.db.Customers.Select(n => n);
-            customers = q3.ToList();
-            var q4 = this.db.Employees.Select(n => n);
-            employees = q4.ToList();
+           
         }
         private void Allclear()
         {
@@ -120,7 +116,7 @@ namespace WindowsFormsApp1
 
                 foreach (DataGridViewRow dr in this.dataGridView1.Rows)
                 {
-                    SalesDetail sales = new SalesDetail();
+                    SalesDetail sales = this.db.Set<SalesDetail>().Create();
 
                     sales.OrderID = int.Parse(this.textBox3.Text);
                     sales.OrderDetailID = q.ToList()[0];
@@ -137,11 +133,11 @@ namespace WindowsFormsApp1
                     }
                 }
                 short a = 2;
-                var q1 = this.db.Orders.Where(n => n.OrderID.ToString() == OrderID).Select(n => n.OrderStatus);
-                Order od = new Order();
-                od.OrderStatus = a;
-                this.db.Orders.Add(od);
+                Order currentOrder = this.orders.Where(n => n.OrderID.ToString() == OrderID).Select(n => n).FirstOrDefault();
+                
+                currentOrder.OrderStatus = a;               
                 this.db.SaveChanges();//新增OD回DB
+                
                 MessageBox.Show("新增成功", "提醒", MessageBoxButtons.OK);
 
             }
@@ -158,7 +154,7 @@ namespace WindowsFormsApp1
             if (res == DialogResult.OK)
             {
                 StautsID = k.suppliername;
-                MessageBox.Show(StautsID);
+               
 
 
                 var q = from o in this.orders
