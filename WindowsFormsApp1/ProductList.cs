@@ -59,8 +59,10 @@ namespace WindowsFormsApp1
             var selectedItem = this.dataGridView1.SelectedRows[0].DataBoundItem as Product_LatestPrice;
             var selectedIndex = this.product_Latests.IndexOf(selectedItem);
             詳細 f = new 詳細(selectedIndex);
+
+            f.Owner = this;
             f.TopMost = true;
-            f.ShowDialog(this);
+            f.ShowDialog();
         }
 
         private void button5_Click(object sender, EventArgs e)
