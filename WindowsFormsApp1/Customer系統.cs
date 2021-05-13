@@ -20,12 +20,12 @@ namespace WindowsFormsApp1
         internal void SelectCTMR(int ID)
         {
             var CTMR = from c in ENT.db.Customers
-                       from e in ENT.db.Employees
-                       from o in ENT.db.Orders
-                       where c.CustomerID == ID &&c.SalesID==e.EmployeeID &&o.CustomerID==c.CustomerID
+                       where c.CustomerID == ID
                        select new { c.CustomerID,c.CustomerRoleID,c.Name,c.Unicode,c.Address,c.SalesID,c.Phone,c.FAX,
-                       c.ContactPerson,c.ContactCellPhone,c.Email,c.DoB,EMPName=e.Name,e.Cellphone,
-                           o.OrderID,o.OrderDate,o.RequiredDate,訂單地址=o.Address,o.StatusList.StatusName,o.EmployeeID} ;
+                       c.ContactPerson,c.ContactCellPhone,c.Email,c.DoB,EMPName=c.Employee.Name,c.Employee.Cellphone};
+            var CTMRODS = from o in ENT.db.Orders
+                          where o.CustomerID == ID
+                          select o;
             
             foreach (var item in CTMR)
             {
@@ -44,7 +44,7 @@ namespace WindowsFormsApp1
                 ContactPersonTextBox__Client.Text = item.ContactPerson;
                 ContactCellPhoneTextBox__Client.Text = item.ContactCellPhone; 
             }
-            this.dataGridView_order.DataSource = CTMR.Select(s=>new {ODID=s.OrderID,s.OrderDate,s.RequiredDate,s.訂單地址,s.EmployeeID,s.StatusName }).ToList();
+            this.dataGridView_order.DataSource = CTMRODS.Select(s=>new {ODID=s.OrderID,訂單日期=s.OrderDate,要求日期=s.RequiredDate,地址=s.Address,處理員工=s.EmployeeID,狀態=s.StatusList.StatusName }).ToList();
         }
         private void IDTextBox_Client_TextChanged(object sender, EventArgs e)
         {
