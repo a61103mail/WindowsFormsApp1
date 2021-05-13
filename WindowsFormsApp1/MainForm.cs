@@ -206,61 +206,17 @@ namespace WindowsFormsApp1
 
         private void button10_Click(object sender, EventArgs e)
         {
-            if (this.splitContainer_Product.Panel2Collapsed == true)
-            {
-                this.splitContainer_Product.Panel2Collapsed = false;
-                this.splitContainer_Product.Height = 210;
-                this.splitContainer_EMP.Height = 640;
-            }
-            else
-            {
-                this.splitContainer_Product.Panel2Collapsed = true;
-                this.splitContainer_Product.Height = 55;
-                this.splitContainer_EMP.Height = 470;
-            }
-        }
-
-        private void button11_Click(object sender, EventArgs e)
-        {
             panel1.Controls.Clear();
-            詳細 詳細 = new 詳細(??)//參數要先加入甚麼?
-
+            ProductList ProductList = new ProductList()
             {
                 Dock = DockStyle.Fill,
                 TopLevel = false,
                 TopMost = true
             };
-            詳細.FormBorderStyle = FormBorderStyle.None;
-            this.panel1.Controls.Add(詳細);
-            詳細.Show();
+            ProductList.FormBorderStyle = FormBorderStyle.None;
+            this.panel1.Controls.Add(ProductList);
+            ProductList.Show();
         }
 
-        private void button12_Click(object sender, EventArgs e)
-        {
-            panel1.Controls.Clear();
-            新增產品 新增產品 = new 新增產品()
-            {
-                Dock = DockStyle.Fill,
-                TopLevel = false,
-                TopMost = true
-            };
-            新增產品.FormBorderStyle = FormBorderStyle.None;
-            this.panel1.Controls.Add(新增產品);
-            新增產品.Show();
-        }
-
-        private void button13_Click(object sender, EventArgs e)
-        {
-            panel1.Controls.Clear();
-            修改 修改 = new 修改(??)//參數要先加入甚麼?
-            {
-                Dock = DockStyle.Fill,
-                TopLevel = false,
-                TopMost = true
-            };
-            修改.FormBorderStyle = FormBorderStyle.None;
-            this.panel1.Controls.Add(修改);
-            修改.Show();
-        }
     }
 }

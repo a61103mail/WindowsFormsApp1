@@ -35,8 +35,7 @@ namespace WindowsFormsApp1
 
         private void 詳細_Load(object sender, EventArgs e)
         {
-            //to do
-            //ProductList 找不到        5/13 瑋儒
+            
             this.product_Latests = (this.Owner as ProductList).product_Latests;
             this.reload();
             PropertyInfo[] props = this.bindingSource.DataSource.GetType().GetProperties();

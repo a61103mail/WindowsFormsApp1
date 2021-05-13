@@ -43,6 +43,7 @@ namespace WindowsFormsApp1
             this.button9 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
             this.splitContainer_CUMR = new System.Windows.Forms.SplitContainer();
             this.lbl_CUMR = new System.Windows.Forms.Label();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
@@ -50,11 +51,6 @@ namespace WindowsFormsApp1
             this.button3 = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.MainForm_NameLabel = new System.Windows.Forms.Label();
-            this.splitContainer_Product = new System.Windows.Forms.SplitContainer();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
-            this.button13 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -74,10 +70,6 @@ namespace WindowsFormsApp1
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer_Product)).BeginInit();
-            this.splitContainer_Product.Panel1.SuspendLayout();
-            this.splitContainer_Product.Panel2.SuspendLayout();
-            this.splitContainer_Product.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -166,7 +158,7 @@ namespace WindowsFormsApp1
             // splitContainer_EMP.Panel2
             // 
             this.splitContainer_EMP.Panel2.Controls.Add(this.flowLayoutPanel1);
-            this.splitContainer_EMP.Size = new System.Drawing.Size(187, 632);
+            this.splitContainer_EMP.Size = new System.Drawing.Size(187, 470);
             this.splitContainer_EMP.SplitterDistance = 51;
             this.splitContainer_EMP.TabIndex = 3;
             // 
@@ -193,12 +185,12 @@ namespace WindowsFormsApp1
             this.flowLayoutPanel1.Controls.Add(this.button9);
             this.flowLayoutPanel1.Controls.Add(this.button6);
             this.flowLayoutPanel1.Controls.Add(this.button7);
-            this.flowLayoutPanel1.Controls.Add(this.splitContainer_Product);
+            this.flowLayoutPanel1.Controls.Add(this.button10);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(187, 577);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(187, 415);
             this.flowLayoutPanel1.TabIndex = 12;
             // 
             // button2
@@ -285,11 +277,23 @@ namespace WindowsFormsApp1
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
+            // button10
+            // 
+            this.button10.Font = new System.Drawing.Font("標楷體", 14F);
+            this.button10.Location = new System.Drawing.Point(1, 365);
+            this.button10.Margin = new System.Windows.Forms.Padding(1);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(185, 50);
+            this.button10.TabIndex = 9;
+            this.button10.Text = "產品系統";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
+            // 
             // splitContainer_CUMR
             // 
             this.splitContainer_CUMR.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainer_CUMR.IsSplitterFixed = true;
-            this.splitContainer_CUMR.Location = new System.Drawing.Point(0, 637);
+            this.splitContainer_CUMR.Location = new System.Drawing.Point(0, 475);
             this.splitContainer_CUMR.Margin = new System.Windows.Forms.Padding(0);
             this.splitContainer_CUMR.Name = "splitContainer_CUMR";
             this.splitContainer_CUMR.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -383,79 +387,6 @@ namespace WindowsFormsApp1
             this.MainForm_NameLabel.TabIndex = 0;
             this.MainForm_NameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // splitContainer_Product
-            // 
-            this.splitContainer_Product.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainer_Product.Location = new System.Drawing.Point(1, 364);
-            this.splitContainer_Product.Margin = new System.Windows.Forms.Padding(1, 0, 0, 0);
-            this.splitContainer_Product.Name = "splitContainer_Product";
-            this.splitContainer_Product.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainer_Product.Panel1
-            // 
-            this.splitContainer_Product.Panel1.Controls.Add(this.button10);
-            // 
-            // splitContainer_Product.Panel2
-            // 
-            this.splitContainer_Product.Panel2.Controls.Add(this.button13);
-            this.splitContainer_Product.Panel2.Controls.Add(this.button12);
-            this.splitContainer_Product.Panel2.Controls.Add(this.button11);
-            this.splitContainer_Product.Panel2Collapsed = true;
-            this.splitContainer_Product.Size = new System.Drawing.Size(185, 210);
-            this.splitContainer_Product.TabIndex = 10;
-            // 
-            // button10
-            // 
-            this.button10.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button10.Font = new System.Drawing.Font("標楷體", 14F);
-            this.button10.Location = new System.Drawing.Point(0, 0);
-            this.button10.Margin = new System.Windows.Forms.Padding(1);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(185, 50);
-            this.button10.TabIndex = 9;
-            this.button10.Text = "產品系統";
-            this.button10.UseVisualStyleBackColor = true;
-            this.button10.Click += new System.EventHandler(this.button10_Click);
-            // 
-            // button11
-            // 
-            this.button11.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button11.Font = new System.Drawing.Font("標楷體", 14F);
-            this.button11.Location = new System.Drawing.Point(0, 0);
-            this.button11.Margin = new System.Windows.Forms.Padding(1);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(185, 50);
-            this.button11.TabIndex = 10;
-            this.button11.Text = "詳細";
-            this.button11.UseVisualStyleBackColor = true;
-            this.button11.Click += new System.EventHandler(this.button11_Click);
-            // 
-            // button12
-            // 
-            this.button12.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button12.Font = new System.Drawing.Font("標楷體", 14F);
-            this.button12.Location = new System.Drawing.Point(0, 50);
-            this.button12.Margin = new System.Windows.Forms.Padding(1);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(185, 50);
-            this.button12.TabIndex = 11;
-            this.button12.Text = "新增";
-            this.button12.UseVisualStyleBackColor = true;
-            this.button12.Click += new System.EventHandler(this.button12_Click);
-            // 
-            // button13
-            // 
-            this.button13.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button13.Font = new System.Drawing.Font("標楷體", 14F);
-            this.button13.Location = new System.Drawing.Point(0, 100);
-            this.button13.Margin = new System.Windows.Forms.Padding(1);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(185, 50);
-            this.button13.TabIndex = 12;
-            this.button13.Text = "修改";
-            this.button13.UseVisualStyleBackColor = true;
-            this.button13.Click += new System.EventHandler(this.button13_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -489,10 +420,6 @@ namespace WindowsFormsApp1
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
-            this.splitContainer_Product.Panel1.ResumeLayout(false);
-            this.splitContainer_Product.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer_Product)).EndInit();
-            this.splitContainer_Product.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -520,10 +447,6 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
         private System.Windows.Forms.Button button8;
         internal System.Windows.Forms.Button button9;
-        private System.Windows.Forms.SplitContainer splitContainer_Product;
         private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button13;
-        private System.Windows.Forms.Button button12;
-        private System.Windows.Forms.Button button11;
     }
 }
