@@ -115,7 +115,7 @@ namespace WindowsFormsApp1
         {
             Purchase pchs = new Purchase
             {
-                //status = 1,
+                PurchaseStatus= 1,
                 PurchaseDate = this.dateTimePicker1.Value,
                 SupplierID = int.Parse(this.label12.Text),
                 PurchaserEmpID = int.Parse(this.label18.Text),
