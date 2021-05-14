@@ -345,6 +345,7 @@ namespace WindowsFormsApp1
             this.button8.TabIndex = 9;
             this.button8.Text = "分析系統";
             this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // button3
             // 

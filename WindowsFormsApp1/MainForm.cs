@@ -218,5 +218,16 @@ namespace WindowsFormsApp1
             ProductList.Show();
         }
 
+        private void button8_Click(object sender, EventArgs e)
+        {
+            panel1.Controls.Clear();
+            分析 分析 = new 分析()
+            {
+                Dock = DockStyle.Fill,
+                
+            };
+            this.panel1.Controls.Add(分析);
+            分析.Show();
+        }
     }
 }

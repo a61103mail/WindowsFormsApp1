@@ -47,6 +47,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -214,6 +215,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="PWD\Encoder.cs" />
+    <Compile Include="Subform\FrmChooseProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Subform\FrmChooseProduct.designer.cs">
+      <DependentUpon>FrmChooseProduct.cs</DependentUpon>
+    </Compile>
     <Compile Include="Subform\Select系統.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -267,6 +274,12 @@
     </Compile>
     <Compile Include="WeeklyPriceTemp.cs">
       <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="分析.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="分析.designer.cs">
+      <DependentUpon>分析.cs</DependentUpon>
     </Compile>
     <Compile Include="採購表單.cs">
       <SubType>Form</SubType>
@@ -336,6 +349,9 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Subform\FrmChooseProduct.resx">
+      <DependentUpon>FrmChooseProduct.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Subform\registered.resx">
       <DependentUpon>registered.cs</DependentUpon>
     </EmbeddedResource>
@@ -359,6 +375,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Subform\進貨轉單查詢.resx">
       <DependentUpon>進貨轉單查詢.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="分析.resx">
+      <DependentUpon>分析.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="採購表單.resx">
       <DependentUpon>採購表單.cs</DependentUpon>
@@ -400,6 +419,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\EyesOpen.png" />
+    <None Include="Resources\EyesClose.png" />
     <Content Include="Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model.edmx</DependentUpon>
@@ -410,8 +431,6 @@
       <DependentUpon>Model.edmx</DependentUpon>
       <LastGenOutput>Model.cs</LastGenOutput>
     </Content>
-    <None Include="Resources\EyesOpen.png" />
-    <None Include="Resources\EyesClose.png" />
     <Content Include="Resources\搜尋圖示.jpg" />
     <None Include="Resources\close.png" />
     <Content Include="Resources\B1.jpg" />

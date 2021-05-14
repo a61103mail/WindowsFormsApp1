@@ -14,6 +14,7 @@ namespace WindowsFormsApp1
     
     public partial class Product_WeeklyPrice
     {
+        public int RecordID { get; set; }
         public int ProductID { get; set; }
         public string ProductCode { get; set; }
         public string CropCode { get; set; }

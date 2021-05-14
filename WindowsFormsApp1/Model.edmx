@@ -281,11 +281,9 @@
 警告 6002: 資料表/檢視 'FOOD.dbo.Product_WeeklyPrice' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
         <EntityType Name="Product_WeeklyPrice">
           <Key>
-            <PropertyRef Name="ProductID" />
-            <PropertyRef Name="ProductCode" />
-            <PropertyRef Name="CropCode" />
-            <PropertyRef Name="Name" />
+            <PropertyRef Name="RecordID" />
           </Key>
+          <Property Name="RecordID" Type="int" Nullable="false" />
           <Property Name="ProductID" Type="int" Nullable="false" />
           <Property Name="ProductCode" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="CropCode" Type="nvarchar" MaxLength="10" Nullable="false" />
@@ -718,6 +716,7 @@
           </EntitySet>
           <EntitySet Name="Product_WeeklyPrice" EntityType="Self.Product_WeeklyPrice" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
+    [Product_WeeklyPrice].[RecordID] AS [RecordID], 
     [Product_WeeklyPrice].[ProductID] AS [ProductID], 
     [Product_WeeklyPrice].[ProductCode] AS [ProductCode], 
     [Product_WeeklyPrice].[CropCode] AS [CropCode], 
@@ -1182,11 +1181,9 @@
         </EntityType>
         <EntityType Name="Product_WeeklyPrice">
           <Key>
-            <PropertyRef Name="ProductID" />
-            <PropertyRef Name="ProductCode" />
-            <PropertyRef Name="CropCode" />
-            <PropertyRef Name="Name" />
+            <PropertyRef Name="RecordID" />
           </Key>
+          <Property Name="RecordID" Type="Int32" Nullable="false" />
           <Property Name="ProductID" Type="Int32" Nullable="false" />
           <Property Name="ProductCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="CropCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
@@ -2029,6 +2026,7 @@
           <EntitySetMapping Name="Product_WeeklyPrice">
             <EntityTypeMapping TypeName="FOODModel.Product_WeeklyPrice">
               <MappingFragment StoreEntitySet="Product_WeeklyPrice">
+                <ScalarProperty Name="RecordID" ColumnName="RecordID" />
                 <ScalarProperty Name="ProductID" ColumnName="ProductID" />
                 <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
                 <ScalarProperty Name="CropCode" ColumnName="CropCode" />
