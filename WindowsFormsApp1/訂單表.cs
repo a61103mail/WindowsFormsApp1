@@ -456,8 +456,8 @@ namespace WindowsFormsApp1.Properties
                             row = this.db.SaveChanges();//新增OD回DB
                         }
                     }
-                            
-                 
+
+                    if (i > psd.Count || i < psd.Count)
                     {
                         MessageBox.Show("這邊是修改不是新增", "提醒", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         break;
