@@ -47,7 +47,6 @@ namespace WindowsFormsApp1
             decimal avgPrice = (from p in this.products
                                 select p.當日價格).Average();
             this.lblAvg.Text = $"{avgPrice:C}";
-            this.dataGridView1.DataSource = null;
             this.dataGridView1.DataSource = this.products;
             this.btnChooseProduct.Enabled = true;
         }
@@ -83,6 +82,7 @@ namespace WindowsFormsApp1
             {
                 this.lblTrend.Text = $"{this.currentProduct.DailyTrend}";
             }
+            this.dataGridView1.DataSource = null;
             Task.Run(this.loading);
             this.btnChooseProduct.Enabled = false;
         }
