@@ -311,6 +311,9 @@ namespace WindowsFormsApp1.Properties
             this.ProductCode.DisplayMember = "pdna";
             this.ProductCode.ValueMember = "pdid";
 
+           
+
+
 
 
             foreach (Control con in this.Controls)
@@ -324,7 +327,7 @@ namespace WindowsFormsApp1.Properties
             查詢子表 k = new 查詢子表();
             k.TopMost = true;
             DialogResult res = k.ShowDialog();
-            MessageBox.Show(res.ToString());
+            
             if (res == DialogResult.OK)
             {
                 OrderID = k.suppliername;
@@ -437,27 +440,29 @@ namespace WindowsFormsApp1.Properties
                
                 var dr = this.dataGridView1.Rows;
                 int row = 0;
-                for (int i = 0; i < dr.Count; i++) {
-                    
-                    if (i>psd.Count)
-                {
-                    MessageBox.Show("這邊是修改不是新增", "提醒", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    break;
-                }
-
-              else  if (dr[i].Cells[0].Value != null)
-                {
-                    psd[i].ProductCode = dr[i].Cells[0].Value.ToString();
-                    psd[i].Qty = decimal.Parse(dr[i].Cells[3].Value.ToString());
-                    psd[i].UnitPrice = decimal.Parse(dr[i].Cells[2].Value.ToString());
-                    psd[i].Unit = dr[i].Cells[4].Value.ToString();
-                    if (dr[i].Cells[6].Value != null)
+                for (int i = 0; i < dr.Count; i++) {                
+                  
+                if (dr[i].Cells[0].Value != null)
                     {
-                        psd[i].Commert = dr[i].Cells[6].Value.ToString();
+                        if (i > psd.Count && i < psd.Count) {
+                            psd[i].ProductCode = dr[i].Cells[0].Value.ToString();
+                            psd[i].Qty = decimal.Parse(dr[i].Cells[3].Value.ToString());
+                            psd[i].UnitPrice = decimal.Parse(dr[i].Cells[2].Value.ToString());
+                            psd[i].Unit = dr[i].Cells[4].Value.ToString();
+                            if (dr[i].Cells[6].Value != null)
+                            {
+                                psd[i].Commert = dr[i].Cells[6].Value.ToString();
+                            }
+                            row = this.db.SaveChanges();//新增OD回DB
+                        }
                     }
-                        row = this.db.SaveChanges();//新增OD回DB
+                            
+                 
+                    {
+                        MessageBox.Show("這邊是修改不是新增", "提醒", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
                     }
-            }   
+                }   
                   
                 if (row != 0) MessageBox.Show("修改成功", "提醒", MessageBoxButtons.OK);
             }

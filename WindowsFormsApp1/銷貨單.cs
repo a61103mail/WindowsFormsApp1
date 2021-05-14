@@ -51,6 +51,11 @@ namespace WindowsFormsApp1
         private void 新增轉單(object sender, EventArgs e)
         {
             Allclear();
+            
+            orders = this.db.Orders.ToList();            
+            orderDetails = this.db.OrderDetails.ToList();            
+            salesDetails = this.db.SalesDetails.ToList();
+
             查詢子表 k = new 查詢子表();
             k.TopMost = true;
             DialogResult res = k.ShowDialog();
@@ -136,6 +141,15 @@ namespace WindowsFormsApp1
                 q1.OrderStatus = a;
                
                 this.db.SaveChanges();//新增OD回DB
+                var sa = (this.db.SalesDetails.Where(n => n.OrderID.ToString() == OrderID).Select(n => n.SalesDetailID)).FirstOrDefault();
+                this.textBox2.Text =sa.ToString();
+
+                var odload = this.db.Orders.Select(n => n);
+                orders = odload.ToList();
+                var oddload = this.db.OrderDetails.Select(n => n);
+                orderDetails = oddload.ToList();
+                var saload = this.db.SalesDetails.Select(n => n);
+                salesDetails = saload.ToList();
                 MessageBox.Show("新增成功", "提醒", MessageBoxButtons.OK);
 
             }
@@ -145,6 +159,10 @@ namespace WindowsFormsApp1
         private void 銷貨單查詢(object sender, EventArgs e)
         {
             Allclear();
+            orders = this.db.Orders.ToList();
+            orderDetails = this.db.OrderDetails.ToList();
+            salesDetails = this.db.SalesDetails.ToList();
+
             銷貨單查詢表 k = new 銷貨單查詢表();
             k.TopMost = true;
             DialogResult res = k.ShowDialog();

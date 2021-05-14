@@ -25,7 +25,7 @@ namespace WindowsFormsApp1
         {
             if (this.textBox1.Text == "")
             {
-                var q = this.db.Orders.Select(n => new { 訂單編號 = n.OrderID, 客戶姓名 = n.Customer.Name, 訂貨日期 = n.OrderDate });
+                var q = this.db.Orders.Where(n=>n.OrderStatus==1).Select(n => new { 訂單編號 = n.OrderID, 客戶姓名 = n.Customer.Name, 訂貨日期 = n.OrderDate });
                 this.dataGridView1.DataSource = q.ToList();
             }
             else if (this.textBox1.Text != "")

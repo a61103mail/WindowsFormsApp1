@@ -28,8 +28,7 @@ namespace WindowsFormsApp1
             if (this.textBox1.Text == "")
             {
                
-                var q = from n in this.db.SalesDetails
-                        where n.Order.OrderStatus==1
+                var q = from n in this.db.SalesDetails                       
                         select new
                         {
                             訂單編號 = n.OrderID,
