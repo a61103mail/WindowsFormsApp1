@@ -282,6 +282,7 @@
         <EntityType Name="Product_WeeklyPrice">
           <Key>
             <PropertyRef Name="RecordID" />
+            <PropertyRef Name="ProductCode" />
           </Key>
           <Property Name="RecordID" Type="int" Nullable="false" />
           <Property Name="ProductID" Type="int" Nullable="false" />
@@ -1182,6 +1183,7 @@
         <EntityType Name="Product_WeeklyPrice">
           <Key>
             <PropertyRef Name="RecordID" />
+            <PropertyRef Name="ProductCode" />
           </Key>
           <Property Name="RecordID" Type="Int32" Nullable="false" />
           <Property Name="ProductID" Type="Int32" Nullable="false" />
