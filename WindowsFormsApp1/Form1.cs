@@ -228,5 +228,23 @@ namespace WindowsFormsApp1
             this.textBox1.Text = "A123456789";
             this.textBox2.Text = "xxx";
         }
+
+        private void PwdShow_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (this.textBox2.UseSystemPasswordChar == true)
+            {
+                this.textBox2.UseSystemPasswordChar = false;
+                this.PwdShow.BackgroundImage = Properties.Resources.EyesOpen;
+            }
+            else
+            {
+                this.textBox2.UseSystemPasswordChar = true;
+                this.PwdShow.BackgroundImage = Properties.Resources.EyesClose;
+            }
+            
+
+        }
+
+        
     }
 }

@@ -410,6 +410,8 @@
       <DependentUpon>Model.edmx</DependentUpon>
       <LastGenOutput>Model.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\EyesOpen.png" />
+    <None Include="Resources\EyesClose.png" />
     <Content Include="Resources\搜尋圖示.jpg" />
     <None Include="Resources\close.png" />
     <Content Include="Resources\B1.jpg" />

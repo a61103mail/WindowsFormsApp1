@@ -32,9 +32,10 @@ namespace WindowsFormsApp1
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button4 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.PwdShow = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.CustomerRadioButton = new System.Windows.Forms.RadioButton();
             this.label3 = new System.Windows.Forms.Label();
@@ -75,6 +76,18 @@ namespace WindowsFormsApp1
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Silver;
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.button4);
+            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Controls.Add(this.panel3);
+            this.panel1.Location = new System.Drawing.Point(277, 12);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(700, 580);
+            this.panel1.TabIndex = 12;
+            // 
             // button4
             // 
             this.button4.BackColor = System.Drawing.Color.Transparent;
@@ -90,23 +103,12 @@ namespace WindowsFormsApp1
             this.button4.Size = new System.Drawing.Size(48, 48);
             this.button4.TabIndex = 9;
             this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);            
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.Silver;
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.button4);
-            this.panel1.Controls.Add(this.panel2);
-            this.panel1.Controls.Add(this.panel3);
-            this.panel1.Location = new System.Drawing.Point(277, 12);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(700, 580);
-            this.panel1.TabIndex = 12;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Transparent;
+            this.panel2.Controls.Add(this.PwdShow);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.CustomerRadioButton);
             this.panel2.Controls.Add(this.button1);
@@ -122,6 +124,22 @@ namespace WindowsFormsApp1
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(700, 530);
             this.panel2.TabIndex = 20;
+            // 
+            // PwdShow
+            // 
+            this.PwdShow.BackColor = System.Drawing.Color.Transparent;
+            this.PwdShow.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.EyesClose;
+            this.PwdShow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.PwdShow.FlatAppearance.BorderSize = 0;
+            this.PwdShow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.PwdShow.ForeColor = System.Drawing.Color.Transparent;
+            this.PwdShow.ImageKey = "(無)";
+            this.PwdShow.Location = new System.Drawing.Point(520, 290);
+            this.PwdShow.Name = "PwdShow";
+            this.PwdShow.Size = new System.Drawing.Size(30, 30);
+            this.PwdShow.TabIndex = 21;
+            this.PwdShow.UseVisualStyleBackColor = false;
+            this.PwdShow.MouseClick += new System.Windows.Forms.MouseEventHandler(this.PwdShow_MouseClick);
             // 
             // label4
             // 
@@ -184,10 +202,11 @@ namespace WindowsFormsApp1
             // 
             this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox2.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.textBox2.Location = new System.Drawing.Point(194, 289);
+            this.textBox2.Location = new System.Drawing.Point(194, 290);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(320, 29);
             this.textBox2.TabIndex = 15;
+            this.textBox2.UseSystemPasswordChar = true;
             // 
             // EMPRadioButton
             // 
@@ -283,6 +302,7 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button PwdShow;
     }
 }
 
