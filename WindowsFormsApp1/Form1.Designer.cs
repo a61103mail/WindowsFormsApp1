@@ -90,8 +90,7 @@ namespace WindowsFormsApp1
             this.button4.Size = new System.Drawing.Size(48, 48);
             this.button4.TabIndex = 9;
             this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            this.button4.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button4_MouseMove);
+            this.button4.Click += new System.EventHandler(this.button4_Click);            
             // 
             // panel1
             // 
@@ -100,7 +99,7 @@ namespace WindowsFormsApp1
             this.panel1.Controls.Add(this.button4);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.panel3);
-            this.panel1.Location = new System.Drawing.Point(450, 10);
+            this.panel1.Location = new System.Drawing.Point(277, 12);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(700, 580);
             this.panel1.TabIndex = 12;
@@ -134,6 +133,7 @@ namespace WindowsFormsApp1
             this.label4.Size = new System.Drawing.Size(87, 35);
             this.label4.TabIndex = 20;
             this.label4.Text = "登入";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // CustomerRadioButton
             // 
@@ -241,7 +241,7 @@ namespace WindowsFormsApp1
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1600, 600);
+            this.pictureBox1.Size = new System.Drawing.Size(1295, 615);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 14;
             this.pictureBox1.TabStop = false;
@@ -251,7 +251,7 @@ namespace WindowsFormsApp1
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1600, 600);
+            this.ClientSize = new System.Drawing.Size(1295, 615);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

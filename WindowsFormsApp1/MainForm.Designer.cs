@@ -397,7 +397,6 @@ namespace WindowsFormsApp1
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "食材通";
-            this.TopMost = true;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -441,9 +440,9 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.SplitContainer splitContainer_EMP;
-        private System.Windows.Forms.Label lbl_EMP;
+        internal System.Windows.Forms.Label lbl_EMP;
         private System.Windows.Forms.SplitContainer splitContainer_CUMR;
-        private System.Windows.Forms.Label lbl_CUMR;
+        internal System.Windows.Forms.Label lbl_CUMR;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
         private System.Windows.Forms.Button button8;
         internal System.Windows.Forms.Button button9;

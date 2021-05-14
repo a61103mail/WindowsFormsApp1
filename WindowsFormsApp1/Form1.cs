@@ -110,6 +110,8 @@ namespace WindowsFormsApp1
                     MainForm main = new MainForm();
                     main.Owner = this;
                     main.MainForm_NameLabel.Text = CusName + "，您好！";
+                    main.lbl_CUMR.Enabled = true;
+                    main.lbl_EMP.Enabled = false;
                     this.Visible=false;
                     main.ShowDialog();
                     this.textBox1.Text = "";
@@ -127,6 +129,8 @@ namespace WindowsFormsApp1
                     MainForm main = new MainForm();
                     main.Owner = this;
                     main.MainForm_NameLabel.Text = EmpName+"，您好！";
+                    main.lbl_CUMR.Enabled = false;
+                    main.lbl_EMP.Enabled = true;
                     this.Visible = false;
                     main.ShowDialog();
                     this.textBox1.Text = "";
@@ -216,11 +220,13 @@ namespace WindowsFormsApp1
         private void panel3_ControlRemoved(object sender, ControlEventArgs e)
         {
             this.panel2.Visible = true;
-        }               
-
-        private void button4_MouseMove(object sender, MouseEventArgs e)
+        }
+        
+        private void label4_Click(object sender, EventArgs e)
         {
-            
+            this.EMPRadioButton.Checked = true;
+            this.textBox1.Text = "A123456789";
+            this.textBox2.Text = "xxx";
         }
     }
 }

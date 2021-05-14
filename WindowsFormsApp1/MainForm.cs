@@ -24,7 +24,7 @@ namespace WindowsFormsApp1
             panel1.Controls.Clear();
             Employee系統 empFrm = new Employee系統()
             {
-                Dock = DockStyle.Fill, TopLevel = false, TopMost = true
+                Dock = DockStyle.Fill, TopLevel = false
             };
             empFrm.FormBorderStyle = FormBorderStyle.None;
             this.panel1.Controls.Add(empFrm);
@@ -38,7 +38,7 @@ namespace WindowsFormsApp1
             {
                 Dock = DockStyle.Fill,
                 TopLevel = false,
-                TopMost = true
+                
             };
             ClientFrm.FormBorderStyle = FormBorderStyle.None;
             this.panel1.Controls.Add(ClientFrm);
@@ -65,7 +65,7 @@ namespace WindowsFormsApp1
             {
                 Dock = DockStyle.Fill,
                 TopLevel = false,
-                TopMost = true
+               
             };
             訂單表.FormBorderStyle = FormBorderStyle.None;
             this.panel1.Controls.Add(訂單表);
@@ -155,7 +155,7 @@ namespace WindowsFormsApp1
             {
                 Dock = DockStyle.Fill,
                 TopLevel = false,
-                TopMost = true
+               
             };
             銷貨單.FormBorderStyle = FormBorderStyle.None;
             this.panel1.Controls.Add(銷貨單);
@@ -169,7 +169,7 @@ namespace WindowsFormsApp1
             {
                 Dock = DockStyle.Fill,
                 TopLevel = false,
-                TopMost = true
+                
             };
             採購表單.FormBorderStyle = FormBorderStyle.None;
             this.panel1.Controls.Add(採購表單);
@@ -183,7 +183,7 @@ namespace WindowsFormsApp1
             {
                 Dock = DockStyle.Fill,
                 TopLevel = false,
-                TopMost = true
+                
             };
             進貨單.FormBorderStyle = FormBorderStyle.None;
             this.panel1.Controls.Add(進貨單);
@@ -197,7 +197,7 @@ namespace WindowsFormsApp1
             {
                 Dock = DockStyle.Fill,
                 TopLevel = false,
-                TopMost = true
+               
             };
             盤點.FormBorderStyle = FormBorderStyle.None;
             this.panel1.Controls.Add(盤點);
@@ -211,7 +211,7 @@ namespace WindowsFormsApp1
             {
                 Dock = DockStyle.Fill,
                 TopLevel = false,
-                TopMost = true
+                
             };
             ProductList.FormBorderStyle = FormBorderStyle.None;
             this.panel1.Controls.Add(ProductList);
