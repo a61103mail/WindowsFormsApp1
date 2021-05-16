@@ -66,17 +66,18 @@ namespace WindowsFormsApp1
             this.label2 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.XXX = new System.Windows.Forms.TabPage();
             this.dataGridView_order = new System.Windows.Forms.DataGridView();
+            this.XXX = new System.Windows.Forms.TabPage();
             this.dataGridView_orderdetail = new System.Windows.Forms.DataGridView();
+            this.lblstatus = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.XXX.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_order)).BeginInit();
+            this.XXX.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_orderdetail)).BeginInit();
             this.SuspendLayout();
             // 
@@ -99,6 +100,8 @@ namespace WindowsFormsApp1
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.splitContainer1.Panel1.Controls.Add(this.lblstatus);
             this.splitContainer1.Panel1.Controls.Add(this.btn_save);
             this.splitContainer1.Panel1.Controls.Add(this.DoBTimePicker);
             this.splitContainer1.Panel1.Controls.Add(this.btn_creat);
@@ -506,17 +509,6 @@ namespace WindowsFormsApp1
             this.tabPage1.Text = "訂貨紀錄";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // XXX
-            // 
-            this.XXX.Controls.Add(this.dataGridView_orderdetail);
-            this.XXX.Location = new System.Drawing.Point(4, 22);
-            this.XXX.Name = "XXX";
-            this.XXX.Padding = new System.Windows.Forms.Padding(3);
-            this.XXX.Size = new System.Drawing.Size(1094, 382);
-            this.XXX.TabIndex = 1;
-            this.XXX.Text = "訂貨細項";
-            this.XXX.UseVisualStyleBackColor = true;
-            // 
             // dataGridView_order
             // 
             this.dataGridView_order.AllowUserToAddRows = false;
@@ -531,6 +523,17 @@ namespace WindowsFormsApp1
             this.dataGridView_order.TabIndex = 0;
             this.dataGridView_order.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_order_CellClick);
             // 
+            // XXX
+            // 
+            this.XXX.Controls.Add(this.dataGridView_orderdetail);
+            this.XXX.Location = new System.Drawing.Point(4, 22);
+            this.XXX.Name = "XXX";
+            this.XXX.Padding = new System.Windows.Forms.Padding(3);
+            this.XXX.Size = new System.Drawing.Size(1094, 382);
+            this.XXX.TabIndex = 1;
+            this.XXX.Text = "訂貨細項";
+            this.XXX.UseVisualStyleBackColor = true;
+            // 
             // dataGridView_orderdetail
             // 
             this.dataGridView_orderdetail.AllowUserToAddRows = false;
@@ -543,6 +546,18 @@ namespace WindowsFormsApp1
             this.dataGridView_orderdetail.RowTemplate.Height = 24;
             this.dataGridView_orderdetail.Size = new System.Drawing.Size(1088, 376);
             this.dataGridView_orderdetail.TabIndex = 0;
+            // 
+            // lblstatus
+            // 
+            this.lblstatus.AutoSize = true;
+            this.lblstatus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblstatus.Font = new System.Drawing.Font("標楷體", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lblstatus.ForeColor = System.Drawing.Color.Maroon;
+            this.lblstatus.Location = new System.Drawing.Point(140, 5);
+            this.lblstatus.Name = "lblstatus";
+            this.lblstatus.Size = new System.Drawing.Size(292, 39);
+            this.lblstatus.TabIndex = 47;
+            this.lblstatus.Text = "請先查詢或新增";
             // 
             // Customer系統
             // 
@@ -559,8 +574,8 @@ namespace WindowsFormsApp1
             this.splitContainer1.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            this.XXX.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_order)).EndInit();
+            this.XXX.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_orderdetail)).EndInit();
             this.ResumeLayout(false);
 
@@ -608,5 +623,6 @@ namespace WindowsFormsApp1
         internal System.Windows.Forms.Button btn_save;
         private System.Windows.Forms.DataGridView dataGridView_order;
         private System.Windows.Forms.DataGridView dataGridView_orderdetail;
+        internal System.Windows.Forms.Label lblstatus;
     }
 }

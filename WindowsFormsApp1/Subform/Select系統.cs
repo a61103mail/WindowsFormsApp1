@@ -153,6 +153,7 @@ namespace WindowsFormsApp1
                         CTMR.IDTextBox_Client.Text = id;
                         CTMR.btn_modify.Enabled = true;
                         CTMR.btn_delete.Enabled = true;
+                        CTMR.lblstatus.Text = "查詢中!";
                     }
                     else if (EMPbtn.Checked == true)
                     {

@@ -133,24 +133,20 @@ namespace WindowsFormsApp1
                 emp.DOE = DateTime.Parse(this.DOETextBox_Employee.Text);
                 //emp.Password = emp.Password;
                 ENT.db.Entry(emp).State = System.Data.Entity.EntityState.Modified;
-                ENT.db.SaveChanges();
+                //ENT.db.SaveChanges();
+                if (ENT.db.SaveChanges()!=0)
+                {
+                    MessageBox.Show("修改成功!");                
+                }
             }
             catch (Exception )
             {
             }
         }
-
-        private void btn_creat_Click(object sender, EventArgs e)
+        private void txtclear()
         {
-            CURDpanel.Enabled = false;
-            Savepanel.Visible = true;
-            PWDpanel.Visible = true;
-            //btn_search.Enabled = false;
-            //btn_modify.Enabled = false;
-            //btn_delete.Enabled = false;
-            //btn_creat.Enabled = false;
-            //btn_save.Visible = true;
             //=====清除TEXT============
+            EmployeeIDtextBox_Employee.Text = null;
             NameTextBox_Employee.Text = null;
             UnicodeTextBox_Employee.Text = null;
             DOBTextBox_Employee.Text = null;
@@ -160,6 +156,13 @@ namespace WindowsFormsApp1
             EmailTextBox_Employee.Text = null;
             AddressTextBox_Employee.Text = null;
             PasswordtextBox_Employee.Text = null;
+        }
+        private void btn_creat_Click(object sender, EventArgs e)
+        {
+            CURDpanel.Enabled = false;
+            Savepanel.Visible = true;
+            PWDpanel.Visible = true;
+            txtclear();
         }
         private void btn_save_Click(object sender, EventArgs e)
         {
@@ -204,8 +207,13 @@ namespace WindowsFormsApp1
                                     select i).FirstOrDefault();
                         //ENT.db.Employees.Remove(emp);
                         ENT.db.Entry(emp).State = System.Data.Entity.EntityState.Deleted;
-                        ENT.db.SaveChanges();
-                        MessageBox.Show("刪除成功，無法挽回!", "注意！", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        if (ENT.db.SaveChanges()!=0)
+                        {
+                            txtclear();
+                            MessageBox.Show("刪除成功，無法挽回!", "注意！", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        
+                        
                     }
                 }
             }

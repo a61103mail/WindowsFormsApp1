@@ -83,9 +83,8 @@ namespace WindowsFormsApp1
                 ctmr.ContactCellPhone = this.ContactCellPhoneTextBox__Client.Text;
                 ctmr.Email = this.EmailTextBox__Client.Text;
                 ctmr.DoB = this.DoBTimePicker.Value;
-                //ctmr.Password = ctmr.Password;
                 ENT.db.Entry(ctmr).State = System.Data.Entity.EntityState.Modified;
-                
+                this.lblstatus.Text = "已修改尚未儲存!";
             }
             catch (Exception )
             {
@@ -116,7 +115,8 @@ namespace WindowsFormsApp1
                                     select i).FirstOrDefault();
                         //ENT.db.Customers.Remove(ctmr);
                         ENT.db.Entry(ctmr).State = System.Data.Entity.EntityState.Deleted;
-                        MessageBox.Show("刪除成功，無法挽回!", "注意！", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.lblstatus.Text = "已列入刪除尚未儲存!";
+                        MessageBox.Show("刪除成功將無法挽回!", "注意！", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
             }
@@ -124,7 +124,11 @@ namespace WindowsFormsApp1
 
         private void btn_save_Click(object sender, EventArgs e)
         {
-            ENT.db.SaveChanges();
+            if (ENT.db.SaveChanges()!=0)
+            {
+                this.lblstatus.Text = "儲存成功!已將所有修改與刪除完成!";
+            }
+            
         }
         internal void SelectODD(int ID)
         {
