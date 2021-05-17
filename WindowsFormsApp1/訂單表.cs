@@ -146,6 +146,8 @@ namespace WindowsFormsApp1.Properties
 
                
                 this.db.SaveChanges();//新增OD回DB
+                var odload = this.db.Orders.Select(n => n);
+                var oddload = this.db.OrderDetails.Select(n => n);
                 MessageBox.Show("新增成功", "提醒", MessageBoxButtons.OK);
 
             }

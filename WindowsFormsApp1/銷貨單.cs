@@ -265,7 +265,7 @@ namespace WindowsFormsApp1
 
                 if (row != 0) MessageBox.Show("修改成功", "提醒", MessageBoxButtons.OK);
             }
-
+            var dataload = this.db.SalesDetails.Select(n => n);
             Allclear();
 
 
