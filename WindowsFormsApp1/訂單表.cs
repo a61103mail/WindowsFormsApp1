@@ -157,7 +157,11 @@ namespace WindowsFormsApp1.Properties
 
         private void comboBox5_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if (this.comboBox5.Text != "")
+            {
+                var q = this.db.Employees.AsEnumerable().Where(n => n.Name == $"{this.comboBox5.Text}").Select(n => n.EmployeeID);
+                this.label17.Text = q.ToList()[0].ToString();
+            }
         }
 
 
