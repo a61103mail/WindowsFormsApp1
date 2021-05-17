@@ -163,7 +163,12 @@ namespace WindowsFormsApp1
                 if (result == System.Windows.Forms.DialogResult.OK)
                 {
                     Customer系統 CTMR = (Customer系統)this.Owner;
-                    CTMR.IDTextBox_Client.Text = cus.CustomerID.ToString();
+
+                    if (this.Owner != null)
+                    {
+                        CTMR.IDTextBox_Client.Text = cus.CustomerID.ToString();
+                    }
+                    
                     this.Close();
                 }
             }
